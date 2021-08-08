@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg"
+     xml:space="preserve"
+     enable-background="new 0 0 512 512"
+     viewBox="0 0 512 512"
+     height="512px"
+     width="512px"
+     y="0px"
+     x="0px"
+     id="HC"
+     version="1.1">
+  <svg:circle cx="256px" cy="256px" r="256px" fill="purple"/>
+  <svg:circle cx="320px" cy="256px" r="191px" fill="white"/>
+  <svg:rect x="225px" y="124px" width="64px" height="264px" rx="8px" ry="8px" fill="purple"/>
+  <svg:rect x="289px" y="224px" width="64px" height="64px" rx="0px" ry="0px" fill="purple"/>
+  <svg:rect x="353px" y="124px" width="64px" height="264px" rx="8px" ry="8px" fill="purple"/>
+</svg>

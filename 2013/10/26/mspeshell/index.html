@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-TW,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hchen90.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。 壳的一个加载过程在许多书上都将过，这里就以图来复习一次：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件壳的设计过程">
+<meta property="og:url" content="http://hchen90.top/2013/10/26/mspeshell/index.html">
+<meta property="og:site_name" content="博客空间">
+<meta property="og:description" content="简介今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。 壳的一个加载过程在许多书上都将过，这里就以图来复习一次：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic1.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic2.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic3.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic4.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic5.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic6.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic7.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic8.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic9.png">
+<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic10.png">
+<meta property="article:published_time" content="2013-10-26T15:44:15.000Z">
+<meta property="article:modified_time" content="2013-10-26T15:44:15.000Z">
+<meta property="article:author" content="陈祥">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hchen90.top/2013/10/26/mspeshell/pic1.png">
+
+<link rel="canonical" href="http://hchen90.top/2013/10/26/mspeshell/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PE文件壳的设计过程 | 博客空间</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="博客空间" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">博客空间</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">个人技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/hchen90" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hchen90.top/2013/10/26/mspeshell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客空间">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PE文件壳的设计过程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-10-26 23:44:15" itemprop="dateCreated datePublished" datetime="2013-10-26T23:44:15+08:00">2013-10-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+<a id="more"></a>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
+
+<p>也就成了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
+
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="pic6.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="pic7.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="pic8.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="pic9.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="pic10.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2014/08/02/vssqlserver2008/" rel="next" title="如何在Visual Studio 2010中使用SQL Server 2008">
+      如何在Visual Studio 2010中使用SQL Server 2008 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现导入函数的保护"><span class="nav-number">2.</span> <span class="nav-text">如何实现导入函数的保护?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何加载“藏”的导入表"><span class="nav-number">2.1.</span> <span class="nav-text">如何加载“藏”的导入表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于加密数据和代码"><span class="nav-number">2.2.</span> <span class="nav-text">关于加密数据和代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机的构想"><span class="nav-number">2.3.</span> <span class="nav-text">虚拟机的构想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后一点补充"><span class="nav-number">2.4.</span> <span class="nav-text">最后一点补充</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈祥"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">陈祥</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈祥</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
