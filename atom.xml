@@ -5,9 +5,9 @@
   <subtitle>个人技术博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://hchen90.top/"/>
+  <link href="https://hchen90.github.io/"/>
   <updated>2019-11-12T01:12:29.000Z</updated>
-  <id>http://hchen90.top/</id>
+  <id>https://hchen90.github.io/</id>
   
   <author>
     <name>陈祥</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <link href="http://hchen90.top/2019/11/12/linuxcoredumptofindbug/"/>
-    <id>http://hchen90.top/2019/11/12/linuxcoredumptofindbug/</id>
+    <link href="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/"/>
+    <id>https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/</id>
     <published>2019-11-12T01:12:29.000Z</published>
     <updated>2019-11-12T01:12:29.000Z</updated>
     
@@ -37,8 +37,8 @@
   
   <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
-    <link href="http://hchen90.top/2017/09/02/enablesbonlinux/"/>
-    <id>http://hchen90.top/2017/09/02/enablesbonlinux/</id>
+    <link href="https://hchen90.github.io/2017/09/02/enablesbonlinux/"/>
+    <id>https://hchen90.github.io/2017/09/02/enablesbonlinux/</id>
     <published>2017-09-01T16:17:02.000Z</published>
     <updated>2017-09-01T16:17:02.000Z</updated>
     
@@ -56,8 +56,8 @@
   
   <entry>
     <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <link href="http://hchen90.top/2016/10/03/minix/"/>
-    <id>http://hchen90.top/2016/10/03/minix/</id>
+    <link href="https://hchen90.github.io/2016/10/03/minix/"/>
+    <id>https://hchen90.github.io/2016/10/03/minix/</id>
     <published>2016-10-02T16:16:13.000Z</published>
     <updated>2016-10-02T16:16:13.000Z</updated>
     
@@ -76,8 +76,8 @@
   
   <entry>
     <title>Linux环境搭建中文LaTeX排版系统</title>
-    <link href="http://hchen90.top/2016/05/03/linuxlatex/"/>
-    <id>http://hchen90.top/2016/05/03/linuxlatex/</id>
+    <link href="https://hchen90.github.io/2016/05/03/linuxlatex/"/>
+    <id>https://hchen90.github.io/2016/05/03/linuxlatex/</id>
     <published>2016-05-02T20:12:20.000Z</published>
     <updated>2016-05-02T20:12:20.000Z</updated>
     
@@ -97,8 +97,8 @@
   
   <entry>
     <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <link href="http://hchen90.top/2014/08/02/vssqlserver2008/"/>
-    <id>http://hchen90.top/2014/08/02/vssqlserver2008/</id>
+    <link href="https://hchen90.github.io/2014/08/02/vssqlserver2008/"/>
+    <id>https://hchen90.github.io/2014/08/02/vssqlserver2008/</id>
     <published>2014-08-02T04:54:52.000Z</published>
     <updated>2014-08-02T04:54:52.000Z</updated>
     
@@ -117,8 +117,8 @@
   
   <entry>
     <title>PE文件壳的设计过程</title>
-    <link href="http://hchen90.top/2013/10/26/mspeshell/"/>
-    <id>http://hchen90.top/2013/10/26/mspeshell/</id>
+    <link href="https://hchen90.github.io/2013/10/26/mspeshell/"/>
+    <id>https://hchen90.github.io/2013/10/26/mspeshell/</id>
     <published>2013-10-26T15:44:15.000Z</published>
     <updated>2013-10-26T15:44:15.000Z</updated>
     

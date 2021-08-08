@@ -17,33 +17,33 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hchen90.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="简介今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。 壳的一个加载过程在许多书上都将过，这里就以图来复习一次：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PE文件壳的设计过程">
-<meta property="og:url" content="http://hchen90.top/2013/10/26/mspeshell/index.html">
+<meta property="og:url" content="https://hchen90.github.io/2013/10/26/mspeshell/index.html">
 <meta property="og:site_name" content="博客空间">
 <meta property="og:description" content="简介今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。 壳的一个加载过程在许多书上都将过，这里就以图来复习一次：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic1.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic2.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic3.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic4.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic5.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic6.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic7.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic8.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic9.png">
-<meta property="og:image" content="http://hchen90.top/2013/10/26/mspeshell/pic10.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic1.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic2.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic3.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic4.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic5.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic6.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic7.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic8.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic9.png">
+<meta property="og:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic10.png">
 <meta property="article:published_time" content="2013-10-26T15:44:15.000Z">
 <meta property="article:modified_time" content="2013-10-26T15:44:15.000Z">
 <meta property="article:author" content="陈祥">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://hchen90.top/2013/10/26/mspeshell/pic1.png">
+<meta name="twitter:image" content="https://hchen90.github.io/2013/10/26/mspeshell/pic1.png">
 
-<link rel="canonical" href="http://hchen90.top/2013/10/26/mspeshell/">
+<link rel="canonical" href="https://hchen90.github.io/2013/10/26/mspeshell/">
 
 
 <script id="page-configurations">
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://hchen90.top/2013/10/26/mspeshell/">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2013/10/26/mspeshell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
