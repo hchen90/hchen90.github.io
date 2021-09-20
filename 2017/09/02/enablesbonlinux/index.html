@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,23 +13,26 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="概述Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在 Linux 系统启用 UEFI 的 Secure Boot">
 <meta property="og:url" content="https://hchen90.github.io/2017/09/02/enablesbonlinux/index.html">
-<meta property="og:site_name" content="博客">
+<meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="概述Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-01T16:17:02.000Z">
 <meta property="article:modified_time" content="2017-09-01T16:17:02.000Z">
 <meta property="article:author" content="陈祥">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="uefi">
+<meta property="article:tag" content="openssl">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://hchen90.github.io/2017/09/02/enablesbonlinux/">
@@ -45,7 +48,7 @@
   };
 </script>
 
-  <title>如何在 Linux 系统启用 UEFI 的 Secure Boot | 博客</title>
+  <title>如何在 Linux 系统启用 UEFI 的 Secure Boot | 个人站点</title>
   
 
 
@@ -76,7 +79,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -97,10 +100,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">博客</h1>
+      <h1 class="site-title">个人站点</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">个人技术博客</p>
+      <p class="site-subtitle" itemprop="description">陈祥的个人站点</p>
   </div>
 
   <div class="site-nav-right">
@@ -113,15 +116,25 @@
 
 
 <nav class="site-nav">
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
   </ul>
@@ -147,11 +160,10 @@
         <div class="content-wrap">
           
 
-          <div class="content post">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -164,7 +176,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客">
+      <meta itemprop="name" content="个人站点">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -174,11 +186,20 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2017-09-02 00:17:02" itemprop="dateCreated datePublished" datetime="2017-09-02T00:17:02+08:00">2017-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
             </span>
 
           
@@ -193,7 +214,7 @@
 
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>这里说一下 Fedora 是如何做到在 Secure Boot 开启时加载的，它实际上是 Fedora 开源项目向微软公司购买签名达到的， Fedora 被系统的主板识别为和 Windows 一样的系统，这种购买行为在开源社区是不鼓励的，好处是 Fedora 几乎可以在任何可以加载 Windows 系统上被识别加载，即使该计算机硬件不能关闭 Secure Boot。</p>
 <blockquote>
@@ -206,7 +227,7 @@
 <li>sbsigntools</li>
 </ul>
 <p>如果你是第三方编译好的软件包来安装的，可以忽略此步：</p>
-<p>在用源代码编译 efitools 时，需要 Perl 的一个模块，名字为 <code>File Slurp</code>，在 <a href="http://www.cpan.org" target="_blank" rel="noopener">cpan</a> 可以找到。</p>
+<p>在用源代码编译 efitools 时，需要 Perl 的一个模块，名字为 <code>File Slurp</code>，在 <a target="_blank" rel="noopener" href="http://www.cpan.org/">cpan</a> 可以找到。</p>
 <h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>开机进入系统的 UEFI-BIOS 页面，在安全页面里找到 Secure Boot 选项，先关掉 Secure Boot （如果没有关的话），再删除或清空所有证书文件，使机器从 <code>User Mode</code> 转到 <code>Setup Mode</code> 即为正常，如果这两步不能做到，可能影响到下面的步骤。</p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h3><p>这里简要介绍 PK，KEK，db，dbx 和 <em>MOK</em> 的概念。</p>
 <ul>
@@ -231,11 +252,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  77fa9abd-0359-4d32-bd60-28f4e78f784b &gt;ms-guid</span><br></pre></td></tr></table></figure>
 
 <p>建立密钥对：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">"/CN=Platform Key/"</span> -keyout PK.key -out PK.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Platform Key/&quot;</span> -keyout PK.key -out PK.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
 
 <p>上面的 <code>-subj</code> 的参数可以自己设置，参数 <code>-days</code> 是密钥的有效期，这里设置为 10 年，也可以设置为其他，生成私钥 <code>PK.key</code>，公钥 <code>PK.crt</code>。</p>
 <p>同理，KEK 和 db 亦是如此：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">"/CN=Key Exchange Key/"</span> -keyout KEK.key -out KEK.crt -days 3650 -nodes -sha256</span><br><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">"/CN=Database/"</span> -keyout db.key -out db.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Key Exchange Key/&quot;</span> -keyout KEK.key -out KEK.crt -days 3650 -nodes -sha256</span><br><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Database/&quot;</span> -keyout db.key -out db.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
 
 <p><em>这里没有建立 dbx 的黑名单，因为暂时用不到这个，也没有黑名单签名文件，MOK 不通用，亦不讨论</em></p>
 <h3 id="建立-EFI-List-文件"><a href="#建立-EFI-List-文件" class="headerlink" title="建立 EFI List 文件"></a>建立 EFI List 文件</h3><p>EFI List 文件其实就是公钥配以平台拥有者的 GUID 的文件:</p>
@@ -269,14 +290,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">efi-updatevar -f PK.esl.signed PK</span><br><span class="line">efi-updatevar -f realKEK.esl.signed KEK</span><br><span class="line">efi-updatevar -f realDB.esl.signed db</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>参考 <a href="http://www.linuxquestions.org" target="_blank" rel="noopener">LinuxQuestions</a> 上的解决方案，使用了在 <code>efi-updatevar</code> 添加 <code>-a</code> 参数来表示添加，但是在 ThinkPad 上多次实验第二次皆以 <code>Operation not permitted</code> 的错误而中断，所以，合并 EFI List 文件即只需添加一次，就全部都被加上，无需再用 <code>-a</code> 来添加。上述的问题很难判断是密钥链的逻辑问题，还是硬件的保护机制，不过用合并这种方法，在 Secure Boot 下，Windows 和 Linux 都可以正常启动，看来没问题。</p>
+<p>参考 <a target="_blank" rel="noopener" href="http://www.linuxquestions.org/">LinuxQuestions</a> 上的解决方案，使用了在 <code>efi-updatevar</code> 添加 <code>-a</code> 参数来表示添加，但是在 ThinkPad 上多次实验第二次皆以 <code>Operation not permitted</code> 的错误而中断，所以，合并 EFI List 文件即只需添加一次，就全部都被加上，无需再用 <code>-a</code> 来添加。上述的问题很难判断是密钥链的逻辑问题，还是硬件的保护机制，不过用合并这种方法，在 Secure Boot 下，Windows 和 Linux 都可以正常启动，看来没问题。</p>
 </blockquote>
 <p>所有操作都完成后，可以运行 <code>efi-readvar</code> 来查看添加结果。只要 <em>efivarfs</em> 仍然被挂载，即使在非 root 用户也可以查看。</p>
-<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://docs.slackware.com/howtos:security:enabling_secure_boot" target="_blank" rel="noopener">docs.slackware.com</a></p>
-<p><a href="http://www.linuxquestions.org/questions/slackware-14/slackware64-14-1-uefi-booting-with-secure-boot-enabled-4175532990" target="_blank" rel="noopener">linuxquesions.org</a></p>
-<p><a href="https://www.howtogeek.com/175641/how-to-boot-and-install-linux-on-a-uefi-pc-with-secure-boot" target="_blank" rel="noopener">howtogeek.com</a></p>
-<p><a href="http://wiki.archlinux.org/index.php/Secure_Boot" target="_blank" rel="noopener">archlinux.org</a></p>
-<p><a href="http://www.pcworld.com/article/2951559/operating-systems/how-to-install-linux-on-a-pc-with-secure-boot-enabled.html" target="_blank" rel="noopener">pcworld.com</a></p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://docs.slackware.com/howtos:security:enabling_secure_boot">docs.slackware.com</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.linuxquestions.org/questions/slackware-14/slackware64-14-1-uefi-booting-with-secure-boot-enabled-4175532990">linuxquesions.org</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.howtogeek.com/175641/how-to-boot-and-install-linux-on-a-uefi-pc-with-secure-boot">howtogeek.com</a></p>
+<p><a target="_blank" rel="noopener" href="http://wiki.archlinux.org/index.php/Secure_Boot">archlinux.org</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.pcworld.com/article/2951559/operating-systems/how-to-install-linux-on-a-pc-with-secure-boot-enabled.html">pcworld.com</a></p>
 
     </div>
 
@@ -304,6 +325,11 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/uefi/" rel="tag"># uefi</a>
+              <a href="/tags/openssl/" rel="tag"># openssl</a>
+          </div>
 
         
 
@@ -326,7 +352,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -377,7 +402,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预先准备"><span class="nav-number">3.</span> <span class="nav-text">预先准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-number">4.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念介绍"><span class="nav-number">4.1.</span> <span class="nav-text">概念介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-PK，KEK，db-密钥对"><span class="nav-number">4.2.</span> <span class="nav-text">建立 PK，KEK，db 密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-EFI-List-文件"><span class="nav-number">4.3.</span> <span class="nav-text">建立 EFI List 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给-List-文件签名"><span class="nav-number">4.4.</span> <span class="nav-text">给 List 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给二进制的-EFI-文件签名"><span class="nav-number">4.5.</span> <span class="nav-text">给二进制的 EFI 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入-efivars"><span class="nav-number">4.6.</span> <span class="nav-text">写入 efivars</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关链接"><span class="nav-number">5.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">预先准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">概念介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-PK%EF%BC%8CKEK%EF%BC%8Cdb-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.2.</span> <span class="nav-text">建立 PK，KEK，db 密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-EFI-List-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">建立 EFI List 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99-List-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.4.</span> <span class="nav-text">给 List 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84-EFI-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.5.</span> <span class="nav-text">给二进制的 EFI 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5-efivars"><span class="nav-number">4.6.</span> <span class="nav-text">写入 efivars</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -397,14 +422,29 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5446613/hsiang-chen" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5446613&#x2F;hsiang-chen" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
       </span>
   </div>
 
