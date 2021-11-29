@@ -6,7 +6,7 @@
   <link href="https://hchen90.github.io/atom.xml" rel="self"/>
   
   <link href="https://hchen90.github.io/"/>
-  <updated>2021-11-14T13:16:34.000Z</updated>
+  <updated>2021-11-29T16:48:12.290Z</updated>
   <id>https://hchen90.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JNI函数调用之线程安全问题</title>
+    <link href="https://hchen90.github.io/2021/11/29/jnithreadsafe/"/>
+    <id>https://hchen90.github.io/2021/11/29/jnithreadsafe/</id>
+    <published>2021-11-29T15:03:02.000Z</published>
+    <updated>2021-11-29T16:48:12.290Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;JNI-开发是什么&quot;&gt;&lt;a href=&quot;#JNI-开发是什么&quot; class=&quot;headerlink&quot; title=&quot;JNI 开发是什么&quot;&gt;&lt;/a&gt;JNI 开发是什么&lt;/h1&gt;&lt;p&gt;因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。&lt;/p&gt;
+&lt;p&gt;JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="jni" scheme="https://hchen90.github.io/tags/jni/"/>
+    
+    <category term="java" scheme="https://hchen90.github.io/tags/java/"/>
+    
+    <category term="cpp" scheme="https://hchen90.github.io/tags/cpp/"/>
+    
+  </entry>
   
   <entry>
     <title>分布式服务系统概述</title>
