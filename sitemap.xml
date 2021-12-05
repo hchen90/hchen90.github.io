@@ -110,27 +110,6 @@
 
   
   <url>
-    <loc>https://hchen90.github.io/tags/linux/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/uefi/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/openssl/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/jni/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -146,6 +125,27 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/cpp/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/linux/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/uefi/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/openssl/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -201,20 +201,6 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/Windows/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/EXE/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/SQL/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -237,6 +223,20 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/Redis/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/Windows/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/EXE/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

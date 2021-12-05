@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JNI函数调用之线程安全问题</title>
+    <url>/2021/11/29/jnithreadsafe/</url>
+    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
+<p>JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
+</blockquote>
+<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
+<p>这里列举一下工具链：</p>
+<ul>
+<li>OpenJDK 11</li>
+<li>GCC 11</li>
+<li>CMake 3.21</li>
+<li>VSCode 最新版</li>
+</ul>
+<p>截图：</p>
+<p><img src="devenv.png" alt="vscode"></p>
+<blockquote>
+<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
+
+<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
+</blockquote>
+<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
+<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
+<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
+<p>这会涉及到四种情形：</p>
+<ul>
+<li>静态Java本地调用改C++层的公共数据</li>
+<li>静态Java本地调用改Java层的公共数据</li>
+<li>动态Java本地调用改C++层的公共数据</li>
+<li>动态Java本地调用改Java层的公共数据</li>
+</ul>
+<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
+<blockquote>
+<p>至于什么是静态/动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态/动态调用。</p>
+<p>还有C++/Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问/修改在Java类或者Java对象中的公共变量。</p>
+</blockquote>
+<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
+<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      ConSt st = <span class="keyword">new</span> ConSt();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      MyCls obj = <span class="keyword">new</span> MyCls();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">loadLibrary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> mySafeInt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> myUnsafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadSafe</span><span class="params">(ConSt st)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">threadUnsafe</span><span class="params">()</span></span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadUnsafe2</span><span class="params">()</span></span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
+<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
+<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
+<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
+<blockquote>
+<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
+<p><img src="sign.png" alt="sign"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
+<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>jni</tag>
+        <tag>java</tag>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -96,73 +163,6 @@
         <tag>linux</tag>
         <tag>uefi</tag>
         <tag>openssl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JNI函数调用之线程安全问题</title>
-    <url>/2021/11/29/jnithreadsafe/</url>
-    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
-<p>JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
-</blockquote>
-<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
-<p>这里列举一下工具链：</p>
-<ul>
-<li>OpenJDK 11</li>
-<li>GCC 11</li>
-<li>CMake 3.21</li>
-<li>VSCode 最新版</li>
-</ul>
-<p>截图：</p>
-<p><img src="devenv.png" alt="vscode"></p>
-<blockquote>
-<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
-
-<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
-</blockquote>
-<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
-<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
-<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
-<p>这会涉及到四种情形：</p>
-<ul>
-<li>静态Java本地调用改C++层的公共数据</li>
-<li>静态Java本地调用改Java层的公共数据</li>
-<li>动态Java本地调用改C++层的公共数据</li>
-<li>动态Java本地调用改Java层的公共数据</li>
-</ul>
-<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
-<blockquote>
-<p>至于什么是静态/动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态/动态调用。</p>
-<p>还有C++/Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问/修改在Java类或者Java对象中的公共变量。</p>
-</blockquote>
-<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
-<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      ConSt st = <span class="keyword">new</span> ConSt();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      MyCls obj = <span class="keyword">new</span> MyCls();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">loadLibrary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> mySafeInt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> myUnsafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadSafe</span><span class="params">(ConSt st)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">threadUnsafe</span><span class="params">()</span></span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadUnsafe2</span><span class="params">()</span></span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
-<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
-<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
-<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
-<blockquote>
-<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
-<p><img src="sign.png" alt="sign"></p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
-<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>jni</tag>
-        <tag>java</tag>
-        <tag>cpp</tag>
       </tags>
   </entry>
   <entry>
@@ -355,72 +355,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PE文件壳的设计过程</title>
-    <url>/2013/10/26/mspeshell/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
-<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
-<span id="more"></span>
-
-<p><img src="pic1.png" alt="pic1"></p>
-<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
-<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
-<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
-<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
-<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
-<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
-<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
-<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
-
-<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
-<p><img src="pic2.png" alt="pic2"></p>
-<p>在程序未加载时，可以看到磁盘文件如下：</p>
-<p><img src="pic3.png" alt="pic3"></p>
-<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
-<p><img src="pic4.png" alt="pic4"></p>
-<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
-<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
-<p><img src="pic5.png" alt="pic5"></p>
-<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
-
-<p>也就成了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
-
-<p>再看看<code>754879f8</code>处的数据：</p>
-<p><img src="pic6.png" alt="pic6"></p>
-<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
-<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
-<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
-<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
-<p>没有加密代码段的情况（start处是我的代码）：</p>
-<p><img src="pic7.png" alt="pic7"></p>
-<p>加密代码段的情况（start是我的代码）：</p>
-<p><img src="pic8.png" alt="pic8"></p>
-<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
-<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
-<p>这种类型壳非常好脱，下面举个例子：</p>
-<p><img src="pic9.png" alt="pic9"></p>
-<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
-<p><img src="pic10.png" alt="pic10"></p>
-<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
-<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
-<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
-<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
-<p>虚拟机还可以参入密码学加密机制，等。</p>
-<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
-<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
-<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>EXE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分布式服务系统概述</title>
     <url>/2020/12/20/redistributedservicesystem/</url>
     <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
@@ -496,6 +430,72 @@
         <tag>Actor</tag>
         <tag>MongoDB</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE文件壳的设计过程</title>
+    <url>/2013/10/26/mspeshell/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
+
+<p>也就成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
+
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="pic6.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="pic7.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="pic8.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="pic9.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="pic10.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>EXE</tag>
       </tags>
   </entry>
   <entry>
