@@ -226,66 +226,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <url>/2016/10/03/minix/</url>
-    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
-<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
-<span id="more"></span>
-
-<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
-<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
-<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
-<li>QEMU: <code>qemu-system-i386</code></li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
-</blockquote>
-<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
-<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
-</blockquote>
-<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
-<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
-<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
-<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
-<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
-</blockquote>
-<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
-<blockquote>
-<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>minix</tag>
-        <tag>qemu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux环境搭建中文LaTeX排版系统</title>
     <url>/2016/05/03/linuxlatex/</url>
     <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
@@ -355,6 +295,66 @@
       </tags>
   </entry>
   <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PE文件壳的设计过程</title>
     <url>/2013/10/26/mspeshell/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
@@ -418,6 +418,38 @@
       <tags>
         <tag>Windows</tag>
         <tag>EXE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
+    <url>/2014/08/02/vssqlserver2008/</url>
+    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
+<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
+<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
+<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
+<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
+<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
+<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除/摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
+<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
+<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -496,38 +528,6 @@
         <tag>Actor</tag>
         <tag>MongoDB</tag>
         <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <url>/2014/08/02/vssqlserver2008/</url>
-    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
-<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
-<span id="more"></span>
-
-<p><img src="pic1.png" alt="pic1"></p>
-<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
-<p><img src="pic2.png" alt="pic2"></p>
-<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
-<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
-<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
-<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
-<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
-<p><img src="pic3.png" alt="pic3"></p>
-<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
-<p><img src="pic4.png" alt="pic4"></p>
-<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
-<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除/摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
-<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
-<p><img src="pic5.png" alt="pic5"></p>
-<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
-<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
       </tags>
   </entry>
 </search>
