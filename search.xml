@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
+    <url>/2017/09/02/enablesbonlinux/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
+<span id="more"></span>
+
+<p>这里说一下 Fedora 是如何做到在 Secure Boot 开启时加载的，它实际上是 Fedora 开源项目向微软公司购买签名达到的， Fedora 被系统的主板识别为和 Windows 一样的系统，这种购买行为在开源社区是不鼓励的，好处是 Fedora 几乎可以在任何可以加载 Windows 系统上被识别加载，即使该计算机硬件不能关闭 Secure Boot。</p>
+<blockquote>
+<p>本人只在 ThinkPad 测试成功，其他机器未曾实验过，不过仅从理论来看，应该也会成功。</p>
+</blockquote>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>以下工具是必不可少的：</p>
+<ul>
+<li>openssl</li>
+<li>efitools</li>
+<li>sbsigntools</li>
+</ul>
+<p>如果你是第三方编译好的软件包来安装的，可以忽略此步：</p>
+<p>在用源代码编译 efitools 时，需要 Perl 的一个模块，名字为 <code>File Slurp</code>，在 <a href="http://www.cpan.org/">cpan</a> 可以找到。</p>
+<h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>开机进入系统的 UEFI-BIOS 页面，在安全页面里找到 Secure Boot 选项，先关掉 Secure Boot （如果没有关的话），再删除或清空所有证书文件，使机器从 <code>User Mode</code> 转到 <code>Setup Mode</code> 即为正常，如果这两步不能做到，可能影响到下面的步骤。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h3><p>这里简要介绍 PK，KEK，db，dbx 和 <em>MOK</em> 的概念。</p>
+<ul>
+<li><p>Platform Key （PK） － <strong>PK 是用于在硬件平台层和硬件平台拥有者建立起的信任关系</strong> ，规定一个硬件平台只能被一个拥有者所拥有，即 <strong>PK 只能存在一个</strong> ，与拥有者相关的公钥被存储在 FLASH 里面的 PK 变量里面，同时，拥有者的私钥可以来对 PK， KEK， db， dbx 进行签名和管理。</p>
+</li>
+<li><p>Key Exchange Key (KEK) － <strong>KEK 是用于在硬件平台和操作系统之间建立信任关系</strong> ，KEK 的公钥可以在主板的 FLASH 存在多个不同项，即 <strong>KEK 可以存在多个</strong> ，每一项对应一种可以被启动的操作系统，同样，KEK 的私钥可以来对 db， dbx 进行签名和管理。</p>
+</li>
+<li><p>Database (db) － db 是用于对 <strong>被许可的 EFI 文件予以加载的数据签名库</strong> ，和 KEK 一样， <strong>db 的公钥可以存在很多项</strong> 。（在 UEFI 平台里面，操作系统加载文件就是一个 EFI 文件）</p>
+</li>
+<li><p>Database Excluded (dbx) - dbx 是一个 <strong>黑名单数据签名库</strong> ，只要谁的 EFI 签名在这，谁就被屏蔽掉， <strong>dbx 的公钥也可以存在很多项</strong> 。</p>
+</li>
+<li><p>Machine Owner Key (MOK) - MOK 的作用是等价于 db 的，但是它不是标准 Secure Boot 的内容，<code>PreLoader</code> 和 <code>Shim</code> 使用了 MOK 。</p>
+</li>
+</ul>
+<h3 id="建立-PK，KEK，db-密钥对"><a href="#建立-PK，KEK，db-密钥对" class="headerlink" title="建立 PK，KEK，db 密钥对"></a>建立 PK，KEK，db 密钥对</h3><p>这里需要 Linux 系统中存在 <code>uuidgen</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(uuidgen) &gt;guid</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em>如果你不打算启动 Windows 系统，请忽略文中所有提及有关 Windows 系统的内容</em> </p>
+</blockquote>
+<p>如果系统不存在 <code>uuidgen</code>，就随便写个 GUID 到那个 guid 文件里，然后把微软的 Owner GUID 写到另外一个文件里：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span>  77fa9abd-0359-4d32-bd60-28f4e78f784b &gt;ms-guid</span><br></pre></td></tr></table></figure>
+
+<p>建立密钥对：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Platform Key/&quot;</span> -keyout PK.key -out PK.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
+
+<p>上面的 <code>-subj</code> 的参数可以自己设置，参数 <code>-days</code> 是密钥的有效期，这里设置为 10 年，也可以设置为其他，生成私钥 <code>PK.key</code>，公钥 <code>PK.crt</code>。</p>
+<p>同理，KEK 和 db 亦是如此：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Key Exchange Key/&quot;</span> -keyout KEK.key -out KEK.crt -days 3650 -nodes -sha256</span><br><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Database/&quot;</span> -keyout db.key -out db.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
+
+<p><em>这里没有建立 dbx 的黑名单，因为暂时用不到这个，也没有黑名单签名文件，MOK 不通用，亦不讨论</em></p>
+<h3 id="建立-EFI-List-文件"><a href="#建立-EFI-List-文件" class="headerlink" title="建立 EFI List 文件"></a>建立 EFI List 文件</h3><p>EFI List 文件其实就是公钥配以平台拥有者的 GUID 的文件:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cert-to-efi-sig-list -g $(cat guid) PK.crt PK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(cat guid) KEK.crt KEK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(cat guid) db.crt db.esl</span><br></pre></td></tr></table></figure>
+
+<p>这样三个公钥就全变成 List 文件了。</p>
+<p>为了能够也启动磁盘里的 Windows 系统，下载三个微软的公钥，一个 KEK，两个 db：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321185 -o MSKEK.der</span><br><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321192 -o MSdbWPCA.der</span><br><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321194 -o MSdbUDSCA.der</span><br></pre></td></tr></table></figure>
+
+<p>微软的这三个公钥与这里使用的公钥格式不同，需要重新转换：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> MSKEK.der -inform DER -out MSKEK.crt</span><br><span class="line">openssl x509 -<span class="keyword">in</span> MSdbWPCA.der -inform DER -out MSdbWPCA.crt</span><br><span class="line">openssl x509 -<span class="keyword">in</span> MSdbUDSCA.der -inform DER -out MSdbUDSCA.crt</span><br></pre></td></tr></table></figure>
+
+<p>同样需要转换成 List 文件，不过这里的 GUID 最好用微软 Owner GUID：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cert-to-efi-sig-list -g $(cat ms-guid) MSKEK.crt MSKEK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(cat ms-guid) MSdbWPCA.crt MSdbWPCA.esl</span><br><span class="line">cert-to-efi-sig-list -g $(cat ms-guid) MSdbUDSCA.crt MSdbUDSCA.esl</span><br></pre></td></tr></table></figure>
+
+<p>在这里需要注意一下，在 ThinkPad 里面，第二次添加 KEK 时（加参数 <code>-a</code> ），会出现失败，我的解决方法是把那些 List 合并成一个 List 文件，即：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat KEK.esl MSKEK.esl &gt;realKEK.esl</span><br><span class="line">cat db.esl MSdbWPCA.esl MSdbUDSCA.esl &gt;realDB.esl</span><br></pre></td></tr></table></figure>
+
+<p>根据 efitools 的文档，这种 cat 操作是可以完成合并的。</p>
+<h3 id="给-List-文件签名"><a href="#给-List-文件签名" class="headerlink" title="给 List 文件签名"></a>给 List 文件签名</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sign-efi-sig-list -k PK.key -c PK.crt PK PK.esl PK.esl.signed</span><br><span class="line">sign-efi-sig-list -k PK.key -c PK.crt KEK realKEK.esl realKEK.esl.signed</span><br><span class="line">sign-efi-sig-list -k KEK.key -c KEK.crt db realDB.esl realDB.esl.signed</span><br></pre></td></tr></table></figure>
+
+<p>上述中，平台拥有着的 Key 权限最高，可以对 PK 本身，和 KEK 签名，KEK 是建立操作系统和硬件平台之间的信任关系，它只用于对于 db 进行签名。</p>
+<h3 id="给二进制的-EFI-文件签名"><a href="#给二进制的-EFI-文件签名" class="headerlink" title="给二进制的 EFI 文件签名"></a>给二进制的 EFI 文件签名</h3><p>这是密钥管理和签名的最后一步，我使用的 grub ，其他的比如 elilo 等等，同理。给 grub 的 EFI 文件签名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sbsign --key db.key --cert db.crt --output grubx64.efi.signed /boot/efi/EFI/slackware64/grub64.efi</span><br></pre></td></tr></table></figure>
+
+<p>可以不用给内核 <code>vmlinuz</code> 签名，毕竟 <code>vmlinuz</code> 不是硬件平台的启动 EFI 文件，不过给内核签名也没什么影响，如果想给内核签名类似于给 grub 签名，用 私钥 <code>db.key</code> 及对应的公钥 <code>db.crt</code> 对其签名，这里用的 db 是那个自己创建的 db ，即没有合并微软 db 的那个，合并了微软 db 的是 <strong>realDB</strong> 。</p>
+<h3 id="写入-efivars"><a href="#写入-efivars" class="headerlink" title="写入 efivars"></a>写入 efivars</h3><p>到这里是整个过程的最后一步，首先必须保证系统的 <em>efivarfs</em> 被正确挂载，<code>ls</code> 一下 <code>/sys/firmware/efi/efivars/</code> 是否存在文件，有的系统默认挂载 <em>efivarfs</em> ，有的则不是（后续步骤需要切换至 root 用户）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount -t efivarfs efivarfs /sys/firmware/efi/efivars/</span><br></pre></td></tr></table></figure>
+
+<p>再把那三个签过名的 List 文件写入主板：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">efi-updatevar -f PK.esl.signed PK</span><br><span class="line">efi-updatevar -f realKEK.esl.signed KEK</span><br><span class="line">efi-updatevar -f realDB.esl.signed db</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考 <a href="http://www.linuxquestions.org/">LinuxQuestions</a> 上的解决方案，使用了在 <code>efi-updatevar</code> 添加 <code>-a</code> 参数来表示添加，但是在 ThinkPad 上多次实验第二次皆以 <code>Operation not permitted</code> 的错误而中断，所以，合并 EFI List 文件即只需添加一次，就全部都被加上，无需再用 <code>-a</code> 来添加。上述的问题很难判断是密钥链的逻辑问题，还是硬件的保护机制，不过用合并这种方法，在 Secure Boot 下，Windows 和 Linux 都可以正常启动，看来没问题。</p>
+</blockquote>
+<p>所有操作都完成后，可以运行 <code>efi-readvar</code> 来查看添加结果。只要 <em>efivarfs</em> 仍然被挂载，即使在非 root 用户也可以查看。</p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://docs.slackware.com/howtos:security:enabling_secure_boot">docs.slackware.com</a></p>
+<p><a href="http://www.linuxquestions.org/questions/slackware-14/slackware64-14-1-uefi-booting-with-secure-boot-enabled-4175532990">linuxquesions.org</a></p>
+<p><a href="https://www.howtogeek.com/175641/how-to-boot-and-install-linux-on-a-uefi-pc-with-secure-boot">howtogeek.com</a></p>
+<p><a href="http://wiki.archlinux.org/index.php/Secure_Boot">archlinux.org</a></p>
+<p><a href="http://www.pcworld.com/article/2951559/operating-systems/how-to-install-linux-on-a-pc-with-secure-boot-enabled.html">pcworld.com</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>uefi</tag>
+        <tag>openssl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JNI函数调用之线程安全问题</title>
+    <url>/2021/11/29/jnithreadsafe/</url>
+    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
+<p>JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
+</blockquote>
+<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
+<p>这里列举一下工具链：</p>
+<ul>
+<li>OpenJDK 11</li>
+<li>GCC 11</li>
+<li>CMake 3.21</li>
+<li>VSCode 最新版</li>
+</ul>
+<p>截图：</p>
+<p><img src="devenv.png" alt="vscode"></p>
+<blockquote>
+<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
+
+<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
+</blockquote>
+<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
+<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
+<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
+<p>这会涉及到四种情形：</p>
+<ul>
+<li>静态Java本地调用改C++层的公共数据</li>
+<li>静态Java本地调用改Java层的公共数据</li>
+<li>动态Java本地调用改C++层的公共数据</li>
+<li>动态Java本地调用改Java层的公共数据</li>
+</ul>
+<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
+<blockquote>
+<p>至于什么是静态/动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态/动态调用。</p>
+<p>还有C++/Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问/修改在Java类或者Java对象中的公共变量。</p>
+</blockquote>
+<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
+<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      ConSt st = <span class="keyword">new</span> ConSt();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      MyCls obj = <span class="keyword">new</span> MyCls();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">loadLibrary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> mySafeInt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> myUnsafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadSafe</span><span class="params">(ConSt st)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">threadUnsafe</span><span class="params">()</span></span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadUnsafe2</span><span class="params">()</span></span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
+<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
+<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
+<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
+<blockquote>
+<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
+<p><img src="sign.png" alt="sign"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
+<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>jni</tag>
+        <tag>java</tag>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用Linux的coredump机制快速定位程序BUG</title>
+    <url>/2019/11/12/linuxcoredumptofindbug/</url>
+    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+<span id="more"></span>
+
+<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="crashed.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
+</blockquote>
+<p>出现如下图的结果：</p>
+<p><img src="info.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="info2.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="stack.png" alt="pic4"></p>
+<p>图二：<br><img src="stack2.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
+
+<p>图片展示：</p>
+<p><img src="disasm.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>debug</tag>
+        <tag>coredump</tag>
+        <tag>gdb</tag>
+        <tag>objdump</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux环境搭建中文LaTeX排版系统</title>
+    <url>/2016/05/03/linuxlatex/</url>
+    <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
+<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
+<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
+<span id="more"></span>
+
+<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
+<p>首先需要准备如下软件包或压缩包：</p>
+<ul>
+<li>texlive 或 tetex</li>
+<li>CJK</li>
+<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
+</ul>
+<p>下面逐个简单介绍各个包的功能和作用。</p>
+<h3 id="1-texlive或tetex"><a href="#1-texlive或tetex" class="headerlink" title="1. texlive或tetex"></a>1. texlive或tetex</h3><p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
+<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
+<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
+<h3 id="2-CJK"><a href="#2-CJK" class="headerlink" title="2. CJK"></a>2. CJK</h3><p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
+<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3. 字体"></a>3. 字体</h3><p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
+<h2 id="具体操作步骤"><a href="#具体操作步骤" class="headerlink" title="具体操作步骤"></a>具体操作步骤</h2><p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
+<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
+<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
+<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
+<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
+<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
+<p>若想安装该字体，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uninstall.sh</span><br></pre></td></tr></table></figure>
+
+
+<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
+<blockquote>
+<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
+</blockquote>
+<h2 id="相关文件下载地址"><a href="#相关文件下载地址" class="headerlink" title="相关文件下载地址"></a>相关文件下载地址</h2><p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a><br><a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a><br><a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a><br><a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a><br><a href="http://cjk.ffii.org/">CJK</a><br><a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
+<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面我写的一个代码实验：</p>
+<pre><code>\documentclass[10pt]&#123;article&#125;
+\usepackage&#123;CJK&#125;
+\begin&#123;document&#125;
+\begin&#123;CJK&#125;&#123;UTF8&#125;&#123;nsung&#125;
+这是一个测试 
+\section&#123;章标题&#125;
+这是章的介绍
+\subsection&#123;节的标题&#125;
+这是节的介绍
+\subsubsection&#123;子节的标题&#125;
+这是子节的介绍 \\
+数学公式的测试：\\
+\Huge&#123;$y=2^x+\frac&#123;4&#125;&#123;6^z&#125;$&#125;
+\footnote&#123;这仍然是个测试，一个脚注&#125;
+\end&#123;CJK&#125;
+\end&#123;document&#125;
+</code></pre>
+<p>实验打印出的.dvi文件：</p>
+<p><img src="dvi.png" alt="dvi"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE文件壳的设计过程</title>
+    <url>/2013/10/26/mspeshell/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
+
+<p>也就成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
+
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="pic6.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="pic7.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="pic8.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="pic9.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="pic10.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>EXE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分布式服务系统概述</title>
+    <url>/2020/12/20/redistributedservicesystem/</url>
+    <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
+<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他/她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
+<span id="more"></span>
+
+<h2 id="和传统的集中式C-S系统对比"><a href="#和传统的集中式C-S系统对比" class="headerlink" title="和传统的集中式C/S系统对比"></a>和传统的集中式C/S系统对比</h2><p>首先看一下传统的集中式C/S系统：</p>
+<p><img src="tra-cs-mod.png" alt="Tra-CS-System"></p>
+<p>而对于分布式的系统而言，它是这样的：</p>
+<p><img src="redi-rs-mod.png" alt="Redi-System"></p>
+<p>比起传统集中式C/S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
+<blockquote>
+<p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
+</blockquote>
+<p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
+<p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
+<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
+<p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
+<ul>
+<li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
+<li>在任何跨站服务同步都少不了协同通信，如何设计一套同步通信呢？</li>
+<li>上面说的数据一致性问题，应该如何解决呢？</li>
+<li>分布式系统就是为了可以拓展，那么如何设计来达到可拓展性呢？</li>
+</ul>
+<p>如果上来我们就去解决这些问题，会非常棘手，不过好在这些技术都存在很多设计模板，和很多开源中间件，因此我们不用从零开始来设计这套系统，不然又要从入门到放弃了。</p>
+<blockquote>
+<p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
+</blockquote>
+<p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
+<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
+<blockquote>
+<p>可以参考一下维基百科的描述：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
+</blockquote>
+<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
+<p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
+<p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
+<p><img src="actor.drawio.png" alt="Actor Model"></p>
+<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
+<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
+<p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
+<ul>
+<li>状态（State）：当前状态机的状态</li>
+<li>事件（Event）：触发操作的条件</li>
+<li>动作（Action）：所触发的操作</li>
+<li>变换（Transition）：从一个状态变成另一个状态的转化表</li>
+</ul>
+<blockquote>
+<p>一个状态机至少包含两个状态：开始态，结束态</p>
+</blockquote>
+<p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
+<p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
+<p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
+<p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
+<p><img src="mongo-cli.png" alt="mongo-db"></p>
+<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
+<p><img src="redis-cli.png" alt="redis"></p>
+<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
+<p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
+<p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
+<p><img src="diagram.png" alt="diagram"></p>
+<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
+<p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
+<blockquote>
+<p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+        <tag>Actor</tag>
+        <tag>MongoDB</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
+    <url>/2014/08/02/vssqlserver2008/</url>
+    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
+<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
+<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
+<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
+<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
+<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
+<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除/摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
+<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
+<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+</search>
