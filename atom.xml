@@ -3,11 +3,11 @@
   <title>个人站点</title>
   
   <subtitle>陈祥的个人站点</subtitle>
-  <link href="https://hchen90.top/atom.xml" rel="self"/>
+  <link href="https://hchen90.github.io/atom.xml" rel="self"/>
   
-  <link href="https://hchen90.top/"/>
+  <link href="https://hchen90.github.io/"/>
   <updated>2021-11-29T16:48:12.290Z</updated>
-  <id>https://hchen90.top/</id>
+  <id>https://hchen90.github.io/</id>
   
   <author>
     <name>陈祥</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>JNI函数调用之线程安全问题</title>
-    <link href="https://hchen90.top/2021/11/29/jnithreadsafe/"/>
-    <id>https://hchen90.top/2021/11/29/jnithreadsafe/</id>
+    <link href="https://hchen90.github.io/2021/11/29/jnithreadsafe/"/>
+    <id>https://hchen90.github.io/2021/11/29/jnithreadsafe/</id>
     <published>2021-11-29T15:03:02.000Z</published>
     <updated>2021-11-29T16:48:12.290Z</updated>
     
@@ -29,21 +29,21 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="jni" scheme="https://hchen90.top/tags/jni/"/>
+    <category term="jni" scheme="https://hchen90.github.io/tags/jni/"/>
     
-    <category term="java" scheme="https://hchen90.top/tags/java/"/>
+    <category term="java" scheme="https://hchen90.github.io/tags/java/"/>
     
-    <category term="cpp" scheme="https://hchen90.top/tags/cpp/"/>
+    <category term="cpp" scheme="https://hchen90.github.io/tags/cpp/"/>
     
   </entry>
   
   <entry>
     <title>分布式服务系统概述</title>
-    <link href="https://hchen90.top/2020/12/20/redistributedservicesystem/"/>
-    <id>https://hchen90.top/2020/12/20/redistributedservicesystem/</id>
+    <link href="https://hchen90.github.io/2020/12/20/redistributedservicesystem/"/>
+    <id>https://hchen90.github.io/2020/12/20/redistributedservicesystem/</id>
     <published>2020-12-20T02:05:12.000Z</published>
     <updated>2021-11-14T13:16:34.000Z</updated>
     
@@ -53,23 +53,23 @@
     
     
     
-    <category term="技术" scheme="https://hchen90.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://hchen90.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="SQL" scheme="https://hchen90.top/tags/SQL/"/>
+    <category term="SQL" scheme="https://hchen90.github.io/tags/SQL/"/>
     
-    <category term="Actor" scheme="https://hchen90.top/tags/Actor/"/>
+    <category term="Actor" scheme="https://hchen90.github.io/tags/Actor/"/>
     
-    <category term="MongoDB" scheme="https://hchen90.top/tags/MongoDB/"/>
+    <category term="MongoDB" scheme="https://hchen90.github.io/tags/MongoDB/"/>
     
-    <category term="Redis" scheme="https://hchen90.top/tags/Redis/"/>
+    <category term="Redis" scheme="https://hchen90.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <link href="https://hchen90.top/2019/11/12/linuxcoredumptofindbug/"/>
-    <id>https://hchen90.top/2019/11/12/linuxcoredumptofindbug/</id>
+    <link href="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/"/>
+    <id>https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/</id>
     <published>2019-11-12T01:12:29.000Z</published>
     <updated>2019-11-12T01:12:29.000Z</updated>
     
@@ -78,25 +78,25 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="linux" scheme="https://hchen90.top/tags/linux/"/>
+    <category term="linux" scheme="https://hchen90.github.io/tags/linux/"/>
     
-    <category term="debug" scheme="https://hchen90.top/tags/debug/"/>
+    <category term="debug" scheme="https://hchen90.github.io/tags/debug/"/>
     
-    <category term="coredump" scheme="https://hchen90.top/tags/coredump/"/>
+    <category term="coredump" scheme="https://hchen90.github.io/tags/coredump/"/>
     
-    <category term="gdb" scheme="https://hchen90.top/tags/gdb/"/>
+    <category term="gdb" scheme="https://hchen90.github.io/tags/gdb/"/>
     
-    <category term="objdump" scheme="https://hchen90.top/tags/objdump/"/>
+    <category term="objdump" scheme="https://hchen90.github.io/tags/objdump/"/>
     
   </entry>
   
   <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
-    <link href="https://hchen90.top/2017/09/02/enablesbonlinux/"/>
-    <id>https://hchen90.top/2017/09/02/enablesbonlinux/</id>
+    <link href="https://hchen90.github.io/2017/09/02/enablesbonlinux/"/>
+    <id>https://hchen90.github.io/2017/09/02/enablesbonlinux/</id>
     <published>2017-09-01T16:17:02.000Z</published>
     <updated>2017-09-01T16:17:02.000Z</updated>
     
@@ -105,21 +105,21 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="linux" scheme="https://hchen90.top/tags/linux/"/>
+    <category term="linux" scheme="https://hchen90.github.io/tags/linux/"/>
     
-    <category term="uefi" scheme="https://hchen90.top/tags/uefi/"/>
+    <category term="uefi" scheme="https://hchen90.github.io/tags/uefi/"/>
     
-    <category term="openssl" scheme="https://hchen90.top/tags/openssl/"/>
+    <category term="openssl" scheme="https://hchen90.github.io/tags/openssl/"/>
     
   </entry>
   
   <entry>
     <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <link href="https://hchen90.top/2016/10/03/minix/"/>
-    <id>https://hchen90.top/2016/10/03/minix/</id>
+    <link href="https://hchen90.github.io/2016/10/03/minix/"/>
+    <id>https://hchen90.github.io/2016/10/03/minix/</id>
     <published>2016-10-02T16:16:13.000Z</published>
     <updated>2016-10-02T16:16:13.000Z</updated>
     
@@ -129,19 +129,19 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="minix" scheme="https://hchen90.top/tags/minix/"/>
+    <category term="minix" scheme="https://hchen90.github.io/tags/minix/"/>
     
-    <category term="qemu" scheme="https://hchen90.top/tags/qemu/"/>
+    <category term="qemu" scheme="https://hchen90.github.io/tags/qemu/"/>
     
   </entry>
   
   <entry>
     <title>Linux环境搭建中文LaTeX排版系统</title>
-    <link href="https://hchen90.top/2016/05/03/linuxlatex/"/>
-    <id>https://hchen90.top/2016/05/03/linuxlatex/</id>
+    <link href="https://hchen90.github.io/2016/05/03/linuxlatex/"/>
+    <id>https://hchen90.github.io/2016/05/03/linuxlatex/</id>
     <published>2016-05-02T20:12:20.000Z</published>
     <updated>2016-05-02T20:12:20.000Z</updated>
     
@@ -152,19 +152,19 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="linux" scheme="https://hchen90.top/tags/linux/"/>
+    <category term="linux" scheme="https://hchen90.github.io/tags/linux/"/>
     
-    <category term="latex" scheme="https://hchen90.top/tags/latex/"/>
+    <category term="latex" scheme="https://hchen90.github.io/tags/latex/"/>
     
   </entry>
   
   <entry>
     <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <link href="https://hchen90.top/2014/08/02/vssqlserver2008/"/>
-    <id>https://hchen90.top/2014/08/02/vssqlserver2008/</id>
+    <link href="https://hchen90.github.io/2014/08/02/vssqlserver2008/"/>
+    <id>https://hchen90.github.io/2014/08/02/vssqlserver2008/</id>
     <published>2014-08-02T04:54:52.000Z</published>
     <updated>2014-08-02T04:54:52.000Z</updated>
     
@@ -174,17 +174,17 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="SQL" scheme="https://hchen90.top/tags/SQL/"/>
+    <category term="SQL" scheme="https://hchen90.github.io/tags/SQL/"/>
     
   </entry>
   
   <entry>
     <title>PE文件壳的设计过程</title>
-    <link href="https://hchen90.top/2013/10/26/mspeshell/"/>
-    <id>https://hchen90.top/2013/10/26/mspeshell/</id>
+    <link href="https://hchen90.github.io/2013/10/26/mspeshell/"/>
+    <id>https://hchen90.github.io/2013/10/26/mspeshell/</id>
     <published>2013-10-26T15:44:15.000Z</published>
     <updated>2013-10-26T15:44:15.000Z</updated>
     
@@ -194,12 +194,12 @@
     
     
     
-    <category term="随笔" scheme="https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="Windows" scheme="https://hchen90.top/tags/Windows/"/>
+    <category term="Windows" scheme="https://hchen90.github.io/tags/Windows/"/>
     
-    <category term="EXE" scheme="https://hchen90.top/tags/EXE/"/>
+    <category term="EXE" scheme="https://hchen90.github.io/tags/EXE/"/>
     
   </entry>
   

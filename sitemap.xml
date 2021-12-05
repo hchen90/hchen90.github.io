@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hchen90.top/projects/index.html</loc>
+    <loc>https://hchen90.github.io/projects/index.html</loc>
     
     <lastmod>2021-12-04</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2021/11/29/jnithreadsafe/</loc>
+    <loc>https://hchen90.github.io/2021/11/29/jnithreadsafe/</loc>
     
     <lastmod>2021-11-29</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2020/12/20/redistributedservicesystem/</loc>
+    <loc>https://hchen90.github.io/2020/12/20/redistributedservicesystem/</loc>
     
     <lastmod>2021-11-14</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/index.html</loc>
+    <loc>https://hchen90.github.io/tags/index.html</loc>
     
     <lastmod>2021-09-20</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/categories/index.html</loc>
+    <loc>https://hchen90.github.io/categories/index.html</loc>
     
     <lastmod>2021-09-20</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2019/11/12/linuxcoredumptofindbug/</loc>
+    <loc>https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/</loc>
     
     <lastmod>2019-11-12</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2017/09/02/enablesbonlinux/</loc>
+    <loc>https://hchen90.github.io/2017/09/02/enablesbonlinux/</loc>
     
     <lastmod>2017-09-01</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2016/10/03/minix/</loc>
+    <loc>https://hchen90.github.io/2016/10/03/minix/</loc>
     
     <lastmod>2016-10-02</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2016/05/03/linuxlatex/</loc>
+    <loc>https://hchen90.github.io/2016/05/03/linuxlatex/</loc>
     
     <lastmod>2016-05-02</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2014/08/02/vssqlserver2008/</loc>
+    <loc>https://hchen90.github.io/2014/08/02/vssqlserver2008/</loc>
     
     <lastmod>2014-08-02</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://hchen90.top/2013/10/26/mspeshell/</loc>
+    <loc>https://hchen90.github.io/2013/10/26/mspeshell/</loc>
     
     <lastmod>2013-10-26</lastmod>
     
@@ -102,7 +102,7 @@
   
 
   <url>
-    <loc>https://hchen90.top/</loc>
+    <loc>https://hchen90.github.io/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -110,133 +110,133 @@
 
   
   <url>
-    <loc>https://hchen90.top/tags/linux/</loc>
+    <loc>https://hchen90.github.io/tags/jni/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/uefi/</loc>
+    <loc>https://hchen90.github.io/tags/java/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/openssl/</loc>
+    <loc>https://hchen90.github.io/tags/cpp/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/jni/</loc>
+    <loc>https://hchen90.github.io/tags/linux/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/java/</loc>
+    <loc>https://hchen90.github.io/tags/uefi/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/cpp/</loc>
+    <loc>https://hchen90.github.io/tags/openssl/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/debug/</loc>
+    <loc>https://hchen90.github.io/tags/debug/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/coredump/</loc>
+    <loc>https://hchen90.github.io/tags/coredump/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/gdb/</loc>
+    <loc>https://hchen90.github.io/tags/gdb/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/objdump/</loc>
+    <loc>https://hchen90.github.io/tags/objdump/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/latex/</loc>
+    <loc>https://hchen90.github.io/tags/latex/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/minix/</loc>
+    <loc>https://hchen90.github.io/tags/minix/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/qemu/</loc>
+    <loc>https://hchen90.github.io/tags/qemu/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/Windows/</loc>
+    <loc>https://hchen90.github.io/tags/Windows/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/EXE/</loc>
+    <loc>https://hchen90.github.io/tags/EXE/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/SQL/</loc>
+    <loc>https://hchen90.github.io/tags/SQL/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/Actor/</loc>
+    <loc>https://hchen90.github.io/tags/Actor/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/MongoDB/</loc>
+    <loc>https://hchen90.github.io/tags/MongoDB/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/tags/Redis/</loc>
+    <loc>https://hchen90.github.io/tags/Redis/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -245,14 +245,14 @@
 
   
   <url>
-    <loc>https://hchen90.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.top/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://hchen90.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

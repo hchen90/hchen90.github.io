@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hchen90.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="JNI 开发是什么因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。 JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JNI函数调用之线程安全问题">
-<meta property="og:url" content="https://hchen90.top/2021/11/29/jnithreadsafe/index.html">
+<meta property="og:url" content="https://hchen90.github.io/2021/11/29/jnithreadsafe/index.html">
 <meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="JNI 开发是什么因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。 JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hchen90.top/2021/11/29/jnithreadsafe/devenv.png">
-<meta property="og:image" content="https://hchen90.top/2021/11/29/jnithreadsafe/sign.png">
+<meta property="og:image" content="https://hchen90.github.io/2021/11/29/jnithreadsafe/devenv.png">
+<meta property="og:image" content="https://hchen90.github.io/2021/11/29/jnithreadsafe/sign.png">
 <meta property="article:published_time" content="2021-11-29T15:03:02.000Z">
 <meta property="article:modified_time" content="2021-11-29T16:48:12.290Z">
 <meta property="article:author" content="陈祥">
@@ -36,9 +36,9 @@
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="cpp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hchen90.top/2021/11/29/jnithreadsafe/devenv.png">
+<meta name="twitter:image" content="https://hchen90.github.io/2021/11/29/jnithreadsafe/devenv.png">
 
-<link rel="canonical" href="https://hchen90.top/2021/11/29/jnithreadsafe/">
+<link rel="canonical" href="https://hchen90.github.io/2021/11/29/jnithreadsafe/">
 
 
 <script id="page-configurations">
@@ -209,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hchen90.top/2021/11/29/jnithreadsafe/">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2021/11/29/jnithreadsafe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
