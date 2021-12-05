@@ -187,20 +187,6 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/Windows/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/EXE/</loc>
-    <lastmod>2021-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/minix/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -209,6 +195,20 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/qemu/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/Windows/</loc>
+    <lastmod>2021-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/EXE/</loc>
     <lastmod>2021-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

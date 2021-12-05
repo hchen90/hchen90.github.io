@@ -295,6 +295,66 @@
       </tags>
   </entry>
   <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PE文件壳的设计过程</title>
     <url>/2013/10/26/mspeshell/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
@@ -358,66 +418,6 @@
       <tags>
         <tag>Windows</tag>
         <tag>EXE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <url>/2016/10/03/minix/</url>
-    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
-<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
-<span id="more"></span>
-
-<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
-<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
-<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
-<li>QEMU: <code>qemu-system-i386</code></li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
-</blockquote>
-<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
-<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
-</blockquote>
-<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
-<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
-<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
-<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
-<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
-</blockquote>
-<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
-<blockquote>
-<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>minix</tag>
-        <tag>qemu</tag>
       </tags>
   </entry>
   <entry>
