@@ -99,6 +99,66 @@
       </tags>
   </entry>
   <entry>
+    <title>利用Linux的coredump机制快速定位程序BUG</title>
+    <url>/2019/11/12/linuxcoredumptofindbug/</url>
+    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+<span id="more"></span>
+
+<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="crashed.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
+</blockquote>
+<p>出现如下图的结果：</p>
+<p><img src="info.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="info2.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="stack.png" alt="pic4"></p>
+<p>图二：<br><img src="stack2.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
+
+<p>图片展示：</p>
+<p><img src="disasm.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>debug</tag>
+        <tag>coredump</tag>
+        <tag>gdb</tag>
+        <tag>objdump</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JNI函数调用之线程安全问题</title>
     <url>/2021/11/29/jnithreadsafe/</url>
     <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
@@ -163,66 +223,6 @@
         <tag>jni</tag>
         <tag>java</tag>
         <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <url>/2019/11/12/linuxcoredumptofindbug/</url>
-    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
-<span id="more"></span>
-
-<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
-<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
-<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
-<ul>
-<li>难确定（是否发生）</li>
-<li>难定位</li>
-</ul>
-<p>见下图：</p>
-<p><img src="crashed.png" alt="pic1"></p>
-<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>或者，也可以查看它的man文档。</p>
-<p>好了，言归正传，尝试输入命令以调试：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
-</blockquote>
-<p>出现如下图的结果：</p>
-<p><img src="info.png" alt="pic2"></p>
-<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="info2.png" alt="pic3"></p>
-<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>这句是我故意改错用于比较的，源代码是这样的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
-<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
-<p>图一：</p>
-<p><img src="stack.png" alt="pic4"></p>
-<p>图二：<br><img src="stack2.png" alt="pic5"></p>
-<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
-<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
-
-<p>图片展示：</p>
-<p><img src="disasm.png" alt="pic6"></p>
-<blockquote>
-<p>同样，xxxx为程序文件名</p>
-</blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>debug</tag>
-        <tag>coredump</tag>
-        <tag>gdb</tag>
-        <tag>objdump</tag>
       </tags>
   </entry>
   <entry>
@@ -421,38 +421,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <url>/2014/08/02/vssqlserver2008/</url>
-    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
-<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
-<span id="more"></span>
-
-<p><img src="pic1.png" alt="pic1"></p>
-<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
-<p><img src="pic2.png" alt="pic2"></p>
-<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
-<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
-<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
-<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
-<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
-<p><img src="pic3.png" alt="pic3"></p>
-<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
-<p><img src="pic4.png" alt="pic4"></p>
-<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
-<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除/摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
-<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
-<p><img src="pic5.png" alt="pic5"></p>
-<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
-<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分布式服务系统概述</title>
     <url>/2020/12/20/redistributedservicesystem/</url>
     <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
@@ -528,6 +496,38 @@
         <tag>Actor</tag>
         <tag>MongoDB</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
+    <url>/2014/08/02/vssqlserver2008/</url>
+    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
+<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
+<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
+<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
+<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
+<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
+<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除/摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
+<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
+<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
 </search>
