@@ -1,73 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JNI函数调用之线程安全问题</title>
-    <url>/2021/11/29/jnithreadsafe/</url>
-    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
-<p>JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
-</blockquote>
-<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
-<p>这里列举一下工具链：</p>
-<ul>
-<li>OpenJDK 11</li>
-<li>GCC 11</li>
-<li>CMake 3.21</li>
-<li>VSCode 最新版</li>
-</ul>
-<p>截图：</p>
-<p><img src="devenv.png" alt="vscode"></p>
-<blockquote>
-<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
-
-<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
-</blockquote>
-<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
-<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
-<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
-<p>这会涉及到四种情形：</p>
-<ul>
-<li>静态Java本地调用改C++层的公共数据</li>
-<li>静态Java本地调用改Java层的公共数据</li>
-<li>动态Java本地调用改C++层的公共数据</li>
-<li>动态Java本地调用改Java层的公共数据</li>
-</ul>
-<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
-<blockquote>
-<p>至于什么是静态/动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态/动态调用。</p>
-<p>还有C++/Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问/修改在Java类或者Java对象中的公共变量。</p>
-</blockquote>
-<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
-<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      ConSt st = <span class="keyword">new</span> ConSt();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      MyCls obj = <span class="keyword">new</span> MyCls();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">loadLibrary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> mySafeInt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> myUnsafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadSafe</span><span class="params">(ConSt st)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">threadUnsafe</span><span class="params">()</span></span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadUnsafe2</span><span class="params">()</span></span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
-<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
-<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
-<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
-<blockquote>
-<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
-<p><img src="sign.png" alt="sign"></p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
-<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>jni</tag>
-        <tag>java</tag>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -226,6 +159,133 @@
       </tags>
   </entry>
   <entry>
+    <title>JNI函数调用之线程安全问题</title>
+    <url>/2021/11/29/jnithreadsafe/</url>
+    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
+<p>JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
+</blockquote>
+<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
+<p>这里列举一下工具链：</p>
+<ul>
+<li>OpenJDK 11</li>
+<li>GCC 11</li>
+<li>CMake 3.21</li>
+<li>VSCode 最新版</li>
+</ul>
+<p>截图：</p>
+<p><img src="devenv.png" alt="vscode"></p>
+<blockquote>
+<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
+
+<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
+</blockquote>
+<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
+<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
+<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
+<p>这会涉及到四种情形：</p>
+<ul>
+<li>静态Java本地调用改C++层的公共数据</li>
+<li>静态Java本地调用改Java层的公共数据</li>
+<li>动态Java本地调用改C++层的公共数据</li>
+<li>动态Java本地调用改Java层的公共数据</li>
+</ul>
+<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
+<blockquote>
+<p>至于什么是静态/动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态/动态调用。</p>
+<p>还有C++/Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问/修改在Java类或者Java对象中的公共变量。</p>
+</blockquote>
+<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
+<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCls</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      ConSt st = <span class="keyword">new</span> ConSt();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      MyCls obj = <span class="keyword">new</span> MyCls();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">loadLibrary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> mySafeInt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> myUnsafeInt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadSafe</span><span class="params">(ConSt st)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">threadUnsafe</span><span class="params">()</span></span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">threadUnsafe2</span><span class="params">()</span></span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
+<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
+<h2 id="C-C-部分"><a href="#C-C-部分" class="headerlink" title="C/C++部分"></a>C/C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
+<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
+<blockquote>
+<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
+<p><img src="sign.png" alt="sign"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
+<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>jni</tag>
+        <tag>java</tag>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux环境搭建中文LaTeX排版系统</title>
     <url>/2016/05/03/linuxlatex/</url>
     <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
@@ -292,66 +352,6 @@
       <tags>
         <tag>linux</tag>
         <tag>latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <url>/2016/10/03/minix/</url>
-    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
-<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
-<span id="more"></span>
-
-<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
-<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
-<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
-<li>QEMU: <code>qemu-system-i386</code></li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
-</blockquote>
-<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
-<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
-</blockquote>
-<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
-<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
-<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
-<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
-<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
-</blockquote>
-<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
-<blockquote>
-<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>minix</tag>
-        <tag>qemu</tag>
       </tags>
   </entry>
   <entry>
