@@ -94,6 +94,48 @@
   </entry>
   
   <entry>
+    <title>LZSS压缩算法</title>
+    <link href="https://hchen90.github.io/2018/04/01/lzsscompalgo/"/>
+    <id>https://hchen90.github.io/2018/04/01/lzsscompalgo/</id>
+    <published>2018-04-01T13:12:32.000Z</published>
+    <updated>2018-04-01T13:12:32.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;LZSS算法简介&quot;&gt;&lt;a href=&quot;#LZSS算法简介&quot; class=&quot;headerlink&quot; title=&quot;LZSS算法简介&quot;&gt;&lt;/a&gt;LZSS算法简介&lt;/h1&gt;&lt;p&gt;LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
+    
+    <category term="lzss" scheme="https://hchen90.github.io/tags/lzss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LZ77压缩算法</title>
+    <link href="https://hchen90.github.io/2018/03/31/lz77compalgo/"/>
+    <id>https://hchen90.github.io/2018/03/31/lz77compalgo/</id>
+    <published>2018-03-31T12:38:24.000Z</published>
+    <updated>2018-03-31T12:38:24.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;LZ77算法简介&quot;&gt;&lt;a href=&quot;#LZ77算法简介&quot; class=&quot;headerlink&quot; title=&quot;LZ77算法简介&quot;&gt;&lt;/a&gt;LZ77算法简介&lt;/h1&gt;&lt;p&gt;LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="lz77" scheme="https://hchen90.github.io/tags/lz77/"/>
+    
+    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <link href="https://hchen90.github.io/2017/09/02/enablesbonlinux/"/>
     <id>https://hchen90.github.io/2017/09/02/enablesbonlinux/</id>
