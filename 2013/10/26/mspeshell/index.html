@@ -316,6 +316,9 @@
 <p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
 <h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
 <p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+<blockquote>
+<p>链接：<a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
+</blockquote>
 
     </div>
 
