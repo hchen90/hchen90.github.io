@@ -226,6 +226,75 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux环境搭建中文LaTeX排版系统</title>
+    <url>/2016/05/03/linuxlatex/</url>
+    <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
+<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
+<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
+<span id="more"></span>
+
+<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
+<p>首先需要准备如下软件包或压缩包：</p>
+<ul>
+<li>texlive 或 tetex</li>
+<li>CJK</li>
+<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
+</ul>
+<p>下面逐个简单介绍各个包的功能和作用。</p>
+<h3 id="1-texlive或tetex"><a href="#1-texlive或tetex" class="headerlink" title="1. texlive或tetex"></a>1. texlive或tetex</h3><p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
+<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
+<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
+<h3 id="2-CJK"><a href="#2-CJK" class="headerlink" title="2. CJK"></a>2. CJK</h3><p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
+<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3. 字体"></a>3. 字体</h3><p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
+<h2 id="具体操作步骤"><a href="#具体操作步骤" class="headerlink" title="具体操作步骤"></a>具体操作步骤</h2><p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
+<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
+<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
+<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
+<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
+<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
+<p>若想安装该字体，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uninstall.sh</span><br></pre></td></tr></table></figure>
+
+
+<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
+<blockquote>
+<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
+</blockquote>
+<h2 id="相关文件下载地址"><a href="#相关文件下载地址" class="headerlink" title="相关文件下载地址"></a>相关文件下载地址</h2><p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a><br><a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a><br><a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a><br><a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a><br><a href="http://cjk.ffii.org/">CJK</a><br><a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
+<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面我写的一个代码实验：</p>
+<pre><code>\documentclass[10pt]&#123;article&#125;
+\usepackage&#123;CJK&#125;
+\begin&#123;document&#125;
+\begin&#123;CJK&#125;&#123;UTF8&#125;&#123;nsung&#125;
+这是一个测试 
+\section&#123;章标题&#125;
+这是章的介绍
+\subsection&#123;节的标题&#125;
+这是节的介绍
+\subsubsection&#123;子节的标题&#125;
+这是子节的介绍 \\
+数学公式的测试：\\
+\Huge&#123;$y=2^x+\frac&#123;4&#125;&#123;6^z&#125;$&#125;
+\footnote&#123;这仍然是个测试，一个脚注&#125;
+\end&#123;CJK&#125;
+\end&#123;document&#125;
+</code></pre>
+<p>实验打印出的.dvi文件：</p>
+<p><img src="dvi.png" alt="dvi"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LZ77压缩算法</title>
     <url>/2018/03/31/lz77compalgo/</url>
     <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
@@ -312,75 +381,6 @@
       <tags>
         <tag>lz77</tag>
         <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux环境搭建中文LaTeX排版系统</title>
-    <url>/2016/05/03/linuxlatex/</url>
-    <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
-<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
-<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
-<span id="more"></span>
-
-<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
-<p>首先需要准备如下软件包或压缩包：</p>
-<ul>
-<li>texlive 或 tetex</li>
-<li>CJK</li>
-<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
-</ul>
-<p>下面逐个简单介绍各个包的功能和作用。</p>
-<h3 id="1-texlive或tetex"><a href="#1-texlive或tetex" class="headerlink" title="1. texlive或tetex"></a>1. texlive或tetex</h3><p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
-<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
-<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
-<h3 id="2-CJK"><a href="#2-CJK" class="headerlink" title="2. CJK"></a>2. CJK</h3><p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
-<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3. 字体"></a>3. 字体</h3><p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
-<h2 id="具体操作步骤"><a href="#具体操作步骤" class="headerlink" title="具体操作步骤"></a>具体操作步骤</h2><p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
-<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
-<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
-<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
-<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
-<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
-<p>若想安装该字体，只要输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-
-<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uninstall.sh</span><br></pre></td></tr></table></figure>
-
-
-<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
-<blockquote>
-<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
-</blockquote>
-<h2 id="相关文件下载地址"><a href="#相关文件下载地址" class="headerlink" title="相关文件下载地址"></a>相关文件下载地址</h2><p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a><br><a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a><br><a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a><br><a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a><br><a href="http://cjk.ffii.org/">CJK</a><br><a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
-<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面我写的一个代码实验：</p>
-<pre><code>\documentclass[10pt]&#123;article&#125;
-\usepackage&#123;CJK&#125;
-\begin&#123;document&#125;
-\begin&#123;CJK&#125;&#123;UTF8&#125;&#123;nsung&#125;
-这是一个测试 
-\section&#123;章标题&#125;
-这是章的介绍
-\subsection&#123;节的标题&#125;
-这是节的介绍
-\subsubsection&#123;子节的标题&#125;
-这是子节的介绍 \\
-数学公式的测试：\\
-\Huge&#123;$y=2^x+\frac&#123;4&#125;&#123;6^z&#125;$&#125;
-\footnote&#123;这仍然是个测试，一个脚注&#125;
-\end&#123;CJK&#125;
-\end&#123;document&#125;
-</code></pre>
-<p>实验打印出的.dvi文件：</p>
-<p><img src="dvi.png" alt="dvi"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -628,6 +628,84 @@
         <tag>Actor</tag>
         <tag>MongoDB</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机系统启动流程</title>
+    <url>/2018/06/16/systemstartup/</url>
+    <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
+<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
+</blockquote>
+<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
+<blockquote>
+<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
+</blockquote>
+<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
+<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
+<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
+<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
+<blockquote>
+<p>为什么要UEFI？</p>
+<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
+</blockquote>
+<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
+<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
+<blockquote>
+<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
+</blockquote>
+<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
+<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
+<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
+<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
+<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
+<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
+<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
+<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
+<ul>
+<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
+<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
+<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
+<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
+<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
+</ul>
+<blockquote>
+<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
+</blockquote>
+<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
+<p>引导程序作为操作系统和BIOS/UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
+<blockquote>
+<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
+</blockquote>
+<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
+<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
+<ul>
+<li>初始化GDT, LDT寄存器</li>
+<li>Paging需要设置PTE映射</li>
+<li>设置TSS任务管理机制</li>
+<li>设置IDT表来管理IRQ中断</li>
+<li>初始化文件系统</li>
+<li>初始化IO设备</li>
+</ul>
+<blockquote>
+<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
+<p>另外，我有一个未完成的demo在GitHub上，可以点击<a href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
+</blockquote>
+<p>相关参考链接：</p>
+<ul>
+<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>GRUB</tag>
+        <tag>UEFI</tag>
+        <tag>BIOS</tag>
       </tags>
   </entry>
   <entry>

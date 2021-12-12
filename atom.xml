@@ -94,6 +94,30 @@
   </entry>
   
   <entry>
+    <title>计算机系统启动流程</title>
+    <link href="https://hchen90.github.io/2018/06/16/systemstartup/"/>
+    <id>https://hchen90.github.io/2018/06/16/systemstartup/</id>
+    <published>2018-06-16T12:40:10.000Z</published>
+    <updated>2018-06-16T12:40:10.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;远古时代&quot;&gt;&lt;a href=&quot;#远古时代&quot; class=&quot;headerlink&quot; title=&quot;远古时代&quot;&gt;&lt;/a&gt;远古时代&lt;/h1&gt;&lt;p&gt; 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。&lt;/p&gt;
+&lt;p&gt;计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="总结" scheme="https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="GRUB" scheme="https://hchen90.github.io/tags/GRUB/"/>
+    
+    <category term="UEFI" scheme="https://hchen90.github.io/tags/UEFI/"/>
+    
+    <category term="BIOS" scheme="https://hchen90.github.io/tags/BIOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LZSS压缩算法</title>
     <link href="https://hchen90.github.io/2018/04/01/lzsscompalgo/"/>
     <id>https://hchen90.github.io/2018/04/01/lzsscompalgo/</id>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-TW,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="远古时代 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。 计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统启动流程">
+<meta property="og:url" content="https://hchen90.github.io/2018/06/16/systemstartup/index.html">
+<meta property="og:site_name" content="个人站点">
+<meta property="og:description" content="远古时代 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。 计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-16T12:40:10.000Z">
+<meta property="article:modified_time" content="2018-06-16T12:40:10.000Z">
+<meta property="article:author" content="陈祥">
+<meta property="article:tag" content="GRUB">
+<meta property="article:tag" content="UEFI">
+<meta property="article:tag" content="BIOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hchen90.github.io/2018/06/16/systemstartup/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机系统启动流程 | 个人站点</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">个人站点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">陈祥的个人站点</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-flask fa-fw"></i>软件项目</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/hchen90" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2018/06/16/systemstartup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人站点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机系统启动流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-16 20:40:10" itemprop="dateCreated datePublished" datetime="2018-06-16T20:40:10+08:00">2018-06-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
+<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
+</blockquote>
+<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
+<blockquote>
+<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
+</blockquote>
+<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
+<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
+<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
+<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
+<blockquote>
+<p>为什么要UEFI？</p>
+<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
+</blockquote>
+<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
+<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
+<blockquote>
+<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
+</blockquote>
+<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
+<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
+<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
+<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
+<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
+<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
+<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
+<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
+<ul>
+<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
+<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
+<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
+<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
+<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
+</ul>
+<blockquote>
+<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
+</blockquote>
+<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
+<p>引导程序作为操作系统和BIOS/UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
+<blockquote>
+<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
+</blockquote>
+<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
+<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
+<ul>
+<li>初始化GDT, LDT寄存器</li>
+<li>Paging需要设置PTE映射</li>
+<li>设置TSS任务管理机制</li>
+<li>设置IDT表来管理IRQ中断</li>
+<li>初始化文件系统</li>
+<li>初始化IO设备</li>
+</ul>
+<blockquote>
+<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
+<p>另外，我有一个未完成的demo在GitHub上，可以点击<a target="_blank" rel="noopener" href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
+</blockquote>
+<p>相关参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GRUB/" rel="tag"># GRUB</a>
+              <a href="/tags/UEFI/" rel="tag"># UEFI</a>
+              <a href="/tags/BIOS/" rel="tag"># BIOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/04/01/lzsscompalgo/" rel="prev" title="LZSS压缩算法">
+      <i class="fa fa-chevron-left"></i> LZSS压缩算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/11/12/linuxcoredumptofindbug/" rel="next" title="利用Linux的coredump机制快速定位程序BUG">
+      利用Linux的coredump机制快速定位程序BUG <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E5%8F%A4%E6%97%B6%E4%BB%A3"><span class="nav-number">1.</span> <span class="nav-text">远古时代</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9FBIOS%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">传统BIOS方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3UEFI%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">现代UEFI方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%A4%E4%BB%A3%E6%96%87%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">古代文明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">一些常见的引导程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GRUB"><span class="nav-number">2.1.1.</span> <span class="nav-text">GRUB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LILO"><span class="nav-number">2.1.2.</span> <span class="nav-text">LILO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOOTMGR"><span class="nav-number">2.1.3.</span> <span class="nav-text">BOOTMGR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NTLDR"><span class="nav-number">2.1.4.</span> <span class="nav-text">NTLDR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">2.2.</span> <span class="nav-text">引导程序做什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GRUB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">GRUB的加载流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%E6%89%AE%E6%BC%94%E7%9A%84%E8%A7%92%E8%89%B2"><span class="nav-number">2.2.2.</span> <span class="nav-text">引导程序扮演的角色</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%91%E4%BB%A3%E6%97%B6%E6%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">近代时期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">操作系统初始化</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈祥"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">陈祥</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-comments"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5446613/hsiang-chen" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5446613&#x2F;hsiang-chen" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/hsiangchen99" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;hsiangchen99" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈祥</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'KH5sDkWHt8ZHDefcu';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>

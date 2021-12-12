@@ -56,6 +56,15 @@
   </url>
   
   <url>
+    <loc>https://hchen90.github.io/2018/06/16/systemstartup/</loc>
+    
+    <lastmod>2018-06-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hchen90.github.io/2018/04/01/lzsscompalgo/</loc>
     
     <lastmod>2018-04-01</lastmod>
@@ -198,6 +207,13 @@
   </url>
   
   <url>
+    <loc>https://hchen90.github.io/tags/latex/</loc>
+    <lastmod>2021-12-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hchen90.github.io/tags/lz77/</loc>
     <lastmod>2021-12-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -206,13 +222,6 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/algorithm/</loc>
-    <lastmod>2021-12-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/latex/</loc>
     <lastmod>2021-12-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -281,6 +290,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://hchen90.github.io/tags/GRUB/</loc>
+    <lastmod>2021-12-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/UEFI/</loc>
+    <lastmod>2021-12-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/BIOS/</loc>
+    <lastmod>2021-12-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -299,6 +329,13 @@
   
   <url>
     <loc>https://hchen90.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2021-12-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2021-12-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
