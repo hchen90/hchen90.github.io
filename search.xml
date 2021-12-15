@@ -99,6 +99,66 @@
       </tags>
   </entry>
   <entry>
+    <title>利用Linux的coredump机制快速定位程序BUG</title>
+    <url>/2019/11/12/linuxcoredumptofindbug/</url>
+    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+<span id="more"></span>
+
+<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="crashed.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
+</blockquote>
+<p>出现如下图的结果：</p>
+<p><img src="info.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="info2.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="stack.png" alt="pic4"></p>
+<p>图二：<br><img src="stack2.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
+
+<p>图片展示：</p>
+<p><img src="disasm.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>debug</tag>
+        <tag>coredump</tag>
+        <tag>gdb</tag>
+        <tag>objdump</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JNI函数调用之线程安全问题</title>
     <url>/2021/11/29/jnithreadsafe/</url>
     <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
@@ -163,66 +223,6 @@
         <tag>jni</tag>
         <tag>java</tag>
         <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <url>/2019/11/12/linuxcoredumptofindbug/</url>
-    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
-<span id="more"></span>
-
-<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
-<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
-<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
-<ul>
-<li>难确定（是否发生）</li>
-<li>难定位</li>
-</ul>
-<p>见下图：</p>
-<p><img src="crashed.png" alt="pic1"></p>
-<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>或者，也可以查看它的man文档。</p>
-<p>好了，言归正传，尝试输入命令以调试：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
-</blockquote>
-<p>出现如下图的结果：</p>
-<p><img src="info.png" alt="pic2"></p>
-<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="info2.png" alt="pic3"></p>
-<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>这句是我故意改错用于比较的，源代码是这样的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
-<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
-<p>图一：</p>
-<p><img src="stack.png" alt="pic4"></p>
-<p>图二：<br><img src="stack2.png" alt="pic5"></p>
-<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
-<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
-
-<p>图片展示：</p>
-<p><img src="disasm.png" alt="pic6"></p>
-<blockquote>
-<p>同样，xxxx为程序文件名</p>
-</blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>debug</tag>
-        <tag>coredump</tag>
-        <tag>gdb</tag>
-        <tag>objdump</tag>
       </tags>
   </entry>
   <entry>
@@ -484,75 +484,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PE文件壳的设计过程</title>
-    <url>/2013/10/26/mspeshell/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
-<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
-<span id="more"></span>
-
-<p><img src="pic1.png" alt="pic1"></p>
-<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
-<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
-<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
-<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
-<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
-<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
-<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
-<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
-
-<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
-<p><img src="pic2.png" alt="pic2"></p>
-<p>在程序未加载时，可以看到磁盘文件如下：</p>
-<p><img src="pic3.png" alt="pic3"></p>
-<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
-<p><img src="pic4.png" alt="pic4"></p>
-<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
-<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
-<p><img src="pic5.png" alt="pic5"></p>
-<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
-
-<p>也就成了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
-
-<p>再看看<code>754879f8</code>处的数据：</p>
-<p><img src="pic6.png" alt="pic6"></p>
-<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
-<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
-<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
-<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
-<p>没有加密代码段的情况（start处是我的代码）：</p>
-<p><img src="pic7.png" alt="pic7"></p>
-<p>加密代码段的情况（start是我的代码）：</p>
-<p><img src="pic8.png" alt="pic8"></p>
-<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
-<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
-<p>这种类型壳非常好脱，下面举个例子：</p>
-<p><img src="pic9.png" alt="pic9"></p>
-<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
-<p><img src="pic10.png" alt="pic10"></p>
-<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
-<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
-<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
-<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
-<p>虚拟机还可以参入密码学加密机制，等。</p>
-<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
-<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
-<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
-<blockquote>
-<p>链接：<a href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
-        <tag>EXE</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分布式服务系统概述</title>
     <url>/2020/12/20/redistributedservicesystem/</url>
     <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
@@ -628,6 +559,75 @@
         <tag>Actor</tag>
         <tag>MongoDB</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PE文件壳的设计过程</title>
+    <url>/2013/10/26/mspeshell/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+<span id="more"></span>
+
+<p><img src="pic1.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="pic2.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="pic3.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="pic4.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="pic5.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
+
+<p>也就成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
+
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="pic6.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="pic7.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="pic8.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="pic9.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="pic10.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+<blockquote>
+<p>链接：<a href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>EXE</tag>
       </tags>
   </entry>
   <entry>
