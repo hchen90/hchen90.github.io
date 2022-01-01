@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-TW,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="内核加载在上篇博文里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。 通常在系统&#x2F;boot目录下放着内核文件，如下： 12initramfs-linux.imgvmlinuz-linux  GRUB（或者LILO）加载内核的时候，会把vmlinuz-linux映射到内存并会把它的一个初始根目录的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统启动流程">
+<meta property="og:url" content="https://hchen90.github.io/2018/06/24/linuxstartup/index.html">
+<meta property="og:site_name" content="个人站点">
+<meta property="og:description" content="内核加载在上篇博文里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。 通常在系统&#x2F;boot目录下放着内核文件，如下： 12initramfs-linux.imgvmlinuz-linux  GRUB（或者LILO）加载内核的时候，会把vmlinuz-linux映射到内存并会把它的一个初始根目录的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hchen90.github.io/2018/06/24/linuxstartup/systemd.png">
+<meta property="article:published_time" content="2018-06-24T03:50:03.000Z">
+<meta property="article:modified_time" content="2018-06-24T03:50:03.000Z">
+<meta property="article:author" content="陈祥">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hchen90.github.io/2018/06/24/linuxstartup/systemd.png">
+
+<link rel="canonical" href="https://hchen90.github.io/2018/06/24/linuxstartup/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux系统启动流程 | 个人站点</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">个人站点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">陈祥的个人站点</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-flask fa-fw"></i>软件项目</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/hchen90" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2018/06/24/linuxstartup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人站点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux系统启动流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-24 11:50:03" itemprop="dateCreated datePublished" datetime="2018-06-24T11:50:03+08:00">2018-06-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="内核加载"><a href="#内核加载" class="headerlink" title="内核加载"></a>内核加载</h1><p>在<a href="/2018/06/16/systemstartup">上篇博文</a>里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。</p>
+<p>通常在系统<code>/boot</code>目录下放着内核文件，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">initramfs-linux.img</span><br><span class="line">vmlinuz-linux</span><br></pre></td></tr></table></figure>
+
+<p>GRUB（或者LILO）加载内核的时候，会把<code>vmlinuz-linux</code>映射到内存并会把它的一个初始根目录的文件镜像（<code>initramfs-linux.img</code>）作为文件系统加载到内存，系统会从这个迷你的初始化文件系统来启动，在这个迷你的文件系统里面又会加载真正的磁盘文件系统，带有这种<code>initramfs</code>的都是这种加载流程，但是，对于那种没有<code>initramfs</code>的（例如：Slackware发行版本），它是加载内核后，内核直接从磁盘加载文件系统，这种区分跟内核配置有关。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>内核初始化进行哪些操作？</p>
+<p>内核初始操作属于操作系统内核部分的知识，一般来说，主体包括以下（还有很多细节可以参看Linux内核方面的书籍）：</p>
+<ul>
+<li>系统处于实模式需要切换到保护模式，所以需要设置GDT,LDT，设置平坦模式的内存寻址，在GDT,LDT寄存器里面，可以设置内存保护位，大小等等信息</li>
+<li>原始的系统没有任何可以使用库，但是不要忘记BIOS提供的中断调用，还有BIOS设定好的各种IO端口，通过它们我们就可以获取和设置计算机信息，从而达到控制计算机，我们可以把它们封装出函数调用，为了兼容历史，我们需要保留部分低位中断，这样把这些函数写成中断调用（即设置IDT中断调用表），按UNIX规范提供一套SYSCALL</li>
+<li>实际上，我们的计算机内存已经非常大了，所以我们往往需要一种快速定位寻址的机制，在没有硬件支持的时候用软件算法可以达到相似的效果，但是在Intel平台上，提供了Paging机制，利用这种机制我们只需要设置PDE表格（即页表），那么CPU就会自动就加载寻址，这就达到硬件加速的效果</li>
+<li>但我们设置完了进程相关设置，内存相关设置后，接下来的就是文件系统，文件系统是操作系统的基本要素（目前来说是这样的），内核会按着磁盘上数据格式把文件信息读取，并在内存中构建一个文件存留信息的数据结构（一般不一定是位视图这种表格，多数情况要复杂一些，也就是多层次的可以拓展的树状构型）</li>
+<li>外设是最复杂的部分，外设需要各种初始化，初始化过的外设才可以正常使用，一般这部分也叫设备驱动流程（这部分也可以延后加载，进行初始化）</li>
+</ul>
+</blockquote>
+<h1 id="初始化程序加载"><a href="#初始化程序加载" class="headerlink" title="初始化程序加载"></a>初始化程序加载</h1><p>当内核加载流程全部完成后（只要没有发生出错都会加载完成），内核会启动系统的第一个进程，它就是著名的<code>init</code>进程（pid为1），而现在随着开源社区的发展，出现过好多版本的init程序了，最老也是最稳定的是sysvinit，除此之外还有Upstart之流，不过systemd还是更受青睐，它也是目前互动最多的init初始化开源项目。</p>
+<p>Systemd和sysvinit有很大的区别，所以这里分别介绍两者：</p>
+<blockquote>
+<p>Upstart是一个基于事件触发的异步初始化方案，和Sysvinit高度兼容，但这里不作讨论，相关介绍可以查阅其他介绍Upstart的博客或技术Wiki等等</p>
+</blockquote>
+<h2 id="Sysvinit的流程"><a href="#Sysvinit的流程" class="headerlink" title="Sysvinit的流程"></a>Sysvinit的流程</h2><p>Sysvinit的启动可以把它看作两个部分：初始化，服务加载。</p>
+<h3 id="初始化部分"><a href="#初始化部分" class="headerlink" title="初始化部分"></a>初始化部分</h3><p>在Systvinit中，它会读取系统中的 <code>/etc/inittab</code>信息，从而来确定系统下一步的启动步骤。为了判断下一步步骤，系统有一个概念，叫做“运行级别”（runlevel），意思就是要确定以何种场景来启动系统，一般而言，Linux有如下7种运行级别：</p>
+<ul>
+<li>0 - 关机模式</li>
+<li>1 - 单用户模式</li>
+<li>2 - 多用户模式</li>
+<li>3 - 多用户网络模式</li>
+<li>4 - 自定义模式</li>
+<li>5 - 完全模式</li>
+<li>6 - 重启模式</li>
+</ul>
+<blockquote>
+<p>Runlevel的定义可以参考<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runlevel">维基百科的介绍</a></p>
+</blockquote>
+<p>针对不同的Linux发行版本，上述的定义值不一定相同。</p>
+<p>当init程序读取了<code>/etc/inittab</code>中的信息时，该配置文件里面存放了各种运行级别所要进行的操作，假设有如下配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> These are the default runlevels <span class="keyword">in</span> Slackware:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   0 = halt</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   1 = single user mode</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   2 = unused (but configured the same as runlevel 3)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   3 = multiuser mode (default Slackware runlevel)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   4 = X11 with KDM/GDM/XDM (session managers)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   5 = unused (but configured the same as runlevel 3)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   6 = reboot</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Default runlevel. (Do not <span class="built_in">set</span> to 0 or 6)</span></span><br><span class="line">id:3:initdefault:</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> System initialization (runs when system boots).</span></span><br><span class="line">si:S:sysinit:/etc/rc.d/rc.S</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Script to run when going single user (runlevel 1).</span></span><br><span class="line">su:1S:wait:/etc/rc.d/rc.K</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Script to run when going multi user.</span></span><br><span class="line">rc:2345:wait:/etc/rc.d/rc.M</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> What to <span class="keyword">do</span> at the <span class="string">&quot;Three Finger Salute&quot;</span>.</span></span><br><span class="line">ca::ctrlaltdel:/sbin/shutdown -t5 -r now</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Runlevel 0 halts the system.</span></span><br><span class="line">l0:0:wait:/etc/rc.d/rc.0</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Runlevel 6 reboots the system.</span></span><br><span class="line">l6:6:wait:/etc/rc.d/rc.6</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> What to <span class="keyword">do</span> when power fails.</span></span><br><span class="line">pf::powerfail:/sbin/genpowerfail start</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If power is back, cancel the running shutdown.</span></span><br><span class="line">pg::powerokwait:/sbin/genpowerfail stop</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> These are the standard console login getties <span class="keyword">in</span> multiuser mode:</span></span><br><span class="line">c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux</span><br><span class="line">c2:12345:respawn:/sbin/agetty 38400 tty2 linux</span><br><span class="line">c3:12345:respawn:/sbin/agetty 38400 tty3 linux</span><br><span class="line">c4:12345:respawn:/sbin/agetty 38400 tty4 linux</span><br><span class="line">c5:12345:respawn:/sbin/agetty 38400 tty5 linux</span><br><span class="line">c6:12345:respawn:/sbin/agetty 38400 tty6 linux</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Local serial lines:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">s1:12345:respawn:/sbin/agetty -L ttyS0 9600 vt100</span></span><br><span class="line"><span class="meta">#</span><span class="bash">s2:12345:respawn:/sbin/agetty -L ttyS1 9600 vt100</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Dialup lines:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">d1:12345:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS0 vt100</span></span><br><span class="line"><span class="meta">#</span><span class="bash">d2:12345:respawn:/sbin/agetty -mt60 38400,19200,9600,2400,1200 ttyS1 vt100</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Runlevel 4 also starts /etc/rc.d/rc.4 to run a display manager <span class="keyword">for</span> X.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Display managers are preferred <span class="keyword">in</span> this order:  gdm, kdm, xdm</span></span><br><span class="line">x1:4:respawn:/etc/rc.d/rc.4</span><br></pre></td></tr></table></figure>
+
+<p>每一行可以看作是一个函数。</p>
+<p>这样以来，第一列对应单个函数的ID（2-4个字母数字组合，只要不重复即可），第二列对应函数Runlevel的值，第三列对应内部Runlevel操作入口（action），第四列是函数要执行的程序或者脚本。</p>
+<blockquote>
+<p>对于函数的操作入口（action）存在如下几种：initdefault, sysinit, boot, bootwait, wait, respawn</p>
+</blockquote>
+<p>例如，以这个函数举例来说：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id:3:initdefault:</span><br></pre></td></tr></table></figure>
+
+<p>当运行Runlevel为3时，就会执行initdefault的入口，它不需要执行脚本或程序，表示默认的Runlevel，其他的函数配置同理。</p>
+<p>再看上面的inittab配置，如下这行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">si:S:sysinit:/etc/rc.d/rc.S</span><br></pre></td></tr></table></figure>
+
+<p>它表示系统启动是就运行<code>/etc/rc.d/rc.S</code>脚本，在<code>/etc/rc.d/rc.S</code>脚本里面则包含：</p>
+<ul>
+<li>挂载<code>sysfs</code>文件目录节点</li>
+<li>挂载<code>tmpfs</code>文件目录节点</li>
+<li>挂载<code>proc</code>文件目录节点</li>
+<li>挂载<code>cgroup</code>文件目录节点</li>
+<li>启动其他的rc.XX脚本</li>
+<li>加载需要的内核模块</li>
+<li>检测文件系统</li>
+<li>随机数设置</li>
+<li>等等</li>
+</ul>
+<p>对于用多个Runlevel的函数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rc:2345:wait:/etc/rc.d/rc.M</span><br></pre></td></tr></table></figure>
+
+<p>表示在<code>2345</code>这4个Runlevel下，都会执行<code>/etc/rc.d/rc.M</code>，并等待它执行完成。</p>
+<p>init的配置非常的清晰明了，它的启动脚本可以在目录<code>/etc/rc.d</code>下查看。</p>
+<p>系统就是这样加载rc.d下的初始化脚本，序列化地完成所有的init初始化流程。</p>
+<h3 id="加载服务"><a href="#加载服务" class="headerlink" title="加载服务"></a>加载服务</h3><p>Sysvinit中对于服务的加载是通过<code>/etc/rc.d</code>下的初始化脚本来执行的，一般情况下，一个服务都编写一个服务管理的Shell脚本，它可以接受：<code>status</code>，<code>start</code>，<code>stop</code>，<code>restart</code>这样的参数，并把它放在<code>/etc/rc.d/init.d</code>目录下面。</p>
+<p>例如，有如下服务（<code>/etc/rc.d/init.d/vbox-usb-service</code>）：</p>
+<p>我们就可以执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/init.d/vbox-usb-service status</span><br></pre></td></tr></table></figure>
+
+<p>来查看此服务是否已经启动，但是一般情况下，系统会为了方便创建了一个软链接（如果系统没有创建该软链接，我们可以手动创建之）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d</span><br></pre></td></tr></table></figure>
+
+<p>该软链接指向<code>/etc/rc.d/init.d</code>，因此，我们也可以这样重启服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/vbox-usb-service restart</span><br></pre></td></tr></table></figure>
+
+<p>但是，这不是必须这样的组织方式，也可以把服务管理的脚本直接就放在<code>/etc/rc.d</code>目录下，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/rc.httpd</span><br></pre></td></tr></table></figure>
+
+<p>该脚本是用于Apache的httpd服务的管理脚本，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/rc.httpd start</span><br></pre></td></tr></table></figure>
+
+<p>即可完成httpd服务的启动。</p>
+<blockquote>
+<p>对于一些外部的第三方服务都是放在<code>/etc/rc.d/init.d</code>下面，这样这些脚本只要添加执行权限，就会被初始化脚本自动加载，而不用去更改初始化脚本；而在<code>/etc/rc.d</code>下的服务管理脚本则是Linux发行版本自带的服务，它已经在初始化脚本中做过判断设置，如果我们要把一个第三方的服务管理脚本放到<code>/etc/rc.d</code>下，就意味着我们必须要修改初始化脚本。</p>
+</blockquote>
+<h2 id="Systemd的流程"><a href="#Systemd的流程" class="headerlink" title="Systemd的流程"></a>Systemd的流程</h2><p>Systemd中，所有的都以单元组件的形式来加载，这些单元组件很多都可以并发执行，达到快速加载的目的，单元组件的前件和后件构成一套稳定的加载系统。</p>
+<h3 id="初始化加载"><a href="#初始化加载" class="headerlink" title="初始化加载"></a>初始化加载</h3><blockquote>
+<p>在以Systemd为init服务的Linux系统中，参看<code>man 7 bootup</code>，以了解更多有关Systemd的启动详情。</p>
+</blockquote>
+<h3 id="加载图示"><a href="#加载图示" class="headerlink" title="加载图示"></a>加载图示</h3><p><img src="systemd.png" alt="systemd-graph"></p>
+<p>由上图可见，在加载<code>sysinit</code>之前，可以加载很多的服务，而这些服务是互相独立无依赖的，因此可以并行地加载，当所有的服务都加载完后，<code>sysinit</code>服务就算加载成功，之后进行下面的服务加载，后面的加载逻辑以此类推。注意到，类似<code>rescue</code>这种是具有特殊用途的服务（这里的服务是用于系统崩溃后的拯救），还有一个独立依赖链，或者没有依赖的服务，被加载到目前的服务的情况，例如上图的<code>remote-fs</code>就是这种。</p>
+<blockquote>
+<p>上图绘制的systemd加载图比较粗糙，细节要复杂一些，有些一个单元的加载可能分好几个步骤来加载，有的可能细分更多的加载逻辑。</p>
+</blockquote>
+<h1 id="用户登录系统"><a href="#用户登录系统" class="headerlink" title="用户登录系统"></a>用户登录系统</h1><p>当系统必要的服务都启动后，会分为几种场景：</p>
+<h2 id="Runlevel-3-登录"><a href="#Runlevel-3-登录" class="headerlink" title="Runlevel 3 登录"></a>Runlevel 3 登录</h2><p>在该模式下，用户自动进入ttyS1来登录系统，init会启动<code>/sbin/agetty</code>提示用户输入用户名和密码，getty和login判断用户合法就让用户进入系统，打开用户的Shell程序。</p>
+<blockquote>
+<p>上述配置，会产生6个用户可以同时登录。</p>
+<p>此外，getty和login这种登录验证需要验证密码，通常是读取<code>/etc/passwd</code>下的保存设置来验证用户有效性。</p>
+<p>（细节可以参考系统函数：<code>getpass</code>）</p>
+</blockquote>
+<h2 id="Runlevel-4-登录"><a href="#Runlevel-4-登录" class="headerlink" title="Runlevel 4 登录"></a>Runlevel 4 登录</h2><p>如果是多用户模式，会启动一个用于管理系统登录的服务（一般PolKit/ConsoleKit最常见），这里以ConsoleKit举例来说，它允许用户在同一硬件设备登录的情况下，不用登出系统还可以再次登录，ConsoleKit以抽象化成会话的模型，从而实现这种登录机制。</p>
+<p>在图形登录下，都会使用这种方式来登录系统。</p>
+<blockquote>
+<p>在ConsoleKit的登录验证下，也是通过读取<code>/etc/passwd</code>配置文件的信息来验证用户有效性的。</p>
+<p>（对于如何验证的细节，可以参考一个系统提供的安全相关的函数：<code>crypt</code>）</p>
+</blockquote>
+<h1 id="打开用户SHELL-WDM程序"><a href="#打开用户SHELL-WDM程序" class="headerlink" title="打开用户SHELL/WDM程序"></a>打开用户SHELL/WDM程序</h1><p>当用户输入名称和密码通过验证后，init程序需要为用户执行一个Shell运行程序，以便使用户能够对系统来进行管理，Shell的种类很多，根据用户的爱好，可以自由选择一款适合的Shell。</p>
+<blockquote>
+<p>常见的Shell有：Bash, Csh, Ash, Tcsh, Zsh等等</p>
+</blockquote>
+<p>Shell被启动后，它就接管了用户的空间，用户可以通过它以命令方式来完成任何操作。</p>
+<blockquote>
+<p>Shell的启动会读取系统全局配置，再基于用户$HOME目录下的配置文件，读取自定义的配置。</p>
+</blockquote>
+<p>通常对于图形界面的登录有一些不同，图形界面的登录启动的不是Shell，而是一个XWindows的WDM，即一个窗口管理器，它接管用户空间，为用户初始化图形化设置，并展示图形界面。</p>
+<blockquote>
+<p>常见的 WDM有：GDM，SDDM，KDM等等</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/06/16/systemstartup/" rel="prev" title="计算机系统启动流程">
+      <i class="fa fa-chevron-left"></i> 计算机系统启动流程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/11/12/linuxcoredumptofindbug/" rel="next" title="利用Linux的coredump机制快速定位程序BUG">
+      利用Linux的coredump机制快速定位程序BUG <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">内核加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">初始化程序加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sysvinit%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Sysvinit的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%A8%E5%88%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">初始化部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.2.</span> <span class="nav-text">加载服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systemd%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Systemd的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始化加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.2.2.</span> <span class="nav-text">加载图示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">用户登录系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-3-%E7%99%BB%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">Runlevel 3 登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-4-%E7%99%BB%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">Runlevel 4 登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E7%94%A8%E6%88%B7SHELL-WDM%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">打开用户SHELL&#x2F;WDM程序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈祥"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">陈祥</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-comments"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5446613/hsiang-chen" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5446613&#x2F;hsiang-chen" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/hsiangchen99" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;hsiangchen99" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈祥</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'KH5sDkWHt8ZHDefcu';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
