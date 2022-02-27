@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GitHub的OAuth App的使用</title>
+    <url>/2020/04/15/githuboauthappintro/</url>
+    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
+<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+<span id="more"></span>
+
+<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
+<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
+<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
+<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
+<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
+<p><img src="gh_prof.png" alt="settings"></p>
+<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
+<p><img src="gh_oa_app.png" alt="oa_app"></p>
+<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
+<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
+<p><img src="gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
+<p><img src="gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<blockquote>
+<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+</blockquote>
+<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="pm1.png" alt="pm1"></p>
+<p><img src="pm2.png" alt="pm2"></p>
+<p><img src="pm3.png" alt="pm3"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>oauth</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -99,102 +135,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub的OAuth App的使用</title>
-    <url>/2020/04/15/githuboauthappintro/</url>
-    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
-<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
-<span id="more"></span>
-
-<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
-<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
-<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
-<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
-<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="gh_prof.png" alt="settings"></p>
-<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="gh_oa_app.png" alt="oa_app"></p>
-<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
-<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
-<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
-<blockquote>
-<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
-</blockquote>
-<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="pm1.png" alt="pm1"></p>
-<p><img src="pm2.png" alt="pm2"></p>
-<p><img src="pm3.png" alt="pm3"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>oauth</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <url>/2019/11/12/linuxcoredumptofindbug/</url>
-    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
-<span id="more"></span>
-
-<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
-<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
-<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
-<ul>
-<li>难确定（是否发生）</li>
-<li>难定位</li>
-</ul>
-<p>见下图：</p>
-<p><img src="crashed.png" alt="pic1"></p>
-<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>或者，也可以查看它的man文档。</p>
-<p>好了，言归正传，尝试输入命令以调试：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
-</blockquote>
-<p>出现如下图的结果：</p>
-<p><img src="info.png" alt="pic2"></p>
-<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="info2.png" alt="pic3"></p>
-<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>这句是我故意改错用于比较的，源代码是这样的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
-<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
-<p>图一：</p>
-<p><img src="stack.png" alt="pic4"></p>
-<p>图二：<br><img src="stack2.png" alt="pic5"></p>
-<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
-<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
-
-<p>图片展示：</p>
-<p><img src="disasm.png" alt="pic6"></p>
-<blockquote>
-<p>同样，xxxx为程序文件名</p>
-</blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>debug</tag>
-        <tag>coredump</tag>
-        <tag>gdb</tag>
-        <tag>objdump</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JNI函数调用之线程安全问题</title>
     <url>/2021/11/29/jnithreadsafe/</url>
     <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。</p>
@@ -259,6 +199,135 @@
         <tag>jni</tag>
         <tag>java</tag>
         <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用Linux的coredump机制快速定位程序BUG</title>
+    <url>/2019/11/12/linuxcoredumptofindbug/</url>
+    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+<span id="more"></span>
+
+<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="crashed.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
+</blockquote>
+<p>出现如下图的结果：</p>
+<p><img src="info.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="info2.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="stack.png" alt="pic4"></p>
+<p>图二：<br><img src="stack2.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
+
+<p>图片展示：</p>
+<p><img src="disasm.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>debug</tag>
+        <tag>coredump</tag>
+        <tag>gdb</tag>
+        <tag>objdump</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux环境搭建中文LaTeX排版系统</title>
+    <url>/2016/05/03/linuxlatex/</url>
+    <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
+<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
+<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
+<span id="more"></span>
+
+<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
+<p>首先需要准备如下软件包或压缩包：</p>
+<ul>
+<li>texlive 或 tetex</li>
+<li>CJK</li>
+<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
+</ul>
+<p>下面逐个简单介绍各个包的功能和作用。</p>
+<h3 id="1-texlive或tetex"><a href="#1-texlive或tetex" class="headerlink" title="1. texlive或tetex"></a>1. texlive或tetex</h3><p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
+<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
+<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
+<h3 id="2-CJK"><a href="#2-CJK" class="headerlink" title="2. CJK"></a>2. CJK</h3><p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
+<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3. 字体"></a>3. 字体</h3><p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
+<h2 id="具体操作步骤"><a href="#具体操作步骤" class="headerlink" title="具体操作步骤"></a>具体操作步骤</h2><p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
+<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
+<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
+<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
+<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
+<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
+<p>若想安装该字体，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uninstall.sh</span><br></pre></td></tr></table></figure>
+
+
+<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
+<blockquote>
+<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
+</blockquote>
+<h2 id="相关文件下载地址"><a href="#相关文件下载地址" class="headerlink" title="相关文件下载地址"></a>相关文件下载地址</h2><p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a><br><a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a><br><a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a><br><a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a><br><a href="http://cjk.ffii.org/">CJK</a><br><a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
+<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面我写的一个代码实验：</p>
+<pre><code>\documentclass[10pt]&#123;article&#125;
+\usepackage&#123;CJK&#125;
+\begin&#123;document&#125;
+\begin&#123;CJK&#125;&#123;UTF8&#125;&#123;nsung&#125;
+这是一个测试 
+\section&#123;章标题&#125;
+这是章的介绍
+\subsection&#123;节的标题&#125;
+这是节的介绍
+\subsubsection&#123;子节的标题&#125;
+这是子节的介绍 \\
+数学公式的测试：\\
+\Huge&#123;$y=2^x+\frac&#123;4&#125;&#123;6^z&#125;$&#125;
+\footnote&#123;这仍然是个测试，一个脚注&#125;
+\end&#123;CJK&#125;
+\end&#123;document&#125;
+</code></pre>
+<p>实验打印出的.dvi文件：</p>
+<p><img src="dvi.png" alt="dvi"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -399,72 +468,92 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux环境搭建中文LaTeX排版系统</title>
-    <url>/2016/05/03/linuxlatex/</url>
-    <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
-<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
-<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
+    <title>LZ77压缩算法</title>
+    <url>/2018/03/31/lz77compalgo/</url>
+    <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
 <span id="more"></span>
 
-<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
-<p>首先需要准备如下软件包或压缩包：</p>
-<ul>
-<li>texlive 或 tetex</li>
-<li>CJK</li>
-<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
-</ul>
-<p>下面逐个简单介绍各个包的功能和作用。</p>
-<h3 id="1-texlive或tetex"><a href="#1-texlive或tetex" class="headerlink" title="1. texlive或tetex"></a>1. texlive或tetex</h3><p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
-<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
-<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
-<h3 id="2-CJK"><a href="#2-CJK" class="headerlink" title="2. CJK"></a>2. CJK</h3><p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
-<h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3. 字体"></a>3. 字体</h3><p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
-<h2 id="具体操作步骤"><a href="#具体操作步骤" class="headerlink" title="具体操作步骤"></a>具体操作步骤</h2><p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
-<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
-<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
-<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
-<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
-<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
-<p>若想安装该字体，只要输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-
-<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uninstall.sh</span><br></pre></td></tr></table></figure>
-
-
-<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
 <blockquote>
-<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
 </blockquote>
-<h2 id="相关文件下载地址"><a href="#相关文件下载地址" class="headerlink" title="相关文件下载地址"></a>相关文件下载地址</h2><p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a><br><a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a><br><a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a><br><a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a><br><a href="http://cjk.ffii.org/">CJK</a><br><a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
-<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面我写的一个代码实验：</p>
-<pre><code>\documentclass[10pt]&#123;article&#125;
-\usepackage&#123;CJK&#125;
-\begin&#123;document&#125;
-\begin&#123;CJK&#125;&#123;UTF8&#125;&#123;nsung&#125;
-这是一个测试 
-\section&#123;章标题&#125;
-这是章的介绍
-\subsection&#123;节的标题&#125;
-这是节的介绍
-\subsubsection&#123;子节的标题&#125;
-这是子节的介绍 \\
-数学公式的测试：\\
-\Huge&#123;$y=2^x+\frac&#123;4&#125;&#123;6^z&#125;$&#125;
-\footnote&#123;这仍然是个测试，一个脚注&#125;
-\end&#123;CJK&#125;
-\end&#123;document&#125;
-</code></pre>
-<p>实验打印出的.dvi文件：</p>
-<p><img src="dvi.png" alt="dvi"></p>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
+<p>这里涉及到几个要素：</p>
+<ul>
+<li>滑动窗口缓冲区</li>
+<li>滑窗的前部区域</li>
+<li>滑窗的已编码区域</li>
+</ul>
+<h2 id="编码流程"><a href="#编码流程" class="headerlink" title="编码流程"></a>编码流程</h2><p>编码步骤：</p>
+<ol>
+<li>首先分配一块缓冲区域用来处理数据</li>
+<li>初始的前部区域为空</li>
+<li>初始的已编码区域也为空</li>
+<li>加载的字节流到前部区域，是否最后一个字节，是则进行第8步，否则继续第5步</li>
+<li>在已编码区域寻找匹配字节串，如果找到进行第6步，否则进行第7步</li>
+<li>将匹配到的第一个字节的相对位置和长度，标记到已编码区域中，继续第4步</li>
+<li>将前部区域的字节直接拷贝到已编码区域，继续第4步</li>
+<li>编码结束</li>
+</ol>
+<p>编码图示：</p>
+<p>当滑动窗口还没有处理数据时：</p>
+<p><img src="stepprecomp.png" alt="stepprecomp"></p>
+<p>当滑动窗口开始处理数据时：</p>
+<p><img src="stepcomp.png" alt="stepcomp"></p>
+<p>当滑动窗口正在处理数据时：</p>
+<p><img src="stepcomping.png" alt="stepcomping"></p>
+<p>当数据快要处理完时：</p>
+<p><img src="stepcompfin.png" alt="stepcompfin"></p>
+<p>整个过程如同字节流在这个滑动窗口的黑盒子里面流动过一样，然后，它被加工的数据是已经压缩的数据了。</p>
+<blockquote>
+<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是’\0’，则表示它是一个直译字节，是直接拷贝过来的字节，这两个’\0’后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
+</blockquote>
+<h2 id="解码流程"><a href="#解码流程" class="headerlink" title="解码流程"></a>解码流程</h2><p>解码的过程是编码过程的逆过程。</p>
+<p>解码步骤：</p>
+<ol>
+<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p>
+</li>
+<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p>
+</li>
+<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p>
+</li>
+<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p>
+</li>
+<li><p>解码结束</p>
+</li>
+</ol>
+<blockquote>
+<p>上面的输出缓存区域是指在字节处理位置处理过后的字节流存放的缓存区域就是输出缓存</p>
+</blockquote>
+<p>解码图示：</p>
+<p>滑动窗口还没有输入数据的时候：</p>
+<p><img src="steppreuncomp.png" alt="stepuncomp"></p>
+<p>滑动窗口开始处理数据的时候：</p>
+<p><img src="stepuncomp.png" alt="stepuncomp"></p>
+<p>数据在滑动窗口中处理：</p>
+<p><img src="stepuncomping.png" alt="stepuncomping"></p>
+<p>数据快要处理完的时候：</p>
+<p><img src="stepuncompfin.png" alt="stepuncompfin"></p>
+<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">search_maxlen_p</span><span class="params">( <span class="keyword">unsigned</span> <span class="keyword">char</span>**  pt, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* head, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* tail, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp = *pt;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) - <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lz77_encode</span><span class="params">(FILE* in,FILE* out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>)); <span class="comment">// allocate memory.</span></span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),size,in) == size)&#123;</span><br><span class="line">    head = tail = buf;</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123; <span class="comment">// loop block.</span></span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(buf  &gt; head)head = buf;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; head)&#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="comment">// search maximal matched bytes and position.</span></span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="keyword">unsigned</span> <span class="keyword">char</span> chars[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">          chars[<span class="number">0</span>] = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          chars[<span class="number">1</span>] = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes) &amp; <span class="number">0xff</span>);</span><br><span class="line">          fputc(chars[<span class="number">0</span>],out);</span><br><span class="line">          fputc(chars[<span class="number">1</span>],out);</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,tail - pt,bytes);</span></span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(*tail,out);</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(*tail,out);</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lz77_decode</span><span class="params">(FILE* in,FILE* out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* nbuf = <span class="number">0</span>,* ori_buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">long</span> ori_size = <span class="number">0</span>,nsize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,nsize); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(nsize &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(ori_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  nbuf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(nsize* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! nbuf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_buf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(ori_size* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(ori_buf)&#123;</span><br><span class="line">    head = tail = ori_buf; <span class="comment">// store head and tail of slide-window.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fread(nbuf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),nsize,in) == (nsize - <span class="number">4</span>))&#123;</span><br><span class="line">      <span class="keyword">unsigned</span> <span class="keyword">char</span>* pt  = nbuf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (nbuf + nsize - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(! pt[<span class="number">0</span>] &amp;&amp; ! pt[<span class="number">1</span>] )&#123; <span class="comment">// \0\0\?</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">2</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt += <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// \?\?</span></span><br><span class="line">          <span class="keyword">unsigned</span> <span class="keyword">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  =  pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>;</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,offset,length);</span></span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="keyword">unsigned</span> <span class="keyword">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(ori_buf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),ori_size,out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(ori_buf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(nbuf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
+<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>&quot;\0x00\0x00&quot;</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
+<p><img src="hexdat.png" alt="hexdat"></p>
+<p>一般来说，用LZ77算法压缩过的数据，为了抵消上面的劣势，可以将用LZ77压缩的数据再用哈夫曼编码再次编码，这样输出的数据压缩效率就高一些了。</p>
+<p>链接：<a href="https://github.com/hchen90/lz77">Github上的代码</a></p>
 ]]></content>
       <categories>
-        <category>随笔</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>linux</tag>
-        <tag>latex</tag>
+        <tag>lz77</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -503,8 +592,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>lzss</tag>
         <tag>algorithm</tag>
+        <tag>lzss</tag>
       </tags>
   </entry>
   <entry>
@@ -637,173 +726,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LZ77压缩算法</title>
-    <url>/2018/03/31/lz77compalgo/</url>
-    <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
-</blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
-<p>这里涉及到几个要素：</p>
-<ul>
-<li>滑动窗口缓冲区</li>
-<li>滑窗的前部区域</li>
-<li>滑窗的已编码区域</li>
-</ul>
-<h2 id="编码流程"><a href="#编码流程" class="headerlink" title="编码流程"></a>编码流程</h2><p>编码步骤：</p>
-<ol>
-<li>首先分配一块缓冲区域用来处理数据</li>
-<li>初始的前部区域为空</li>
-<li>初始的已编码区域也为空</li>
-<li>加载的字节流到前部区域，是否最后一个字节，是则进行第8步，否则继续第5步</li>
-<li>在已编码区域寻找匹配字节串，如果找到进行第6步，否则进行第7步</li>
-<li>将匹配到的第一个字节的相对位置和长度，标记到已编码区域中，继续第4步</li>
-<li>将前部区域的字节直接拷贝到已编码区域，继续第4步</li>
-<li>编码结束</li>
-</ol>
-<p>编码图示：</p>
-<p>当滑动窗口还没有处理数据时：</p>
-<p><img src="stepprecomp.png" alt="stepprecomp"></p>
-<p>当滑动窗口开始处理数据时：</p>
-<p><img src="stepcomp.png" alt="stepcomp"></p>
-<p>当滑动窗口正在处理数据时：</p>
-<p><img src="stepcomping.png" alt="stepcomping"></p>
-<p>当数据快要处理完时：</p>
-<p><img src="stepcompfin.png" alt="stepcompfin"></p>
-<p>整个过程如同字节流在这个滑动窗口的黑盒子里面流动过一样，然后，它被加工的数据是已经压缩的数据了。</p>
-<blockquote>
-<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是’\0’，则表示它是一个直译字节，是直接拷贝过来的字节，这两个’\0’后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
-</blockquote>
-<h2 id="解码流程"><a href="#解码流程" class="headerlink" title="解码流程"></a>解码流程</h2><p>解码的过程是编码过程的逆过程。</p>
-<p>解码步骤：</p>
-<ol>
-<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p>
-</li>
-<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p>
-</li>
-<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p>
-</li>
-<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p>
-</li>
-<li><p>解码结束</p>
-</li>
-</ol>
-<blockquote>
-<p>上面的输出缓存区域是指在字节处理位置处理过后的字节流存放的缓存区域就是输出缓存</p>
-</blockquote>
-<p>解码图示：</p>
-<p>滑动窗口还没有输入数据的时候：</p>
-<p><img src="steppreuncomp.png" alt="stepuncomp"></p>
-<p>滑动窗口开始处理数据的时候：</p>
-<p><img src="stepuncomp.png" alt="stepuncomp"></p>
-<p>数据在滑动窗口中处理：</p>
-<p><img src="stepuncomping.png" alt="stepuncomping"></p>
-<p>数据快要处理完的时候：</p>
-<p><img src="stepuncompfin.png" alt="stepuncompfin"></p>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">search_maxlen_p</span><span class="params">( <span class="keyword">unsigned</span> <span class="keyword">char</span>**  pt, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* head, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* tail, \</span></span></span><br><span class="line"><span class="params"><span class="function">                              <span class="keyword">unsigned</span> <span class="keyword">char</span>* end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp = *pt;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) - <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lz77_encode</span><span class="params">(FILE* in,FILE* out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>)); <span class="comment">// allocate memory.</span></span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),size,in) == size)&#123;</span><br><span class="line">    head = tail = buf;</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123; <span class="comment">// loop block.</span></span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(buf  &gt; head)head = buf;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; head)&#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="comment">// search maximal matched bytes and position.</span></span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="keyword">unsigned</span> <span class="keyword">char</span> chars[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">          chars[<span class="number">0</span>] = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          chars[<span class="number">1</span>] = (<span class="keyword">unsigned</span> <span class="keyword">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes) &amp; <span class="number">0xff</span>);</span><br><span class="line">          fputc(chars[<span class="number">0</span>],out);</span><br><span class="line">          fputc(chars[<span class="number">1</span>],out);</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,tail - pt,bytes);</span></span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(*tail,out);</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(*tail,out);</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lz77_decode</span><span class="params">(FILE* in,FILE* out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span>* nbuf = <span class="number">0</span>,* ori_buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">long</span> ori_size = <span class="number">0</span>,nsize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,nsize); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(nsize &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(ori_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  nbuf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(nsize* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! nbuf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_buf = (<span class="keyword">unsigned</span> <span class="keyword">char</span>*)<span class="built_in">malloc</span>(ori_size* <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(ori_buf)&#123;</span><br><span class="line">    head = tail = ori_buf; <span class="comment">// store head and tail of slide-window.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fread(nbuf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),nsize,in) == (nsize - <span class="number">4</span>))&#123;</span><br><span class="line">      <span class="keyword">unsigned</span> <span class="keyword">char</span>* pt  = nbuf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (nbuf + nsize - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(! pt[<span class="number">0</span>] &amp;&amp; ! pt[<span class="number">1</span>] )&#123; <span class="comment">// \0\0\?</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">2</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt += <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// \?\?</span></span><br><span class="line">          <span class="keyword">unsigned</span> <span class="keyword">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  =  pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>;</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,offset,length);</span></span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="keyword">unsigned</span> <span class="keyword">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(ori_buf,<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>),ori_size,out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(ori_buf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(nbuf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
-<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>&quot;\0x00\0x00&quot;</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
-<p><img src="hexdat.png" alt="hexdat"></p>
-<p>一般来说，用LZ77算法压缩过的数据，为了抵消上面的劣势，可以将用LZ77压缩的数据再用哈夫曼编码再次编码，这样输出的数据压缩效率就高一些了。</p>
-<p>链接：<a href="https://github.com/hchen90/lz77">Github上的代码</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>lz77</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分布式服务系统概述</title>
-    <url>/2020/12/20/redistributedservicesystem/</url>
-    <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
-<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他/她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
-<span id="more"></span>
-
-<h2 id="和传统的集中式C-S系统对比"><a href="#和传统的集中式C-S系统对比" class="headerlink" title="和传统的集中式C/S系统对比"></a>和传统的集中式C/S系统对比</h2><p>首先看一下传统的集中式C/S系统：</p>
-<p><img src="tra-cs-mod.png" alt="Tra-CS-System"></p>
-<p>而对于分布式的系统而言，它是这样的：</p>
-<p><img src="redi-rs-mod.png" alt="Redi-System"></p>
-<p>比起传统集中式C/S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
-<blockquote>
-<p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
-</blockquote>
-<p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
-<p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
-<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
-<p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
-<ul>
-<li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
-<li>在任何跨站服务同步都少不了协同通信，如何设计一套同步通信呢？</li>
-<li>上面说的数据一致性问题，应该如何解决呢？</li>
-<li>分布式系统就是为了可以拓展，那么如何设计来达到可拓展性呢？</li>
-</ul>
-<p>如果上来我们就去解决这些问题，会非常棘手，不过好在这些技术都存在很多设计模板，和很多开源中间件，因此我们不用从零开始来设计这套系统，不然又要从入门到放弃了。</p>
-<blockquote>
-<p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
-</blockquote>
-<p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
-<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
-<blockquote>
-<p>可以参考一下维基百科的描述：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
-</blockquote>
-<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
-<p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
-<p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
-<p><img src="actor.drawio.png" alt="Actor Model"></p>
-<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
-<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
-<p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
-<ul>
-<li>状态（State）：当前状态机的状态</li>
-<li>事件（Event）：触发操作的条件</li>
-<li>动作（Action）：所触发的操作</li>
-<li>变换（Transition）：从一个状态变成另一个状态的转化表</li>
-</ul>
-<blockquote>
-<p>一个状态机至少包含两个状态：开始态，结束态</p>
-</blockquote>
-<p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
-<p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
-<p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
-<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
-<p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
-<p><img src="mongo-cli.png" alt="mongo-db"></p>
-<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
-<p><img src="redis-cli.png" alt="redis"></p>
-<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
-<p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
-<p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
-<p><img src="diagram.png" alt="diagram"></p>
-<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
-<p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
-<blockquote>
-<p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-        <tag>Actor</tag>
-        <tag>MongoDB</tag>
-        <tag>Redis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机系统启动流程</title>
     <url>/2018/06/16/systemstartup/</url>
     <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
@@ -911,6 +833,84 @@
       </categories>
       <tags>
         <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分布式服务系统概述</title>
+    <url>/2020/12/20/redistributedservicesystem/</url>
+    <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
+<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他/她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
+<span id="more"></span>
+
+<h2 id="和传统的集中式C-S系统对比"><a href="#和传统的集中式C-S系统对比" class="headerlink" title="和传统的集中式C/S系统对比"></a>和传统的集中式C/S系统对比</h2><p>首先看一下传统的集中式C/S系统：</p>
+<p><img src="tra-cs-mod.png" alt="Tra-CS-System"></p>
+<p>而对于分布式的系统而言，它是这样的：</p>
+<p><img src="redi-rs-mod.png" alt="Redi-System"></p>
+<p>比起传统集中式C/S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
+<blockquote>
+<p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
+</blockquote>
+<p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
+<p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
+<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
+<p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
+<ul>
+<li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
+<li>在任何跨站服务同步都少不了协同通信，如何设计一套同步通信呢？</li>
+<li>上面说的数据一致性问题，应该如何解决呢？</li>
+<li>分布式系统就是为了可以拓展，那么如何设计来达到可拓展性呢？</li>
+</ul>
+<p>如果上来我们就去解决这些问题，会非常棘手，不过好在这些技术都存在很多设计模板，和很多开源中间件，因此我们不用从零开始来设计这套系统，不然又要从入门到放弃了。</p>
+<blockquote>
+<p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
+</blockquote>
+<p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
+<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
+<blockquote>
+<p>可以参考一下维基百科的描述：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
+</blockquote>
+<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
+<p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
+<p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
+<p><img src="actor.drawio.png" alt="Actor Model"></p>
+<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
+<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
+<p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
+<ul>
+<li>状态（State）：当前状态机的状态</li>
+<li>事件（Event）：触发操作的条件</li>
+<li>动作（Action）：所触发的操作</li>
+<li>变换（Transition）：从一个状态变成另一个状态的转化表</li>
+</ul>
+<blockquote>
+<p>一个状态机至少包含两个状态：开始态，结束态</p>
+</blockquote>
+<p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
+<p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
+<p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
+<p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
+<p><img src="mongo-cli.png" alt="mongo-db"></p>
+<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
+<p><img src="redis-cli.png" alt="redis"></p>
+<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
+<p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
+<p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
+<p><img src="diagram.png" alt="diagram"></p>
+<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
+<p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
+<blockquote>
+<p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+        <tag>Actor</tag>
+        <tag>MongoDB</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
 </search>
