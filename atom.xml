@@ -6,7 +6,7 @@
   <link href="https://hchen90.github.io/atom.xml" rel="self"/>
   
   <link href="https://hchen90.github.io/"/>
-  <updated>2021-11-29T16:48:12.290Z</updated>
+  <updated>2022-04-03T09:44:02.894Z</updated>
   <id>https://hchen90.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB Cloud云平台简单使用简介</title>
+    <link href="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/"/>
+    <id>https://hchen90.github.io/2022/04/03/mongodbcloudcluster/</id>
+    <published>2022-04-03T06:22:06.000Z</published>
+    <updated>2022-04-03T09:44:02.894Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是MongoDB-Cloud&quot;&gt;&lt;a href=&quot;#什么是MongoDB-Cloud&quot; class=&quot;headerlink&quot; title=&quot;什么是MongoDB Cloud&quot;&gt;&lt;/a&gt;什么是MongoDB Cloud&lt;/h1&gt;&lt;p&gt;MongoDB Cloud 的核心是 &lt;a href=&quot;https://www.mongodb.com/zh-cn/cloud/atlas&quot;&gt;MongoDB Atlas&lt;/a&gt; ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。&lt;a href=&quot;https://www.mongodb.com/zh-cn/what-is-mongodb&quot;&gt;MongoDB&lt;/a&gt; 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="MongoDB" scheme="https://hchen90.github.io/tags/MongoDB/"/>
+    
+    <category term="SQL" scheme="https://hchen90.github.io/tags/SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>JNI函数调用之线程安全问题</title>
@@ -56,11 +77,11 @@
     <category term="技术" scheme="https://hchen90.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="MongoDB" scheme="https://hchen90.github.io/tags/MongoDB/"/>
+    
     <category term="SQL" scheme="https://hchen90.github.io/tags/SQL/"/>
     
     <category term="Actor" scheme="https://hchen90.github.io/tags/Actor/"/>
-    
-    <category term="MongoDB" scheme="https://hchen90.github.io/tags/MongoDB/"/>
     
     <category term="Redis" scheme="https://hchen90.github.io/tags/Redis/"/>
     
