@@ -27,23 +27,23 @@
 <meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="什么是MongoDB CloudMongoDB Cloud 的核心是 MongoDB Atlas ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。MongoDB 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hchen90.github.io/price.png">
-<meta property="og:image" content="https://hchen90.github.io/dashboard.png">
-<meta property="og:image" content="https://hchen90.github.io/createcluster.png">
-<meta property="og:image" content="https://hchen90.github.io/location.png">
-<meta property="og:image" content="https://hchen90.github.io/provider.png">
-<meta property="og:image" content="https://hchen90.github.io/settings.png">
-<meta property="og:image" content="https://hchen90.github.io/adduser.png">
-<meta property="og:image" content="https://hchen90.github.io/ipwhitelist.png">
-<meta property="og:image" content="https://hchen90.github.io/connectcloud.png">
-<meta property="og:image" content="https://hchen90.github.io/collection.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/price.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/dashboard.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/createcluster.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/location.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/provider.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/settings.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/adduser.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/ipwhitelist.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/connectcloud.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/collection.png">
 <meta property="article:published_time" content="2022-04-03T06:22:06.000Z">
 <meta property="article:modified_time" content="2022-04-03T09:44:02.894Z">
 <meta property="article:author" content="陈祥">
 <meta property="article:tag" content="MongoDB">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hchen90.github.io/price.png">
+<meta name="twitter:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/price.png">
 
 <link rel="canonical" href="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/">
 
@@ -267,33 +267,33 @@
 <span id="more"></span>
 
 <p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
-<p><img src="/price.png" alt="price"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
 <p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
 <h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
-<p><img src="/dashboard.png" alt="dashboard"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
 <blockquote>
 <p>注意：上图中是已经创建了一个Cluster</p>
 </blockquote>
-<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/createcluster.png" alt="createcluster"></p>
+<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
 <p>根据业务服务需求，选择低延迟数据存放点：</p>
-<p><img src="/location.png" alt="location"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
 <p>以及云供应商：</p>
-<p><img src="/provider.png" alt="privider"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
 <p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
-<p><img src="/settings.png" alt="settings"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
 <h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
 <p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
-<p><img src="/adduser.png" alt="adduser"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
 <p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
-<p><img src="/ipwhitelist.png" alt="ipwhitelist"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
 <blockquote>
 <p>注意事项：</p>
 <p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
 </blockquote>
 <h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
-<p><img src="/connectcloud.png" alt="connectcloud"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
 <p>连上后就可以向里面写入一些数据了：</p>
-<p><img src="/collection.png" alt="collection"></p>
+<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
 
     </div>
 
