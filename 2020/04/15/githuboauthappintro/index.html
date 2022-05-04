@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,20 +27,20 @@
 <meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。 OAuth2的定义OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/gh_prof.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/gh_oa_app.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/pm1.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/pm2.png">
-<meta property="og:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/pm3.png">
+<meta property="og:image" content="https://hchen90.github.io/gh_prof.png">
+<meta property="og:image" content="https://hchen90.github.io/gh_oa_app.png">
+<meta property="og:image" content="https://hchen90.github.io/gh_oa_app_cb1.png">
+<meta property="og:image" content="https://hchen90.github.io/gh_oa_app_cb2.png">
+<meta property="og:image" content="https://hchen90.github.io/pm1.png">
+<meta property="og:image" content="https://hchen90.github.io/pm2.png">
+<meta property="og:image" content="https://hchen90.github.io/pm3.png">
 <meta property="article:published_time" content="2020-04-15T06:23:07.000Z">
 <meta property="article:modified_time" content="2020-04-15T06:23:07.000Z">
 <meta property="article:author" content="陈祥">
 <meta property="article:tag" content="github">
 <meta property="article:tag" content="oauth">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hchen90.github.io/2020/04/15/githuboauthappintro/gh_prof.png">
+<meta name="twitter:image" content="https://hchen90.github.io/gh_prof.png">
 
 <link rel="canonical" href="https://hchen90.github.io/2020/04/15/githuboauthappintro/">
 
@@ -268,21 +268,21 @@
 <p>关于 Github OAuth App 的更多介绍可以查看<a target="_blank" rel="noopener" href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
 <h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
 <h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="gh_prof.png" alt="settings"></p>
+<p><img src="/gh_prof.png" alt="settings"></p>
 <p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="gh_oa_app.png" alt="oa_app"></p>
+<p><img src="/gh_oa_app.png" alt="oa_app"></p>
 <p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
 <p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p><img src="/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
 <p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<p><img src="/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
 <blockquote>
 <p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
 </blockquote>
 <p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="pm1.png" alt="pm1"></p>
-<p><img src="pm2.png" alt="pm2"></p>
-<p><img src="pm3.png" alt="pm3"></p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/pm1.png" alt="pm1"></p>
+<p><img src="/pm2.png" alt="pm2"></p>
+<p><img src="/pm3.png" alt="pm3"></p>
 
     </div>
 
@@ -295,6 +295,26 @@
     <p>欢迎关注我的其它发布渠道</p>
 
     <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hsiangtochat">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
 
         <div class="social-item">
           <a target="_blank" class="social-link" href="/atom.xml">

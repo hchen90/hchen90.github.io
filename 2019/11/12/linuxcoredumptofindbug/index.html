@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,12 +27,12 @@
 <meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="什么是coredump？Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些Coredump删除。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/crashed.png">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/info.png">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/info2.png">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/stack.png">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/stack2.png">
-<meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/disasm.png">
+<meta property="og:image" content="https://hchen90.github.io/crashed.png">
+<meta property="og:image" content="https://hchen90.github.io/info.png">
+<meta property="og:image" content="https://hchen90.github.io/info2.png">
+<meta property="og:image" content="https://hchen90.github.io/stack.png">
+<meta property="og:image" content="https://hchen90.github.io/stack2.png">
+<meta property="og:image" content="https://hchen90.github.io/disasm.png">
 <meta property="article:published_time" content="2019-11-12T01:12:29.000Z">
 <meta property="article:modified_time" content="2019-11-12T01:12:29.000Z">
 <meta property="article:author" content="陈祥">
@@ -42,7 +42,7 @@
 <meta property="article:tag" content="gdb">
 <meta property="article:tag" content="objdump">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/crashed.png">
+<meta name="twitter:image" content="https://hchen90.github.io/crashed.png">
 
 <link rel="canonical" href="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/">
 
@@ -272,7 +272,7 @@
 <li>难定位</li>
 </ul>
 <p>见下图：</p>
-<p><img src="crashed.png" alt="pic1"></p>
+<p><img src="/crashed.png" alt="pic1"></p>
 <h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 <p>或者，也可以查看它的man文档。</p>
@@ -282,9 +282,9 @@
 <p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
 </blockquote>
 <p>出现如下图的结果：</p>
-<p><img src="info.png" alt="pic2"></p>
+<p><img src="/info.png" alt="pic2"></p>
 <p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="info2.png" alt="pic3"></p>
+<p><img src="/info2.png" alt="pic3"></p>
 <p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 
@@ -294,18 +294,18 @@
 <p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
 <h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
 <p>图一：</p>
-<p><img src="stack.png" alt="pic4"></p>
-<p>图二：<br><img src="stack2.png" alt="pic5"></p>
+<p><img src="/stack.png" alt="pic4"></p>
+<p>图二：<br><img src="/stack2.png" alt="pic5"></p>
 <p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
 <h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
 
 <p>图片展示：</p>
-<p><img src="disasm.png" alt="pic6"></p>
+<p><img src="/disasm.png" alt="pic6"></p>
 <blockquote>
 <p>同样，xxxx为程序文件名</p>
 </blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主&#x2F;子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
 
     </div>
 
@@ -318,6 +318,26 @@
     <p>欢迎关注我的其它发布渠道</p>
 
     <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hsiangtochat">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
 
         <div class="social-item">
           <a target="_blank" class="social-link" href="/atom.xml">

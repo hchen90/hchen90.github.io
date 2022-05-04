@@ -45,8 +45,8 @@
     <updated>2021-11-29T16:48:12.290Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;JNI-开发是什么&quot;&gt;&lt;a href=&quot;#JNI-开发是什么&quot; class=&quot;headerlink&quot; title=&quot;JNI 开发是什么&quot;&gt;&lt;/a&gt;JNI 开发是什么&lt;/h1&gt;&lt;p&gt;因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。&lt;/p&gt;
-&lt;p&gt;JNI开发是使用Java提供的本地化接口，比如C/C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;JNI-开发是什么&quot;&gt;&lt;a href=&quot;#JNI-开发是什么&quot; class=&quot;headerlink&quot; title=&quot;JNI 开发是什么&quot;&gt;&lt;/a&gt;JNI 开发是什么&lt;/h1&gt;&lt;p&gt;因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&amp;#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&amp;#x2F;C++层的调用，很多方面都存在类似之处。&lt;/p&gt;
+&lt;p&gt;JNI开发是使用Java提供的本地化接口，比如C&amp;#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。&lt;/p&gt;</summary>
     
     
     
@@ -70,7 +70,7 @@
     
     
     <summary type="html">&lt;h1 id=&quot;什么是分布式系统&quot;&gt;&lt;a href=&quot;#什么是分布式系统&quot; class=&quot;headerlink&quot; title=&quot;什么是分布式系统&quot;&gt;&lt;/a&gt;什么是分布式系统&lt;/h1&gt;&lt;p&gt;关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。&lt;/p&gt;
-&lt;p&gt;而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他/她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。&lt;/p&gt;</summary>
+&lt;p&gt;而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&amp;#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。&lt;/p&gt;</summary>
     
     
     
@@ -198,9 +198,9 @@
     <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="lzss" scheme="https://hchen90.github.io/tags/lzss/"/>
-    
     <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
+    
+    <category term="lzss" scheme="https://hchen90.github.io/tags/lzss/"/>
     
   </entry>
   
@@ -219,9 +219,9 @@
     <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
-    
     <category term="lz77" scheme="https://hchen90.github.io/tags/lz77/"/>
+    
+    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
     
   </entry>
   

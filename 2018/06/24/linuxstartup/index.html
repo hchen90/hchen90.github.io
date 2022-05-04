@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="个人站点">
 <meta property="og:description" content="内核加载在上篇博文里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。 通常在系统&#x2F;boot目录下放着内核文件，如下： 12initramfs-linux.imgvmlinuz-linux  GRUB（或者LILO）加载内核的时候，会把vmlinuz-linux映射到内存并会把它的一个初始根目录的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hchen90.github.io/2018/06/24/linuxstartup/systemd.png">
+<meta property="og:image" content="https://hchen90.github.io/systemd.png">
 <meta property="article:published_time" content="2018-06-24T03:50:03.000Z">
 <meta property="article:modified_time" content="2018-06-24T03:50:03.000Z">
 <meta property="article:author" content="陈祥">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hchen90.github.io/2018/06/24/linuxstartup/systemd.png">
+<meta name="twitter:image" content="https://hchen90.github.io/systemd.png">
 
 <link rel="canonical" href="https://hchen90.github.io/2018/06/24/linuxstartup/">
 
@@ -348,7 +348,7 @@
 <h3 id="初始化加载"><a href="#初始化加载" class="headerlink" title="初始化加载"></a>初始化加载</h3><blockquote>
 <p>在以Systemd为init服务的Linux系统中，参看<code>man 7 bootup</code>，以了解更多有关Systemd的启动详情。</p>
 </blockquote>
-<h3 id="加载图示"><a href="#加载图示" class="headerlink" title="加载图示"></a>加载图示</h3><p><img src="systemd.png" alt="systemd-graph"></p>
+<h3 id="加载图示"><a href="#加载图示" class="headerlink" title="加载图示"></a>加载图示</h3><p><img src="/systemd.png" alt="systemd-graph"></p>
 <p>由上图可见，在加载<code>sysinit</code>之前，可以加载很多的服务，而这些服务是互相独立无依赖的，因此可以并行地加载，当所有的服务都加载完后，<code>sysinit</code>服务就算加载成功，之后进行下面的服务加载，后面的加载逻辑以此类推。注意到，类似<code>rescue</code>这种是具有特殊用途的服务（这里的服务是用于系统崩溃后的拯救），还有一个独立依赖链，或者没有依赖的服务，被加载到目前的服务的情况，例如上图的<code>remote-fs</code>就是这种。</p>
 <blockquote>
 <p>上图绘制的systemd加载图比较粗糙，细节要复杂一些，有些一个单元的加载可能分好几个步骤来加载，有的可能细分更多的加载逻辑。</p>
@@ -360,13 +360,13 @@
 <p>此外，getty和login这种登录验证需要验证密码，通常是读取<code>/etc/passwd</code>下的保存设置来验证用户有效性。</p>
 <p>（细节可以参考系统函数：<code>getpass</code>）</p>
 </blockquote>
-<h2 id="Runlevel-4-登录"><a href="#Runlevel-4-登录" class="headerlink" title="Runlevel 4 登录"></a>Runlevel 4 登录</h2><p>如果是多用户模式，会启动一个用于管理系统登录的服务（一般PolKit/ConsoleKit最常见），这里以ConsoleKit举例来说，它允许用户在同一硬件设备登录的情况下，不用登出系统还可以再次登录，ConsoleKit以抽象化成会话的模型，从而实现这种登录机制。</p>
+<h2 id="Runlevel-4-登录"><a href="#Runlevel-4-登录" class="headerlink" title="Runlevel 4 登录"></a>Runlevel 4 登录</h2><p>如果是多用户模式，会启动一个用于管理系统登录的服务（一般PolKit&#x2F;ConsoleKit最常见），这里以ConsoleKit举例来说，它允许用户在同一硬件设备登录的情况下，不用登出系统还可以再次登录，ConsoleKit以抽象化成会话的模型，从而实现这种登录机制。</p>
 <p>在图形登录下，都会使用这种方式来登录系统。</p>
 <blockquote>
 <p>在ConsoleKit的登录验证下，也是通过读取<code>/etc/passwd</code>配置文件的信息来验证用户有效性的。</p>
 <p>（对于如何验证的细节，可以参考一个系统提供的安全相关的函数：<code>crypt</code>）</p>
 </blockquote>
-<h1 id="打开用户SHELL-WDM程序"><a href="#打开用户SHELL-WDM程序" class="headerlink" title="打开用户SHELL/WDM程序"></a>打开用户SHELL/WDM程序</h1><p>当用户输入名称和密码通过验证后，init程序需要为用户执行一个Shell运行程序，以便使用户能够对系统来进行管理，Shell的种类很多，根据用户的爱好，可以自由选择一款适合的Shell。</p>
+<h1 id="打开用户SHELL-x2F-WDM程序"><a href="#打开用户SHELL-x2F-WDM程序" class="headerlink" title="打开用户SHELL&#x2F;WDM程序"></a>打开用户SHELL&#x2F;WDM程序</h1><p>当用户输入名称和密码通过验证后，init程序需要为用户执行一个Shell运行程序，以便使用户能够对系统来进行管理，Shell的种类很多，根据用户的爱好，可以自由选择一款适合的Shell。</p>
 <blockquote>
 <p>常见的Shell有：Bash, Csh, Ash, Tcsh, Zsh等等</p>
 </blockquote>
@@ -390,6 +390,26 @@
     <p>欢迎关注我的其它发布渠道</p>
 
     <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hsiangtochat">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
 
         <div class="social-item">
           <a target="_blank" class="social-link" href="/atom.xml">
@@ -480,7 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">内核加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">初始化程序加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sysvinit%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Sysvinit的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%A8%E5%88%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">初始化部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.2.</span> <span class="nav-text">加载服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systemd%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Systemd的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始化加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.2.2.</span> <span class="nav-text">加载图示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">用户登录系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-3-%E7%99%BB%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">Runlevel 3 登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-4-%E7%99%BB%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">Runlevel 4 登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E7%94%A8%E6%88%B7SHELL-WDM%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">打开用户SHELL&#x2F;WDM程序</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">内核加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">初始化程序加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sysvinit%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Sysvinit的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%A8%E5%88%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">初始化部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.2.</span> <span class="nav-text">加载服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systemd%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">Systemd的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始化加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.2.2.</span> <span class="nav-text">加载图示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">用户登录系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-3-%E7%99%BB%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">Runlevel 3 登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runlevel-4-%E7%99%BB%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">Runlevel 4 登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E7%94%A8%E6%88%B7SHELL-x2F-WDM%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">打开用户SHELL&#x2F;WDM程序</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

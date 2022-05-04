@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -295,7 +295,7 @@
 <p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
 </blockquote>
 <h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
-<p>引导程序作为操作系统和BIOS/UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
+<p>引导程序作为操作系统和BIOS&#x2F;UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
 <blockquote>
 <p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
 </blockquote>
@@ -329,6 +329,26 @@
     <p>欢迎关注我的其它发布渠道</p>
 
     <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hsiangtochat">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
 
         <div class="social-item">
           <a target="_blank" class="social-link" href="/atom.xml">
