@@ -6,7 +6,7 @@
   <link href="https://hchen90.github.io/atom.xml" rel="self"/>
   
   <link href="https://hchen90.github.io/"/>
-  <updated>2022-06-11T00:53:02.000Z</updated>
+  <updated>2022-07-02T02:03:12.000Z</updated>
   <id>https://hchen90.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>玩转自搭建 GitLab 社区版</title>
+    <link href="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/"/>
+    <id>https://hchen90.github.io/2022/07/02/deploygitlabcerunner/</id>
+    <published>2022-07-02T02:03:12.000Z</published>
+    <updated>2022-07-02T02:03:12.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;玩转自搭建-GitLab-社区版&quot;&gt;&lt;a href=&quot;#玩转自搭建-GitLab-社区版&quot; class=&quot;headerlink&quot; title=&quot;玩转自搭建 GitLab 社区版&quot;&gt;&lt;/a&gt;玩转自搭建 GitLab 社区版&lt;/h1&gt;&lt;p&gt;本文的自搭建是基于docker容器技术而实现的，其中包括&lt;code&gt;gitlab-ce&lt;/code&gt;和&lt;code&gt;gitlab-runner&lt;/code&gt;两个部分。&lt;/p&gt;
+&lt;h2 id=&quot;什么是-GitLab&quot;&gt;&lt;a href=&quot;#什么是-GitLab&quot; class=&quot;headerlink&quot; title=&quot;什么是 GitLab&quot;&gt;&lt;/a&gt;什么是 GitLab&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;GitLab&lt;/strong&gt;是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，&lt;strong&gt;GitLab&lt;/strong&gt;被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="linux" scheme="https://hchen90.github.io/tags/linux/"/>
+    
+    <category term="git" scheme="https://hchen90.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>程序的代码修改问题</title>
@@ -217,9 +239,9 @@
     <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
-    
     <category term="lzss" scheme="https://hchen90.github.io/tags/lzss/"/>
+    
+    <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -238,9 +260,9 @@
     <category term="算法" scheme="https://hchen90.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="lz77" scheme="https://hchen90.github.io/tags/lz77/"/>
-    
     <category term="algorithm" scheme="https://hchen90.github.io/tags/algorithm/"/>
+    
+    <category term="lz77" scheme="https://hchen90.github.io/tags/lz77/"/>
     
   </entry>
   

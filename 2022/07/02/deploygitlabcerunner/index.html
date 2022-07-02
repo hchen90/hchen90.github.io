@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-TW,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="玩转自搭建 GitLab 社区版本文的自搭建是基于docker容器技术而实现的，其中包括gitlab-ce和gitlab-runner两个部分。 什么是 GitLabGitLab是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，GitLab被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转自搭建 GitLab 社区版">
+<meta property="og:url" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/index.html">
+<meta property="og:site_name" content="个人站点">
+<meta property="og:description" content="玩转自搭建 GitLab 社区版本文的自搭建是基于docker容器技术而实现的，其中包括gitlab-ce和gitlab-runner两个部分。 什么是 GitLabGitLab是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，GitLab被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/docker-gitlab-ce.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/login.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/gitlab-ce-info.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/admin-dashboard.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/runners.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/runner-register.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/runner-list.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/runner-details.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/runner-enable-untag.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/user-projects.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/new-project.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/git-push.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/pipelines.png">
+<meta property="og:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/pipeline-success.png">
+<meta property="article:published_time" content="2022-07-02T02:03:12.000Z">
+<meta property="article:modified_time" content="2022-07-02T02:03:12.000Z">
+<meta property="article:author" content="陈祥">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/docker-gitlab-ce.png">
+
+<link rel="canonical" href="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>玩转自搭建 GitLab 社区版 | 个人站点</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">个人站点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">陈祥的个人站点</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-flask fa-fw"></i>软件项目</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/hchen90" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2022/07/02/deploygitlabcerunner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人站点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          玩转自搭建 GitLab 社区版
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-02 10:03:12" itemprop="dateCreated datePublished" datetime="2022-07-02T10:03:12+08:00">2022-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="玩转自搭建-GitLab-社区版"><a href="#玩转自搭建-GitLab-社区版" class="headerlink" title="玩转自搭建 GitLab 社区版"></a>玩转自搭建 GitLab 社区版</h1><p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
+<h2 id="什么是-GitLab"><a href="#什么是-GitLab" class="headerlink" title="什么是 GitLab"></a>什么是 GitLab</h2><p><strong>GitLab</strong>是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，<strong>GitLab</strong>被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。</p>
+<span id="more"></span>
+
+<h2 id="它能做什么"><a href="#它能做什么" class="headerlink" title="它能做什么"></a>它能做什么</h2><p><strong>GitLab</strong>是代码仓库管理系统，它实现了一个更加界面友好的交互方式来对项目代码进行管理，除此之外，它还可以集成CI&#x2F;CD特性，通过部署 <strong>GitLab-Runner</strong> 来对项目代码进行持续集成和部署分发。</p>
+<p>功能很实用，可以满足常规的项目开发工作。</p>
+<blockquote>
+<p>对比一些大项目，其设计复杂，对于代码的管控也非常复杂，采取的管理手段也多样化，GitLab可能不一定适应这种场景，为此大多数的做法是仓库管理系统和CI&#x2F;CD系统分离的结构，仓库管理系统有五花八门的，有自己开发的（或者基于其他的开源项目），而对于CI&#x2F;CD系统一般都是采用Jenkins，其有更加丰富的成熟套件和流程方案。</p>
+</blockquote>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><p>这里介绍我测试搭建这套系统的搭建步骤。</p>
+<h3 id="搭建-GitLab-主框架"><a href="#搭建-GitLab-主框架" class="headerlink" title="搭建 GitLab 主框架"></a>搭建 GitLab 主框架</h3><p>在Docker镜像的主官网上，我们其实可以搜索到<strong>GitLab</strong>的镜像，所以我们很方便的使用Docker技术来部署我们需要的服务。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/docker-gitlab-ce.png" alt="docker-gitlab-ce"></p>
+<p>该镜像下有很多的<code>tags</code>，可以指定特定的版本，或者使用默认的最近版本。</p>
+<p><strong>GitLab</strong>的管理系统搭建，我使用编写<code>docker-compose.yml</code>方式来部署的，注意添加服务的时候，设置的环境变量<code>GITLAB_OMNIBUS_CONFIG</code>，可以为服务启动传递启动参数。</p>
+<p>当仓库管理系统服务创建并启动后，我们就可以打开浏览器来访问自搭建部署的<strong>GitLab</strong>服务了，如下图所示：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/login.png" alt="login"></p>
+<h3 id="登录管理员账号"><a href="#登录管理员账号" class="headerlink" title="登录管理员账号"></a>登录管理员账号</h3><p>以上步骤之后，需要登录管理员的账号，来进一步对系统进行配置，管理员的用户名是<code>root</code>，而密码需要从容器里面去获取，我们也可以获取容器的IP，便于后面的设置使用，如下：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/gitlab-ce-info.png" alt="gitlab-ce-info"></p>
+<p>据此我们得到管理员的密码来登录系统。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/admin-dashboard.png" alt="admin-dashboard"></p>
+<p>系统登录后进入系统配置的页面，在此页面上，我们可以完成仓库管理系统的所有配置工作。</p>
+<blockquote>
+<p>我们弄这个GitLab绝对不是仅仅作为代码管理系统而用的，如果仅仅为了代码仓库管理，可以移步到<code>gogs</code>这些代码仓库管理系统，它速度快，简洁而且美观，很有Github的界面感。</p>
+</blockquote>
+<h4 id="CI-x2F-CD环境部署配置"><a href="#CI-x2F-CD环境部署配置" class="headerlink" title="CI&#x2F;CD环境部署配置"></a>CI&#x2F;CD环境部署配置</h4><p>这是配置的重头戏了。</p>
+<p>当上面的步骤都差不多了，就要进行<strong>GitLab-Runner</strong>的部署，它是CI&#x2F;CD的代理节点，我们可以在管理员界面下点开<strong>Runner</strong>查看可以用的列表：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runners.png" alt="runners"></p>
+<p>上面啥也没有，我们需要弄一个代理机器作为节点，让它去跑<strong>Runner</strong>，为此我们需要在代理机器上安装<strong>GitLab-Runner</strong>，这是常规操作。</p>
+<p>但是，我只是测试一下GitLab的特性，把玩一下而已，所有不需要那么复杂，仍然可以通过部署Docker的<strong>GitLab-Runner</strong>服务的运行它，并把它注册到本地，这样为了便于解析IP，我需要调整一下Hosts文件的内容，增加一行解析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.176.2 gitlab.me</span><br></pre></td></tr></table></figure>
+
+<p>上面的<code>192.168.176.2</code>，不一定和你的一样，需要和上面的容器内的IP对应，这样多个容器都可以正确解析到正确的IP上去。</p>
+<p>下面是注册 Runner （这里的<code>token</code>可以从上图的<code>Registration token</code>处复制过来），如图所示：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-register.png" alt="runner-register"></p>
+<p>注册成功后，会在上面的Runners列表里面刷新出来。</p>
+<blockquote>
+<p>注意到，我这里的<code>executor</code>用的是<code>docker</code>，这样我可以用Docker镜像（gcc）来编译代码，这适合这种用Docker容器部署的情形，但是如果是直接把Runner安装在了实体机器上的，并且实体机器上已经存在开发环境，那么我们可以直接用<code>shell</code>方式来编译。如果是需要在代理节点上再次ssh登录远程机器来编译代码，那么<code>executor</code>就应该选用<code>ssh</code>的方式。具体使用哪种方式取决于实际环境。</p>
+</blockquote>
+<p>注册成功后，在 <strong>Runners</strong> 列表刷新出刚刚新加的<strong>Runner</strong>，如下图：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-list.png" alt="runner-list"></p>
+<p>上图中，点击左边的链接可以看到 <strong>Runner</strong> 的详情：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-details.png" alt="runner-details"></p>
+<p>点击右边的铅笔，可以修改Runner的参数设定：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-enable-untag.png" alt="runner-enable-untag"></p>
+<p>这里我把<code>Run untagged jobs</code>复选框勾上，并保存修改。</p>
+<p>到这里整个<strong>Runner</strong>的配置基本就完成了。</p>
+<blockquote>
+<p>Runner还有更多的配置，详情可以参考官方文档介绍。</p>
+</blockquote>
+<h3 id="创建普通用户帐号"><a href="#创建普通用户帐号" class="headerlink" title="创建普通用户帐号"></a>创建普通用户帐号</h3><p>接着我们打开一个隐私页面，进入登录界面，这次我们点击<code>Register now</code>来新建用户，填写完用户信息后，注册一个新的用户，然后需要管理员在用户管理界面上进行批准，批准通过后，刚注册的用户就可以正常登录系统了，如下图（图中的用户已经新建了一个仓库）：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/user-projects.png" alt="user-projects"></p>
+<p>该普通用户帐户是开发者，后面测试CI&#x2F;CD系统将以该用户进行测试。</p>
+<h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><p>新建仓库非常简单，只需点击<code>New project</code>后，填写项目基本信息即可：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/new-project.png" alt="new-project"></p>
+<h4 id="设置仓库的-gitlab-ci"><a href="#设置仓库的-gitlab-ci" class="headerlink" title="设置仓库的 gitlab-ci"></a>设置仓库的 gitlab-ci</h4><p>设置仓库根目录下的<code>.gitlab-ci.yml</code>文件，添加流水线任务。</p>
+<p>我写的非常简单，<code>script</code>指定编译命令，<code>only</code>指定在哪一个分支下进行CI部署（我指定的是：main分支），然后<code>tags</code>和注册<strong>Runner</strong>的<code>tags</code>一一对应的。</p>
+<blockquote>
+<p>关于<code>gitlab-ci.yml</code>文件的更多细节可以参考<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">官方文档</a>。</p>
+</blockquote>
+<h4 id="提交代码并进行-CI-操作"><a href="#提交代码并进行-CI-操作" class="headerlink" title="提交代码并进行 CI 操作"></a>提交代码并进行 CI 操作</h4><p>当一切都准备妥当后，下面就是写代码，并提交到远程仓库的main分支下：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/git-push.png" alt="git-push"></p>
+<p>刚提交了代码，系统上立即显示流水线就已经在更新了。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/pipelines.png" alt="pipelines"></p>
+<p>可以点开正在执行的流水，查看任务细节：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/pipeline-success.png" alt="pipeline-success"></p>
+<p>至此，这个<strong>GitLab</strong>的基本配置，和它的CI&#x2F;CD流水配置，以及使用也已经完成，这套代码管理系统的实用性，总体来说还算不错的。</p>
+<h2 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h2><p>以下两个文件是我的测试配置，仅供参考。</p>
+<h3 id="我的测试配置"><a href="#我的测试配置" class="headerlink" title="我的测试配置"></a>我的测试配置</h3><p><code>.gitlab-ci.yml</code>配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build source:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">build</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">linux</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">gcc</span> <span class="string">-o</span> <span class="string">main</span> <span class="string">main.c</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">interruptible:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>docker-compose.yml</code>配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gitlab-web:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-ce</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">&#x27;gitlab.me&#x27;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        external_url &#x27;http://gitlab.me:2080/&#x27;</span></span><br><span class="line"><span class="string"></span>    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2080:2080&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2443:443&#x27;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/config:/etc/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/logs:/var/log/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/data:/var/opt/gitlab</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">gitlab-runner:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-runner:alpine</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab-web</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/gitlab-runner:/etc/gitlab-runner</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">gitlab:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gitlab-network</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h3><blockquote>
+<p>可能会碰到的坑：</p>
+<ol>
+<li><code>docker-compose.yml</code>文件中设置环境变量<code>GITLAB_OMNIBUS_CONFIG</code>中的<code>external_url</code>，如果域名带端口，docker的服务监听会绑定到该端口上；</li>
+<li><code>gitlab-runner</code>的配置（config.toml），<code>runner.docker</code>节区下添加<code>network_mode</code>为<code>gitlab-network</code>以对应<code>docker-compose.yml</code></li>
+</ol>
+</blockquote>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a target="_blank" rel="noopener" href="https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/">how-to-install-gitlab-using-docker-compose</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/hsiangtochat">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/11/codemodification/" rel="prev" title="程序的代码修改问题">
+      <i class="fa fa-chevron-left"></i> 程序的代码修改问题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%A9%E8%BD%AC%E8%87%AA%E6%90%AD%E5%BB%BA-GitLab-%E7%A4%BE%E5%8C%BA%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">玩转自搭建 GitLab 社区版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-GitLab"><span class="nav-number">1.1.</span> <span class="nav-text">什么是 GitLab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%83%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">它能做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.</span> <span class="nav-text">搭建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA-GitLab-%E4%B8%BB%E6%A1%86%E6%9E%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">搭建 GitLab 主框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.3.2.</span> <span class="nav-text">登录管理员账号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CI-x2F-CD%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">CI&#x2F;CD环境部署配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%B8%90%E5%8F%B7"><span class="nav-number">1.3.3.</span> <span class="nav-text">创建普通用户帐号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%93%E5%BA%93%E7%9A%84-gitlab-ci"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">设置仓库的 gitlab-ci</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E5%B9%B6%E8%BF%9B%E8%A1%8C-CI-%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">提交代码并进行 CI 操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">具体配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">我的测试配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-number">1.4.2.</span> <span class="nav-text">我遇到的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">链接</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈祥"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">陈祥</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-comments"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a.chenxiang.z@gmail.com" title="E-Mail → mailto:a.chenxiang.z@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5446613/hsiang-chen" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5446613&#x2F;hsiang-chen" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/hsiangchen99" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;hsiangchen99" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈祥</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'KH5sDkWHt8ZHDefcu';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
