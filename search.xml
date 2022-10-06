@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>玩转自搭建 GitLab 社区版</title>
+    <url>/2022/07/02/deploygitlabcerunner/</url>
+    <content><![CDATA[<h1 id="玩转自搭建-GitLab-社区版"><a href="#玩转自搭建-GitLab-社区版" class="headerlink" title="玩转自搭建 GitLab 社区版"></a>玩转自搭建 GitLab 社区版</h1><p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
+<h2 id="什么是-GitLab"><a href="#什么是-GitLab" class="headerlink" title="什么是 GitLab"></a>什么是 GitLab</h2><p><strong>GitLab</strong>是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，<strong>GitLab</strong>被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。</p>
+<span id="more"></span>
+
+<h2 id="它能做什么"><a href="#它能做什么" class="headerlink" title="它能做什么"></a>它能做什么</h2><p><strong>GitLab</strong>是代码仓库管理系统，它实现了一个更加界面友好的交互方式来对项目代码进行管理，除此之外，它还可以集成CI&#x2F;CD特性，通过部署 <strong>GitLab-Runner</strong> 来对项目代码进行持续集成和部署分发。</p>
+<p>功能很实用，可以满足常规的项目开发工作。</p>
+<blockquote>
+<p>对比一些大项目，其设计复杂，对于代码的管控也非常复杂，采取的管理手段也多样化，GitLab可能不一定适应这种场景，为此大多数的做法是仓库管理系统和CI&#x2F;CD系统分离的结构，仓库管理系统有五花八门的，有自己开发的（或者基于其他的开源项目），而对于CI&#x2F;CD系统一般都是采用Jenkins，其有更加丰富的成熟套件和流程方案。</p>
+</blockquote>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><p>这里介绍我测试搭建这套系统的搭建步骤。</p>
+<h3 id="搭建-GitLab-主框架"><a href="#搭建-GitLab-主框架" class="headerlink" title="搭建 GitLab 主框架"></a>搭建 GitLab 主框架</h3><p>在Docker镜像的主官网上，我们其实可以搜索到<strong>GitLab</strong>的镜像，所以我们很方便的使用Docker技术来部署我们需要的服务。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/docker-gitlab-ce.png" alt="docker-gitlab-ce"></p>
+<p>该镜像下有很多的<code>tags</code>，可以指定特定的版本，或者使用默认的最近版本。</p>
+<p><strong>GitLab</strong>的管理系统搭建，我使用编写<code>docker-compose.yml</code>方式来部署的，注意添加服务的时候，设置的环境变量<code>GITLAB_OMNIBUS_CONFIG</code>，可以为服务启动传递启动参数。</p>
+<p>当仓库管理系统服务创建并启动后，我们就可以打开浏览器来访问自搭建部署的<strong>GitLab</strong>服务了，如下图所示：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/login.png" alt="login"></p>
+<h3 id="登录管理员账号"><a href="#登录管理员账号" class="headerlink" title="登录管理员账号"></a>登录管理员账号</h3><p>以上步骤之后，需要登录管理员的账号，来进一步对系统进行配置，管理员的用户名是<code>root</code>，而密码需要从容器里面去获取，我们也可以获取容器的IP，便于后面的设置使用，如下：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/gitlab-ce-info.png" alt="gitlab-ce-info"></p>
+<p>据此我们得到管理员的密码来登录系统。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/admin-dashboard.png" alt="admin-dashboard"></p>
+<p>系统登录后进入系统配置的页面，在此页面上，我们可以完成仓库管理系统的所有配置工作。</p>
+<blockquote>
+<p>我们弄这个GitLab绝对不是仅仅作为代码管理系统而用的，如果仅仅为了代码仓库管理，可以移步到<code>gogs</code>这些代码仓库管理系统，它速度快，简洁而且美观，很有Github的界面感。</p>
+</blockquote>
+<h4 id="CI-x2F-CD环境部署配置"><a href="#CI-x2F-CD环境部署配置" class="headerlink" title="CI&#x2F;CD环境部署配置"></a>CI&#x2F;CD环境部署配置</h4><p>这是配置的重头戏了。</p>
+<p>当上面的步骤都差不多了，就要进行<strong>GitLab-Runner</strong>的部署，它是CI&#x2F;CD的代理节点，我们可以在管理员界面下点开<strong>Runner</strong>查看可以用的列表：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runners.png" alt="runners"></p>
+<p>上面啥也没有，我们需要弄一个代理机器作为节点，让它去跑<strong>Runner</strong>，为此我们需要在代理机器上安装<strong>GitLab-Runner</strong>，这是常规操作。</p>
+<p>但是，我只是测试一下GitLab的特性，把玩一下而已，所有不需要那么复杂，仍然可以通过部署Docker的<strong>GitLab-Runner</strong>服务的运行它，并把它注册到本地，这样为了便于解析IP，我需要调整一下Hosts文件的内容，增加一行解析：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.176.2 gitlab.me</span><br></pre></td></tr></table></figure>
+
+<p>上面的<code>192.168.176.2</code>，不一定和你的一样，需要和上面的容器内的IP对应，这样多个容器都可以正确解析到正确的IP上去。</p>
+<p>下面是注册 Runner （这里的<code>token</code>可以从上图的<code>Registration token</code>处复制过来），如图所示：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-register.png" alt="runner-register"></p>
+<p>注册成功后，会在上面的Runners列表里面刷新出来。</p>
+<blockquote>
+<p>注意到，我这里的<code>executor</code>用的是<code>docker</code>，这样我可以用Docker镜像（gcc）来编译代码，这适合这种用Docker容器部署的情形，但是如果是直接把Runner安装在了实体机器上的，并且实体机器上已经存在开发环境，那么我们可以直接用<code>shell</code>方式来编译。如果是需要在代理节点上再次ssh登录远程机器来编译代码，那么<code>executor</code>就应该选用<code>ssh</code>的方式。具体使用哪种方式取决于实际环境。</p>
+</blockquote>
+<p>注册成功后，在 <strong>Runners</strong> 列表刷新出刚刚新加的<strong>Runner</strong>，如下图：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-list.png" alt="runner-list"></p>
+<p>上图中，点击左边的链接可以看到 <strong>Runner</strong> 的详情：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-details.png" alt="runner-details"></p>
+<p>点击右边的铅笔，可以修改Runner的参数设定：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/runner-enable-untag.png" alt="runner-enable-untag"></p>
+<p>这里我把<code>Run untagged jobs</code>复选框勾上，并保存修改。</p>
+<p>到这里整个<strong>Runner</strong>的配置基本就完成了。</p>
+<blockquote>
+<p>Runner还有更多的配置，详情可以参考官方文档介绍。</p>
+</blockquote>
+<h3 id="创建普通用户帐号"><a href="#创建普通用户帐号" class="headerlink" title="创建普通用户帐号"></a>创建普通用户帐号</h3><p>接着我们打开一个隐私页面，进入登录界面，这次我们点击<code>Register now</code>来新建用户，填写完用户信息后，注册一个新的用户，然后需要管理员在用户管理界面上进行批准，批准通过后，刚注册的用户就可以正常登录系统了，如下图（图中的用户已经新建了一个仓库）：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/user-projects.png" alt="user-projects"></p>
+<p>该普通用户帐户是开发者，后面测试CI&#x2F;CD系统将以该用户进行测试。</p>
+<h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><p>新建仓库非常简单，只需点击<code>New project</code>后，填写项目基本信息即可：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/new-project.png" alt="new-project"></p>
+<h4 id="设置仓库的-gitlab-ci"><a href="#设置仓库的-gitlab-ci" class="headerlink" title="设置仓库的 gitlab-ci"></a>设置仓库的 gitlab-ci</h4><p>设置仓库根目录下的<code>.gitlab-ci.yml</code>文件，添加流水线任务。</p>
+<p>我写的非常简单，<code>script</code>指定编译命令，<code>only</code>指定在哪一个分支下进行CI部署（我指定的是：main分支），然后<code>tags</code>和注册<strong>Runner</strong>的<code>tags</code>一一对应的。</p>
+<blockquote>
+<p>关于<code>gitlab-ci.yml</code>文件的更多细节可以参考<a href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">官方文档</a>。</p>
+</blockquote>
+<h4 id="提交代码并进行-CI-操作"><a href="#提交代码并进行-CI-操作" class="headerlink" title="提交代码并进行 CI 操作"></a>提交代码并进行 CI 操作</h4><p>当一切都准备妥当后，下面就是写代码，并提交到远程仓库的main分支下：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/git-push.png" alt="git-push"></p>
+<p>刚提交了代码，系统上立即显示流水线就已经在更新了。</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/pipelines.png" alt="pipelines"></p>
+<p>可以点开正在执行的流水，查看任务细节：</p>
+<p><img src="/2022/07/02/deploygitlabcerunner/pipeline-success.png" alt="pipeline-success"></p>
+<p>至此，这个<strong>GitLab</strong>的基本配置，和它的CI&#x2F;CD流水配置，以及使用也已经完成，这套代码管理系统的实用性，总体来说还算不错的。</p>
+<h2 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h2><p>以下两个文件是我的测试配置，仅供参考。</p>
+<h3 id="我的测试配置"><a href="#我的测试配置" class="headerlink" title="我的测试配置"></a>我的测试配置</h3><p><code>.gitlab-ci.yml</code>配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build source:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">build</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">linux</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">gcc</span> <span class="string">-o</span> <span class="string">main</span> <span class="string">main.c</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">interruptible:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>docker-compose.yml</code>配置如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gitlab-web:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-ce</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">&#x27;gitlab.me&#x27;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        external_url &#x27;http://gitlab.me:2080/&#x27;</span></span><br><span class="line"><span class="string"></span>    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2080:2080&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2443:443&#x27;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/config:/etc/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/logs:/var/log/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/data:/var/opt/gitlab</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">gitlab-runner:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-runner:alpine</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab-web</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/gitlab-runner:/etc/gitlab-runner</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">gitlab:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gitlab-network</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h3><blockquote>
+<p>可能会碰到的坑：</p>
+<ol>
+<li><code>docker-compose.yml</code>文件中设置环境变量<code>GITLAB_OMNIBUS_CONFIG</code>中的<code>external_url</code>，如果域名带端口，docker的服务监听会绑定到该端口上；</li>
+<li><code>gitlab-runner</code>的配置（config.toml），<code>runner.docker</code>节区下添加<code>network_mode</code>为<code>gitlab-network</code>以对应<code>docker-compose.yml</code></li>
+</ol>
+</blockquote>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/">how-to-install-gitlab-using-docker-compose</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -99,96 +192,39 @@
       </tags>
   </entry>
   <entry>
-    <title>玩转自搭建 GitLab 社区版</title>
-    <url>/2022/07/02/deploygitlabcerunner/</url>
-    <content><![CDATA[<h1 id="玩转自搭建-GitLab-社区版"><a href="#玩转自搭建-GitLab-社区版" class="headerlink" title="玩转自搭建 GitLab 社区版"></a>玩转自搭建 GitLab 社区版</h1><p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
-<h2 id="什么是-GitLab"><a href="#什么是-GitLab" class="headerlink" title="什么是 GitLab"></a>什么是 GitLab</h2><p><strong>GitLab</strong>是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，<strong>GitLab</strong>被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。</p>
+    <title>GitHub的OAuth App的使用</title>
+    <url>/2020/04/15/githuboauthappintro/</url>
+    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
+<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
 <span id="more"></span>
 
-<h2 id="它能做什么"><a href="#它能做什么" class="headerlink" title="它能做什么"></a>它能做什么</h2><p><strong>GitLab</strong>是代码仓库管理系统，它实现了一个更加界面友好的交互方式来对项目代码进行管理，除此之外，它还可以集成CI&#x2F;CD特性，通过部署 <strong>GitLab-Runner</strong> 来对项目代码进行持续集成和部署分发。</p>
-<p>功能很实用，可以满足常规的项目开发工作。</p>
+<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
+<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
+<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
+<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
+<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
+<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
+<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
+<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
 <blockquote>
-<p>对比一些大项目，其设计复杂，对于代码的管控也非常复杂，采取的管理手段也多样化，GitLab可能不一定适应这种场景，为此大多数的做法是仓库管理系统和CI&#x2F;CD系统分离的结构，仓库管理系统有五花八门的，有自己开发的（或者基于其他的开源项目），而对于CI&#x2F;CD系统一般都是采用Jenkins，其有更加丰富的成熟套件和流程方案。</p>
+<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
 </blockquote>
-<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><p>这里介绍我测试搭建这套系统的搭建步骤。</p>
-<h3 id="搭建-GitLab-主框架"><a href="#搭建-GitLab-主框架" class="headerlink" title="搭建 GitLab 主框架"></a>搭建 GitLab 主框架</h3><p>在Docker镜像的主官网上，我们其实可以搜索到<strong>GitLab</strong>的镜像，所以我们很方便的使用Docker技术来部署我们需要的服务。</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/docker-gitlab-ce.png" alt="docker-gitlab-ce"></p>
-<p>该镜像下有很多的<code>tags</code>，可以指定特定的版本，或者使用默认的最近版本。</p>
-<p><strong>GitLab</strong>的管理系统搭建，我使用编写<code>docker-compose.yml</code>方式来部署的，注意添加服务的时候，设置的环境变量<code>GITLAB_OMNIBUS_CONFIG</code>，可以为服务启动传递启动参数。</p>
-<p>当仓库管理系统服务创建并启动后，我们就可以打开浏览器来访问自搭建部署的<strong>GitLab</strong>服务了，如下图所示：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/login.png" alt="login"></p>
-<h3 id="登录管理员账号"><a href="#登录管理员账号" class="headerlink" title="登录管理员账号"></a>登录管理员账号</h3><p>以上步骤之后，需要登录管理员的账号，来进一步对系统进行配置，管理员的用户名是<code>root</code>，而密码需要从容器里面去获取，我们也可以获取容器的IP，便于后面的设置使用，如下：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/gitlab-ce-info.png" alt="gitlab-ce-info"></p>
-<p>据此我们得到管理员的密码来登录系统。</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/admin-dashboard.png" alt="admin-dashboard"></p>
-<p>系统登录后进入系统配置的页面，在此页面上，我们可以完成仓库管理系统的所有配置工作。</p>
-<blockquote>
-<p>我们弄这个GitLab绝对不是仅仅作为代码管理系统而用的，如果仅仅为了代码仓库管理，可以移步到<code>gogs</code>这些代码仓库管理系统，它速度快，简洁而且美观，很有Github的界面感。</p>
-</blockquote>
-<h4 id="CI-x2F-CD环境部署配置"><a href="#CI-x2F-CD环境部署配置" class="headerlink" title="CI&#x2F;CD环境部署配置"></a>CI&#x2F;CD环境部署配置</h4><p>这是配置的重头戏了。</p>
-<p>当上面的步骤都差不多了，就要进行<strong>GitLab-Runner</strong>的部署，它是CI&#x2F;CD的代理节点，我们可以在管理员界面下点开<strong>Runner</strong>查看可以用的列表：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/runners.png" alt="runners"></p>
-<p>上面啥也没有，我们需要弄一个代理机器作为节点，让它去跑<strong>Runner</strong>，为此我们需要在代理机器上安装<strong>GitLab-Runner</strong>，这是常规操作。</p>
-<p>但是，我只是测试一下GitLab的特性，把玩一下而已，所有不需要那么复杂，仍然可以通过部署Docker的<strong>GitLab-Runner</strong>服务的运行它，并把它注册到本地，这样为了便于解析IP，我需要调整一下Hosts文件的内容，增加一行解析：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.176.2 gitlab.me</span><br></pre></td></tr></table></figure>
-
-<p>上面的<code>192.168.176.2</code>，不一定和你的一样，需要和上面的容器内的IP对应，这样多个容器都可以正确解析到正确的IP上去。</p>
-<p>下面是注册 Runner （这里的<code>token</code>可以从上图的<code>Registration token</code>处复制过来），如图所示：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/runner-register.png" alt="runner-register"></p>
-<p>注册成功后，会在上面的Runners列表里面刷新出来。</p>
-<blockquote>
-<p>注意到，我这里的<code>executor</code>用的是<code>docker</code>，这样我可以用Docker镜像（gcc）来编译代码，这适合这种用Docker容器部署的情形，但是如果是直接把Runner安装在了实体机器上的，并且实体机器上已经存在开发环境，那么我们可以直接用<code>shell</code>方式来编译。如果是需要在代理节点上再次ssh登录远程机器来编译代码，那么<code>executor</code>就应该选用<code>ssh</code>的方式。具体使用哪种方式取决于实际环境。</p>
-</blockquote>
-<p>注册成功后，在 <strong>Runners</strong> 列表刷新出刚刚新加的<strong>Runner</strong>，如下图：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/runner-list.png" alt="runner-list"></p>
-<p>上图中，点击左边的链接可以看到 <strong>Runner</strong> 的详情：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/runner-details.png" alt="runner-details"></p>
-<p>点击右边的铅笔，可以修改Runner的参数设定：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/runner-enable-untag.png" alt="runner-enable-untag"></p>
-<p>这里我把<code>Run untagged jobs</code>复选框勾上，并保存修改。</p>
-<p>到这里整个<strong>Runner</strong>的配置基本就完成了。</p>
-<blockquote>
-<p>Runner还有更多的配置，详情可以参考官方文档介绍。</p>
-</blockquote>
-<h3 id="创建普通用户帐号"><a href="#创建普通用户帐号" class="headerlink" title="创建普通用户帐号"></a>创建普通用户帐号</h3><p>接着我们打开一个隐私页面，进入登录界面，这次我们点击<code>Register now</code>来新建用户，填写完用户信息后，注册一个新的用户，然后需要管理员在用户管理界面上进行批准，批准通过后，刚注册的用户就可以正常登录系统了，如下图（图中的用户已经新建了一个仓库）：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/user-projects.png" alt="user-projects"></p>
-<p>该普通用户帐户是开发者，后面测试CI&#x2F;CD系统将以该用户进行测试。</p>
-<h4 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h4><p>新建仓库非常简单，只需点击<code>New project</code>后，填写项目基本信息即可：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/new-project.png" alt="new-project"></p>
-<h4 id="设置仓库的-gitlab-ci"><a href="#设置仓库的-gitlab-ci" class="headerlink" title="设置仓库的 gitlab-ci"></a>设置仓库的 gitlab-ci</h4><p>设置仓库根目录下的<code>.gitlab-ci.yml</code>文件，添加流水线任务。</p>
-<p>我写的非常简单，<code>script</code>指定编译命令，<code>only</code>指定在哪一个分支下进行CI部署（我指定的是：main分支），然后<code>tags</code>和注册<strong>Runner</strong>的<code>tags</code>一一对应的。</p>
-<blockquote>
-<p>关于<code>gitlab-ci.yml</code>文件的更多细节可以参考<a href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">官方文档</a>。</p>
-</blockquote>
-<h4 id="提交代码并进行-CI-操作"><a href="#提交代码并进行-CI-操作" class="headerlink" title="提交代码并进行 CI 操作"></a>提交代码并进行 CI 操作</h4><p>当一切都准备妥当后，下面就是写代码，并提交到远程仓库的main分支下：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/git-push.png" alt="git-push"></p>
-<p>刚提交了代码，系统上立即显示流水线就已经在更新了。</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/pipelines.png" alt="pipelines"></p>
-<p>可以点开正在执行的流水，查看任务细节：</p>
-<p><img src="/2022/07/02/deploygitlabcerunner/pipeline-success.png" alt="pipeline-success"></p>
-<p>至此，这个<strong>GitLab</strong>的基本配置，和它的CI&#x2F;CD流水配置，以及使用也已经完成，这套代码管理系统的实用性，总体来说还算不错的。</p>
-<h2 id="具体配置"><a href="#具体配置" class="headerlink" title="具体配置"></a>具体配置</h2><p>以下两个文件是我的测试配置，仅供参考。</p>
-<h3 id="我的测试配置"><a href="#我的测试配置" class="headerlink" title="我的测试配置"></a>我的测试配置</h3><p><code>.gitlab-ci.yml</code>配置如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build source:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">build</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">linux</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">gcc</span> <span class="string">-o</span> <span class="string">main</span> <span class="string">main.c</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">interruptible:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p><code>docker-compose.yml</code>配置如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gitlab-web:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-ce</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">&#x27;gitlab.me&#x27;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        external_url &#x27;http://gitlab.me:2080/&#x27;</span></span><br><span class="line"><span class="string"></span>    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2080:2080&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;2443:443&#x27;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/config:/etc/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/logs:/var/log/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/data:/var/opt/gitlab</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">gitlab-runner:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-runner:alpine</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab-web</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./gitlab/gitlab-runner:/etc/gitlab-runner</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">gitlab</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">gitlab:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gitlab-network</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h3><blockquote>
-<p>可能会碰到的坑：</p>
-<ol>
-<li><code>docker-compose.yml</code>文件中设置环境变量<code>GITLAB_OMNIBUS_CONFIG</code>中的<code>external_url</code>，如果域名带端口，docker的服务监听会绑定到该端口上；</li>
-<li><code>gitlab-runner</code>的配置（config.toml），<code>runner.docker</code>节区下添加<code>network_mode</code>为<code>gitlab-network</code>以对应<code>docker-compose.yml</code></li>
-</ol>
-</blockquote>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/">how-to-install-gitlab-using-docker-compose</a></p>
+<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
 ]]></content>
       <categories>
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>linux</tag>
-        <tag>git</tag>
+        <tag>github</tag>
+        <tag>oauth</tag>
       </tags>
   </entry>
   <entry>
@@ -307,39 +343,70 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub的OAuth App的使用</title>
-    <url>/2020/04/15/githuboauthappintro/</url>
-    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
-<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+    <title>JNI函数调用之线程安全问题</title>
+    <url>/2021/11/29/jnithreadsafe/</url>
+    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。</p>
+<p>JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
 <span id="more"></span>
 
-<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
-<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
-<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
-<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
-<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
-<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
-<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
-<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
-<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
 <blockquote>
-<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
 </blockquote>
-<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
+<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
+<p>这里列举一下工具链：</p>
+<ul>
+<li>OpenJDK 11</li>
+<li>GCC 11</li>
+<li>CMake 3.21</li>
+<li>VSCode 最新版</li>
+</ul>
+<p>截图：</p>
+<p><img src="/2021/11/29/jnithreadsafe/devenv.png" alt="vscode"></p>
+<blockquote>
+<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
+
+<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
+</blockquote>
+<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
+<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
+<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
+<p>这会涉及到四种情形：</p>
+<ul>
+<li>静态Java本地调用改C++层的公共数据</li>
+<li>静态Java本地调用改Java层的公共数据</li>
+<li>动态Java本地调用改C++层的公共数据</li>
+<li>动态Java本地调用改Java层的公共数据</li>
+</ul>
+<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
+<blockquote>
+<p>至于什么是静态&#x2F;动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态&#x2F;动态调用。</p>
+<p>还有C++&#x2F;Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问&#x2F;修改在Java类或者Java对象中的公共变量。</p>
+</blockquote>
+<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
+<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyCls</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      <span class="type">ConSt</span> <span class="variable">st</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConSt</span>();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      <span class="type">MyCls</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyCls</span>();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">loadLibrary</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="variable">mySafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">long</span> <span class="variable">myUnsafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadSafe</span><span class="params">(ConSt st)</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="type">int</span> <span class="title function_">threadUnsafe</span><span class="params">()</span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadUnsafe2</span><span class="params">()</span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
+<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
+<h2 id="C-x2F-C-部分"><a href="#C-x2F-C-部分" class="headerlink" title="C&#x2F;C++部分"></a>C&#x2F;C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
+<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
+<blockquote>
+<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
+<p><img src="/2021/11/29/jnithreadsafe/sign.png" alt="sign"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
+<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
 ]]></content>
       <categories>
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>github</tag>
-        <tag>oauth</tag>
+        <tag>jni</tag>
+        <tag>java</tag>
+        <tag>cpp</tag>
       </tags>
   </entry>
   <entry>
@@ -472,113 +539,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JNI函数调用之线程安全问题</title>
-    <url>/2021/11/29/jnithreadsafe/</url>
-    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。</p>
-<p>JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
-</blockquote>
-<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
-<p>这里列举一下工具链：</p>
-<ul>
-<li>OpenJDK 11</li>
-<li>GCC 11</li>
-<li>CMake 3.21</li>
-<li>VSCode 最新版</li>
-</ul>
-<p>截图：</p>
-<p><img src="/2021/11/29/jnithreadsafe/devenv.png" alt="vscode"></p>
-<blockquote>
-<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
-
-<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
-</blockquote>
-<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
-<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
-<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
-<p>这会涉及到四种情形：</p>
-<ul>
-<li>静态Java本地调用改C++层的公共数据</li>
-<li>静态Java本地调用改Java层的公共数据</li>
-<li>动态Java本地调用改C++层的公共数据</li>
-<li>动态Java本地调用改Java层的公共数据</li>
-</ul>
-<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
-<blockquote>
-<p>至于什么是静态&#x2F;动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态&#x2F;动态调用。</p>
-<p>还有C++&#x2F;Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问&#x2F;修改在Java类或者Java对象中的公共变量。</p>
-</blockquote>
-<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
-<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyCls</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      <span class="type">ConSt</span> <span class="variable">st</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConSt</span>();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      <span class="type">MyCls</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyCls</span>();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">loadLibrary</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="variable">mySafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">long</span> <span class="variable">myUnsafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadSafe</span><span class="params">(ConSt st)</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="type">int</span> <span class="title function_">threadUnsafe</span><span class="params">()</span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadUnsafe2</span><span class="params">()</span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
-<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
-<h2 id="C-x2F-C-部分"><a href="#C-x2F-C-部分" class="headerlink" title="C&#x2F;C++部分"></a>C&#x2F;C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
-<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
-<blockquote>
-<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
-<p><img src="/2021/11/29/jnithreadsafe/sign.png" alt="sign"></p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
-<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>jni</tag>
-        <tag>java</tag>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LZSS压缩算法</title>
-    <url>/2018/04/01/lzsscompalgo/</url>
-    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
-</blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
-<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
-<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
-<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
-<p>数据分组标记方式：</p>
-<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
-<blockquote>
-<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
-</blockquote>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
-<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
-<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
-<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>lzss</tag>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LZ77压缩算法</title>
     <url>/2018/03/31/lz77compalgo/</url>
     <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
@@ -663,51 +623,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>algorithm</tag>
         <tag>lz77</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB Cloud云平台简单使用简介</title>
-    <url>/2022/04/03/mongodbcloudcluster/</url>
-    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
-<span id="more"></span>
-
-<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
-<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
-<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
-<blockquote>
-<p>注意：上图中是已经创建了一个Cluster</p>
-</blockquote>
-<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
-<p>根据业务服务需求，选择低延迟数据存放点：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
-<p>以及云供应商：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
-<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
-<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
-<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
-<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
-<blockquote>
-<p>注意事项：</p>
-<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
-</blockquote>
-<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
-<p>连上后就可以向里面写入一些数据了：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>SQL</tag>
+        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -848,6 +765,49 @@
       </tags>
   </entry>
   <entry>
+    <title>MongoDB Cloud云平台简单使用简介</title>
+    <url>/2022/04/03/mongodbcloudcluster/</url>
+    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
+<span id="more"></span>
+
+<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
+<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
+<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
+<blockquote>
+<p>注意：上图中是已经创建了一个Cluster</p>
+</blockquote>
+<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
+<p>根据业务服务需求，选择低延迟数据存放点：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
+<p>以及云供应商：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
+<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
+<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
+<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
+<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
+<blockquote>
+<p>注意事项：</p>
+<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
+</blockquote>
+<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
+<p>连上后就可以向里面写入一些数据了：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
     <url>/2016/10/03/minix/</url>
     <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
@@ -908,6 +868,46 @@
       </tags>
   </entry>
   <entry>
+    <title>LZSS压缩算法</title>
+    <url>/2018/04/01/lzsscompalgo/</url>
+    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+</blockquote>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
+<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
+<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
+<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
+<p>数据分组标记方式：</p>
+<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
+<blockquote>
+<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+</blockquote>
+<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
+<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
+<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
+<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>lzss</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
     <url>/2014/08/02/vssqlserver2008/</url>
     <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
@@ -940,72 +940,81 @@
       </tags>
   </entry>
   <entry>
-    <title>PE文件壳的设计过程</title>
-    <url>/2013/10/26/mspeshell/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
-<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+    <title>分布式服务系统概述</title>
+    <url>/2020/12/20/redistributedservicesystem/</url>
+    <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
+<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
 <span id="more"></span>
 
-<p><img src="/2013/10/26/mspeshell/pic1.png" alt="pic1"></p>
-<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
-<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
-<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
-<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
-<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
-<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
-<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
-<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
-
-<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
-<p><img src="/2013/10/26/mspeshell/pic2.png" alt="pic2"></p>
-<p>在程序未加载时，可以看到磁盘文件如下：</p>
-<p><img src="/2013/10/26/mspeshell/pic3.png" alt="pic3"></p>
-<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
-<p><img src="/2013/10/26/mspeshell/pic4.png" alt="pic4"></p>
-<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
-<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
-<p><img src="/2013/10/26/mspeshell/pic5.png" alt="pic5"></p>
-<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
-
-<p>也就成了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
-
-<p>再看看<code>754879f8</code>处的数据：</p>
-<p><img src="/2013/10/26/mspeshell/pic6.png" alt="pic6"></p>
-<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
-<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
-<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
-<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
-<p>没有加密代码段的情况（start处是我的代码）：</p>
-<p><img src="/2013/10/26/mspeshell/pic7.png" alt="pic7"></p>
-<p>加密代码段的情况（start是我的代码）：</p>
-<p><img src="/2013/10/26/mspeshell/pic8.png" alt="pic8"></p>
-<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
-<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
-<p>这种类型壳非常好脱，下面举个例子：</p>
-<p><img src="/2013/10/26/mspeshell/pic9.png" alt="pic9"></p>
-<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
-<p><img src="/2013/10/26/mspeshell/pic10.png" alt="pic10"></p>
-<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
-<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
-<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
-<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I&#x2F;O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I&#x2F;O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I&#x2F;O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
-<p>虚拟机还可以参入密码学加密机制，等。</p>
-<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
-<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
-<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+<h2 id="和传统的集中式C-x2F-S系统对比"><a href="#和传统的集中式C-x2F-S系统对比" class="headerlink" title="和传统的集中式C&#x2F;S系统对比"></a>和传统的集中式C&#x2F;S系统对比</h2><p>首先看一下传统的集中式C&#x2F;S系统：</p>
+<p><img src="/2020/12/20/redistributedservicesystem/tra-cs-mod.png" alt="Tra-CS-System"></p>
+<p>而对于分布式的系统而言，它是这样的：</p>
+<p><img src="/2020/12/20/redistributedservicesystem/redi-rs-mod.png" alt="Redi-System"></p>
+<p>比起传统集中式C&#x2F;S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
 <blockquote>
-<p>链接：<a href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
+<p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
+</blockquote>
+<p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
+<p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
+<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
+<p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
+<ul>
+<li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
+<li>在任何跨站服务同步都少不了协同通信，如何设计一套同步通信呢？</li>
+<li>上面说的数据一致性问题，应该如何解决呢？</li>
+<li>分布式系统就是为了可以拓展，那么如何设计来达到可拓展性呢？</li>
+</ul>
+<p>如果上来我们就去解决这些问题，会非常棘手，不过好在这些技术都存在很多设计模板，和很多开源中间件，因此我们不用从零开始来设计这套系统，不然又要从入门到放弃了。</p>
+<blockquote>
+<p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
+</blockquote>
+<p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
+<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
+<blockquote>
+<p>可以参考一下维基百科的描述：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
+</blockquote>
+<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
+<p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
+<p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
+<p><img src="/2020/12/20/redistributedservicesystem/actor.drawio.png" alt="Actor Model"></p>
+<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
+<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
+<p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
+<ul>
+<li>状态（State）：当前状态机的状态</li>
+<li>事件（Event）：触发操作的条件</li>
+<li>动作（Action）：所触发的操作</li>
+<li>变换（Transition）：从一个状态变成另一个状态的转化表</li>
+</ul>
+<blockquote>
+<p>一个状态机至少包含两个状态：开始态，结束态</p>
+</blockquote>
+<p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
+<p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
+<p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
+<p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
+<p><img src="/2020/12/20/redistributedservicesystem/mongo-cli.png" alt="mongo-db"></p>
+<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
+<p><img src="/2020/12/20/redistributedservicesystem/redis-cli.png" alt="redis"></p>
+<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
+<p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
+<p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
+<p><img src="/2020/12/20/redistributedservicesystem/diagram.png" alt="diagram"></p>
+<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
+<p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
+<blockquote>
+<p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>随笔</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
-        <tag>EXE</tag>
+        <tag>MongoDB</tag>
+        <tag>SQL</tag>
+        <tag>Actor</tag>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -1087,81 +1096,72 @@
       </tags>
   </entry>
   <entry>
-    <title>分布式服务系统概述</title>
-    <url>/2020/12/20/redistributedservicesystem/</url>
-    <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
-<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
+    <title>PE文件壳的设计过程</title>
+    <url>/2013/10/26/mspeshell/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
 <span id="more"></span>
 
-<h2 id="和传统的集中式C-x2F-S系统对比"><a href="#和传统的集中式C-x2F-S系统对比" class="headerlink" title="和传统的集中式C&#x2F;S系统对比"></a>和传统的集中式C&#x2F;S系统对比</h2><p>首先看一下传统的集中式C&#x2F;S系统：</p>
-<p><img src="/2020/12/20/redistributedservicesystem/tra-cs-mod.png" alt="Tra-CS-System"></p>
-<p>而对于分布式的系统而言，它是这样的：</p>
-<p><img src="/2020/12/20/redistributedservicesystem/redi-rs-mod.png" alt="Redi-System"></p>
-<p>比起传统集中式C&#x2F;S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
+<p><img src="/2013/10/26/mspeshell/pic1.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的<em>《windows32位环境下的汇编语言程序设计》</em>中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护"><a href="#如何实现导入函数的保护" class="headerlink" title="如何实现导入函数的保护?"></a>如何实现导入函数的保护?</h1><p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        DWORD   Characteristics;            <span class="comment">// 0 for terminatin gnull import descriptor</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span></span><br><span class="line">    &#125; DUMMYUNIONNAME;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">// 0 if not bound,</span></span><br><span class="line">                                            <span class="comment">// -1 if bound, and real date\time stamp</span></span><br><span class="line">                                            <span class="comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span></span><br><span class="line">                                            <span class="comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span></span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">// RVA to IAT (if bound this IAT has actual addresses)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="/2013/10/26/mspeshell/pic2.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="/2013/10/26/mspeshell/pic3.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="/2013/10/26/mspeshell/pic4.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="/2013/10/26/mspeshell/pic5.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP DWORD DS：[402014]</span><br></pre></td></tr></table></figure>
+
+<p>也就成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JMP 754879f8</span><br></pre></td></tr></table></figure>
+
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="/2013/10/26/mspeshell/pic6.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载“藏”的导入表"><a href="#如何加载“藏”的导入表" class="headerlink" title="如何加载“藏”的导入表"></a>如何加载“藏”的导入表</h2><p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码"><a href="#关于加密数据和代码" class="headerlink" title="关于加密数据和代码"></a>关于加密数据和代码</h2><p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="/2013/10/26/mspeshell/pic7.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="/2013/10/26/mspeshell/pic8.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="/2013/10/26/mspeshell/pic9.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="/2013/10/26/mspeshell/pic10.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想"><a href="#虚拟机的构想" class="headerlink" title="虚拟机的构想"></a>虚拟机的构想</h2><p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I&#x2F;O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I&#x2F;O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I&#x2F;O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充"><a href="#最后一点补充" class="headerlink" title="最后一点补充"></a>最后一点补充</h2><p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
 <blockquote>
-<p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
-</blockquote>
-<p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
-<p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
-<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
-<p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
-<ul>
-<li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
-<li>在任何跨站服务同步都少不了协同通信，如何设计一套同步通信呢？</li>
-<li>上面说的数据一致性问题，应该如何解决呢？</li>
-<li>分布式系统就是为了可以拓展，那么如何设计来达到可拓展性呢？</li>
-</ul>
-<p>如果上来我们就去解决这些问题，会非常棘手，不过好在这些技术都存在很多设计模板，和很多开源中间件，因此我们不用从零开始来设计这套系统，不然又要从入门到放弃了。</p>
-<blockquote>
-<p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
-</blockquote>
-<p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
-<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
-<blockquote>
-<p>可以参考一下维基百科的描述：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
-</blockquote>
-<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
-<p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
-<p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/actor.drawio.png" alt="Actor Model"></p>
-<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
-<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
-<p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
-<ul>
-<li>状态（State）：当前状态机的状态</li>
-<li>事件（Event）：触发操作的条件</li>
-<li>动作（Action）：所触发的操作</li>
-<li>变换（Transition）：从一个状态变成另一个状态的转化表</li>
-</ul>
-<blockquote>
-<p>一个状态机至少包含两个状态：开始态，结束态</p>
-</blockquote>
-<p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
-<p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
-<p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
-<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
-<p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/mongo-cli.png" alt="mongo-db"></p>
-<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/redis-cli.png" alt="redis"></p>
-<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
-<p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
-<p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/diagram.png" alt="diagram"></p>
-<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
-<p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
-<blockquote>
-<p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
+<p>链接：<a href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>随笔</category>
       </categories>
       <tags>
-        <tag>MongoDB</tag>
-        <tag>SQL</tag>
-        <tag>Actor</tag>
-        <tag>Redis</tag>
+        <tag>Windows</tag>
+        <tag>EXE</tag>
       </tags>
   </entry>
 </search>
