@@ -240,27 +240,6 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/jni/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/java/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/cpp/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/debug/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -289,6 +268,13 @@
   </url>
   
   <url>
+    <loc>https://hchen90.github.io/tags/latex/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hchen90.github.io/tags/lz77/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -303,7 +289,21 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/latex/</loc>
+    <loc>https://hchen90.github.io/tags/jni/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/java/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/cpp/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -311,20 +311,6 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/lzss/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/minix/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/qemu/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -345,14 +331,14 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/Actor/</loc>
+    <loc>https://hchen90.github.io/tags/minix/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/Redis/</loc>
+    <loc>https://hchen90.github.io/tags/qemu/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -388,6 +374,20 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/BIOS/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/Actor/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/Redis/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
