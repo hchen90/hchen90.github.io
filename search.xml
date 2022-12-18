@@ -1,6 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GitHub的OAuth App的使用</title>
+    <url>/2020/04/15/githuboauthappintro/</url>
+    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
+<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+<span id="more"></span>
+
+<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
+<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
+<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
+<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
+<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
+<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
+<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
+<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<blockquote>
+<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+</blockquote>
+<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>oauth</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序的代码修改问题</title>
+    <url>/2022/06/11/codemodification/</url>
+    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
+<span id="more"></span>
+
+<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
+<blockquote>
+<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
+</blockquote>
+<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
+<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
+<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
+<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
+<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
+<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
+<p>如下这种代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
+<p>我们可以进行适当的修改：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
+<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的逻辑会存在确定性终结点。</p>
+<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
+<p>改善后的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
+<blockquote>
+<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
+</blockquote>
+<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
+<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
+<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
+<ul>
+<li>通过所有测试</li>
+<li>没有重复代码</li>
+<li>体现系统的全部设计理念</li>
+<li>包含尽量少的实体（例如：类型，函数）</li>
+</ul>
+<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
+<li>蛇形命名</li>
+<li>大驼峰命名</li>
+<li>小驼峰命名</li>
+</ul>
+<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
+<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
+<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
+<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
+<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
+<blockquote>
+<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
+</blockquote>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
+<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
+<li>通过所有的测试</li>
+<li>重构代码</li>
+<li>代码不可重复性</li>
+<li>表达程序员的意图</li>
+<li>尽量少的类和方法数量</li>
+</ul>
+<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
+<blockquote>
+<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
+</blockquote>
+<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
+<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
+<p>操作系统里面用PV术语来表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
+
+<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
+<p>在C++中，也是用同样的方式机制：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
+<p>对于生产者而言：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
+
+<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
+<p>对应的消费者为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
+
+<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
+<p>可以用C++这样表示，对应生产者和消费者：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
+<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>expr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>玩转自搭建 GitLab 社区版</title>
     <url>/2022/07/02/deploygitlabcerunner/</url>
     <content><![CDATA[<h1 id="玩转自搭建-GitLab-社区版"><a href="#玩转自搭建-GitLab-社区版" class="headerlink" title="玩转自搭建 GitLab 社区版"></a>玩转自搭建 GitLab 社区版</h1><p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
@@ -189,157 +340,6 @@
         <tag>linux</tag>
         <tag>uefi</tag>
         <tag>openssl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub的OAuth App的使用</title>
-    <url>/2020/04/15/githuboauthappintro/</url>
-    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
-<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
-<span id="more"></span>
-
-<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
-<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
-<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
-<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
-<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
-<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
-<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
-<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
-<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
-<blockquote>
-<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
-</blockquote>
-<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>oauth</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序的代码修改问题</title>
-    <url>/2022/06/11/codemodification/</url>
-    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
-<span id="more"></span>
-
-<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
-<blockquote>
-<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
-</blockquote>
-<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
-<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
-<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
-<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
-<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
-<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
-<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
-<p>如下这种代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
-<p>我们可以进行适当的修改：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
-<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的逻辑会存在确定性终结点。</p>
-<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
-<p>改善后的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
-<blockquote>
-<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
-</blockquote>
-<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
-<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
-<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
-<ul>
-<li>通过所有测试</li>
-<li>没有重复代码</li>
-<li>体现系统的全部设计理念</li>
-<li>包含尽量少的实体（例如：类型，函数）</li>
-</ul>
-<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
-<li>蛇形命名</li>
-<li>大驼峰命名</li>
-<li>小驼峰命名</li>
-</ul>
-<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
-<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
-<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
-<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
-<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
-<blockquote>
-<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
-</blockquote>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
-<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
-<li>通过所有的测试</li>
-<li>重构代码</li>
-<li>代码不可重复性</li>
-<li>表达程序员的意图</li>
-<li>尽量少的类和方法数量</li>
-</ul>
-<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
-<blockquote>
-<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
-</blockquote>
-<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
-<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
-<p>操作系统里面用PV术语来表示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
-
-<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
-<p>在C++中，也是用同样的方式机制：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
-<p>对于生产者而言：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
-
-<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
-<p>对应的消费者为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
-
-<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
-<p>可以用C++这样表示，对应生产者和消费者：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
-<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>expr</tag>
       </tags>
   </entry>
   <entry>
@@ -539,6 +539,149 @@
       </tags>
   </entry>
   <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB Cloud云平台简单使用简介</title>
+    <url>/2022/04/03/mongodbcloudcluster/</url>
+    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
+<span id="more"></span>
+
+<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
+<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
+<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
+<blockquote>
+<p>注意：上图中是已经创建了一个Cluster</p>
+</blockquote>
+<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
+<p>根据业务服务需求，选择低延迟数据存放点：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
+<p>以及云供应商：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
+<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
+<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
+<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
+<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
+<blockquote>
+<p>注意事项：</p>
+<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
+</blockquote>
+<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
+<p>连上后就可以向里面写入一些数据了：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LZSS压缩算法</title>
+    <url>/2018/04/01/lzsscompalgo/</url>
+    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+</blockquote>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
+<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
+<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
+<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
+<p>数据分组标记方式：</p>
+<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
+<blockquote>
+<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+</blockquote>
+<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
+<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
+<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
+<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>lzss</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LZ77压缩算法</title>
     <url>/2018/03/31/lz77compalgo/</url>
     <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
@@ -623,8 +766,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>lz77</tag>
         <tag>algorithm</tag>
+        <tag>lz77</tag>
       </tags>
   </entry>
   <entry>
@@ -765,149 +908,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LZSS压缩算法</title>
-    <url>/2018/04/01/lzsscompalgo/</url>
-    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
-</blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
-<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
-<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
-<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
-<p>数据分组标记方式：</p>
-<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
-<blockquote>
-<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
-</blockquote>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
-<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
-<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
-<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>lzss</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB Cloud云平台简单使用简介</title>
-    <url>/2022/04/03/mongodbcloudcluster/</url>
-    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
-<span id="more"></span>
-
-<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
-<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
-<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
-<blockquote>
-<p>注意：上图中是已经创建了一个Cluster</p>
-</blockquote>
-<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
-<p>根据业务服务需求，选择低延迟数据存放点：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
-<p>以及云供应商：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
-<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
-<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
-<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
-<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
-<blockquote>
-<p>注意事项：</p>
-<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
-</blockquote>
-<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
-<p>连上后就可以向里面写入一些数据了：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <url>/2016/10/03/minix/</url>
-    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
-<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
-<span id="more"></span>
-
-<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
-<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
-<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
-<li>QEMU: <code>qemu-system-i386</code></li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
-</blockquote>
-<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
-<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
-</blockquote>
-<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
-<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
-<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
-<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
-<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
-</blockquote>
-<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
-<blockquote>
-<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>minix</tag>
-        <tag>qemu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
     <url>/2014/08/02/vssqlserver2008/</url>
     <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
@@ -1009,84 +1009,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机系统启动流程</title>
-    <url>/2018/06/16/systemstartup/</url>
-    <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
-<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
-</blockquote>
-<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
-<blockquote>
-<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
-</blockquote>
-<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
-<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
-<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
-<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
-<blockquote>
-<p>为什么要UEFI？</p>
-<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
-</blockquote>
-<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
-<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
-<blockquote>
-<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
-</blockquote>
-<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
-<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
-<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
-<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
-<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
-<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
-<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
-<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
-<ul>
-<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
-<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
-<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
-<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
-<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
-</ul>
-<blockquote>
-<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
-</blockquote>
-<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
-<p>引导程序作为操作系统和BIOS&#x2F;UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
-<blockquote>
-<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
-</blockquote>
-<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
-<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
-<ul>
-<li>初始化GDT, LDT寄存器</li>
-<li>Paging需要设置PTE映射</li>
-<li>设置TSS任务管理机制</li>
-<li>设置IDT表来管理IRQ中断</li>
-<li>初始化文件系统</li>
-<li>初始化IO设备</li>
-</ul>
-<blockquote>
-<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
-<p>另外，我有一个未完成的demo在GitHub上，可以点击<a href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
-</blockquote>
-<p>相关参考链接：</p>
-<ul>
-<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>总结</category>
-      </categories>
-      <tags>
-        <tag>GRUB</tag>
-        <tag>UEFI</tag>
-        <tag>BIOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分布式服务系统概述</title>
     <url>/2020/12/20/redistributedservicesystem/</url>
     <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
@@ -1162,6 +1084,84 @@
         <tag>SQL</tag>
         <tag>Actor</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机系统启动流程</title>
+    <url>/2018/06/16/systemstartup/</url>
+    <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
+<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
+</blockquote>
+<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
+<blockquote>
+<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
+</blockquote>
+<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
+<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
+<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
+<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
+<blockquote>
+<p>为什么要UEFI？</p>
+<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
+</blockquote>
+<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
+<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
+<blockquote>
+<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
+</blockquote>
+<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
+<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
+<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
+<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
+<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
+<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
+<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
+<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
+<ul>
+<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
+<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
+<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
+<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
+<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
+</ul>
+<blockquote>
+<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
+</blockquote>
+<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
+<p>引导程序作为操作系统和BIOS&#x2F;UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
+<blockquote>
+<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
+</blockquote>
+<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
+<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
+<ul>
+<li>初始化GDT, LDT寄存器</li>
+<li>Paging需要设置PTE映射</li>
+<li>设置TSS任务管理机制</li>
+<li>设置IDT表来管理IRQ中断</li>
+<li>初始化文件系统</li>
+<li>初始化IO设备</li>
+</ul>
+<blockquote>
+<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
+<p>另外，我有一个未完成的demo在GitHub上，可以点击<a href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
+</blockquote>
+<p>相关参考链接：</p>
+<ul>
+<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>GRUB</tag>
+        <tag>UEFI</tag>
+        <tag>BIOS</tag>
       </tags>
   </entry>
 </search>
