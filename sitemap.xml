@@ -205,13 +205,6 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/expr/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/uefi/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -234,6 +227,13 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/oauth/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/expr/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -275,20 +275,6 @@
   </url>
   
   <url>
-    <loc>https://hchen90.github.io/tags/lz77/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hchen90.github.io/tags/algorithm/</loc>
-    <lastmod>2022-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hchen90.github.io/tags/jni/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -304,6 +290,20 @@
   
   <url>
     <loc>https://hchen90.github.io/tags/cpp/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/lz77/</loc>
+    <lastmod>2022-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hchen90.github.io/tags/algorithm/</loc>
     <lastmod>2022-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -94,121 +94,6 @@
       </tags>
   </entry>
   <entry>
-    <title>程序的代码修改问题</title>
-    <url>/2022/06/11/codemodification/</url>
-    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
-<span id="more"></span>
-
-<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
-<blockquote>
-<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
-</blockquote>
-<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
-<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
-<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
-<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
-<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
-<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
-<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
-<p>如下这种代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
-<p>我们可以进行适当的修改：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
-<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的逻辑会存在确定性终结点。</p>
-<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
-<p>改善后的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
-<blockquote>
-<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
-</blockquote>
-<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
-<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
-<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
-<ul>
-<li>通过所有测试</li>
-<li>没有重复代码</li>
-<li>体现系统的全部设计理念</li>
-<li>包含尽量少的实体（例如：类型，函数）</li>
-</ul>
-<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
-<li>蛇形命名</li>
-<li>大驼峰命名</li>
-<li>小驼峰命名</li>
-</ul>
-<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
-<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
-<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
-<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
-<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
-<blockquote>
-<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
-</blockquote>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
-<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
-<li>通过所有的测试</li>
-<li>重构代码</li>
-<li>代码不可重复性</li>
-<li>表达程序员的意图</li>
-<li>尽量少的类和方法数量</li>
-</ul>
-<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
-<blockquote>
-<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
-</blockquote>
-<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
-<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
-<p>操作系统里面用PV术语来表示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
-
-<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
-<p>在C++中，也是用同样的方式机制：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
-<p>对于生产者而言：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
-
-<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
-<p>对应的消费者为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
-
-<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
-<p>可以用C++这样表示，对应生产者和消费者：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
-<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>expr</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -343,6 +228,121 @@
       </tags>
   </entry>
   <entry>
+    <title>程序的代码修改问题</title>
+    <url>/2022/06/11/codemodification/</url>
+    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
+<span id="more"></span>
+
+<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
+<blockquote>
+<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
+</blockquote>
+<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
+<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
+<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
+<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
+<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
+<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
+<p>如下这种代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
+<p>我们可以进行适当的修改：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
+<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的逻辑会存在确定性终结点。</p>
+<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
+<p>改善后的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
+<blockquote>
+<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
+</blockquote>
+<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
+<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
+<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
+<ul>
+<li>通过所有测试</li>
+<li>没有重复代码</li>
+<li>体现系统的全部设计理念</li>
+<li>包含尽量少的实体（例如：类型，函数）</li>
+</ul>
+<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
+<li>蛇形命名</li>
+<li>大驼峰命名</li>
+<li>小驼峰命名</li>
+</ul>
+<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
+<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
+<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
+<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
+<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
+<blockquote>
+<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
+</blockquote>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
+<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
+<li>通过所有的测试</li>
+<li>重构代码</li>
+<li>代码不可重复性</li>
+<li>表达程序员的意图</li>
+<li>尽量少的类和方法数量</li>
+</ul>
+<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
+<blockquote>
+<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
+</blockquote>
+<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
+<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
+<p>操作系统里面用PV术语来表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
+
+<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
+<p>在C++中，也是用同样的方式机制：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
+<p>对于生产者而言：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
+
+<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
+<p>对应的消费者为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
+
+<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
+<p>可以用C++这样表示，对应生产者和消费者：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
+<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>expr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利用Linux的coredump机制快速定位程序BUG</title>
     <url>/2019/11/12/linuxcoredumptofindbug/</url>
     <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
@@ -469,6 +469,73 @@
       <tags>
         <tag>linux</tag>
         <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JNI函数调用之线程安全问题</title>
+    <url>/2021/11/29/jnithreadsafe/</url>
+    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。</p>
+<p>JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
+</blockquote>
+<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
+<p>这里列举一下工具链：</p>
+<ul>
+<li>OpenJDK 11</li>
+<li>GCC 11</li>
+<li>CMake 3.21</li>
+<li>VSCode 最新版</li>
+</ul>
+<p>截图：</p>
+<p><img src="/2021/11/29/jnithreadsafe/devenv.png" alt="vscode"></p>
+<blockquote>
+<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
+
+<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
+</blockquote>
+<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
+<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
+<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
+<p>这会涉及到四种情形：</p>
+<ul>
+<li>静态Java本地调用改C++层的公共数据</li>
+<li>静态Java本地调用改Java层的公共数据</li>
+<li>动态Java本地调用改C++层的公共数据</li>
+<li>动态Java本地调用改Java层的公共数据</li>
+</ul>
+<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
+<blockquote>
+<p>至于什么是静态&#x2F;动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态&#x2F;动态调用。</p>
+<p>还有C++&#x2F;Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问&#x2F;修改在Java类或者Java对象中的公共变量。</p>
+</blockquote>
+<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
+<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyCls</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      <span class="type">ConSt</span> <span class="variable">st</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConSt</span>();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      <span class="type">MyCls</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyCls</span>();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">loadLibrary</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="variable">mySafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">long</span> <span class="variable">myUnsafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadSafe</span><span class="params">(ConSt st)</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="type">int</span> <span class="title function_">threadUnsafe</span><span class="params">()</span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadUnsafe2</span><span class="params">()</span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
+<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
+<h2 id="C-x2F-C-部分"><a href="#C-x2F-C-部分" class="headerlink" title="C&#x2F;C++部分"></a>C&#x2F;C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
+<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
+<blockquote>
+<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
+<p><img src="/2021/11/29/jnithreadsafe/sign.png" alt="sign"></p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
+<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>jni</tag>
+        <tag>java</tag>
+        <tag>cpp</tag>
       </tags>
   </entry>
   <entry>
@@ -698,73 +765,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JNI函数调用之线程安全问题</title>
-    <url>/2021/11/29/jnithreadsafe/</url>
-    <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。</p>
-<p>JNI开发是使用Java提供的本地化接口，比如C&#x2F;C++（也可以是其他语言），允许Java虚拟机里面的已经编译的代码和外界的本地化代码进行交互。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>因为Java是推崇平台可移植性的，本地化代码看起来破坏了可移植性，但是很多时候却是不可避免的，因为很多时候Java是无法实现一些比较底层功能的。</p>
-</blockquote>
-<h1 id="JNI开发需要哪些工具"><a href="#JNI开发需要哪些工具" class="headerlink" title="JNI开发需要哪些工具"></a>JNI开发需要哪些工具</h1><p>在我的机器里面是安装的OpenJDK11和GCC11，运行平台是Linux环境，为了提高编码效率，我使用的是VSCode，外加Java插件，CMake插件和C++插件。</p>
-<p>这里列举一下工具链：</p>
-<ul>
-<li>OpenJDK 11</li>
-<li>GCC 11</li>
-<li>CMake 3.21</li>
-<li>VSCode 最新版</li>
-</ul>
-<p>截图：</p>
-<p><img src="/2021/11/29/jnithreadsafe/devenv.png" alt="vscode"></p>
-<blockquote>
-<p>关于OpenJDK为何找不到javah，可以参考<a href="http://openjdk.java.net/jeps/313">这里</a>，意思就是javah已经被移除了，现在可以通过javac来完成同样的操作：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">javac -cp . -h abc MyCls.java</span><br></pre></td></tr></table></figure>
-
-<p>以上假设在当前目录的MyCls.java存在本地调用，它会在当前目录下创建一个abc目录，并且写入C++层的JNI调用头文件，你只需要在写一个和之对应的C++源代码即可。</p>
-</blockquote>
-<h1 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h1><p>其实<strong>线程安全</strong>是什么意思都可以通过搜索找到，也许你已经知道什么意思，不过这里不妨碍我再叙述一遍：</p>
-<p>线程安全是指某个函数在多线程的环境下被多次调用时，能够使得多线程的每个调用者都可以得到自己想要的正确结果。</p>
-<h1 id="主要因素"><a href="#主要因素" class="headerlink" title="主要因素"></a>主要因素</h1><p>产生线程安全问题的原因是因为<strong>函数调用需要对公共变量进行修改</strong></p>
-<p>这会涉及到四种情形：</p>
-<ul>
-<li>静态Java本地调用改C++层的公共数据</li>
-<li>静态Java本地调用改Java层的公共数据</li>
-<li>动态Java本地调用改C++层的公共数据</li>
-<li>动态Java本地调用改Java层的公共数据</li>
-</ul>
-<p>所以说只要涉及到公共数据都会产生线程安全的问题。</p>
-<blockquote>
-<p>至于什么是静态&#x2F;动态Java本地调用？区别就是对应本地调用是否被static修饰，修饰者属于类的调用，否则属于被申请的对象的调用，与之分别对应静态&#x2F;动态调用。</p>
-<p>还有C++&#x2F;Java层公共数据是什么？C++层的公共数据就是C++里面全局可以访问的变量，而这里的Java层公共变量指的是用C++访问&#x2F;修改在Java类或者Java对象中的公共变量。</p>
-</blockquote>
-<h1 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h1><p>以下我写了一个demo用于阐述JNI调用的线程安全的问题。</p>
-<h2 id="Java部分"><a href="#Java部分" class="headerlink" title="Java部分"></a>Java部分</h2><p>java部分的代码写得很简单，声明了几个本地JNI接口，并在main中调用之：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyCls</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (loadLibrary()) &#123;</span><br><span class="line">      sayHello();</span><br><span class="line"></span><br><span class="line">      <span class="type">ConSt</span> <span class="variable">st</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConSt</span>();</span><br><span class="line"></span><br><span class="line">      threadSafe(st); <span class="comment">// 只要传进的st唯一即可达到线程安全的要求</span></span><br><span class="line"></span><br><span class="line">      System.out.println(mySafeInt);</span><br><span class="line">      System.out.println(st.mInt);</span><br><span class="line"></span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, threadUnsafe());</span><br><span class="line"></span><br><span class="line">      <span class="type">MyCls</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyCls</span>();</span><br><span class="line">      obj.threadUnsafe2();</span><br><span class="line">      System.out.printf(<span class="string">&quot;unsafe int:%d\n&quot;</span>, obj.myUnsafeInt);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加载c动态库</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">loadLibrary</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      System.loadLibrary(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(SecurityException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(UnsatisfiedLinkError e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">long</span> <span class="variable">mySafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">long</span> <span class="variable">myUnsafeInt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 本地化接口</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadSafe</span><span class="params">(ConSt st)</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="type">int</span> <span class="title function_">threadUnsafe</span><span class="params">()</span>; <span class="comment">// 使用了C++层的公共变量，且没有加锁机制</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title function_">threadUnsafe2</span><span class="params">()</span>; <span class="comment">// 使用了Java层的公共变量，且没有加锁机制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的主体部分就是这三个本地调用的使用，<code>threadSafe()</code>实际上可以拆开成两个函数的，注意下面的C++部分的代码，为了省事，我把写在一块了。</p>
-<p><code>threadSafe()</code>是线程安全的在任意调用次数后，都会返回正确的结果，而下面的<code>threadUnsafe()</code>和<code>threadUnsafe2()</code>则不是线程安全的，在很多线程执行时会得到混乱的结果。</p>
-<h2 id="C-x2F-C-部分"><a href="#C-x2F-C-部分" class="headerlink" title="C&#x2F;C++部分"></a>C&#x2F;C++部分</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::mutex mu_thread_safe;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadSafe</span></span><br><span class="line"><span class="comment"> * Signature: (LConSt;)V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadSafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jclass clz, jobject cons_st)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 1 -- 使用C++的互斥锁来阻塞操作，这样可以保证线程安全</span></span><br><span class="line">    jfieldID _fieldId = env-&gt;<span class="built_in">GetStaticFieldID</span>(clz, <span class="string">&quot;mySafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>); <span class="comment">// 获得类中的静态成员变量</span></span><br><span class="line"></span><br><span class="line">    mu_thread_safe.<span class="built_in">lock</span>();</span><br><span class="line">    env-&gt;<span class="built_in">SetStaticLongField</span>(clz, _fieldId, <span class="number">12345</span>); <span class="comment">// 这里通过互斥锁来达到线程安全</span></span><br><span class="line">    mu_thread_safe.<span class="built_in">unlock</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// -- 2 -- 通过形式参数形式传递变量进入，只要保证形参不同即可线程安全</span></span><br><span class="line">    jclass _cs_clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;ConSt&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_cs_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID _cs_fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_cs_clz, <span class="string">&quot;mInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(cons_st, _cs_fieldId, <span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_MyCls_threadUnsafe</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *, jclass)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 3 -- 在C++层存储公共数据，并进行改写不加锁，不是线程安全的</span></span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> _unsafe_int = <span class="number">0</span>;</span><br><span class="line">    _unsafe_int++; <span class="comment">// 这里不加任何互斥锁机制</span></span><br><span class="line">    <span class="keyword">return</span> _unsafe_int;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Class:     MyCls</span></span><br><span class="line"><span class="comment"> * Method:    threadUnsafe2</span></span><br><span class="line"><span class="comment"> * Signature: ()V</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="type">void</span> JNICALL <span class="title">Java_MyCls_threadUnsafe2</span></span></span><br><span class="line"><span class="function">  <span class="params">(JNIEnv *env, jobject obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// -- 4 -- 或者C++层操作的公共数据是在java层的变量，亦不加锁，也不是线程安全的</span></span><br><span class="line">    jclass _clz = env-&gt;<span class="built_in">FindClass</span>(<span class="string">&quot;MyCls&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(_clz != <span class="literal">nullptr</span>);</span><br><span class="line">    jfieldID fieldId = env-&gt;<span class="built_in">GetFieldID</span>(_clz, <span class="string">&quot;myUnsafeInt&quot;</span>, <span class="string">&quot;J&quot;</span>);</span><br><span class="line">    <span class="built_in">assert</span>(fieldId != <span class="literal">nullptr</span>);</span><br><span class="line">    jlong myUnsafeInt = env-&gt;<span class="built_in">GetLongField</span>(obj, fieldId) + <span class="number">1</span>;</span><br><span class="line">    env-&gt;<span class="built_in">SetLongField</span>(obj, fieldId, myUnsafeInt);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上四处标识中，第一个函数<code>threadSafe()</code>处，通过C++的互斥锁来对公共变量修改是一种方案，但是它对于大量并发的操作而言，效率低下，因为它是互斥线性化的，所以一般推荐第二处标识的方案，它让用户传递一个自定义的类型对象，C++层就对这个对象进行修改，调用者负责它传递的对象唯一，那么对于大量的并发操作而言，得到的结果也必然是正确的。</p>
-<p>对于第三处和第四处是线程安全要求下不能满足的反例，第三处是没有对C++层公共数据添加加锁机制，而第四处是和第三处类似的，不同之处在于它的修改是在Java代码里的变量。</p>
-<blockquote>
-<p>关于GetFiledID()的第四个参数<code>sign</code>是什么意思？它是Java代码对这个函数的表述，可以参照下面这张图（还是从别人的那里截图过来的），更多详情可以查找官方文档。</p>
-<p><img src="/2021/11/29/jnithreadsafe/sign.png" alt="sign"></p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>保证线程安全的要求是对<strong>公共资源</strong>恰当使用，最好不要用公共资源，让调用者传递参数值作为修改变量来使用，效果最佳。</p>
-<p>链接：<br>demo<a href="src.tar.gz">下载</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>jni</tag>
-        <tag>java</tag>
-        <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LZSS压缩算法</title>
     <url>/2018/04/01/lzsscompalgo/</url>
     <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
@@ -905,6 +905,38 @@
       <tags>
         <tag>minix</tag>
         <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
+    <url>/2014/08/02/vssqlserver2008/</url>
+    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
+<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
+<span id="more"></span>
+
+<p><img src="/2014/08/02/vssqlserver2008/pic1.png" alt="pic1"></p>
+<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
+<p><img src="/2014/08/02/vssqlserver2008/pic2.png" alt="pic2"></p>
+<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
+<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
+<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
+<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
+<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
+<p><img src="/2014/08/02/vssqlserver2008/pic3.png" alt="pic3"></p>
+<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
+<p><img src="/2014/08/02/vssqlserver2008/pic4.png" alt="pic4"></p>
+<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
+<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除&#x2F;摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
+<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
+<p><img src="/2014/08/02/vssqlserver2008/pic5.png" alt="pic5"></p>
+<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
+<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1052,38 +1084,6 @@
         <tag>GRUB</tag>
         <tag>UEFI</tag>
         <tag>BIOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <url>/2014/08/02/vssqlserver2008/</url>
-    <content><![CDATA[<p>SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。</p>
-<p>首先在菜单的<code>视图</code>-&gt;<code>其他窗口</code>-&gt;<code>服务器资源管理器</code>，打开一个小的浮动窗口，就像这个样：</p>
-<span id="more"></span>
-
-<p><img src="/2014/08/02/vssqlserver2008/pic1.png" alt="pic1"></p>
-<p>可以在<code>数据连接</code>项，右击，<code>创建新SQL Server数据库</code>，出现以下这个对话框：</p>
-<p><img src="/2014/08/02/vssqlserver2008/pic2.png" alt="pic2"></p>
-<p>点击一下<code>刷新</code>，在左边的输入控件的下拉菜单可以选择一个服务器，如果没有，说明本地的服务段（假设你的计算机处于脱机状态）未启动，通常像这种庞大的，高稳定的数据库都是一个服务端负责监听，并且在内部完成数据库的数据改动，相当于将数据库的逻辑模式和内部模式放到了服务器端（就像一个Apache服务器，在服务端工作一样）。</p>
-<p>如果服务器没有启动，则要启动服务，这个跟mysql在Linux系统中用<code>service mysqld start</code>是一样的性质，在windows的开始菜单找到<code>服务</code>（Win7在<code>管理员工具</code>下面），或者在命令行输入<code>services.msc</code>，在<code>服务</code>工具的窗口中找到<code>SQL Server （SQLEXPRESS）</code>，</p>
-<p><code>SQL Server Browser</code>和<code>SQL Server VSS Writer</code>，将这些服务启动，再回到上面的对话框，点击<code>刷新</code>，再单击下拉菜单应该就可看到服务器名了，说明服务器端已经启动，可以连接了。</p>
-<p>在上面的服务器端选择后，输入新的数据库名，点击<code>确定</code>，就完成一个数据库的创建。<br>数据库创建后，就来连接刚才创建的数据。</p>
-<p>依然在<code>数据连接</code>项上，右击，<code>添加连接</code>，会出现一个<code>选择数据源</code>的对话框：</p>
-<p><img src="/2014/08/02/vssqlserver2008/pic3.png" alt="pic3"></p>
-<p>这里选择<code>Microsoft SQL Server</code>，单击<code>继续</code>，之后出现一个<code>添加连接</code>的对话框：</p>
-<p><img src="/2014/08/02/vssqlserver2008/pic4.png" alt="pic4"></p>
-<p>服务器名就是刚才启动服务后添加的服务器名，点击下拉菜单可以看到，数据名项就输入刚才创建的那个数据库，也可以点击下拉菜单来选择自己的数据库，在未确定前也可以单击<code>测试连接</code>来验证一下，而后单击<code>确定</code>。</p>
-<p>其实也可以在上面的<code>添加连接</code>，选择数据库名前不用创建一个新的数据库也可以，在<code>添加连接</code>对话框中的数据库名项，随便选个其他的数据库，登陆到数据库系统中，当登陆成功后，在查询栏中输入<code>create database XXX;</code>也可以创建数据库，其中XXX是数据库的名称，当要删除&#x2F;摧毁这个数据库时，用<code>drop database XXX;</code>即可删掉XXX数据库。</p>
-<p>在<code>服务器资源管理器</code>可以看到新建的数据库已经添加到<code>数据连接</code>的下面：</p>
-<p><img src="/2014/08/02/vssqlserver2008/pic5.png" alt="pic5"></p>
-<p>在<code>数据资源管理器</code>中的<code>数据连接</code>的下面，右击刚才的数据库，出现的菜单里有很多内容，选择<code>新建查询</code>，即可用SQL语言对数据库进行操作了。</p>
-<p>要关闭数据库连接时，同样右击数据库名，单击<code>关闭连接</code>即可。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
