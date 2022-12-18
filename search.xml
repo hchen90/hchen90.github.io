@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GitHub的OAuth App的使用</title>
-    <url>/2020/04/15/githuboauthappintro/</url>
-    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
-<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
-<span id="more"></span>
-
-<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
-<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
-<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
-<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
-<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
-<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
-<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
-<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
-<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
-<blockquote>
-<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
-</blockquote>
-<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>oauth</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序的代码修改问题</title>
     <url>/2022/06/11/codemodification/</url>
     <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
@@ -149,6 +113,42 @@
       </categories>
       <tags>
         <tag>expr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub的OAuth App的使用</title>
+    <url>/2020/04/15/githuboauthappintro/</url>
+    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
+<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+<span id="more"></span>
+
+<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
+<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
+<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
+<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
+<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
+<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
+<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
+<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<blockquote>
+<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+</blockquote>
+<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>oauth</tag>
       </tags>
   </entry>
   <entry>
@@ -472,6 +472,46 @@
       </tags>
   </entry>
   <entry>
+    <title>LZSS压缩算法</title>
+    <url>/2018/04/01/lzsscompalgo/</url>
+    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+</blockquote>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
+<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
+<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
+<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
+<p>数据分组标记方式：</p>
+<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
+<blockquote>
+<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+</blockquote>
+<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
+<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
+<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
+<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>lzss</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JNI函数调用之线程安全问题</title>
     <url>/2021/11/29/jnithreadsafe/</url>
     <content><![CDATA[<h1 id="JNI-开发是什么"><a href="#JNI-开发是什么" class="headerlink" title="JNI 开发是什么"></a>JNI 开发是什么</h1><p>因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C&#x2F;C++层结构都差不多，比如说CGO，其涉及到Golang和C&#x2F;C++层的调用，很多方面都存在类似之处。</p>
@@ -536,149 +576,6 @@
         <tag>jni</tag>
         <tag>java</tag>
         <tag>cpp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
-    <url>/2016/10/03/minix/</url>
-    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
-<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
-<span id="more"></span>
-
-<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
-<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
-<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
-<li>QEMU: <code>qemu-system-i386</code></li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
-</blockquote>
-<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
-<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
-</blockquote>
-<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
-<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
-<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
-<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
-
-<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
-
-<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
-<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
-</blockquote>
-<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
-<blockquote>
-<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>minix</tag>
-        <tag>qemu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MongoDB Cloud云平台简单使用简介</title>
-    <url>/2022/04/03/mongodbcloudcluster/</url>
-    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
-<span id="more"></span>
-
-<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
-<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
-<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
-<blockquote>
-<p>注意：上图中是已经创建了一个Cluster</p>
-</blockquote>
-<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
-<p>根据业务服务需求，选择低延迟数据存放点：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
-<p>以及云供应商：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
-<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
-<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
-<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
-<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
-<blockquote>
-<p>注意事项：</p>
-<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
-</blockquote>
-<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
-<p>连上后就可以向里面写入一些数据了：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>MongoDB</tag>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LZSS压缩算法</title>
-    <url>/2018/04/01/lzsscompalgo/</url>
-    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
-</blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
-<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
-<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
-<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
-<p>数据分组标记方式：</p>
-<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
-<blockquote>
-<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
-</blockquote>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
-<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
-<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
-<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>lzss</tag>
-        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -768,6 +665,49 @@
       <tags>
         <tag>algorithm</tag>
         <tag>lz77</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB Cloud云平台简单使用简介</title>
+    <url>/2022/04/03/mongodbcloudcluster/</url>
+    <content><![CDATA[<h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
+<span id="more"></span>
+
+<p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
+<p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
+<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
+<blockquote>
+<p>注意：上图中是已经创建了一个Cluster</p>
+</blockquote>
+<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
+<p>根据业务服务需求，选择低延迟数据存放点：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
+<p>以及云供应商：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
+<p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
+<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
+<p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
+<p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
+<blockquote>
+<p>注意事项：</p>
+<p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
+</blockquote>
+<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
+<p>连上后就可以向里面写入一些数据了：</p>
+<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>MongoDB</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -905,6 +845,66 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
+    <url>/2016/10/03/minix/</url>
+    <content><![CDATA[<h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。</p>
+<p>然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它装VMTools（因为缺失XWindows，虽然理论上可以给MINIX装个XWindows，但是，太麻烦，而且仅仅为了几个源代码，有点大途小用）。因为vmware的磁盘文件（<code>.vmdk</code>）不是原始的磁盘数据文件，而且，vmware对据如MINIX这些生僻系统的文件系统的识别性不是太理想，造成用vmware无法挂载MINIX系统到实体主机上，仍然复制不到虚拟机中的MINIX的文件。</p>
+<span id="more"></span>
+
+<p>所以，我选择使用qemu，qemu的磁盘是原始数据文件，可以在LINUX直接挂载到系统文件树上（只要LINUX能够识别这个文件系统）。</p>
+<h2 id="软件和系统准备"><a href="#软件和系统准备" class="headerlink" title="软件和系统准备"></a>软件和系统准备</h2><ul>
+<li>MINIX系统：<code>minix_R3.2.0-116fcea.iso</code></li>
+<li>QEMU: <code>qemu-system-i386</code></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>下载好MINIX的ISO文件，在LINUX中启动qemu，把MINIX装好，命令如下:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -cdrom minix_R3.2.0-116fcea.iso -hda minix.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果还没有准备minix.img的磁盘镜像，可以用<code>qemu-img create minix.img 2G</code>，或<code>touch minix.img &amp;&amp; truncate minix.img --size=2G</code>，来生成它。</p>
+</blockquote>
+<p>MINIX装好后，还需要准备一个备用的虚拟磁盘镜像，假如为<code>a.img</code>。这个磁盘就是用来存储需要的代码文件的，磁盘镜像创建好了以后，不要急着在LINUX中对它分区格式化等，这个操作应该在虚拟机中的MINIX系统里来完成。</p>
+<p>当<code>minix.img</code>和<code>a.img</code>都准备好后，就可以再启动虚拟机来拷贝文件了：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">qemu-system-i386 -enable-kvm -sdl -hda minix.img -hdb a.img</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>minix.img</code>是通过上一步，已经在里面装好了MINIX系统了。</p>
+</blockquote>
+<p>QEMU虚拟机开启后，进入MINIX系统，输入<code>root</code>来登录，到了MINIX系统中，因为MINIX的设备组织方式和LINUX系统有所不同，它的磁盘格式通常为据如<code>c0d0p0</code>等这样的形式，第一个’c’表示’Controller’，数字表示序号，第三个’d’表示’Disk’，后面的’p’表示’Partition’，还有’s’表示’Subpartition’，可以用<code>man dev</code>来查看一下，里面介绍的很详细。</p>
+<p>可以用<code>df</code>来判断系统的minix.img所占的是哪个磁盘，这时，虽然<code>a.img</code>已经连到了MINIX系统，但是还没有找到它在哪。首先，排除minix.img所占的哪个盘，假定为<code>c0d0</code>，这种已经挂载了的盘，若用<code>mount</code>来挂载的话，会显示忙而无法挂载，其中光驱一般是<code>c0d2</code>盘，可以试一试挂载<code>c0d1</code>盘，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>注意它报出的是什么错误，如果显示为不存在的设备或地址的错误，就接着试下一个，比如<code>c0d3</code>，直到有个不再报这个错误的磁盘，依照上面的假设，这里要除掉<code>c0d0</code>和<code>c0d2</code>，假如<code>c0d1</code>不报这个不存在设备或地址的错误，那就说明<code>a.img</code>就是这个设备。</p>
+<p>在MINIX中，用<code>fdisk</code>来给它分区，如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>在fdisk工具中，可以用<code>c</code>命令来修改分区信息，修改好后，用<code>w</code>命令来保存这些分区信息到<code>a.img</code>的镜像上。</p>
+<p><code>a.img</code>被分区好后，还要用<code>mkfs</code>来进行文件系统的格式化，<strong>注意，这里一定要选择用<code>ext2</code>的文件格式，因为<code>ext2</code>在MINIX和LINUX中，都能较好的支持</strong>，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/sbin/mkfs.ext2 /dev/c0d1</span><br></pre></td></tr></table></figure>
+
+<p>而后，<code>c0d1</code>就变成了可以挂载的设备了，可以用mount来挂载:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/c0d1 /mnt</span><br></pre></td></tr></table></figure>
+
+<p>挂载后，转到<code>/mnt</code>目录，把自己要复制的文件，全部拷贝到这里。完了以后，卸载挂载点，关虚拟机。</p>
+<p>现在，回到了LINUX系统中，<code>a.img</code>已经有刚才拷贝的文件了，我们只需要把<code>a.img</code>当作设备来进行挂载即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t ext2 a.img /mnt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>普通用户前面加<code>sudo</code>来升权，root用户无需加<code>sudo</code>。</p>
+</blockquote>
+<p>再转到<code>/mnt</code>中，文件是不是都在这。</p>
+<blockquote>
+<p>这个方法，是QEMU的文件复制通用方法，前提是虚拟机系统和实体主机系统都支持一种相同的文件系统，然后用这个共同的文件系统来作为传输媒介。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>minix</tag>
+        <tag>qemu</tag>
       </tags>
   </entry>
   <entry>
