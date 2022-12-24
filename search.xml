@@ -209,6 +209,42 @@
       </tags>
   </entry>
   <entry>
+    <title>GitHub的OAuth App的使用</title>
+    <url>/2020/04/15/githuboauthappintro/</url>
+    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
+<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+<span id="more"></span>
+
+<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
+<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
+<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
+<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
+<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
+<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
+<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
+<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
+<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
+<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<blockquote>
+<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+</blockquote>
+<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
+<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
+<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>oauth</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何在 Linux 系统启用 UEFI 的 Secure Boot</title>
     <url>/2017/09/02/enablesbonlinux/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
@@ -307,39 +343,63 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub的OAuth App的使用</title>
-    <url>/2020/04/15/githuboauthappintro/</url>
-    <content><![CDATA[<p>Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。</p>
-<h1 id="OAuth2的定义"><a href="#OAuth2的定义" class="headerlink" title="OAuth2的定义"></a>OAuth2的定义</h1><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方移动应用访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方移动应用或分享他们数据的所有内容，OAuth2.0 是 OAuth 协议的延续版本，但不向后兼容 OAuth 1.0，即完全废止了 OAuth1.0。</p>
+    <title>利用Linux的coredump机制快速定位程序BUG</title>
+    <url>/2019/11/12/linuxcoredumptofindbug/</url>
+    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
 <span id="more"></span>
 
-<h1 id="Github-OAuth-App"><a href="#Github-OAuth-App" class="headerlink" title="Github OAuth App"></a>Github OAuth App</h1><p>通过 OAuth2 协议可以让外部应用不用输入用户密码的情况下获取 GitHub 帐号的隐私信息，在 OAuth App 下的应用使用 GitHub 作为唯一标识。比起传统的简单认证方式来说，这种方式的认证具有更大的优势，因为对于token来说，它限制了数据类型，同时token也可以被用户随时撤销。</p>
-<p>一个 OAuth App 运行起来就像一个已认证的用户，OAuth App 适合创建复杂的流程，而 OAuth App 通常是被部署到某个站点下面，在认证中会重定向到这个站点并附加一些参数，用于验证流程进行一些复杂的操作。</p>
-<p>关于 Github OAuth App 的更多介绍可以查看<a href="https://docs.github.com/en/developers/apps/getting-started-with-apps/about-apps">这里</a>。</p>
-<h1 id="Github上创建-OAuth-App"><a href="#Github上创建-OAuth-App" class="headerlink" title="Github上创建 OAuth App"></a>Github上创建 OAuth App</h1><p>创建 Github App 很简单，只需要等陆 Github，在设置里面进行，它允许创建 Github App 和 Github OAuth App，这里我们创建的是 Github OAuth App。</p>
-<h2 id="登陆个人设置页面创建-App"><a href="#登陆个人设置页面创建-App" class="headerlink" title="登陆个人设置页面创建 App"></a>登陆个人设置页面创建 App</h2><p>在个人设置的左侧的导航栏的下方，有一个 <em>Developer settings</em> 的选项。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_prof.png" alt="settings"></p>
-<p>在下一步中，我们创建了一个 OAuth App，并给它起名  <em>blogchat</em>。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app.png" alt="oa_app"></p>
-<p>创建完 OAuth App 后，我们可以查看它的一些必要信息，比如：<em>Client ID</em> ，<em>Client secrets</em>，等等。</p>
-<p>还可以在其中对 App 进行一些信息的修改，例如：logo图片。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb1.png" alt="oa_app_cb1"></p>
-<p>在 App 的设置页面里面有很多的项目设定，其中有两项比较重要的设定，一个是 App 的主页的 URL，还有一个是认证的重定向回调 URL。</p>
-<p><img src="/2020/04/15/githuboauthappintro/gh_oa_app_cb2.png" alt="oa_app_cb2"></p>
+<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="/2019/11/12/linuxcoredumptofindbug/crashed.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>重定向回调URL用于在认证的时候传入 <em>code</em>，<em>code</em> 是用于后续的向 Github 获取 <em>access_token</em> 而需要的</p>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
 </blockquote>
-<p>在个人设置里面，对于 OAuth App 的设置到这里基本完成了，我们需要使用工具对 App 进行测试调通，如果可行的话，那么就说明我们的 App 是没有问题的，进而才可以进行后续的开发。</p>
-<h2 id="使用-Postman-进行调通测试"><a href="#使用-Postman-进行调通测试" class="headerlink" title="使用 Postman 进行调通测试"></a>使用 Postman 进行调通测试</h2><p><img src="/2020/04/15/githuboauthappintro/pm1.png" alt="pm1"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm2.png" alt="pm2"></p>
-<p><img src="/2020/04/15/githuboauthappintro/pm3.png" alt="pm3"></p>
+<p>出现如下图的结果：</p>
+<p><img src="/2019/11/12/linuxcoredumptofindbug/info.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="/2019/11/12/linuxcoredumptofindbug/info2.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="type">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="/2019/11/12/linuxcoredumptofindbug/stack.png" alt="pic4"></p>
+<p>图二：<br><img src="/2019/11/12/linuxcoredumptofindbug/stack2.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
+
+<p>图片展示：</p>
+<p><img src="/2019/11/12/linuxcoredumptofindbug/disasm.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主&#x2F;子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
 ]]></content>
       <categories>
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>github</tag>
-        <tag>oauth</tag>
+        <tag>linux</tag>
+        <tag>debug</tag>
+        <tag>coredump</tag>
+        <tag>gdb</tag>
+        <tag>objdump</tag>
       </tags>
   </entry>
   <entry>
@@ -410,66 +470,6 @@
       </tags>
   </entry>
   <entry>
-    <title>利用Linux的coredump机制快速定位程序BUG</title>
-    <url>/2019/11/12/linuxcoredumptofindbug/</url>
-    <content><![CDATA[<h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
-<span id="more"></span>
-
-<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
-<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
-<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
-<ul>
-<li>难确定（是否发生）</li>
-<li>难定位</li>
-</ul>
-<p>见下图：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/crashed.png" alt="pic1"></p>
-<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>或者，也可以查看它的man文档。</p>
-<p>好了，言归正传，尝试输入命令以调试：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">coredumpctl debug xxxx</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
-</blockquote>
-<p>出现如下图的结果：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/info.png" alt="pic2"></p>
-<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/info2.png" alt="pic3"></p>
-<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>这句是我故意改错用于比较的，源代码是这样的：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="type">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
-<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
-<p>图一：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/stack.png" alt="pic4"></p>
-<p>图二：<br><img src="/2019/11/12/linuxcoredumptofindbug/stack2.png" alt="pic5"></p>
-<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
-<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
-
-<p>图片展示：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/disasm.png" alt="pic6"></p>
-<blockquote>
-<p>同样，xxxx为程序文件名</p>
-</blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主&#x2F;子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>debug</tag>
-        <tag>coredump</tag>
-        <tag>gdb</tag>
-        <tag>objdump</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux环境搭建中文LaTeX排版系统</title>
     <url>/2016/05/03/linuxlatex/</url>
     <content><![CDATA[<h2 id="TeX系统简介"><a href="#TeX系统简介" class="headerlink" title="TeX系统简介"></a>TeX系统简介</h2><p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
@@ -536,95 +536,6 @@
       <tags>
         <tag>linux</tag>
         <tag>latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LZ77压缩算法</title>
-    <url>/2018/03/31/lz77compalgo/</url>
-    <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
-</blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
-<p>这里涉及到几个要素：</p>
-<ul>
-<li>滑动窗口缓冲区</li>
-<li>滑窗的前部区域</li>
-<li>滑窗的已编码区域</li>
-</ul>
-<h2 id="编码流程"><a href="#编码流程" class="headerlink" title="编码流程"></a>编码流程</h2><p>编码步骤：</p>
-<ol>
-<li>首先分配一块缓冲区域用来处理数据</li>
-<li>初始的前部区域为空</li>
-<li>初始的已编码区域也为空</li>
-<li>加载的字节流到前部区域，是否最后一个字节，是则进行第8步，否则继续第5步</li>
-<li>在已编码区域寻找匹配字节串，如果找到进行第6步，否则进行第7步</li>
-<li>将匹配到的第一个字节的相对位置和长度，标记到已编码区域中，继续第4步</li>
-<li>将前部区域的字节直接拷贝到已编码区域，继续第4步</li>
-<li>编码结束</li>
-</ol>
-<p>编码图示：</p>
-<p>当滑动窗口还没有处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepprecomp.png" alt="stepprecomp"></p>
-<p>当滑动窗口开始处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcomp.png" alt="stepcomp"></p>
-<p>当滑动窗口正在处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcomping.png" alt="stepcomping"></p>
-<p>当数据快要处理完时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcompfin.png" alt="stepcompfin"></p>
-<p>整个过程如同字节流在这个滑动窗口的黑盒子里面流动过一样，然后，它被加工的数据是已经压缩的数据了。</p>
-<blockquote>
-<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是’\0’，则表示它是一个直译字节，是直接拷贝过来的字节，这两个’\0’后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
-</blockquote>
-<h2 id="解码流程"><a href="#解码流程" class="headerlink" title="解码流程"></a>解码流程</h2><p>解码的过程是编码过程的逆过程。</p>
-<p>解码步骤：</p>
-<ol>
-<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p>
-</li>
-<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p>
-</li>
-<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p>
-</li>
-<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p>
-</li>
-<li><p>解码结束</p>
-</li>
-</ol>
-<blockquote>
-<p>上面的输出缓存区域是指在字节处理位置处理过后的字节流存放的缓存区域就是输出缓存</p>
-</blockquote>
-<p>解码图示：</p>
-<p>滑动窗口还没有输入数据的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/steppreuncomp.png" alt="stepuncomp"></p>
-<p>滑动窗口开始处理数据的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncomp.png" alt="stepuncomp"></p>
-<p>数据在滑动窗口中处理：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncomping.png" alt="stepuncomping"></p>
-<p>数据快要处理完的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncompfin.png" alt="stepuncompfin"></p>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) - <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)); <span class="comment">// allocate memory.</span></span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    head = tail = buf;</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123; <span class="comment">// loop block.</span></span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(buf  &gt; head)head = buf;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; head)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="comment">// search maximal matched bytes and position.</span></span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="type">unsigned</span> <span class="type">char</span> chars[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">          chars[<span class="number">0</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          chars[<span class="number">1</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes) &amp; <span class="number">0xff</span>);</span><br><span class="line">          fputc(chars[<span class="number">0</span>],out);</span><br><span class="line">          fputc(chars[<span class="number">1</span>],out);</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,tail - pt,bytes);</span></span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(*tail,out);</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(*tail,out);</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* nbuf = <span class="number">0</span>,* ori_buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> ori_size = <span class="number">0</span>,nsize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,nsize); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(nsize &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(ori_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  nbuf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(nsize* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! nbuf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(ori_size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(ori_buf)&#123;</span><br><span class="line">    head = tail = ori_buf; <span class="comment">// store head and tail of slide-window.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fread(nbuf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),nsize,in) == (nsize - <span class="number">4</span>))&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>* pt  = nbuf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (nbuf + nsize - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(! pt[<span class="number">0</span>] &amp;&amp; ! pt[<span class="number">1</span>] )&#123; <span class="comment">// \0\0\?</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">2</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt += <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// \?\?</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  =  pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>;</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,offset,length);</span></span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(ori_buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),ori_size,out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(ori_buf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(nbuf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
-<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>&quot;\0x00\0x00&quot;</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
-<p><img src="/2018/03/31/lz77compalgo/hexdat.png" alt="hexdat"></p>
-<p>一般来说，用LZ77算法压缩过的数据，为了抵消上面的劣势，可以将用LZ77压缩的数据再用哈夫曼编码再次编码，这样输出的数据压缩效率就高一些了。</p>
-<p>链接：<a href="https://github.com/hchen90/lz77">Github上的代码</a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>lz77</tag>
-        <tag>algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -765,43 +676,92 @@
       </tags>
   </entry>
   <entry>
-    <title>LZSS压缩算法</title>
-    <url>/2018/04/01/lzsscompalgo/</url>
-    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+    <title>LZ77压缩算法</title>
+    <url>/2018/03/31/lz77compalgo/</url>
+    <content><![CDATA[<h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
 <span id="more"></span>
 
 <blockquote>
-<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
 </blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
-<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
-<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
-<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
-<p>数据分组标记方式：</p>
-<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
+<p>这里涉及到几个要素：</p>
+<ul>
+<li>滑动窗口缓冲区</li>
+<li>滑窗的前部区域</li>
+<li>滑窗的已编码区域</li>
+</ul>
+<h2 id="编码流程"><a href="#编码流程" class="headerlink" title="编码流程"></a>编码流程</h2><p>编码步骤：</p>
+<ol>
+<li>首先分配一块缓冲区域用来处理数据</li>
+<li>初始的前部区域为空</li>
+<li>初始的已编码区域也为空</li>
+<li>加载的字节流到前部区域，是否最后一个字节，是则进行第8步，否则继续第5步</li>
+<li>在已编码区域寻找匹配字节串，如果找到进行第6步，否则进行第7步</li>
+<li>将匹配到的第一个字节的相对位置和长度，标记到已编码区域中，继续第4步</li>
+<li>将前部区域的字节直接拷贝到已编码区域，继续第4步</li>
+<li>编码结束</li>
+</ol>
+<p>编码图示：</p>
+<p>当滑动窗口还没有处理数据时：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepprecomp.png" alt="stepprecomp"></p>
+<p>当滑动窗口开始处理数据时：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepcomp.png" alt="stepcomp"></p>
+<p>当滑动窗口正在处理数据时：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepcomping.png" alt="stepcomping"></p>
+<p>当数据快要处理完时：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepcompfin.png" alt="stepcompfin"></p>
+<p>整个过程如同字节流在这个滑动窗口的黑盒子里面流动过一样，然后，它被加工的数据是已经压缩的数据了。</p>
 <blockquote>
-<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是’\0’，则表示它是一个直译字节，是直接拷贝过来的字节，这两个’\0’后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
 </blockquote>
+<h2 id="解码流程"><a href="#解码流程" class="headerlink" title="解码流程"></a>解码流程</h2><p>解码的过程是编码过程的逆过程。</p>
+<p>解码步骤：</p>
+<ol>
+<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p>
+</li>
+<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p>
+</li>
+<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p>
+</li>
+<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p>
+</li>
+<li><p>解码结束</p>
+</li>
+</ol>
+<blockquote>
+<p>上面的输出缓存区域是指在字节处理位置处理过后的字节流存放的缓存区域就是输出缓存</p>
+</blockquote>
+<p>解码图示：</p>
+<p>滑动窗口还没有输入数据的时候：</p>
+<p><img src="/2018/03/31/lz77compalgo/steppreuncomp.png" alt="stepuncomp"></p>
+<p>滑动窗口开始处理数据的时候：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepuncomp.png" alt="stepuncomp"></p>
+<p>数据在滑动窗口中处理：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepuncomping.png" alt="stepuncomping"></p>
+<p>数据快要处理完的时候：</p>
+<p><img src="/2018/03/31/lz77compalgo/stepuncompfin.png" alt="stepuncompfin"></p>
 <h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) - <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>编码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)); <span class="comment">// allocate memory.</span></span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    head = tail = buf;</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123; <span class="comment">// loop block.</span></span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(buf  &gt; head)head = buf;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; head)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="comment">// search maximal matched bytes and position.</span></span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="type">unsigned</span> <span class="type">char</span> chars[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">          chars[<span class="number">0</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          chars[<span class="number">1</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes) &amp; <span class="number">0xff</span>);</span><br><span class="line">          fputc(chars[<span class="number">0</span>],out);</span><br><span class="line">          fputc(chars[<span class="number">1</span>],out);</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,tail - pt,bytes);</span></span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(*tail,out);</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(*tail,out);</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>解码实现：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* nbuf = <span class="number">0</span>,* ori_buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> ori_size = <span class="number">0</span>,nsize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,nsize); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(nsize &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(ori_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  nbuf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(nsize* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! nbuf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(ori_size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(ori_buf)&#123;</span><br><span class="line">    head = tail = ori_buf; <span class="comment">// store head and tail of slide-window.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fread(nbuf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),nsize,in) == (nsize - <span class="number">4</span>))&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>* pt  = nbuf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (nbuf + nsize - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(! pt[<span class="number">0</span>] &amp;&amp; ! pt[<span class="number">1</span>] )&#123; <span class="comment">// \0\0\?</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">2</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt += <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// \?\?</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  =  pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>;</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,offset,length);</span></span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(ori_buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),ori_size,out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(ori_buf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(nbuf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
-<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
-<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
-<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
+<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>&quot;\0x00\0x00&quot;</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
+<p><img src="/2018/03/31/lz77compalgo/hexdat.png" alt="hexdat"></p>
+<p>一般来说，用LZ77算法压缩过的数据，为了抵消上面的劣势，可以将用LZ77压缩的数据再用哈夫曼编码再次编码，这样输出的数据压缩效率就高一些了。</p>
+<p>链接：<a href="https://github.com/hchen90/lz77">Github上的代码</a></p>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
+        <tag>lz77</tag>
         <tag>algorithm</tag>
-        <tag>lzss</tag>
       </tags>
   </entry>
   <entry>
@@ -862,6 +822,46 @@
       <tags>
         <tag>minix</tag>
         <tag>qemu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LZSS压缩算法</title>
+    <url>/2018/04/01/lzsscompalgo/</url>
+    <content><![CDATA[<h1 id="LZSS算法简介"><a href="#LZSS算法简介" class="headerlink" title="LZSS算法简介"></a>LZSS算法简介</h1><p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+</blockquote>
+<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
+<p>LZSS算法和LZ77算法的编码&#x2F;解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
+<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
+<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
+<p>数据分组标记方式：</p>
+<p><img src="/2018/04/01/lzsscompalgo/bits.png" alt="databits"></p>
+<blockquote>
+<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+</blockquote>
+<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) + <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size);</span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span>  np      =  <span class="number">1</span> ,control_count = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> suf[<span class="number">17</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 2*8 + 1</span></span><br><span class="line"></span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    head = tail = buf;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(head &lt; buf)head = buf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">        put_bytes(suf,np,out);</span><br><span class="line">        <span class="built_in">memset</span>(suf,<span class="number">0</span>,<span class="keyword">sizeof</span>(suf));</span><br><span class="line">        np = <span class="number">1</span>;</span><br><span class="line">        control_count = <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        control_count++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(head &lt; tail)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">2</span>)&#123; <span class="comment">// if find a pattern more than 2 bytes, save its offset-length.</span></span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[<span class="number">0</span>]   |= OFFLENFLAG;</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          suf[np++] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes - <span class="number">2</span>) &amp; <span class="number">0xff</span>);</span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">          suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        suf[<span class="number">0</span>]  &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        suf[np++] = tail[<span class="number">0</span>];</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(control_count;control_count &lt;= <span class="number">8</span>;control_count++)suf[<span class="number">0</span>] &lt;&lt;= <span class="number">1</span>; <span class="comment">// must keep highest bit is aligned to first byte.</span></span><br><span class="line">    put_bytes(suf,np,out);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解码实现：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lzss_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* in_buffer = <span class="number">0</span>,* out_buffer = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> in_size = <span class="number">0</span>,out_size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,in_size);</span><br><span class="line">  <span class="keyword">if</span>(in_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  out_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(out_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  in_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* in_size);</span><br><span class="line">  <span class="keyword">if</span>(! in_buffer)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  out_buffer = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)* out_size);</span><br><span class="line">  <span class="keyword">if</span>(out_buffer)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fread(in_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),in_size,in) == in_size - <span class="number">4</span>)&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">int</span>  control_count = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span> control_flags = <span class="number">0</span>;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>*           pt = (<span class="type">unsigned</span> <span class="type">char</span>*)in_buffer;</span><br><span class="line"></span><br><span class="line">      head  = tail  = out_buffer;</span><br><span class="line">      control_flags = pt[<span class="number">0</span>];</span><br><span class="line">      pt++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (in_buffer + in_size - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_count &gt;= <span class="number">8</span>)&#123;</span><br><span class="line">          control_flags = pt[<span class="number">0</span>];</span><br><span class="line">          pt++;</span><br><span class="line">          control_count = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          control_count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(control_flags &gt;&gt; <span class="number">7</span>)&#123; <span class="comment">// offset-length.</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  = (pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) + <span class="number">2</span>;</span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// literal.</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">0</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt++;</span><br><span class="line">          control_flags &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(out_buffer,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),out_size,out);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(out_buffer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(in_buffer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
+<p><img src="/2018/04/01/lzsscompalgo/hexdat.png" alt="hexdat"></p>
+<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
+<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>lzss</tag>
       </tags>
   </entry>
   <entry>
@@ -977,84 +977,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机系统启动流程</title>
-    <url>/2018/06/16/systemstartup/</url>
-    <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
-<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
-<span id="more"></span>
-
-<blockquote>
-<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
-</blockquote>
-<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
-<blockquote>
-<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
-</blockquote>
-<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
-<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
-<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
-<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
-<blockquote>
-<p>为什么要UEFI？</p>
-<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
-</blockquote>
-<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
-<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
-<blockquote>
-<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
-</blockquote>
-<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
-<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
-<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
-<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
-<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
-<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
-<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
-<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
-<ul>
-<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
-<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
-<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
-<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
-<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
-</ul>
-<blockquote>
-<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
-</blockquote>
-<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
-<p>引导程序作为操作系统和BIOS&#x2F;UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
-<blockquote>
-<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
-</blockquote>
-<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
-<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
-<ul>
-<li>初始化GDT, LDT寄存器</li>
-<li>Paging需要设置PTE映射</li>
-<li>设置TSS任务管理机制</li>
-<li>设置IDT表来管理IRQ中断</li>
-<li>初始化文件系统</li>
-<li>初始化IO设备</li>
-</ul>
-<blockquote>
-<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
-<p>另外，我有一个未完成的demo在GitHub上，可以点击<a href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
-</blockquote>
-<p>相关参考链接：</p>
-<ul>
-<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>总结</category>
-      </categories>
-      <tags>
-        <tag>GRUB</tag>
-        <tag>UEFI</tag>
-        <tag>BIOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分布式服务系统概述</title>
     <url>/2020/12/20/redistributedservicesystem/</url>
     <content><![CDATA[<h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
@@ -1130,6 +1052,84 @@
         <tag>SQL</tag>
         <tag>Actor</tag>
         <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机系统启动流程</title>
+    <url>/2018/06/16/systemstartup/</url>
+    <content><![CDATA[<h1 id="远古时代"><a href="#远古时代" class="headerlink" title="远古时代"></a>远古时代</h1><p> 这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。</p>
+<p>计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>一般计算机硬件出现故障，都会在这里的硬件自检阶段无法通过而被迫中断。此阶段的自检包括CPU的检测，内存，IO芯片模块，例如什么8255等等（现代的这些外设芯片性能更加优越，功能更加丰富，不一定是8255这些老古董）。</p>
+</blockquote>
+<p>以上部分是纯粹硬件部分的自检，几乎没有软件掺入，到了下一步的BIOS或UEFI步骤，就会正式有软件程序的加入。</p>
+<blockquote>
+<p>但是对于一些异构平台，例如嵌入式设备，这里的设计可能就会不一样了，它的自检可能是透明的，几乎不可察觉的，因为它都是在一块SOC芯片里面完成的，而且很大成分是基于软件的，这里不讨论嵌入式的流程。</p>
+</blockquote>
+<h2 id="传统BIOS方式"><a href="#传统BIOS方式" class="headerlink" title="传统BIOS方式"></a>传统BIOS方式</h2><p>系统通过自检后，会启动一个ROM上的BIOS程序，BIOS是运行在实模式下的，程序从几百K到几M不等。它是最底层对硬件的控制层，可以在计算机启动的时候进入BIOS界面，可以对计算机系统进行各种设置，其可设置的信息因厂商不同也丰富多样。</p>
+<p>BIOS程序被启动后，就会进行初始化操作，主要包含创建中断IRQ表，各种寄存器的设置，还有IO端口分配等等。</p>
+<p>当上述操作都完成后，BIOS就会复制BIOS设置里面的启动分区到RAM中（启动MBR分区程序），并加载其中的引导程序（引导程序会被复制到RAM地址0x00007c00的开始处）。</p>
+<h2 id="现代UEFI方式"><a href="#现代UEFI方式" class="headerlink" title="现代UEFI方式"></a>现代UEFI方式</h2><p>UEFI是现代计算机都采用的接口，作为替换BIOS的方案。UEFI的翻译就是<strong>统一可拓展固件接口</strong>,它采用了模块化的设计，而且，它可以运行在AMD64, IA32, IA64等多种架构平台上。</p>
+<blockquote>
+<p>为什么要UEFI？</p>
+<p>因为BIOS的发展缓慢，经过几十年，还是需要通过必须进入16位的实模式，然后初始化设置。而且对于各种多样的厂商，也没有统一的固件接口规范，所以就一直依赖于老的BIOS方案，但后来Intel设计的UEFI，确定了统一的接口规范，从设计上提高了软件操作性，并解决了BIOS的局限性，这些高级的功能拓展打破了BIOS下遇到的困局。</p>
+</blockquote>
+<p>UEFI的方式和BIOS基本类似，只不过它具备了更加高级的特性，而且可以很方便地更新硬件固件。</p>
+<p>UEFI的初始化完成后，也是在设置里面找到一个磁盘，不过不是启动分区上的MBR程序，而是会找到EFI的分区，从分区的对应目录下去启动EFI程序，而EFI启动程序就是计算机系统的引导程序了。</p>
+<blockquote>
+<p>可见这种加载方式更加安全，以往有些病毒可以修改MBR分区程序，进而把自己深深地植入系统之中，而在UEFI下，如果启动程序是添加签名加载的话，UEFI对启动程序会进行验签，使得病毒无法通过修改启动程序来植入系统了。</p>
+</blockquote>
+<h1 id="古代文明"><a href="#古代文明" class="headerlink" title="古代文明"></a>古代文明</h1><p>这一部分是启动的引导程序。</p>
+<h2 id="一些常见的引导程序"><a href="#一些常见的引导程序" class="headerlink" title="一些常见的引导程序"></a>一些常见的引导程序</h2><h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>GRUB是一款非常受欢迎的Linux启动引导程序，它是可以引导不同的操作系统来启动，比如：Linux，Windows，FreeBSD等等。</p>
+<p>当GRUB被启动后，它会加载模块，并读取配置文件，展示可以启动的选项；或者也可以切换到它的命令交互模式，可以像使用Shell那样来发送命令，指定如何启动系统。</p>
+<h3 id="LILO"><a href="#LILO" class="headerlink" title="LILO"></a>LILO</h3><p>LILO是一个比GRUB更早的Linux启动引导程序，至今还有一些发行版本在延用它，它也可以加载不同的操作系统，不过在功能方面相比于GRUB更加简洁一些。</p>
+<h3 id="BOOTMGR"><a href="#BOOTMGR" class="headerlink" title="BOOTMGR"></a>BOOTMGR</h3><p>BOOTMGR是大概Windows Vista发行后，出现的启动引导，它是NTLDR的衍生版本，通过读取BCD文件配置来加载系统内核，同时，BOOTMGR也是为了更好地于64位系统兼容而设计的。</p>
+<h3 id="NTLDR"><a href="#NTLDR" class="headerlink" title="NTLDR"></a>NTLDR</h3><p>这个Windows XP以及之前的Windows版本采用的引导程序，它的职责就是解析BOOT.INI配置文件，并加载系统内核。</p>
+<h2 id="引导程序做什么"><a href="#引导程序做什么" class="headerlink" title="引导程序做什么"></a>引导程序做什么</h2><p>这里为了方便起见，就拿GRUB举例，在GRUB被启动后，它首先读取相应的配置，并向屏幕打印一个菜单，菜单列举了可以启动的系统选项，当用户选中一个菜单进入后，它就按照菜单项所设置的参数来启动系统内核，而且这些传递给操作系统的参数可以直接进行修改的，修改后的参数设置会被传递给内核。</p>
+<h3 id="GRUB的加载流程"><a href="#GRUB的加载流程" class="headerlink" title="GRUB的加载流程"></a>GRUB的加载流程</h3><p>这里的GRUB加载指的是以BIOS启动后的加载</p>
+<ul>
+<li>当GRUB程序在MGR分区被拷贝到RAM地址的0x00007c00后，GRUB就被接着运行</li>
+<li>这个小段的GRUB程序是实模式的，它会设置自己栈空间</li>
+<li>从磁盘读取配置，加载Linux内核文件的前面512字节，拷贝到系统的RAM地址为0x00090000处（这段内核按特定的约定设置好在相对偏移为0x0200处即为它的入口，即：0x00090200）</li>
+<li>再把Linux后面剩余部分拷贝到0x00010000处（用make zImage编译的内核），或者拷贝到0x00100000处（用make bzImage编译的内核）</li>
+<li>当上述拷贝完成后，直接跳到0x00090200处执行代码，就是上面所说的内核入口</li>
+</ul>
+<blockquote>
+<p>对于UEFI启动的内核而言就不需要自己去拷贝再跳转代码了，因为UEFI加载的是PE文件，通过PE文件信息是可以指定让UEFI如何来加载PE内核的，例如：入口地址是多少等等</p>
+</blockquote>
+<h3 id="引导程序扮演的角色"><a href="#引导程序扮演的角色" class="headerlink" title="引导程序扮演的角色"></a>引导程序扮演的角色</h3><p>GRUB本身不是操作系统，它只是一个操作系统的加载工具，通过这种方式，就可以很方便地维护和修复系统内核因错误无法启动而进行回滚到以前的版本的操作。</p>
+<p>引导程序作为操作系统和BIOS&#x2F;UEFI的中间层，它提供了一种衔接机制，避免了因操作系统内核出错原因而无法进行操作系统修复的尴尬。</p>
+<blockquote>
+<p>在Windows中的NTLDR和BOOTMGR，都是类似的方式启动操作系统内核的，如果启动出现故障，也会展示一个启动出错的页面，那就是引导程序做的事。</p>
+</blockquote>
+<h1 id="近代时期"><a href="#近代时期" class="headerlink" title="近代时期"></a>近代时期</h1><p>经过这么多流程，终于走到了操作系统的部分了，这部分各个操作系统不同而所进行的操作也各异，但是一般都会涉及到的操作可能有：</p>
+<h2 id="操作系统初始化"><a href="#操作系统初始化" class="headerlink" title="操作系统初始化"></a>操作系统初始化</h2><p>从实模式切换到保护模式，包括：</p>
+<ul>
+<li>初始化GDT, LDT寄存器</li>
+<li>Paging需要设置PTE映射</li>
+<li>设置TSS任务管理机制</li>
+<li>设置IDT表来管理IRQ中断</li>
+<li>初始化文件系统</li>
+<li>初始化IO设备</li>
+</ul>
+<blockquote>
+<p>至于操作系统这部分内容比较多，我可以选择下一篇博文叙述。</p>
+<p>另外，我有一个未完成的demo在GitHub上，可以点击<a href="https://github.com/hchen90/msys_x86">这里</a>查看。</p>
+</blockquote>
+<p>相关参考链接：</p>
+<ul>
+<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>GRUB</tag>
+        <tag>UEFI</tag>
+        <tag>BIOS</tag>
       </tags>
   </entry>
   <entry>
