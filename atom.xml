@@ -6,7 +6,7 @@
   <link href="https://hchen90.github.io/atom.xml" rel="self"/>
   
   <link href="https://hchen90.github.io/"/>
-  <updated>2022-07-02T02:03:12.000Z</updated>
+  <updated>2023-03-28T14:11:08.000Z</updated>
   <id>https://hchen90.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenAI之OpenAPI初探</title>
+    <link href="https://hchen90.github.io/2023/03/28/openaiapirsh/"/>
+    <id>https://hchen90.github.io/2023/03/28/openaiapirsh/</id>
+    <published>2023-03-28T14:11:08.000Z</published>
+    <updated>2023-03-28T14:11:08.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;人工智能并非是一个新鲜事物，早在多年前就就已有 TensorFlow，配合一套数值，矩阵，图形，和相关算法库，就可以实现一个简单的人工智能。&lt;/p&gt;
+&lt;p&gt;其实人工智能经历了许多年的发展，目前逐渐成熟，平时大众与其在生活的交叉并不多，所以难以引人注目，不过这次的 ChatGPT 展现出它强大的语言功能，配合逐渐的人工智能算法，让它大火了一把。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="OpenAI" scheme="https://hchen90.github.io/tags/OpenAI/"/>
+    
+    <category term="AI" scheme="https://hchen90.github.io/tags/AI/"/>
+    
+    <category term="ChatGPT" scheme="https://hchen90.github.io/tags/ChatGPT/"/>
+    
+  </entry>
   
   <entry>
     <title>玩转自搭建 GitLab 社区版</title>
@@ -115,7 +139,7 @@
     
     
     
-    <category term="技术" scheme="https://hchen90.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
     <category term="MongoDB" scheme="https://hchen90.github.io/tags/MongoDB/"/>
