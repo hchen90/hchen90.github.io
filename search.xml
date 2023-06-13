@@ -1,6 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>程序的代码修改问题</title>
+    <url>/2022/06/11/codemodification/</url>
+    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
+<span id="more"></span>
+
+<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
+<blockquote>
+<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
+</blockquote>
+<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
+<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
+<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
+<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
+<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
+<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
+<p>如下这种代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
+<p>我们可以进行适当的修改：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
+<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的逻辑会存在确定性终结点。</p>
+<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
+<p>改善后的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
+<blockquote>
+<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
+</blockquote>
+<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
+<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
+<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
+<ul>
+<li>通过所有测试</li>
+<li>没有重复代码</li>
+<li>体现系统的全部设计理念</li>
+<li>包含尽量少的实体（例如：类型，函数）</li>
+</ul>
+<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
+<li>蛇形命名</li>
+<li>大驼峰命名</li>
+<li>小驼峰命名</li>
+</ul>
+<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
+<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
+<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
+<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
+<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
+<blockquote>
+<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
+</blockquote>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
+<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
+<li>通过所有的测试</li>
+<li>重构代码</li>
+<li>代码不可重复性</li>
+<li>表达程序员的意图</li>
+<li>尽量少的类和方法数量</li>
+</ul>
+<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
+<blockquote>
+<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
+</blockquote>
+<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
+<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
+<p>操作系统里面用PV术语来表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
+
+<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
+<p>在C++中，也是用同样的方式机制：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
+<p>对于生产者而言：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
+
+<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
+<p>对应的消费者为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
+
+<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
+<p>可以用C++这样表示，对应生产者和消费者：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
+<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>expr</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>玩转自搭建 GitLab 社区版</title>
     <url>/2022/07/02/deploygitlabcerunner/</url>
     <content><![CDATA[<h1 id="玩转自搭建-GitLab-社区版"><a href="#玩转自搭建-GitLab-社区版" class="headerlink" title="玩转自搭建 GitLab 社区版"></a>玩转自搭建 GitLab 社区版</h1><p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
@@ -189,121 +304,6 @@
         <tag>linux</tag>
         <tag>uefi</tag>
         <tag>openssl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序的代码修改问题</title>
-    <url>/2022/06/11/codemodification/</url>
-    <content><![CDATA[<h1 id="什么是代码改动"><a href="#什么是代码改动" class="headerlink" title="什么是代码改动"></a>什么是代码改动</h1><p>在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。</p>
-<span id="more"></span>
-
-<h1 id="为什么会发生代码改动"><a href="#为什么会发生代码改动" class="headerlink" title="为什么会发生代码改动"></a>为什么会发生代码改动</h1><p>代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容的代码，它不需要任何修改，即可满足业务需求，这种代码在我们生活中是可见的，如果把业务代码不算作真正的代码，而是业务逻辑流程，那么脚本驱动的服务框架，其底层是用高效的原生语言编写（例如：C++），其使用通用设计模型和抽象方法，这种底层很少改动，上层的脚本业务受之驱动，那么这种代码就是几乎不需要修改的，需要改的就是业务脚本（无代码方案也是一种极限思维）；另外一种就是前者相反，它会把业务参杂到代码的各个角落，代码没有什么抽象层，这种代码如果对业务不熟，对于代码的阅读性就会下降，业务的修改都会直接引发代码修改，可维护性以及复用性都不高。</p>
-<blockquote>
-<p>我们都不想修改代码，因为修改会花费成本，时间和精力，而我们之所以这么做，却仅仅为了弥补以前做的不足？那么为何不站在前期的角度为后期做点着想，做好预防性工作，更利于项目的健康发展，后期维护成本更低。</p>
-</blockquote>
-<h1 id="如何进行代码改动"><a href="#如何进行代码改动" class="headerlink" title="如何进行代码改动"></a>如何进行代码改动</h1><p>我们可以尽量避免改动代码，但是又不得不改动代码，因此如何把代码改好，减少它的不足也可以提升项目代码质量。</p>
-<p>对于如何写优雅的代码一直都是有迹可循的，计算机行业存在大量相关的资料文档。</p>
-<h2 id="代码常识性规则"><a href="#代码常识性规则" class="headerlink" title="代码常识性规则"></a>代码常识性规则</h2><p>常识性的问题，一般人都会知道，但是对于代码逻辑来说是无关紧要的，因为它其实和代码没有关系，但是有了它可以减少代码中犯错误。</p>
-<h3 id="代码对齐"><a href="#代码对齐" class="headerlink" title="代码对齐"></a>代码对齐</h3><p>一般来说，用空格键代替Tab键，可以明显改善此点，尤其在团队开发的时候，这点更加明显（代码对其，对于使用高级编辑器的来说，他可以自动格式化代码，几乎不用操心了）。</p>
-<h3 id="代码注释"><a href="#代码注释" class="headerlink" title="代码注释"></a>代码注释</h3><p>代码注释也是代码格式的一种，合理的代码注释可以便于开发人员对于代码的理解，从而提高效率。如今各自格式的代码注释花样百出，支持生成丰富的api文档，等等，都是便于后期对于代码的查看与理解。</p>
-<h2 id="代码逻辑需要注意的地方"><a href="#代码逻辑需要注意的地方" class="headerlink" title="代码逻辑需要注意的地方"></a>代码逻辑需要注意的地方</h2><p>代码逻辑流程，不同的人因为不同的习惯而写出的代码可谓天差地别，但是有很多不错的代码逻辑是值得借鉴的，代码逻辑流程和上面的格式规则不同，它会直接影响到二进制代码的运行质量。</p>
-<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><p>很多的时候，代码中对于条件的判断可能很简单，程序也许只关心一种条件，所以很多时候会忽略掉了ELSE情形，这是一种不好的习惯，代码质量也不会很高。</p>
-<p>如下这种代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码就是典型的ELSE缺失，它将导致冗余执行，代码运行质量会下降。</p>
-<p>我们可以进行适当的修改：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">make_node</span><span class="params">(<span class="type">const</span> std::unordered_map&lt;std::string&gt;&amp; poll, std::unordered_map&lt;std::string&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">0</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">0</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">is_wanted</span>(poll, <span class="number">2</span>)) &#123;</span><br><span class="line">    <span class="built_in">store_result</span>(result, <span class="built_in">load_item</span>(poll, <span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>冗余执行即可消除，这是让所有的ELSE按默认往下走的意思，这种风格通常用来判断一个函数是否满足条件以执行时，很常用：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check_condition</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (flags == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0xa0</span> &amp;&amp; flags &amp; <span class="number">0x0c</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x80</span>) <span class="keyword">return</span> <span class="built_in">update_result_v1</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (flags &amp; <span class="number">0x02</span>) <span class="keyword">return</span> <span class="built_in">update_result_v2</span>(result);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">update_result</span>(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>循环语句是用来迭代执行的，但是程序需要在有限的时间里得到确定性的结果，所以循环语句不恰当的使用也会导致低质量的代码，如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">maybe_infinite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述的几行代码，就有可能是缺陷代码，这里假设<code>check_flags</code>和<code>check_flags_v1</code>不是基于状态模式的，那么代码就存在无限循环的可能。</p>
-<h4 id="有穷循环"><a href="#有穷循环" class="headerlink" title="有穷循环"></a>有穷循环</h4><p>对于上述的代码可以设计一个简单的状态转换表，使每条转化路径都是从<strong>开始状态</strong>走到<strong>终结状态</strong>，这样引入状态模式就变成这样：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">finite_loop</span><span class="params">(<span class="type">int</span> flags, std::vector&lt;<span class="type">int</span>&gt;&amp; result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;flags); it != <span class="built_in">state_end</span>(&amp;flags); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="built_in">store_result</span>(flags, result);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的逻辑会存在确定性终结点。</p>
-<h4 id="尽量不要打破循环层次"><a href="#尽量不要打破循环层次" class="headerlink" title="尽量不要打破循环层次"></a>尽量不要打破循环层次</h4><p>我们先看一个头都变大的代码段：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">___end1:</span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">___end2:</span><br><span class="line">      <span class="built_in">func_v2</span>();</span><br><span class="line">      <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="keyword">goto</span> ___end1;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="keyword">goto</span> ___end2;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种代码的可维护性特别差，为了理清代码逻辑，需要花更多的时间和精力，所以，还是那条规则，尽量避免使用<code>goto</code>语句，避免复杂混乱的流程。</p>
-<p>改善后的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bad_loop</span><span class="params">(<span class="type">int</span> flags)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> state = <span class="number">0</span>; <span class="comment">// 状态开始</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">state_start</span>(&amp;state); it != <span class="built_in">state_end</span>(&amp;state); it++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags</span>(&amp;state)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v1</span>(&amp;flags)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">func_v1</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">5</span>); <span class="comment">// 5 - __end1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v2</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">6</span>); <span class="comment">// 6 - __end2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v3</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v4</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check_flags_v5</span>(&amp;flags)) <span class="built_in">state_move</span>(&amp;flags, <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样改良后的代码不仅容易理解，而且复杂度明显优化，代码运行效率更高。</p>
-<blockquote>
-<p>对于深层次的循环代码，不宜跨层次跳转，这里还是避免使用<code>goto</code>语句，否则很容易打破逻辑层次，使代码变得混乱。</p>
-</blockquote>
-<h3 id="重复代码块"><a href="#重复代码块" class="headerlink" title="重复代码块"></a>重复代码块</h3><p>有时代码中存在多个小段代码片段，功能上相差无几（很可以是前人Ctrl C+Ctrl V，修修改改留下的），其使用频率也很高，这种代码可以进一步优化，使其成为一个功能性的调用函数。</p>
-<h3 id="用状态标记来跟踪执行"><a href="#用状态标记来跟踪执行" class="headerlink" title="用状态标记来跟踪执行"></a>用状态标记来跟踪执行</h3><p>状态位标记实际上就是上面的状态模式的设计方法（用于确定性的for循环），其实很多时候，并不是循环才会用状态模式，任何情形都可以用，但是对于复杂的执行流程情形，状态模式更易抽象流程，也便于调试和排查，它带来的各种好处是显而易见的，也是各种优秀架构设计对于复杂流程处理经常选择该模式的原因。</p>
-<h1 id="代码哲学"><a href="#代码哲学" class="headerlink" title="代码哲学"></a>代码哲学</h1><p>代码方面，如果代码可以满足如下几点，那么就可以说这是优秀的代码：</p>
-<ul>
-<li>通过所有测试</li>
-<li>没有重复代码</li>
-<li>体现系统的全部设计理念</li>
-<li>包含尽量少的实体（例如：类型，函数）</li>
-</ul>
-<h2 id="命名方式"><a href="#命名方式" class="headerlink" title="命名方式"></a>命名方式</h2><ul>
-<li>蛇形命名</li>
-<li>大驼峰命名</li>
-<li>小驼峰命名</li>
-</ul>
-<p>统一的变量命名方式，可以便于代码的沟通与理解，从而可以提高团队的生产效率。</p>
-<h2 id="代码格式问题"><a href="#代码格式问题" class="headerlink" title="代码格式问题"></a>代码格式问题</h2><p>代码格式主要是空白字符，换行字符等等的编码或默认使用的规则，一般而言，编辑器是可以定制化这些格式的，然后团队可以共享一份编码规章，这样在同一项目中就不会产生代码格式不同而发生的显示风格差异。</p>
-<h2 id="代码抽象"><a href="#代码抽象" class="headerlink" title="代码抽象"></a>代码抽象</h2><p>代码抽象层面需要探讨一下，作为软件工程方面，必须理解的设计模式，不是说对所有的模式倒背如流，而是说对常用的设计模式能够理解，并知道在什么场景下要用它，它能解决什么问题。</p>
-<h3 id="为何要使用设计模式呢？"><a href="#为何要使用设计模式呢？" class="headerlink" title="为何要使用设计模式呢？"></a>为何要使用设计模式呢？</h3><p>因为在解决同一问题时，不同的人就有可能存在不同的表达方法，在代码层表现出的差异就会更加明显，而对于团队项目来说，这样的代码要让同时几十人来维护，需要每个人去理清它的具体逻辑将会很耗时间和精力，那么为何不让团队们一起使用同种语言来交流表达呢？所以在逻辑层面就有了设计模式，这样的话，张三写的逻辑，他在表达一个<strong>外观设计模式</strong>，李四只要知道<strong>外观设计模式</strong>，看了他的代码之后便一眼明白他的逻辑，这样团队就可以节省大量的时间和精力成本，从而更加高效地投入有意义的工作价值之中。</p>
-<p>而设计模式正是应用软件开发中常见的底层逻辑，因此作为开发首先就是需要抽象化功能逻辑到设计模式（但如果不能抽象化，一般来说就是对设计模式无法掌握）。</p>
-<blockquote>
-<p>德墨忒耳定律：<br>模块使用者不应该了解对象的内部细节</p>
-</blockquote>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试通常是用来对代码功能模块的正确性进行检验的工具，如果软件的所有功能模块都是正确的，那么软件集成后的代码也是可以方便调试的，并极有可能也是正确的。因为功能模块属于部分性问题，集成的软件属于整体性问题，如果整体性问题不满足，说明部分性问题在顺序或相互依赖上存在差错，而我们就不用再考虑模块内的事情了，只需调整功能模块间的顺序或依赖即可解决问题。</p>
-<h2 id="跌进规则"><a href="#跌进规则" class="headerlink" title="跌进规则"></a>跌进规则</h2><ul>
-<li>通过所有的测试</li>
-<li>重构代码</li>
-<li>代码不可重复性</li>
-<li>表达程序员的意图</li>
-<li>尽量少的类和方法数量</li>
-</ul>
-<h2 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h2><p>在多线程系统中，会出现并发问题，并发的意思指多个运行节点对于某个资源的使用，在时间上具有不确定性。</p>
-<blockquote>
-<p>并发和并行：<br>并发是指多个执行节点对单个资源使用在时间上具有不确定性，无法断定谁先谁后的问题；而并行则是说多个执行节点对于单个资源的使用，可能存在同时使用的可能。<br>实际上解决好并发问题，也是解决了并行的问题。</p>
-</blockquote>
-<h3 id="互斥与同步的问题"><a href="#互斥与同步的问题" class="headerlink" title="互斥与同步的问题"></a>互斥与同步的问题</h3><p>正是多执行节点对单个资源使用在时间序列的不确定，需要一种互斥同步使用的机制。</p>
-<p>首先，需要知道互斥操作，它是一种排他操作，用于在使用资源的时候，资源被锁定，其他使用者无法获取使用。</p>
-<p>操作系统里面用PV术语来表示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P()</span><br><span class="line">do_resource()</span><br><span class="line">V()</span><br></pre></td></tr></table></figure>
-
-<p>PV操作都是原子化的，当执行P操作后，若存已经在资源使用，P操作会被阻塞，直到资源使用完毕，V操作执行后，资源就被正式是否，阻塞在P操作的一个使用者会立即得到使用权，并继续获取&#x2F;使用&#x2F;释放的操作流程。</p>
-<p>在C++中，也是用同样的方式机制：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; resource;</span><br><span class="line"><span class="type">static</span> std::mutex mut;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cosume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mut.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">consume</span>(&amp;resource);</span><br><span class="line">  mut.<span class="built_in">unlock</span>();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但C++里面还可以设计一种原子锁，这种是确定资源消耗时间是可终结的，它起到的作用就是线程挂起，使之只能一个线程消耗资源，适合资源消耗简短的逻辑，因其结构简单，效率往往比互斥锁高。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> lck = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_lock</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (lck &lt; <span class="number">0</span>) &#123;&#125;</span><br><span class="line">  lck--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume_resource</span><span class="params">()</span> <span class="comment">// 被多线程调用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">atomic_lock</span>();</span><br><span class="line">  <span class="built_in">consume_resource</span>(&amp;resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同步问题，是从互斥问题推导出来的，他是两个互斥操作之间的同步问题，仍然采用PV术语来表达。</p>
-<p>对于生产者而言：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S1)</span><br><span class="line">P(N1)</span><br><span class="line">do_produce()</span><br><span class="line">V(N1)</span><br><span class="line">V(S2)</span><br></pre></td></tr></table></figure>
-
-<p>这里M的互斥锁是用于锁容器池的（池子发生改变时一定要加锁），当生产完一个，同时计数一个到N对应的计数锁。</p>
-<p>对应的消费者为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P(S2)</span><br><span class="line">P(N2)</span><br><span class="line">resource = get()</span><br><span class="line">V(N2)</span><br><span class="line">V(S1)</span><br><span class="line">do_consume(resource)</span><br></pre></td></tr></table></figure>
-
-<h3 id="生产者和消费者概念"><a href="#生产者和消费者概念" class="headerlink" title="生产者和消费者概念"></a>生产者和消费者概念</h3><p>生产者和消费者是对互斥同步问题抽象而来的，而且对于资源的取用使用更通用的方式，通常为资源容器池，这样只要生产者没有把容器池放满，就一直可以存放资源，消费者也是可以在容器池未消耗完前一直可以消耗资源，提高互斥同步的效率。</p>
-<p>可以用C++这样表示，对应生产者和消费者：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> std::mutex producer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex consumer_lock;</span><br><span class="line"><span class="type">static</span> std::mutex poll_lock;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> std::unordered_map&lt;std::string&gt; poll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">produce</span><span class="params">()</span> <span class="comment">// 多线程生产</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  producer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="built_in">do_produce</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  consumer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">consume</span><span class="params">()</span> <span class="comment">// 多线程消费</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  consumer_lock.<span class="built_in">lock</span>();</span><br><span class="line">  poll_lock.<span class="built_in">lock</span>();</span><br><span class="line">  <span class="keyword">auto</span> resource = <span class="built_in">get</span>(&amp;poll);</span><br><span class="line">  poll_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  producer_lock.<span class="built_in">unlock</span>();</span><br><span class="line">  <span class="built_in">do_consume</span>(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
-<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&crid=28DGF820DETG3&keywords=clean+code&qid=1654883200&sprefix=clean+code,aps,74&sr=8-1">Clean Code</a></p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>expr</tag>
       </tags>
   </entry>
   <entry>

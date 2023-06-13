@@ -1271,7 +1271,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0e5dff;
+  background: #db7a7a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2641,7 +2641,7 @@ hr {
   display: inline-block;
 }
 body {
-  background: url("https://hchen90.top:2083/api/v1/background");
+  background-color: #f8f8f8;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
