@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="LZ77算法简介LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。">
+  <meta name="description" content="LZ77算法简介 LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LZ77压缩算法">
 <meta property="og:url" content="https://hchen90.github.io/2018/03/31/lz77compalgo/index.html">
 <meta property="og:site_name" content="个人站点">
-<meta property="og:description" content="LZ77算法简介LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。">
+<meta property="og:description" content="LZ77算法简介 LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hchen90.github.io/2018/03/31/lz77compalgo/stepprecomp.png">
 <meta property="og:image" content="https://hchen90.github.io/2018/03/31/lz77compalgo/stepcomp.png">
@@ -88,7 +88,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -261,21 +265,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="LZ77算法简介"><a href="#LZ77算法简介" class="headerlink" title="LZ77算法简介"></a>LZ77算法简介</h1><p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
+        <h1 id="lz77算法简介">LZ77算法简介</h1>
+<p>LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。</p>
 <span id="more"></span>
-
 <blockquote>
 <p>参考维基百科<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
 </blockquote>
-<h1 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h1><p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
+<h1 id="算法逻辑">算法逻辑</h1>
+<p>LZ77的算法核心就是一个滑动窗口，在滑动窗口里面搜索重复字节，并将匹配到的字节串用更短的字节串方式表示出来。</p>
 <p>这里涉及到几个要素：</p>
 <ul>
 <li>滑动窗口缓冲区</li>
 <li>滑窗的前部区域</li>
 <li>滑窗的已编码区域</li>
 </ul>
-<h2 id="编码流程"><a href="#编码流程" class="headerlink" title="编码流程"></a>编码流程</h2><p>编码步骤：</p>
-<ol>
+<h2 id="编码流程">编码流程</h2>
+<p>编码步骤：</p>
+<ol type="1">
 <li>首先分配一块缓冲区域用来处理数据</li>
 <li>初始的前部区域为空</li>
 <li>初始的已编码区域也为空</li>
@@ -287,55 +293,77 @@
 </ol>
 <p>编码图示：</p>
 <p>当滑动窗口还没有处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepprecomp.png" alt="stepprecomp"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepprecomp.png" alt="stepprecomp">
+<figcaption aria-hidden="true">stepprecomp</figcaption>
+</figure>
 <p>当滑动窗口开始处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcomp.png" alt="stepcomp"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepcomp.png" alt="stepcomp">
+<figcaption aria-hidden="true">stepcomp</figcaption>
+</figure>
 <p>当滑动窗口正在处理数据时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcomping.png" alt="stepcomping"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepcomping.png" alt="stepcomping">
+<figcaption aria-hidden="true">stepcomping</figcaption>
+</figure>
 <p>当数据快要处理完时：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepcompfin.png" alt="stepcompfin"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepcompfin.png" alt="stepcompfin">
+<figcaption aria-hidden="true">stepcompfin</figcaption>
+</figure>
 <p>整个过程如同字节流在这个滑动窗口的黑盒子里面流动过一样，然后，它被加工的数据是已经压缩的数据了。</p>
 <blockquote>
-<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是’\0’，则表示它是一个直译字节，是直接拷贝过来的字节，这两个’\0’后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
+<p>数据编码中，会涉及到如何标记数据，在lz77算法中是用2-3个字节来表示的，即：如果有两个自己是'\0'，则表示它是一个直译字节，是直接拷贝过来的字节，这两个'\0'后面的字节就是原始字节；否则，这两个字节是表示当前字节处应该填充的字节串应该在的相对位置和长度（你甚至可以为你自己的lz77编码器自定义数据标记方式）。</p>
 </blockquote>
-<h2 id="解码流程"><a href="#解码流程" class="headerlink" title="解码流程"></a>解码流程</h2><p>解码的过程是编码过程的逆过程。</p>
+<h2 id="解码流程">解码流程</h2>
+<p>解码的过程是编码过程的逆过程。</p>
 <p>解码步骤：</p>
-<ol>
-<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p>
-</li>
-<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p>
-</li>
-<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p>
-</li>
-<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p>
-</li>
-<li><p>解码结束</p>
-</li>
+<ol type="1">
+<li><p>字节流是否是最后字节，是则进行第5步，否则进行第2步</p></li>
+<li><p>从字节流获取两个字节，如果是<code>\0x00\0x00</code>则进行第3步，否则进行第4步</p></li>
+<li><p>将<code>\0x00\0x00</code>后面的一个字节复制到输出缓存区域，继续加载字节流，继续第1步</p></li>
+<li><p>从两个字节的编码中得到在滑动窗口的相对偏移和内容长度，把偏移处的内容拷贝到当前输出缓存，继续第1步</p></li>
+<li><p>解码结束</p></li>
 </ol>
 <blockquote>
 <p>上面的输出缓存区域是指在字节处理位置处理过后的字节流存放的缓存区域就是输出缓存</p>
 </blockquote>
 <p>解码图示：</p>
 <p>滑动窗口还没有输入数据的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/steppreuncomp.png" alt="stepuncomp"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/steppreuncomp.png" alt="stepuncomp">
+<figcaption aria-hidden="true">stepuncomp</figcaption>
+</figure>
 <p>滑动窗口开始处理数据的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncomp.png" alt="stepuncomp"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepuncomp.png" alt="stepuncomp">
+<figcaption aria-hidden="true">stepuncomp</figcaption>
+</figure>
 <p>数据在滑动窗口中处理：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncomping.png" alt="stepuncomping"></p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepuncomping.png" alt="stepuncomping">
+<figcaption aria-hidden="true">stepuncomping</figcaption>
+</figure>
 <p>数据快要处理完的时候：</p>
-<p><img src="/2018/03/31/lz77compalgo/stepuncompfin.png" alt="stepuncompfin"></p>
-<h1 id="源码实现"><a href="#源码实现" class="headerlink" title="源码实现"></a>源码实现</h1><p>辅助函数：</p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/stepuncompfin.png" alt="stepuncompfin">
+<figcaption aria-hidden="true">stepuncompfin</figcaption>
+</figure>
+<h1 id="源码实现">源码实现</h1>
+<p>辅助函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span> <span class="title function_">search_maxlen_p</span><span class="params">( <span class="type">unsigned</span> <span class="type">char</span>**  pt, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* head, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* tail, \</span></span><br><span class="line"><span class="params">                              <span class="type">unsigned</span> <span class="type">char</span>* end)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* tmp = *pt;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> leng = <span class="number">0</span>, i;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(tmp;tmp &gt;= head;tmp--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tmp[<span class="number">0</span>] == tail[<span class="number">0</span>])&#123;</span><br><span class="line">      <span class="keyword">for</span>(i = <span class="number">0</span>;(i &lt; ((<span class="number">1</span> &lt;&lt; LENGTHBITS) - <span class="number">1</span>)) &amp;&amp; (&amp;tmp[i] &gt; head) &amp;&amp; (&amp;tmp[i] &lt; tail) &amp;&amp; (&amp;tail[i] &lt; end) &amp;&amp; (tmp[i] == tail[i]);i++);</span><br><span class="line">      <span class="keyword">if</span>(i &gt; leng)&#123;</span><br><span class="line">        leng = i;</span><br><span class="line">        *pt = tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>编码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_encode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> size = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,size); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>)); <span class="comment">// allocate memory.</span></span><br><span class="line">  <span class="keyword">if</span>(! buf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(fread(buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),size,in) == size)&#123;</span><br><span class="line">    head = tail = buf;</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">8</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line">    fputc((size &gt;&gt;  <span class="number">0</span>) &amp; <span class="number">0xff</span>,out);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(;;)&#123; <span class="comment">// loop block.</span></span><br><span class="line">      head = tail - WINDOWSIZE;</span><br><span class="line">      <span class="keyword">if</span>(buf  &gt; head)head = buf;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; buf + size - <span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">if</span>(tail &gt; head)&#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span>* pt = tail - <span class="number">1</span>;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> bytes = <span class="number">0</span>;</span><br><span class="line">        bytes = search_maxlen_p(&amp;pt,head,tail,buf + size);</span><br><span class="line">        <span class="comment">// search maximal matched bytes and position.</span></span><br><span class="line">        <span class="keyword">if</span>(bytes &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="type">unsigned</span> <span class="type">char</span> chars[<span class="number">2</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">          chars[<span class="number">0</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)(( (tail - pt) &gt;&gt; LENGTHBITS) &amp; <span class="number">0xff</span>);</span><br><span class="line">          chars[<span class="number">1</span>] = (<span class="type">unsigned</span> <span class="type">char</span>)((((tail - pt) &lt;&lt; LENGTHBITS) + bytes) &amp; <span class="number">0xff</span>);</span><br><span class="line">          fputc(chars[<span class="number">0</span>],out);</span><br><span class="line">          fputc(chars[<span class="number">1</span>],out);</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,tail - pt,bytes);</span></span><br><span class="line">          tail += bytes;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(<span class="number">0</span>,out);</span><br><span class="line">          fputc(*tail,out);</span><br><span class="line">          tail++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(<span class="number">0</span>,out);</span><br><span class="line">        fputc(*tail,out);</span><br><span class="line">        tail++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(buf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>解码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lz77_decode</span><span class="params">(FILE* in,FILE* out)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span>* nbuf = <span class="number">0</span>,* ori_buf = <span class="number">0</span>,* head = <span class="number">0</span>,* tail = <span class="number">0</span>;</span><br><span class="line">  <span class="type">long</span> ori_size = <span class="number">0</span>,nsize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(! in || ! out)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  get_filesize(in,nsize); <span class="comment">// get file size.</span></span><br><span class="line">  <span class="keyword">if</span>(nsize &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_size  = (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">24</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">8</span>;</span><br><span class="line">  ori_size += (fgetc(in) &amp; <span class="number">0xff</span>) &lt;&lt;  <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(ori_size &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  nbuf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(nsize* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(! nbuf)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  ori_buf = (<span class="type">unsigned</span> <span class="type">char</span>*)<span class="built_in">malloc</span>(ori_size* <span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>));</span><br><span class="line">  <span class="keyword">if</span>(ori_buf)&#123;</span><br><span class="line">    head = tail = ori_buf; <span class="comment">// store head and tail of slide-window.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fread(nbuf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),nsize,in) == (nsize - <span class="number">4</span>))&#123;</span><br><span class="line">      <span class="type">unsigned</span> <span class="type">char</span>* pt  = nbuf;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;</span><br><span class="line">        <span class="keyword">if</span>(pt &gt;= (nbuf + nsize - <span class="number">4</span>))<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(! pt[<span class="number">0</span>] &amp;&amp; ! pt[<span class="number">1</span>] )&#123; <span class="comment">// \0\0\?</span></span><br><span class="line">          tail[<span class="number">0</span>] = pt[<span class="number">2</span>];</span><br><span class="line">          tail++;</span><br><span class="line">          pt += <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// \?\?</span></span><br><span class="line">          <span class="type">unsigned</span> <span class="type">int</span> offset = <span class="number">0</span>,length = <span class="number">0</span>,i;</span><br><span class="line">          offset  =  pt[<span class="number">0</span>] &lt;&lt; LENGTHBITS;</span><br><span class="line">          offset += (pt[<span class="number">1</span>] &gt;&gt; LENGTHBITS) &amp; <span class="number">0x0f</span>;</span><br><span class="line">          length  =  pt[<span class="number">1</span>] &amp; <span class="number">0x0f</span>;</span><br><span class="line">          <span class="comment">//fprintf(stderr,&quot;&#123;%d - %d&#125;&quot;,offset,length);</span></span><br><span class="line">          <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; length;i++)&#123;</span><br><span class="line">            tail[i] = ((<span class="type">unsigned</span> <span class="type">char</span>*)(tail - offset))[i];</span><br><span class="line">          &#125;</span><br><span class="line">          tail += length;</span><br><span class="line">          pt += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      fwrite(ori_buf,<span class="keyword">sizeof</span>(<span class="type">unsigned</span> <span class="type">char</span>),ori_size,out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(ori_buf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">free</span>(nbuf);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h1><p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
-<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>&quot;\0x00\0x00&quot;</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
-<p><img src="/2018/03/31/lz77compalgo/hexdat.png" alt="hexdat"></p>
+<h1 id="算法分析">算法分析</h1>
+<p>在分析此算法压缩的数据效率如何时，可以看到和数据的内容有关，若重复率比较高，而且间隔距离短的内容，可以得到比较理想的压缩率，但是对于重复率低的内容就不一定能达到理想的压缩率，最差的情况就是，要压缩的内容刚刚好在滑动窗口大小的缓存都没有重复内容，那么压缩出来的数据不仅没有变小，而且增大到原来的3倍。</p>
+<p>下图中的数据可以看到前面部分的非重复的数据就有许多的<code>"\0x00\0x00"</code>开头的直译复制过来的数据，这种数据过多就会导致压缩效率低下。</p>
+<figure>
+<img src="/2018/03/31/lz77compalgo/hexdat.png" alt="hexdat">
+<figcaption aria-hidden="true">hexdat</figcaption>
+</figure>
 <p>一般来说，用LZ77算法压缩过的数据，为了抵消上面的劣势，可以将用LZ77压缩的数据再用哈夫曼编码再次编码，这样输出的数据压缩效率就高一些了。</p>
 <p>链接：<a target="_blank" rel="noopener" href="https://github.com/hchen90/lz77">Github上的代码</a></p>
 
@@ -481,7 +509,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LZ77%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">LZ77算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">算法逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">编码流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">解码流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">源码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lz77%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">LZ77算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">算法逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">编码流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">解码流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">源码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -497,7 +525,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,7 +538,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

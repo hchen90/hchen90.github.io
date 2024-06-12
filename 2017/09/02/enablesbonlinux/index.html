@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="概述Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主">
+  <meta name="description" content="概述 Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在 Linux 系统启用 UEFI 的 Secure Boot">
 <meta property="og:url" content="https://hchen90.github.io/2017/09/02/enablesbonlinux/index.html">
 <meta property="og:site_name" content="个人站点">
-<meta property="og:description" content="概述Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主">
+<meta property="og:description" content="概述 Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-01T16:17:02.000Z">
 <meta property="article:modified_time" content="2017-09-01T16:17:02.000Z">
@@ -79,7 +79,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -252,87 +256,145 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。 Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH 里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK， db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS 的 Secure Boot 能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong> (虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS ，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
+        <h2 id="概述">概述</h2>
+<p>Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 (
+有少数的计算机里面， Secure Boot
+被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows
+系统的公钥证书签名，使其只能加载 Windows
+，其他系统一律不以加载，用户没有选项，不能关闭，还没法换系统，无法适用本博客介绍内容）。
+Secure Boot 所需要的公钥证书被保存在计算机的主板的 FLASH
+里面（注意不是磁盘里面哦），在主板的一小块 FLASH 里面保存着 PK ， KEK，
+db， dbx 的证书链，所以， <strong>在操作开始前请确保你的计算机 UEFI-BIOS
+的 Secure Boot
+能够被关闭，否则，发生操作失误，将导致证书不能匹配任何程序代码文件，而使主板拒绝加载任何程序代码文件，就会导致主板变砖</strong>
+(虽然它不是 BIOS ，但是许多人都这么称呼它为 UEFI-BIOS
+，所以，这里也这么称呼其为 UEFI-BIOS) 。</p>
 <span id="more"></span>
-
-<p>这里说一下 Fedora 是如何做到在 Secure Boot 开启时加载的，它实际上是 Fedora 开源项目向微软公司购买签名达到的， Fedora 被系统的主板识别为和 Windows 一样的系统，这种购买行为在开源社区是不鼓励的，好处是 Fedora 几乎可以在任何可以加载 Windows 系统上被识别加载，即使该计算机硬件不能关闭 Secure Boot。</p>
+<p>这里说一下 Fedora 是如何做到在 Secure Boot 开启时加载的，它实际上是
+Fedora 开源项目向微软公司购买签名达到的， Fedora 被系统的主板识别为和
+Windows 一样的系统，这种购买行为在开源社区是不鼓励的，好处是 Fedora
+几乎可以在任何可以加载 Windows
+系统上被识别加载，即使该计算机硬件不能关闭 Secure Boot。</p>
 <blockquote>
-<p>本人只在 ThinkPad 测试成功，其他机器未曾实验过，不过仅从理论来看，应该也会成功。</p>
+<p>本人只在 ThinkPad
+测试成功，其他机器未曾实验过，不过仅从理论来看，应该也会成功。</p>
 </blockquote>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>以下工具是必不可少的：</p>
+<h2 id="工具">工具</h2>
+<p>以下工具是必不可少的：</p>
 <ul>
 <li>openssl</li>
 <li>efitools</li>
 <li>sbsigntools</li>
 </ul>
 <p>如果你是第三方编译好的软件包来安装的，可以忽略此步：</p>
-<p>在用源代码编译 efitools 时，需要 Perl 的一个模块，名字为 <code>File Slurp</code>，在 <a target="_blank" rel="noopener" href="http://www.cpan.org/">cpan</a> 可以找到。</p>
-<h2 id="预先准备"><a href="#预先准备" class="headerlink" title="预先准备"></a>预先准备</h2><p>开机进入系统的 UEFI-BIOS 页面，在安全页面里找到 Secure Boot 选项，先关掉 Secure Boot （如果没有关的话），再删除或清空所有证书文件，使机器从 <code>User Mode</code> 转到 <code>Setup Mode</code> 即为正常，如果这两步不能做到，可能影响到下面的步骤。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h3><p>这里简要介绍 PK，KEK，db，dbx 和 <em>MOK</em> 的概念。</p>
+<p>在用源代码编译 efitools 时，需要 Perl 的一个模块，名字为
+<code>File Slurp</code>，在 <a target="_blank" rel="noopener" href="http://www.cpan.org">cpan</a>
+可以找到。</p>
+<h2 id="预先准备">预先准备</h2>
+<p>开机进入系统的 UEFI-BIOS 页面，在安全页面里找到 Secure Boot
+选项，先关掉 Secure Boot
+（如果没有关的话），再删除或清空所有证书文件，使机器从
+<code>User Mode</code> 转到 <code>Setup Mode</code>
+即为正常，如果这两步不能做到，可能影响到下面的步骤。</p>
+<h2 id="步骤">步骤</h2>
+<h3 id="概念介绍">概念介绍</h3>
+<p>这里简要介绍 PK，KEK，db，dbx 和 <em>MOK</em> 的概念。</p>
 <ul>
-<li><p>Platform Key （PK） － <strong>PK 是用于在硬件平台层和硬件平台拥有者建立起的信任关系</strong> ，规定一个硬件平台只能被一个拥有者所拥有，即 <strong>PK 只能存在一个</strong> ，与拥有者相关的公钥被存储在 FLASH 里面的 PK 变量里面，同时，拥有者的私钥可以来对 PK， KEK， db， dbx 进行签名和管理。</p>
-</li>
-<li><p>Key Exchange Key (KEK) － <strong>KEK 是用于在硬件平台和操作系统之间建立信任关系</strong> ，KEK 的公钥可以在主板的 FLASH 存在多个不同项，即 <strong>KEK 可以存在多个</strong> ，每一项对应一种可以被启动的操作系统，同样，KEK 的私钥可以来对 db， dbx 进行签名和管理。</p>
-</li>
-<li><p>Database (db) － db 是用于对 <strong>被许可的 EFI 文件予以加载的数据签名库</strong> ，和 KEK 一样， <strong>db 的公钥可以存在很多项</strong> 。（在 UEFI 平台里面，操作系统加载文件就是一个 EFI 文件）</p>
-</li>
-<li><p>Database Excluded (dbx) - dbx 是一个 <strong>黑名单数据签名库</strong> ，只要谁的 EFI 签名在这，谁就被屏蔽掉， <strong>dbx 的公钥也可以存在很多项</strong> 。</p>
-</li>
-<li><p>Machine Owner Key (MOK) - MOK 的作用是等价于 db 的，但是它不是标准 Secure Boot 的内容，<code>PreLoader</code> 和 <code>Shim</code> 使用了 MOK 。</p>
-</li>
+<li><p>Platform Key （PK） － <strong>PK
+是用于在硬件平台层和硬件平台拥有者建立起的信任关系</strong>
+，规定一个硬件平台只能被一个拥有者所拥有，即 <strong>PK
+只能存在一个</strong> ，与拥有者相关的公钥被存储在 FLASH 里面的 PK
+变量里面，同时，拥有者的私钥可以来对 PK， KEK， db， dbx
+进行签名和管理。</p></li>
+<li><p>Key Exchange Key (KEK) － <strong>KEK
+是用于在硬件平台和操作系统之间建立信任关系</strong> ，KEK
+的公钥可以在主板的 FLASH 存在多个不同项，即 <strong>KEK
+可以存在多个</strong> ，每一项对应一种可以被启动的操作系统，同样，KEK
+的私钥可以来对 db， dbx 进行签名和管理。</p></li>
+<li><p>Database (db) － db 是用于对 <strong>被许可的 EFI
+文件予以加载的数据签名库</strong> ，和 KEK 一样， <strong>db
+的公钥可以存在很多项</strong> 。（在 UEFI
+平台里面，操作系统加载文件就是一个 EFI 文件）</p></li>
+<li><p>Database Excluded (dbx) - dbx 是一个
+<strong>黑名单数据签名库</strong> ，只要谁的 EFI
+签名在这，谁就被屏蔽掉， <strong>dbx 的公钥也可以存在很多项</strong>
+。</p></li>
+<li><p>Machine Owner Key (MOK) - MOK 的作用是等价于 db
+的，但是它不是标准 Secure Boot 的内容，<code>PreLoader</code> 和
+<code>Shim</code> 使用了 MOK 。</p></li>
 </ul>
-<h3 id="建立-PK，KEK，db-密钥对"><a href="#建立-PK，KEK，db-密钥对" class="headerlink" title="建立 PK，KEK，db 密钥对"></a>建立 PK，KEK，db 密钥对</h3><p>这里需要 Linux 系统中存在 <code>uuidgen</code>：</p>
+<h3 id="建立-pkkekdb-密钥对">建立 PK，KEK，db 密钥对</h3>
+<p>这里需要 Linux 系统中存在 <code>uuidgen</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(uuidgen) &gt;guid</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p><em>如果你不打算启动 Windows 系统，请忽略文中所有提及有关 Windows 系统的内容</em> </p>
+<p><em>如果你不打算启动 Windows 系统，请忽略文中所有提及有关 Windows
+系统的内容</em></p>
 </blockquote>
-<p>如果系统不存在 <code>uuidgen</code>，就随便写个 GUID 到那个 guid 文件里，然后把微软的 Owner GUID 写到另外一个文件里：</p>
+<p>如果系统不存在 <code>uuidgen</code>，就随便写个 GUID 到那个 guid
+文件里，然后把微软的 Owner GUID 写到另外一个文件里：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>  77fa9abd-0359-4d32-bd60-28f4e78f784b &gt;ms-guid</span><br></pre></td></tr></table></figure>
-
 <p>建立密钥对：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Platform Key/&quot;</span> -keyout PK.key -out PK.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
-
-<p>上面的 <code>-subj</code> 的参数可以自己设置，参数 <code>-days</code> 是密钥的有效期，这里设置为 10 年，也可以设置为其他，生成私钥 <code>PK.key</code>，公钥 <code>PK.crt</code>。</p>
+<p>上面的 <code>-subj</code> 的参数可以自己设置，参数 <code>-days</code>
+是密钥的有效期，这里设置为 10 年，也可以设置为其他，生成私钥
+<code>PK.key</code>，公钥 <code>PK.crt</code>。</p>
 <p>同理，KEK 和 db 亦是如此：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Key Exchange Key/&quot;</span> -keyout KEK.key -out KEK.crt -days 3650 -nodes -sha256</span><br><span class="line">openssl req -new -x509 -newkey rsa:2048 -subj <span class="string">&quot;/CN=Database/&quot;</span> -keyout db.key -out db.crt -days 3650 -nodes -sha256</span><br></pre></td></tr></table></figure>
-
-<p><em>这里没有建立 dbx 的黑名单，因为暂时用不到这个，也没有黑名单签名文件，MOK 不通用，亦不讨论</em></p>
-<h3 id="建立-EFI-List-文件"><a href="#建立-EFI-List-文件" class="headerlink" title="建立 EFI List 文件"></a>建立 EFI List 文件</h3><p>EFI List 文件其实就是公钥配以平台拥有者的 GUID 的文件:</p>
+<p><em>这里没有建立 dbx
+的黑名单，因为暂时用不到这个，也没有黑名单签名文件，MOK
+不通用，亦不讨论</em></p>
+<h3 id="建立-efi-list-文件">建立 EFI List 文件</h3>
+<p>EFI List 文件其实就是公钥配以平台拥有者的 GUID 的文件:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> guid) PK.crt PK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> guid) KEK.crt KEK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> guid) db.crt db.esl</span><br></pre></td></tr></table></figure>
-
 <p>这样三个公钥就全变成 List 文件了。</p>
-<p>为了能够也启动磁盘里的 Windows 系统，下载三个微软的公钥，一个 KEK，两个 db：</p>
+<p>为了能够也启动磁盘里的 Windows 系统，下载三个微软的公钥，一个
+KEK，两个 db：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321185 -o MSKEK.der</span><br><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321192 -o MSdbWPCA.der</span><br><span class="line">curl -L http://go.microsoft.com/fwlink/?LinkID=321194 -o MSdbUDSCA.der</span><br></pre></td></tr></table></figure>
-
 <p>微软的这三个公钥与这里使用的公钥格式不同，需要重新转换：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> MSKEK.der -inform DER -out MSKEK.crt</span><br><span class="line">openssl x509 -<span class="keyword">in</span> MSdbWPCA.der -inform DER -out MSdbWPCA.crt</span><br><span class="line">openssl x509 -<span class="keyword">in</span> MSdbUDSCA.der -inform DER -out MSdbUDSCA.crt</span><br></pre></td></tr></table></figure>
-
 <p>同样需要转换成 List 文件，不过这里的 GUID 最好用微软 Owner GUID：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> ms-guid) MSKEK.crt MSKEK.esl</span><br><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> ms-guid) MSdbWPCA.crt MSdbWPCA.esl</span><br><span class="line">cert-to-efi-sig-list -g $(<span class="built_in">cat</span> ms-guid) MSdbUDSCA.crt MSdbUDSCA.esl</span><br></pre></td></tr></table></figure>
-
-<p>在这里需要注意一下，在 ThinkPad 里面，第二次添加 KEK 时（加参数 <code>-a</code> ），会出现失败，我的解决方法是把那些 List 合并成一个 List 文件，即：</p>
+<p>在这里需要注意一下，在 ThinkPad 里面，第二次添加 KEK 时（加参数
+<code>-a</code> ），会出现失败，我的解决方法是把那些 List 合并成一个
+List 文件，即：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> KEK.esl MSKEK.esl &gt;realKEK.esl</span><br><span class="line"><span class="built_in">cat</span> db.esl MSdbWPCA.esl MSdbUDSCA.esl &gt;realDB.esl</span><br></pre></td></tr></table></figure>
-
 <p>根据 efitools 的文档，这种 cat 操作是可以完成合并的。</p>
-<h3 id="给-List-文件签名"><a href="#给-List-文件签名" class="headerlink" title="给 List 文件签名"></a>给 List 文件签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sign-efi-sig-list -k PK.key -c PK.crt PK PK.esl PK.esl.signed</span><br><span class="line">sign-efi-sig-list -k PK.key -c PK.crt KEK realKEK.esl realKEK.esl.signed</span><br><span class="line">sign-efi-sig-list -k KEK.key -c KEK.crt db realDB.esl realDB.esl.signed</span><br></pre></td></tr></table></figure>
-
-<p>上述中，平台拥有着的 Key 权限最高，可以对 PK 本身，和 KEK 签名，KEK 是建立操作系统和硬件平台之间的信任关系，它只用于对于 db 进行签名。</p>
-<h3 id="给二进制的-EFI-文件签名"><a href="#给二进制的-EFI-文件签名" class="headerlink" title="给二进制的 EFI 文件签名"></a>给二进制的 EFI 文件签名</h3><p>这是密钥管理和签名的最后一步，我使用的 grub ，其他的比如 elilo 等等，同理。给 grub 的 EFI 文件签名：</p>
+<h3 id="给-list-文件签名">给 List 文件签名</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sign-efi-sig-list -k PK.key -c PK.crt PK PK.esl PK.esl.signed</span><br><span class="line">sign-efi-sig-list -k PK.key -c PK.crt KEK realKEK.esl realKEK.esl.signed</span><br><span class="line">sign-efi-sig-list -k KEK.key -c KEK.crt db realDB.esl realDB.esl.signed</span><br></pre></td></tr></table></figure>
+<p>上述中，平台拥有着的 Key 权限最高，可以对 PK 本身，和 KEK 签名，KEK
+是建立操作系统和硬件平台之间的信任关系，它只用于对于 db 进行签名。</p>
+<h3 id="给二进制的-efi-文件签名">给二进制的 EFI 文件签名</h3>
+<p>这是密钥管理和签名的最后一步，我使用的 grub ，其他的比如 elilo
+等等，同理。给 grub 的 EFI 文件签名：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbsign --key db.key --cert db.crt --output grubx64.efi.signed /boot/efi/EFI/slackware64/grub64.efi</span><br></pre></td></tr></table></figure>
-
-<p>可以不用给内核 <code>vmlinuz</code> 签名，毕竟 <code>vmlinuz</code> 不是硬件平台的启动 EFI 文件，不过给内核签名也没什么影响，如果想给内核签名类似于给 grub 签名，用 私钥 <code>db.key</code> 及对应的公钥 <code>db.crt</code> 对其签名，这里用的 db 是那个自己创建的 db ，即没有合并微软 db 的那个，合并了微软 db 的是 <strong>realDB</strong> 。</p>
-<h3 id="写入-efivars"><a href="#写入-efivars" class="headerlink" title="写入 efivars"></a>写入 efivars</h3><p>到这里是整个过程的最后一步，首先必须保证系统的 <em>efivarfs</em> 被正确挂载，<code>ls</code> 一下 <code>/sys/firmware/efi/efivars/</code> 是否存在文件，有的系统默认挂载 <em>efivarfs</em> ，有的则不是（后续步骤需要切换至 root 用户）：</p>
+<p>可以不用给内核 <code>vmlinuz</code> 签名，毕竟 <code>vmlinuz</code>
+不是硬件平台的启动 EFI
+文件，不过给内核签名也没什么影响，如果想给内核签名类似于给 grub 签名，用
+私钥 <code>db.key</code> 及对应的公钥 <code>db.crt</code>
+对其签名，这里用的 db 是那个自己创建的 db ，即没有合并微软 db
+的那个，合并了微软 db 的是 <strong>realDB</strong> 。</p>
+<h3 id="写入-efivars">写入 efivars</h3>
+<p>到这里是整个过程的最后一步，首先必须保证系统的 <em>efivarfs</em>
+被正确挂载，<code>ls</code> 一下 <code>/sys/firmware/efi/efivars/</code>
+是否存在文件，有的系统默认挂载 <em>efivarfs</em>
+，有的则不是（后续步骤需要切换至 root 用户）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t efivarfs efivarfs /sys/firmware/efi/efivars/</span><br></pre></td></tr></table></figure>
-
 <p>再把那三个签过名的 List 文件写入主板：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">efi-updatevar -f PK.esl.signed PK</span><br><span class="line">efi-updatevar -f realKEK.esl.signed KEK</span><br><span class="line">efi-updatevar -f realDB.esl.signed db</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>参考 <a target="_blank" rel="noopener" href="http://www.linuxquestions.org/">LinuxQuestions</a> 上的解决方案，使用了在 <code>efi-updatevar</code> 添加 <code>-a</code> 参数来表示添加，但是在 ThinkPad 上多次实验第二次皆以 <code>Operation not permitted</code> 的错误而中断，所以，合并 EFI List 文件即只需添加一次，就全部都被加上，无需再用 <code>-a</code> 来添加。上述的问题很难判断是密钥链的逻辑问题，还是硬件的保护机制，不过用合并这种方法，在 Secure Boot 下，Windows 和 Linux 都可以正常启动，看来没问题。</p>
+<p>参考 <a target="_blank" rel="noopener" href="http://www.linuxquestions.org">LinuxQuestions</a>
+上的解决方案，使用了在 <code>efi-updatevar</code> 添加 <code>-a</code>
+参数来表示添加，但是在 ThinkPad 上多次实验第二次皆以
+<code>Operation not permitted</code> 的错误而中断，所以，合并 EFI List
+文件即只需添加一次，就全部都被加上，无需再用 <code>-a</code>
+来添加。上述的问题很难判断是密钥链的逻辑问题，还是硬件的保护机制，不过用合并这种方法，在
+Secure Boot 下，Windows 和 Linux 都可以正常启动，看来没问题。</p>
 </blockquote>
-<p>所有操作都完成后，可以运行 <code>efi-readvar</code> 来查看添加结果。只要 <em>efivarfs</em> 仍然被挂载，即使在非 root 用户也可以查看。</p>
-<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://docs.slackware.com/howtos:security:enabling_secure_boot">docs.slackware.com</a></p>
+<p>所有操作都完成后，可以运行 <code>efi-readvar</code>
+来查看添加结果。只要 <em>efivarfs</em> 仍然被挂载，即使在非 root
+用户也可以查看。</p>
+<h2 id="相关链接">相关链接</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.slackware.com/howtos:security:enabling_secure_boot">docs.slackware.com</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.linuxquestions.org/questions/slackware-14/slackware64-14-1-uefi-booting-with-secure-boot-enabled-4175532990">linuxquesions.org</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.howtogeek.com/175641/how-to-boot-and-install-linux-on-a-uefi-pc-with-secure-boot">howtogeek.com</a></p>
 <p><a target="_blank" rel="noopener" href="http://wiki.archlinux.org/index.php/Secure_Boot">archlinux.org</a></p>
@@ -481,7 +543,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">预先准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">概念介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-PK%EF%BC%8CKEK%EF%BC%8Cdb-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.2.</span> <span class="nav-text">建立 PK，KEK，db 密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-EFI-List-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">建立 EFI List 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99-List-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.4.</span> <span class="nav-text">给 List 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84-EFI-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.5.</span> <span class="nav-text">给二进制的 EFI 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5-efivars"><span class="nav-number">4.6.</span> <span class="nav-text">写入 efivars</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">预先准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">概念介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-pkkekdb-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.2.</span> <span class="nav-text">建立 PK，KEK，db 密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-efi-list-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">建立 EFI List 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99-list-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.4.</span> <span class="nav-text">给 List 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84-efi-%E6%96%87%E4%BB%B6%E7%AD%BE%E5%90%8D"><span class="nav-number">4.5.</span> <span class="nav-text">给二进制的 EFI 文件签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5-efivars"><span class="nav-number">4.6.</span> <span class="nav-text">写入 efivars</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -497,7 +559,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,7 +572,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

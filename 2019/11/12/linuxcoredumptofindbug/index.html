@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="什么是coredump？Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些Coredump删除。">
+  <meta name="description" content="什么是coredump？ Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些Coredump删除。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Linux的coredump机制快速定位程序BUG">
 <meta property="og:url" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/index.html">
 <meta property="og:site_name" content="个人站点">
-<meta property="og:description" content="什么是coredump？Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些Coredump删除。">
+<meta property="og:description" content="什么是coredump？ Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些Coredump删除。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/crashed.png">
 <meta property="og:image" content="https://hchen90.github.io/2019/11/12/linuxcoredumptofindbug/info.png">
@@ -88,7 +88,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -261,19 +265,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="什么是coredump？"><a href="#什么是coredump？" class="headerlink" title="什么是coredump？"></a>什么是coredump？</h1><p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+        <h1 id="什么是coredump">什么是coredump？</h1>
+<p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
 <span id="more"></span>
-
-<h1 id="需要些什么工具？"><a href="#需要些什么工具？" class="headerlink" title="需要些什么工具？"></a>需要些什么工具？</h1><p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
-<h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>下面是我展示的一个出错事例，供参考观摩。</p>
-<h2 id="程序崩溃了"><a href="#程序崩溃了" class="headerlink" title="程序崩溃了"></a>程序崩溃了</h2><p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<h1 id="需要些什么工具">需要些什么工具？</h1>
+<p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core
+dumped时的未修改的代码）。</p>
+<h1 id="案例分析">案例分析</h1>
+<p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了">程序崩溃了</h2>
+<p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
 <ul>
 <li>难确定（是否发生）</li>
 <li>难定位</li>
 </ul>
 <p>见下图：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/crashed.png" alt="pic1"></p>
-<h2 id="尝试用coredumpctl工具直接调试"><a href="#尝试用coredumpctl工具直接调试" class="headerlink" title="尝试用coredumpctl工具直接调试"></a>尝试用coredumpctl工具直接调试</h2><p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<figure>
+<img src="/2019/11/12/linuxcoredumptofindbug/crashed.png" alt="pic1">
+<figcaption aria-hidden="true">pic1</figcaption>
+</figure>
+<h2 id="尝试用coredumpctl工具直接调试">尝试用coredumpctl工具直接调试</h2>
+<p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coredumpctl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 <p>或者，也可以查看它的man文档。</p>
 <p>好了，言归正传，尝试输入命令以调试：</p>
@@ -282,30 +294,41 @@
 <p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
 </blockquote>
 <p>出现如下图的结果：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/info.png" alt="pic2"></p>
+<figure>
+<img src="/2019/11/12/linuxcoredumptofindbug/info.png" alt="pic2">
+<figcaption aria-hidden="true">pic2</figcaption>
+</figure>
 <p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/info2.png" alt="pic3"></p>
+<figure>
+<img src="/2019/11/12/linuxcoredumptofindbug/info2.png" alt="pic3">
+<figcaption aria-hidden="true">pic3</figcaption>
+</figure>
 <p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*a = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
 <p>这句是我故意改错用于比较的，源代码是这样的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">input</span><span class="params">(string&amp; filename, ...)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; filename &lt;&lt; endl;</span><br><span class="line">  <span class="type">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  *a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
-<h2 id="用coredumctl-info查看栈信息"><a href="#用coredumctl-info查看栈信息" class="headerlink" title="用coredumctl info查看栈信息"></a>用<code>coredumctl info</code>查看栈信息</h2><p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<h2 id="用coredumctl-info查看栈信息">用<code>coredumctl info</code>查看栈信息</h2>
+<p>下面两张图展示了这个崩溃程序的栈信息。</p>
 <p>图一：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/stack.png" alt="pic4"></p>
-<p>图二：<br><img src="/2019/11/12/linuxcoredumptofindbug/stack2.png" alt="pic5"></p>
+<figure>
+<img src="/2019/11/12/linuxcoredumptofindbug/stack.png" alt="pic4">
+<figcaption aria-hidden="true">pic4</figcaption>
+</figure>
+<p>图二： <img src="/2019/11/12/linuxcoredumptofindbug/stack2.png" alt="pic5"></p>
 <p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
-<h2 id="反汇编程序文件"><a href="#反汇编程序文件" class="headerlink" title="反汇编程序文件"></a>反汇编程序文件</h2><p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<h2 id="反汇编程序文件">反汇编程序文件</h2>
+<p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump --<span class="built_in">source</span> -d xxxx | less</span><br></pre></td></tr></table></figure>
-
 <p>图片展示：</p>
-<p><img src="/2019/11/12/linuxcoredumptofindbug/disasm.png" alt="pic6"></p>
+<figure>
+<img src="/2019/11/12/linuxcoredumptofindbug/disasm.png" alt="pic6">
+<figcaption aria-hidden="true">pic6</figcaption>
+</figure>
 <blockquote>
 <p>同样，xxxx为程序文件名</p>
 </blockquote>
-<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主&#x2F;子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>
 
     </div>
 
@@ -452,7 +475,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFcoredump%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是coredump？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E4%BA%9B%E4%BB%80%E4%B9%88%E5%B7%A5%E5%85%B7%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">需要些什么工具？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">案例分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%B4%A9%E6%BA%83%E4%BA%86"><span class="nav-number">3.1.</span> <span class="nav-text">程序崩溃了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E7%94%A8coredumpctl%E5%B7%A5%E5%85%B7%E7%9B%B4%E6%8E%A5%E8%B0%83%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">尝试用coredumpctl工具直接调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8coredumctl-info%E6%9F%A5%E7%9C%8B%E6%A0%88%E4%BF%A1%E6%81%AF"><span class="nav-number">3.3.</span> <span class="nav-text">用coredumctl info查看栈信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">反汇编程序文件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFcoredump"><span class="nav-number">1.</span> <span class="nav-text">什么是coredump？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E4%BA%9B%E4%BB%80%E4%B9%88%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">需要些什么工具？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">案例分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%B4%A9%E6%BA%83%E4%BA%86"><span class="nav-number">3.1.</span> <span class="nav-text">程序崩溃了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E7%94%A8coredumpctl%E5%B7%A5%E5%85%B7%E7%9B%B4%E6%8E%A5%E8%B0%83%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">尝试用coredumpctl工具直接调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8coredumctl-info%E6%9F%A5%E7%9C%8B%E6%A0%88%E4%BF%A1%E6%81%AF"><span class="nav-number">3.3.</span> <span class="nav-text">用coredumctl info查看栈信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">反汇编程序文件</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,7 +491,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -481,7 +504,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

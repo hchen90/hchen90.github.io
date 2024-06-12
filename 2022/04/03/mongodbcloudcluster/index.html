@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="什么是MongoDB CloudMongoDB Cloud 的核心是 MongoDB Atlas ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。MongoDB 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。">
+  <meta name="description" content="什么是MongoDB Cloud MongoDB Cloud 的核心是 MongoDB Atlas ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。MongoDB 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB Cloud云平台简单使用简介">
 <meta property="og:url" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/index.html">
 <meta property="og:site_name" content="个人站点">
-<meta property="og:description" content="什么是MongoDB CloudMongoDB Cloud 的核心是 MongoDB Atlas ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。MongoDB 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。">
+<meta property="og:description" content="什么是MongoDB Cloud MongoDB Cloud 的核心是 MongoDB Atlas ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。MongoDB 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/price.png">
 <meta property="og:image" content="https://hchen90.github.io/2022/04/03/mongodbcloudcluster/dashboard.png">
@@ -89,7 +89,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -263,37 +267,73 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="什么是MongoDB-Cloud"><a href="#什么是MongoDB-Cloud" class="headerlink" title="什么是MongoDB Cloud"></a>什么是MongoDB Cloud</h1><p>MongoDB Cloud 的核心是 <a target="_blank" rel="noopener" href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a> ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。<a target="_blank" rel="noopener" href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a> 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
+        <h1 id="什么是mongodb-cloud">什么是MongoDB Cloud</h1>
+<p>MongoDB Cloud 的核心是 <a target="_blank" rel="noopener" href="https://www.mongodb.com/zh-cn/cloud/atlas">MongoDB Atlas</a>
+，这是一个适用于现代应用程序的完全托管的云数据库。Atlas
+是运行领先的现代数据库 MongoDB 的最佳方式。<a target="_blank" rel="noopener" href="https://www.mongodb.com/zh-cn/what-is-mongodb">MongoDB</a>
+的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。</p>
 <span id="more"></span>
-
 <p>这是官网的简介，然后，再看一下它的价格，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/price.png" alt="price">
+<figcaption aria-hidden="true">price</figcaption>
+</figure>
 <p>可以看到，其存在一个可以共享的免费版，它是一个运行沙盒的环境，其包含基本的数据存储功能了，如果对存储大小，网络隔离等等有需求的话，可以考虑另外两个。</p>
-<h1 id="创建DB-Cluster"><a href="#创建DB-Cluster" class="headerlink" title="创建DB Cluster"></a>创建DB Cluster</h1><h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>首先是登录MongoDB Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard"></p>
+<h1 id="创建db-cluster">创建DB Cluster</h1>
+<h2 id="登录账号">登录账号</h2>
+<p>首先是登录MongoDB
+Cloud的账号了，如果没有的话，可以创建一个账号，并登录之，并进入到Dashboard，如下图：</p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/dashboard.png" alt="dashboard">
+<figcaption aria-hidden="true">dashboard</figcaption>
+</figure>
 <blockquote>
 <p>注意：上图中是已经创建了一个Cluster</p>
 </blockquote>
-<h2 id="创建一个Cluster"><a href="#创建一个Cluster" class="headerlink" title="创建一个Cluster"></a>创建一个Cluster</h2><p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
+<h2 id="创建一个cluster">创建一个Cluster</h2>
+<p>在进入Dashboard后，可以创建一个Cluster，并进行一系列的配置，包括数据存放区域地点，供应商信息，等等一些信息。<img src="/2022/04/03/mongodbcloudcluster/createcluster.png" alt="createcluster"></p>
 <p>根据业务服务需求，选择低延迟数据存放点：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/location.png" alt="location">
+<figcaption aria-hidden="true">location</figcaption>
+</figure>
 <p>以及云供应商：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/provider.png" alt="privider">
+<figcaption aria-hidden="true">privider</figcaption>
+</figure>
 <p>除此之外，还可以对Cluster进行一些额外的信息配置（例如：所使用的数据库版本信息）：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings"></p>
-<h2 id="配置创建的Cluster"><a href="#配置创建的Cluster" class="headerlink" title="配置创建的Cluster"></a>配置创建的Cluster</h2><p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/settings.png" alt="settings">
+<figcaption aria-hidden="true">settings</figcaption>
+</figure>
+<h2 id="配置创建的cluster">配置创建的Cluster</h2>
+<p>配置上面，内容比较简洁，主要是分两个部分，数据部分的是触发器配置，安全部分的是数据库用户配置和网络访问配置。</p>
 <p>数据库的用户配置用于添加访问数据库的用户，包括设置用户登录名和密码，也可以是证书验证方式来登录：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/adduser.png" alt="adduser">
+<figcaption aria-hidden="true">adduser</figcaption>
+</figure>
 <p>创建了用户后，我们其实还不能进行数据库的登录，还需要把我们登录客户端的IP添加到白名单列表之中：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/ipwhitelist.png" alt="ipwhitelist">
+<figcaption aria-hidden="true">ipwhitelist</figcaption>
+</figure>
 <blockquote>
 <p>注意事项：</p>
 <p>不要忘记把IP添加到白名单中，不然会出现连接失败的问题。</p>
 </blockquote>
-<h1 id="连接DB-Cluster并使用"><a href="#连接DB-Cluster并使用" class="headerlink" title="连接DB Cluster并使用"></a>连接DB Cluster并使用</h1><p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud"></p>
+<h1 id="连接db-cluster并使用">连接DB Cluster并使用</h1>
+<p>客户端使用mongo进行连接刚刚创建的云端Cluster，效果如下：</p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/connectcloud.png" alt="connectcloud">
+<figcaption aria-hidden="true">connectcloud</figcaption>
+</figure>
 <p>连上后就可以向里面写入一些数据了：</p>
-<p><img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection"></p>
+<figure>
+<img src="/2022/04/03/mongodbcloudcluster/collection.png" alt="collection">
+<figcaption aria-hidden="true">collection</figcaption>
+</figure>
 
     </div>
 
@@ -437,7 +477,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMongoDB-Cloud"><span class="nav-number">1.</span> <span class="nav-text">什么是MongoDB Cloud</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BADB-Cluster"><span class="nav-number">2.</span> <span class="nav-text">创建DB Cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">登录账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AACluster"><span class="nav-number">2.2.</span> <span class="nav-text">创建一个Cluster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%88%9B%E5%BB%BA%E7%9A%84Cluster"><span class="nav-number">2.3.</span> <span class="nav-text">配置创建的Cluster</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5DB-Cluster%E5%B9%B6%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">连接DB Cluster并使用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFmongodb-cloud"><span class="nav-number">1.</span> <span class="nav-text">什么是MongoDB Cloud</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAdb-cluster"><span class="nav-number">2.</span> <span class="nav-text">创建DB Cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">登录账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAcluster"><span class="nav-number">2.2.</span> <span class="nav-text">创建一个Cluster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%88%9B%E5%BB%BA%E7%9A%84cluster"><span class="nav-number">2.3.</span> <span class="nav-text">配置创建的Cluster</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5db-cluster%E5%B9%B6%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">连接DB Cluster并使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -453,7 +493,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -466,7 +506,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

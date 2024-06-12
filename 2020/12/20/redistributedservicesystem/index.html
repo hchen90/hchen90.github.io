@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="什么是分布式系统关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。 而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。">
+  <meta name="description" content="什么是分布式系统 关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。 而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式服务系统概述">
 <meta property="og:url" content="https://hchen90.github.io/2020/12/20/redistributedservicesystem/index.html">
 <meta property="og:site_name" content="个人站点">
-<meta property="og:description" content="什么是分布式系统关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。 而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。">
+<meta property="og:description" content="什么是分布式系统 关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。 而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hchen90.github.io/2020/12/20/redistributedservicesystem/tra-cs-mod.png">
 <meta property="og:image" content="https://hchen90.github.io/2020/12/20/redistributedservicesystem/redi-rs-mod.png">
@@ -87,7 +87,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -267,21 +271,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="什么是分布式系统"><a href="#什么是分布式系统" class="headerlink" title="什么是分布式系统"></a>什么是分布式系统</h1><p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
-<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他&#x2F;她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
+        <h1 id="什么是分布式系统">什么是分布式系统</h1>
+<p>关于分布式系统的定义，应该都不会陌生，它就是一些独立的计算机集合，这些计算机也称为节点，为了完成一项事务，由这一组计算节点协作完成。</p>
+<p>而分布式还有另外一个特点，就是用户几乎感知不到它是很多节点来完成一项事务的，甚至可以说，站在用户的角度，它和集中式系统几乎雷同，用户不会觉得他/她在请求的是集中式系统，亦或分布式系统，这是分布式系统的透明性。</p>
 <span id="more"></span>
-
-<h2 id="和传统的集中式C-x2F-S系统对比"><a href="#和传统的集中式C-x2F-S系统对比" class="headerlink" title="和传统的集中式C&#x2F;S系统对比"></a>和传统的集中式C&#x2F;S系统对比</h2><p>首先看一下传统的集中式C&#x2F;S系统：</p>
-<p><img src="/2020/12/20/redistributedservicesystem/tra-cs-mod.png" alt="Tra-CS-System"></p>
+<h2 id="和传统的集中式cs系统对比">和传统的集中式C/S系统对比</h2>
+<p>首先看一下传统的集中式C/S系统：</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/tra-cs-mod.png" alt="Tra-CS-System">
+<figcaption aria-hidden="true">Tra-CS-System</figcaption>
+</figure>
 <p>而对于分布式的系统而言，它是这样的：</p>
-<p><img src="/2020/12/20/redistributedservicesystem/redi-rs-mod.png" alt="Redi-System"></p>
-<p>比起传统集中式C&#x2F;S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/redi-rs-mod.png" alt="Redi-System">
+<figcaption aria-hidden="true">Redi-System</figcaption>
+</figure>
+<p>比起传统集中式C/S服务而言，分布式系统具有更强的拓展性，对于集中式的服务系统来说，需要不断升级集中式服务系统的硬件来提高系统的性能，这样做不仅成本高，而且对于整个系统的可靠性也不好；而对于分布式系统来说就简单多了，只需要增加节点即可，使系统的计算负载到新增的节点上，进而使得整个系统的性能得到提升。</p>
 <blockquote>
 <p>相比较于集中式系统，分布式节点的性能要求可能很低，只要满足基本要求即可</p>
 </blockquote>
 <p>对于系统的稳定性来说，分布式系统允许部分节点出现故障，而不会影响整个系统的有效性，如果整个系统出现很多节点故障，只要还有必要节点存活，这个系统就会一直有效，对外表现最多就是这个系统的性能有所下降；但是对于集中式系统来说，就没有办法这样了，它只有一个节点，这个节点崩掉了，整个系统就崩调了。</p>
 <p>但是，分布式系统也有它的缺点，最大的问题就是数据一致性问题，因为计算需要的数据被分配到不同的节点上，如何保证各个节点对同一个数据的修改是一致的，所以，对于数据的设计就要比集中式的复杂些。</p>
-<h1 id="具体的技术细节"><a href="#具体的技术细节" class="headerlink" title="具体的技术细节"></a>具体的技术细节</h1><p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
+<h1 id="具体的技术细节">具体的技术细节</h1>
+<p>上面说了一些分布式系统的优缺点，可见分布式的优点比起它的缺点更吸引人。</p>
 <p>但是，如果我们要去实现这样的系统，我们就不得不考虑据多技术细节：</p>
 <ul>
 <li>分布式由许多子服务运行在这些节点上的，但是如何来划分这些子服务呢？</li>
@@ -294,16 +306,22 @@
 <p>在设计这样的系统时，我们还是另辟蹊径（或者说是我熟悉的一个领域），这种分布式在游戏服务端中很常见，说到底其实也很简单，只有那么几个技术（其实也在更新发展中，也许和我的版本有些许不同），因此我们只要借鉴游戏服务框架的设计思想即可也可设计一个我们自己的分布式服务系统。</p>
 </blockquote>
 <p>对于分布式系统，解决并发问题的核心是数据通讯问题，如果在同一个节点里，可以很容易实现数据共享，但是它的效率低下，实现复杂，而且通用性不强，对于节点与节点之间的数据共享就不得不借助套接字了；其次一个方案就是消息传递了，这种方案最常见了，各种开源的中间件，可以说已经是默认方案了，消息传递适用场景也更加广泛，可以是线程之间的同步，进程之间，或者是节点间，它都可以派上用场。</p>
-<h2 id="Actor模型"><a href="#Actor模型" class="headerlink" title="Actor模型"></a>Actor模型</h2><p>说到消息传递，我们就要来复习一下Actor模型。</p>
+<h2 id="actor模型">Actor模型</h2>
+<p>说到消息传递，我们就要来复习一下Actor模型。</p>
 <blockquote>
 <p>可以参考一下维基百科的描述：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
 </blockquote>
-<h3 id="什么是-Actor-模型"><a href="#什么是-Actor-模型" class="headerlink" title="什么是 Actor 模型"></a>什么是 Actor 模型</h3><p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
+<h3 id="什么是-actor-模型">什么是 Actor 模型</h3>
+<p>Actor模型是一个基本的计算单元，它可以接收消息，并且基于消息执行计算，并将计算结果以消息的形式返回给调用它的Actor，Actor之间相互隔离，他们之间不共享资源。</p>
 <p>Actor的本身是状态机模式的进一步封装，它由三部分组成：状态（State），行为（Behavior），邮箱（MailBox）</p>
 <p>以上三部分很好理解，状态和行为是状态机的必要元素，邮箱是和外部Actor交互的通道。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/actor.drawio.png" alt="Actor Model"></p>
-<p>由此可见最上方展示过的那张图中的”<strong>服务N</strong>“，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
-<h3 id="状态机模式"><a href="#状态机模式" class="headerlink" title="状态机模式"></a>状态机模式</h3><p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/actor.drawio.png" alt="Actor Model">
+<figcaption aria-hidden="true">Actor Model</figcaption>
+</figure>
+<p>由此可见最上方展示过的那张图中的"<strong>服务N</strong>"，这些都可以抽象化成为Actor模型，每个服务可以对应一个或者多个服务。</p>
+<h3 id="状态机模式">状态机模式</h3>
+<p>Actor模型用到了状态机模式，状态机模式是一种很常见，很实用的设计模式。</p>
 <p>状态机包含最基本的四要素：状态（State），事件（Event），动作（Action），变换（Transition）</p>
 <ul>
 <li>状态（State）：当前状态机的状态</li>
@@ -317,16 +335,29 @@
 <p>状态机是刚开始的时候，设置为开始态，然后，根据输入的事件触发进行下一个状态，每一个状态都有对应的操作（动作），每种状态的变换，都是根据变换条件来设定的，一直到状态机走到结束态，这个状态机就属于终结了。</p>
 <p>由此可见，我们可以把状态机想象成一个黑盒，它接收任何可能的输入，各种不同的输入会触发黑盒内部的状态改变，从而进行下一步操作，从而状态机的维护了它内部的信息隔离，状态安全的优点，也便于外部使用它。</p>
 <p>而Actor模型就是内部嵌套着这样的一个状态机，再加一个邮件队列，从结构看来，非常简单明了。</p>
-<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
+<h2 id="mongodb">MongoDB</h2>
+<p>在说到分布式系统一个很令人头疼的问题那就是数据一致性问题了，虽然为了达到分布式系统数据一致性的方法五花八门，但是这里我推荐一款非常适用的方案，那就是这款MongoDB数据库，这个基于分布式文件存储的数据库天生为了分布式系统而打造的，很多大型分布式游戏服务端用的都是这套系统。</p>
 <p>MongoDB提出文档（Document），集合（Collection）概念，其数据模型结构类似于JSON，非常适合实际环境下读写，其次MongoDB支持数据集分片的功能，从而可以把数据分摊到多个用于存储数据的节点上，最后，因为它的数据模型是基于面向对象的，所以可以表达很丰富，层次较多的数据结构。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/mongo-cli.png" alt="mongo-db"></p>
-<h2 id="Redis缓存"><a href="#Redis缓存" class="headerlink" title="Redis缓存"></a>Redis缓存</h2><p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/redis-cli.png" alt="redis"></p>
-<h1 id="分布式适用场景"><a href="#分布式适用场景" class="headerlink" title="分布式适用场景"></a>分布式适用场景</h1><p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/mongo-cli.png" alt="mongo-db">
+<figcaption aria-hidden="true">mongo-db</figcaption>
+</figure>
+<h2 id="redis缓存">Redis缓存</h2>
+<p>在我们的分布式系统里面，Redis的作用是用来缓存数据的，因为我们的Actor它要操作数据库进行读写操作，这里的Actor可以是一个专门负责数据存储的Actor，它来读写数据库，读写数据库如果是同节点的数据库，那速度应该不会很慢，但是仍然不如Redis这种内存数据库的快速，而往往有一种更加复杂的情形，那就是读取MongoDB实际上不在本地，而是在另一个节点上，这读写一次数据还要经过网络，所以时间较长，这时Redis的角色就更不可或缺了。</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/redis-cli.png" alt="redis">
+<figcaption aria-hidden="true">redis</figcaption>
+</figure>
+<h1 id="分布式适用场景">分布式适用场景</h1>
+<p>分布式系统适合用户量很大，数据存储量庞大的场景，对于庞大的用户接入，如果是集中式的服务系统，那么它的负载压力就会很大，很容易触及性能瓶颈，而去提升它的话，所要支出较大，而且灵活性也很差，但是对于分布式系统而言，系统可以存在多个网关服务节点，用户只需要接入网关节点，把网关节点当作服务节点用即可。</p>
 <p>网关节点则是从其他节点获取实际请求的资源，得到结果后，把它返回给用户。</p>
 <p>通常来说这样的分布式系统是存在一个内部网络中的，它是由很多节点组成的系统，系统中的网关节点是存在公网IP的，可以被外部访问，而内部其他的功能服务节点，视其功能可以不对外开放访问，它只会把结果交给网关服务节点，网关会把数据请求发给对应的内部服务节点。</p>
-<p><img src="/2020/12/20/redistributedservicesystem/diagram.png" alt="diagram"></p>
-<h1 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h1><p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
+<figure>
+<img src="/2020/12/20/redistributedservicesystem/diagram.png" alt="diagram">
+<figcaption aria-hidden="true">diagram</figcaption>
+</figure>
+<h1 id="技术总结">技术总结</h1>
+<p>这种分布式的服务系统相对来说可以接收很大的接入量，比如200k，1000k都可以做到，只需要增加网关节点即可，数据量也可以变得非常庞大，这时我们只需要增加MongoDB的数据分片即可。总的来说，就是性能不够增加节点即可。</p>
 <p>这里我们所需要的技术全部都是非常明了，中间件也非常完善，唯独在Actor模型，和服务分类上面稍作设计就可以达到我们所需要的目的，尤其在同构的服务上，如何实现协作要精心设计一下。</p>
 <blockquote>
 <p>这里的技术概要就写道这里，我会在下一篇技术博文使用具体的设计工具，并且编写代码，制作一个微型的分布式服务系统。</p>
@@ -476,7 +507,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%9B%86%E4%B8%AD%E5%BC%8FC-x2F-S%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.</span> <span class="nav-text">和传统的集中式C&#x2F;S系统对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%9A%84%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">具体的技术细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Actor模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Actor-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">什么是 Actor 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">状态机模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.2.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E7%BC%93%E5%AD%98"><span class="nav-number">2.3.</span> <span class="nav-text">Redis缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">3.</span> <span class="nav-text">分布式适用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">技术总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是分布式系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%9B%86%E4%B8%AD%E5%BC%8Fcs%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.</span> <span class="nav-text">和传统的集中式C&#x2F;S系统对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%9A%84%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">具体的技术细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#actor%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">Actor模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-actor-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">什么是 Actor 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">状态机模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb"><span class="nav-number">2.2.</span> <span class="nav-text">MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E7%BC%93%E5%AD%98"><span class="nav-number">2.3.</span> <span class="nav-text">Redis缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">3.</span> <span class="nav-text">分布式适用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">技术总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -492,7 +523,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -505,7 +536,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
