@@ -204,6 +204,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,zh-TW,en,default">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2018/06/24/linuxstartup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="个人站点空间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人站点">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/24/linuxstartup/" class="post-title-link" itemprop="url">Linux系统启动流程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-06-24 11:50:03" itemprop="dateCreated datePublished" datetime="2018-06-24T11:50:03+08:00">2018-06-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="内核加载">内核加载</h1>
+<p>在<a href="/2018/06/16/systemstartup">上篇博文</a>里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。</p>
+<p>通常在系统<code>/boot</code>目录下放着内核文件，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">initramfs-linux.img</span><br><span class="line">vmlinuz-linux</span><br></pre></td></tr></table></figure>
+<p>GRUB（或者LILO）加载内核的时候，会把<code>vmlinuz-linux</code>映射到内存并会把它的一个初始根目录的文件镜像（<code>initramfs-linux.img</code>）作为文件系统加载到内存，系统会从这个迷你的初始化文件系统来启动，在这个迷你的文件系统里面又会加载真正的磁盘文件系统，带有这种<code>initramfs</code>的都是这种加载流程，但是，对于那种没有<code>initramfs</code>的（例如：Slackware发行版本），它是加载内核后，内核直接从磁盘加载文件系统，这种区分跟内核配置有关。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/06/24/linuxstartup/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,zh-TW,en,default">
     <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2018/06/16/systemstartup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -896,7 +974,7 @@ Server的安装，假设预制环境就绪）。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
