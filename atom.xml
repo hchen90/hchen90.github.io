@@ -401,6 +401,88 @@ db， dbx 的证书链，所以， &lt;strong&gt;在操作开始前请确保你�
   </entry>
   
   <entry>
+    <title>软件设计模式 - 行为模式</title>
+    <link href="https://hchen90.github.io/2017/06/08/softwaredesignpattern4/"/>
+    <id>https://hchen90.github.io/2017/06/08/softwaredesignpattern4/</id>
+    <published>2017-06-08T14:01:03.000Z</published>
+    <updated>2024-10-08T12:15:08.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;软件设计模式---行为模式&quot;&gt;软件设计模式 - 行为模式&lt;/h1&gt;
+&lt;p&gt;行为模式负责对象之间的高效沟通和职责委派。&lt;/p&gt;
+&lt;p&gt;行为模式包括：责任链，命令，迭代器，中介者，备忘录，观察者，状态，策略，模版方法，访问者。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="总结" scheme="https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="设计模式" scheme="https://hchen90.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件设计模式 - 结构型模式</title>
+    <link href="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/"/>
+    <id>https://hchen90.github.io/2017/06/05/softwaredesignpattern3/</id>
+    <published>2017-06-05T13:11:12.000Z</published>
+    <updated>2017-06-05T13:11:12.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;软件设计模式---结构型模式&quot;&gt;软件设计模式 - 结构型模式&lt;/h1&gt;
+&lt;p&gt;结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。&lt;/p&gt;
+&lt;p&gt;结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="总结" scheme="https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="设计模式" scheme="https://hchen90.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件设计模式 - 创建型模式</title>
+    <link href="https://hchen90.github.io/2017/06/04/softwaredesignpattern2/"/>
+    <id>https://hchen90.github.io/2017/06/04/softwaredesignpattern2/</id>
+    <published>2017-06-04T11:04:11.000Z</published>
+    <updated>2017-06-04T11:04:11.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;软件设计模式---创建型模式&quot;&gt;软件设计模式 - 创建型模式&lt;/h1&gt;
+&lt;p&gt;创建型模式分为：工厂方法，抽象工厂，生成器，原型，单例。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="总结" scheme="https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="设计模式" scheme="https://hchen90.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件设计模式简介</title>
+    <link href="https://hchen90.github.io/2017/06/02/softwaredesignpattern1/"/>
+    <id>https://hchen90.github.io/2017/06/02/softwaredesignpattern1/</id>
+    <published>2017-06-02T12:12:01.000Z</published>
+    <updated>2017-06-02T12:12:01.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;软件设计模式简介&quot;&gt;软件设计模式简介&lt;/h1&gt;
+&lt;p&gt;软件设计模式属于软件工程领域的解决问题的基本方法，它提供了一种合理地达成目标的处理步骤。本文主要简单提出为何需要它，它的作用，以及它的主要组成元素。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="总结" scheme="https://hchen90.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="设计模式" scheme="https://hchen90.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来</title>
     <link href="https://hchen90.github.io/2016/10/03/minix/"/>
     <id>https://hchen90.github.io/2016/10/03/minix/</id>
@@ -420,81 +502,6 @@ db， dbx 的证书链，所以， &lt;strong&gt;在操作开始前请确保你�
     <category term="minix" scheme="https://hchen90.github.io/tags/minix/"/>
     
     <category term="qemu" scheme="https://hchen90.github.io/tags/qemu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux环境搭建中文LaTeX排版系统</title>
-    <link href="https://hchen90.github.io/2016/05/03/linuxlatex/"/>
-    <id>https://hchen90.github.io/2016/05/03/linuxlatex/</id>
-    <published>2016-05-02T20:12:20.000Z</published>
-    <updated>2016-05-02T20:12:20.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;tex系统简介&quot;&gt;TeX系统简介&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;TeX&lt;/strong&gt;系统最早由Stanford大学教授Donald E.
-Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer
-Programming》应该不会陌生。&lt;/p&gt;
-&lt;p&gt;实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。&lt;/p&gt;
-&lt;p&gt;大家可能经常以据如MS
-Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS
-Word这些软件就成了小儿科了。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="linux" scheme="https://hchen90.github.io/tags/linux/"/>
-    
-    <category term="latex" scheme="https://hchen90.github.io/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何在Visual Studio 2010中使用SQL Server 2008</title>
-    <link href="https://hchen90.github.io/2014/08/02/vssqlserver2008/"/>
-    <id>https://hchen90.github.io/2014/08/02/vssqlserver2008/</id>
-    <published>2014-08-02T04:54:52.000Z</published>
-    <updated>2014-08-02T04:54:52.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;SQL
-Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL
-Server 2000深受广大的用户的青睐，知名度较高，SQL Server
-2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL
-Server的安装，假设预制环境就绪）。&lt;/p&gt;
-&lt;p&gt;首先在菜单的&lt;code&gt;视图&lt;/code&gt;-&amp;gt;&lt;code&gt;其他窗口&lt;/code&gt;-&amp;gt;&lt;code&gt;服务器资源管理器&lt;/code&gt;，打开一个小的浮动窗口，就像这个样：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="SQL" scheme="https://hchen90.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PE文件壳的设计过程</title>
-    <link href="https://hchen90.github.io/2013/10/26/mspeshell/"/>
-    <id>https://hchen90.github.io/2013/10/26/mspeshell/</id>
-    <published>2013-10-26T15:44:15.000Z</published>
-    <updated>2013-10-26T15:44:15.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
-&lt;p&gt;今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。&lt;/p&gt;
-&lt;p&gt;壳的一个加载过程在许多书上都将过，这里就以图来复习一次：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://hchen90.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="Windows" scheme="https://hchen90.github.io/tags/Windows/"/>
-    
-    <category term="EXE" scheme="https://hchen90.github.io/tags/EXE/"/>
     
   </entry>
   

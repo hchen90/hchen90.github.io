@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-TW,en,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hchen90.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="软件设计模式 - 结构型模式 结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。 结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件设计模式 - 结构型模式">
+<meta property="og:url" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/index.html">
+<meta property="og:site_name" content="个人站点">
+<meta property="og:description" content="软件设计模式 - 结构型模式 结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。 结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/objadp.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/clsadp.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/brg.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/comp.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/decor.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/fac.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/flyw.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/prx.png">
+<meta property="og:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/mvc.png">
+<meta property="article:published_time" content="2017-06-05T13:11:12.000Z">
+<meta property="article:modified_time" content="2017-06-05T13:11:12.000Z">
+<meta property="article:author" content="陈祥">
+<meta property="article:tag" content="设计模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/objadp.png">
+
+<link rel="canonical" href="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件设计模式 - 结构型模式 | 个人站点</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="个人站点" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">个人站点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">陈祥的个人站点</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-projects">
+
+    <a href="/projects/" rel="section"><i class="fa fa-flask fa-fw"></i>软件项目</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/hchen90" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hchen90.github.io/2017/06/05/softwaredesignpattern3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="陈祥">
+      <meta itemprop="description" content="个人站点空间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人站点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件设计模式 - 结构型模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-06-05 21:11:12" itemprop="dateCreated datePublished" datetime="2017-06-05T21:11:12+08:00">2017-06-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="软件设计模式---结构型模式">软件设计模式 - 结构型模式</h1>
+<p>结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。</p>
+<p>结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。</p>
+<span id="more"></span>
+<h2 id="适配器模式adapter">适配器模式（Adapter）</h2>
+<p>适配器模式是为了解决不同接口之间的适配问题。</p>
+<p>适配器通常分为两类：对象适配器，类适配器。</p>
+<h3 id="对象适配器">对象适配器</h3>
+<p>对象适配器是通过实现接口来做到适配的，如下：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/objadp.png" alt="Object Adapter">
+<figcaption aria-hidden="true">Object Adapter</figcaption>
+</figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DrawService</span> &#123;</span><br><span class="line">    <span class="comment">// 绘图服务</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">paint</span><span class="params">(Graphics&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 使用Graphics绘图</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Graphics&amp; <span class="title">getCanvasGraphics</span><span class="params">(canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 图形绘板转换</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DrawInterface</span> &#123;</span><br><span class="line">    <span class="comment">// 绘图适配器接口</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(canvas&amp;)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DrawAdapter</span> : <span class="keyword">public</span> DrawInterface &#123;</span><br><span class="line">    <span class="comment">// 绘图适配器</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(canvas&amp; c)</span> </span>&#123; <span class="comment">// 接口适配</span></span><br><span class="line">        <span class="keyword">auto</span> g = service.<span class="built_in">getCanvasGraphics</span>(c);</span><br><span class="line">        service.<span class="built_in">paint</span>(g);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    DrawService service;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="类适配器">类适配器</h3>
+<p>类适配器是通过面相对象编程的继承达到的，用于多继承方式实现。</p>
+<p>如图所示：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/clsadp.png" alt="Class Adapter">
+<figcaption aria-hidden="true">Class Adapter</figcaption>
+</figure>
+<p>实例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DrawGraphics</span> &#123;</span><br><span class="line">    <span class="comment">// 图案绘制</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Graphics&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DrawService</span> &#123;</span><br><span class="line">    <span class="comment">// 绘制服务</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">paint</span><span class="params">(Graphics&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Graphics&amp; <span class="title">getCanvasGraphics</span><span class="params">(canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 转换画板</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DrawAdapter</span> : <span class="keyword">public</span> DrawGraphics, <span class="keyword">public</span> DrawService &#123;</span><br><span class="line">    <span class="comment">// 绘制适配器</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(canvas&amp; c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> g = <span class="built_in">getCanvasGraphics</span>(c);</span><br><span class="line">        <span class="built_in">paint</span>(g);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="桥接模式bridge">桥接模式（Bridge）</h2>
+<p>桥接模式是将抽象和实现分为两个独立的层次，将原本不同维度的继承方式改成组合方式。</p>
+<p>如下图所示：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/brg.png" alt="Bridge">
+<figcaption aria-hidden="true">Bridge</figcaption>
+</figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 画笔风格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Style</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pencil</span> : <span class="keyword">public</span> Style &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 铅笔绘制实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Brush</span> : <span class="keyword">public</span> Style &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 画刷绘制实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pastel</span> : <span class="keyword">public</span> Style &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 蜡笔绘制实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形状</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">drawWithPen</span><span class="params">(Style&amp; pen)</span> </span>&#123;</span><br><span class="line">        pen.<span class="built_in">draw</span>(<span class="keyword">this</span>-&gt;<span class="built_in">getCanvas</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">drawWithPen</span><span class="params">(Style&amp; pen)</span> </span>&#123;</span><br><span class="line">        pen.<span class="built_in">draw</span>(<span class="keyword">this</span>-&gt;<span class="built_in">getCanvas</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>形状类只是抽象绘制层，可以绘制不同风格的图形，但是对于具体的绘制实现其实由不同风格的画笔来实现。</p>
+<h2 id="组合模式composite">组合模式（Composite）</h2>
+<p>组合模式用于将对象组合成树状结构，通常这种模式的实现方式多见为“盒子”（Box）与“产品”（Item）的交互方式，盒子本身也是产品，盒子可以存放产品，从而产生递归嵌套的结构。</p>
+<p>结构如下：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/comp.png" alt="Composite">
+<figcaption aria-hidden="true">Composite</figcaption>
+</figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="type">float</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制圆形</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">float</span> radius;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制方块</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">float</span> width, height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组合图形</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CompoundShape</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 迭代绘制所有子图形</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::vector&lt;Shape&gt; childs;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="装饰模式decorator">装饰模式（Decorator）</h2>
+<p>装饰器模式允许将对象放入包含某种行为的特殊对象，从而为原来的对象绑定特殊对象的新行为。</p>
+<p>结构如下：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/decor.png" alt="Decorator">
+<figcaption aria-hidden="true">Decorator</figcaption>
+</figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="title">draw</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> : <span class="keyword">public</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 绘制</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">float</span> radius;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 装饰器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BrushDecorator</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">BrushDecorator</span>(Shape&amp; s) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 设置画刷风格</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制</span></span><br><span class="line">        Shape::<span class="built_in">draw</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PastelDecorator</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">PastelDecorator</span>(Shape&amp; s) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 设置蜡笔风格</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制</span></span><br><span class="line">        Shape::<span class="built_in">draw</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>使用装饰器模式，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Circle circle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> circleWithBrush = <span class="keyword">new</span> <span class="built_in">BrushDecorator</span>(circle);</span><br><span class="line"><span class="keyword">auto</span> circleWithPastel = <span class="keyword">new</span> <span class="built_in">PastelDecorator</span>(circle);</span><br><span class="line"><span class="keyword">auto</span> circleWithBrushPastel = <span class="keyword">new</span> <span class="built_in">PastelDecorator</span>(circleWithBrush); <span class="comment">// 嵌套装饰</span></span><br><span class="line"></span><br><span class="line">circleWithBrush.<span class="built_in">draw</span>();</span><br><span class="line">circleWithPastel.<span class="built_in">draw</span>();</span><br><span class="line">circleWithBrushPastel.<span class="built_in">draw</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="外观模式facade">外观模式（Facade）</h2>
+<p>外观模式是为了给库/框架设计一套简单的接口，这样对外减少细节暴露，从而减少系统的耦合度。</p>
+<p>如下示例，设计了一种统一风格的徽章绘制模式：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/fac.png" alt="Facade">
+<figcaption aria-hidden="true">Facade</figcaption>
+</figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CompoundShape</span> : <span class="keyword">public</span> Shape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addChild</span><span class="params">(Shape&amp; c)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 添加图形</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">(Canvas&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制图形</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::vector&lt;Shape&gt; childs;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Brush</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setPen</span><span class="params">(Canvas&amp;)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Background</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fill</span><span class="params">(Canvas&amp;)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Badget</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">drawBadget</span><span class="params">(Shape&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制徽章</span></span><br><span class="line">        <span class="keyword">auto</span> canvas = <span class="keyword">this</span>-&gt;<span class="built_in">getCanvas</span>();</span><br><span class="line">        <span class="built_in">assert</span>(canvas != <span class="literal">nullptr</span>);</span><br><span class="line">        br.<span class="built_in">setPen</span>(*canvas);</span><br><span class="line">        bg.<span class="built_in">fill</span>(*canvas);</span><br><span class="line">        s.<span class="built_in">draw</span>(*canvas);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Brush br;</span><br><span class="line">    Background bg;</span><br><span class="line">    CompundShape cshape;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>对于外部调用者来说，只需调用<code>drawBadget()</code>，将徽章复杂图形变量作为形式参数传入函数，即可完成各种徽章的绘制。</p>
+<h2 id="享元模式flyweight">享元模式（Flyweight）</h2>
+<p>享元模式是通过共享对象状态，使得对象不必保存所有的状态，从而达到在内存中载入更多的对象。</p>
+<p>常见应用场景是游戏制作场景，游戏中最常见的元素是粒子系统，每一个粒子都有自己的坐标，颜色，状态等信息，如果每一个粒子对象都存储所有的信息，那么在实际游戏场景中将会对内存需求巨大，几十万个粒子就会导致系统内存被用完，从而导致OOM，为了解决这个问题，可以从对象的类来分析，提取其中的常量和变量，对于常量使用共享对象存储。</p>
+<p>如下：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/flyw.png" alt="Flyweight">
+<figcaption aria-hidden="true">Flyweight</figcaption>
+</figure>
+<p>示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Background</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Color</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Flyweight</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绘制粒子</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Background bg;</span><br><span class="line">    Color cr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FlyweightFactory</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Flyweight* <span class="title">getFlyweight</span><span class="params">(state s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> f = cache.<span class="built_in">find</span>(s);</span><br><span class="line">        <span class="keyword">if</span> (f != <span class="literal">nullptr</span>) <span class="keyword">return</span> f;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Flyweight</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Cache cache;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>享元模式使用前还需要进行初始化，以便将常量对象存储到享元工厂的cache中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化享元工厂</span></span><br><span class="line"><span class="keyword">auto</span> particle1 = <span class="keyword">new</span> <span class="built_in">Flyweight</span>(<span class="number">1</span>); <span class="comment">// 静态粒子1</span></span><br><span class="line"><span class="keyword">auto</span> particle2 = <span class="keyword">new</span> <span class="built_in">Flyweight</span>(<span class="number">2</span>); <span class="comment">// 静态粒子2</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">FlyweightFactory::<span class="built_in">getInstance</span>().<span class="built_in">addFlyweight</span>(particle1);</span><br><span class="line">FlyweightFactory::<span class="built_in">getInstance</span>().<span class="built_in">addFlyweight</span>(particle2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> particle = FlyweightFactory::<span class="built_in">getInstance</span>().<span class="built_in">getFlyweight</span>(<span class="number">-1</span>); <span class="comment">// 普通动态粒子</span></span><br></pre></td></tr></table></figure>
+<h2 id="代理模式proxy">代理模式（Proxy）</h2>
+<p>代理模式提供对对象访问的占位，控制对原始对象的访问，可以做到在外界对对象请求操作前后添加额外处理。</p>
+<p>还是以绘图案例为例，这里绘制的是图片，这些图片以tag为唯一名称存储在数据库中，每次绘制需要从数据库获取相应的图片，再进行绘制，但是，如果绘制的图形复杂，包含的图片较多的时候，绘制效率会很低，绘制界面就会出现绘制延迟的现象，根本原因是从数据库获取图片的累加时间太长了。所以解决这种问题，就要用到代理器的模式，如下：</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/prx.png" alt="Proxy">
+<figcaption aria-hidden="true">Proxy</figcaption>
+</figure>
+<p>这里的代理器在获取到图片的时候，会对已经获取的图片做缓存，这样下次再次获取该图片，就可以立即返回该图片，从而大大减少绘制时间，使绘制效率变高。</p>
+<p>案例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Image</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::vector&lt;std::string&gt; <span class="title">listImages</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">uint8_t</span>&gt; <span class="title">getImage</span><span class="params">(std::string&amp;)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DBImage</span> : <span class="keyword">public</span> Image &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::vector&lt;std::string&gt; <span class="title">listImages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> result = db.<span class="built_in">findAll</span>();</span><br><span class="line">        <span class="comment">// 数据库查询返回所有的图片的tag列表</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">uint8_t</span>&gt; <span class="title">getImage</span><span class="params">(std::string&amp;)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 返回对应tag的图片数据</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    DB db;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CachedImage</span> : <span class="keyword">public</span> Image &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">CachedImage</span>(DBImage&amp; dbi) &#123;&#125;</span><br><span class="line">    <span class="function">std::vector&lt;std::string&gt; <span class="title">listImages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> result = cache.<span class="built_in">findAll</span>(); <span class="comment">// 缓存查找</span></span><br><span class="line">        <span class="keyword">if</span> (!result.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        result = service.<span class="built_in">findAll</span>(); <span class="comment">// 原始服务查找</span></span><br><span class="line">        cache.<span class="built_in">store</span>(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">uint8_t</span>&gt; <span class="title">getImage</span><span class="params">(std::string&amp; tag)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> img = cache.<span class="built_in">find</span>(tag); <span class="comment">// 缓存查找图片</span></span><br><span class="line">        <span class="keyword">if</span> (!img.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> img;</span><br><span class="line">        &#125;</span><br><span class="line">        img = service.<span class="built_in">find</span>(tag); <span class="comment">// 原始服务获取图片</span></span><br><span class="line">        cache.<span class="built_in">store</span>(tag, img);</span><br><span class="line">        <span class="keyword">return</span> img;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    DBImage service;</span><br><span class="line">    Cache cache;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>实际使用时，直接调用代理器即可：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DBImage <span class="title">dbi</span><span class="params">(<span class="string">&quot;mongo://xxxx&quot;</span>)</span></span>;</span><br><span class="line"><span class="function">CachedImage <span class="title">ci</span><span class="params">(dbi)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> result = ci.<span class="built_in">listImages</span>();</span><br><span class="line"><span class="keyword">auto</span> image = ci.<span class="built_in">getImage</span>(result[<span class="number">0</span>]); <span class="comment">// 第一个tag的图片</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CacheImage &gt;
+CacheImage中使用的Cache，根据实际应用场景，可以是中间件存储，例如：Memcached，redis等。</p>
+</blockquote>
+<h2 id="mvc模式mvc">MVC模式（MVC）</h2>
+<p>MVC分别代表：Model-View-Controller，这种方式应用于程序的分层开发，减少数据，视图界面，和逻辑控制之间的耦合，使开发维护更加清晰。</p>
+<p>这种模式在传统的MFC开发框架中广泛使用。下面演示一个富文本编辑器的MVC设计。</p>
+<figure>
+<img src="/2017/06/05/softwaredesignpattern3/mvc.png" alt="MVC">
+<figcaption aria-hidden="true">MVC</figcaption>
+</figure>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Model</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">View</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Controller</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setView</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setModel</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Document</span> : <span class="keyword">public</span> Model &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Document</span>(Controller* ctrl) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;ctrl = ctrl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Controller* ctrl;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RichEditCtrl</span> : <span class="keyword">public</span> Controller &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setView</span><span class="params">(View* v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;view = v;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setModel</span><span class="params">(Model* m)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;model = m;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    View* view;</span><br><span class="line">    Model* model;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RichEditView</span> : <span class="keyword">public</span> View &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">View</span>(Controller* ctrl) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;ctrl = ctrl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Controller* ctrl;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>构造MVC时如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RichEditCtrl ctrl;</span><br><span class="line"><span class="function">RichEditView <span class="title">view</span><span class="params">(&amp;ctrl)</span></span>;</span><br><span class="line"><span class="function">Document <span class="title">doc</span><span class="params">(&amp;ctrl)</span></span>;</span><br><span class="line">ctrl.<span class="built_in">setView</span>(&amp;view);</span><br><span class="line">ctrl.<span class="built_in">setModel</span>(&amp;doc);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新文档</span></span><br><span class="line">ctrl.<span class="built_in">updateDoc</span>();</span><br><span class="line"><span class="comment">// 更新界面通知控制逻辑</span></span><br><span class="line">ctrl.<span class="built_in">notify</span>();</span><br><span class="line"><span class="comment">// 所有的操作都是基于ctrl来进行</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="陈祥 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="陈祥 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://t.me/+30A1pAskWvQ2NjVl">
+            <span class="icon">
+              <i class="fab fa-telegram"></i>
+            </span>
+
+            <span class="label">Telegram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/qrcode/">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/04/softwaredesignpattern2/" rel="prev" title="软件设计模式 - 创建型模式">
+      <i class="fa fa-chevron-left"></i> 软件设计模式 - 创建型模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/08/softwaredesignpattern4/" rel="next" title="软件设计模式 - 行为模式">
+      软件设计模式 - 行为模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">软件设计模式 - 结构型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8Fadapter"><span class="nav-number">1.1.</span> <span class="nav-text">适配器模式（Adapter）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">对象适配器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">类适配器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8Fbridge"><span class="nav-number">1.2.</span> <span class="nav-text">桥接模式（Bridge）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8Fcomposite"><span class="nav-number">1.3.</span> <span class="nav-text">组合模式（Composite）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8Fdecorator"><span class="nav-number">1.4.</span> <span class="nav-text">装饰模式（Decorator）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8Ffacade"><span class="nav-number">1.5.</span> <span class="nav-text">外观模式（Facade）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8Fflyweight"><span class="nav-number">1.6.</span> <span class="nav-text">享元模式（Flyweight）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8Fproxy"><span class="nav-number">1.7.</span> <span class="nav-text">代理模式（Proxy）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mvc%E6%A8%A1%E5%BC%8Fmvc"><span class="nav-number">1.8.</span> <span class="nav-text">MVC模式（MVC）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈祥"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">陈祥</p>
+  <div class="site-description" itemprop="description">个人站点空间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-comments"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hchen90" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hchen90" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:master@hchen90.top" title="E-Mail → mailto:master@hchen90.top" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/5446613/hsiang-chen" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;5446613&#x2F;hsiang-chen" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/hsiangchen99" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;hsiangchen99" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈祥</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='220,220,220' opacity='0.7' zIndex='-2' count='200' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/js/anime.min.js"></script>
+  <script src="/js/velocity.min.js"></script>
+  <script src="/js/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'KH5sDkWHt8ZHDefcu';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
