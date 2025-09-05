@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hchen90.github.io
+
+# Sitemaps
+Sitemap: https://hchen90.github.io/sitemap.xml
