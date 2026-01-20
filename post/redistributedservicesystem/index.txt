@@ -1,0 +1,306 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"NJLxbfQowkF3yDG50ACk1","p":"","c":["","post","redistributedservicesystem",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","redistributedservicesystem","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","redistributedservicesystem","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","8bTXH9g7L-ufDIlkXZg2C",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T3cef,<h1 id="概述与定义">概述与定义<a aria-hidden="true" tabindex="-1" href="#概述与定义"><span class="anchor-link"> #</span></a></h1>
+<p>分布式系统是由一组通过网络协同工作的独立计算机（节点）组成的系统。它们共同完成一项业务目标，并对用户展现为“单一的系统”。从用户视角出发，分布式系统应尽量保持透明性：用户不需要知道请求被哪台机器处理、数据位于哪里，也不应感知到节点的增删与迁移。</p>
+<p>一句话以概之：</p>
+<blockquote>
+<p><strong>分布式系统 = 多台独立的计算机，通过网络协作，对外表现得像一个系统</strong></p>
+</blockquote>
+<p>简要记住两点：</p>
+<ul>
+<li>多节点协作完成同一业务目标。</li>
+<li>对外表现尽可能像一个整体（透明性）。</li>
+</ul>
+<blockquote>
+<p>注：分布式系统设计常常需要在一致性、可用性、分区容错（CAP）之间权衡，工程上普遍采用“最终一致性”的思路来换取高可用与可扩展。</p>
+</blockquote>
+<h2 id="与集中式-cs-架构对比">与集中式 C/S 架构对比<a aria-hidden="true" tabindex="-1" href="#与集中式-cs-架构对比"><span class="anchor-link"> #</span></a></h2>
+<p>集中式（单体）C/S 架构示意：</p>
+<p><img src="/post/redistributedservicesystem/a98ad925f117.png" alt="Tra-CS-System"></p>
+<p>分布式系统常见形态：</p>
+<p><img src="/post/redistributedservicesystem/29d8d45dfd6d.png" alt="Redi-System"></p>
+<h2 id="分布式系统为什么难">分布式系统为什么“难”<a aria-hidden="true" tabindex="-1" href="#分布式系统为什么难"><span class="anchor-link"> #</span></a></h2>
+<p>单机系统的假设在分布式里全部失效 👇</p>
+<h3 id="单机你默认认为">单机你默认认为：<a aria-hidden="true" tabindex="-1" href="#单机你默认认为"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>内存可靠</li>
+<li>时钟一致</li>
+<li>调用一定成功</li>
+</ul>
+<h3 id="分布式里现实是">分布式里现实是：<a aria-hidden="true" tabindex="-1" href="#分布式里现实是"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>网络可能断</li>
+<li>节点可能挂</li>
+<li>时钟不同步</li>
+<li>消息可能丢 / 重复 / 延迟</li>
+</ul>
+<p>👉 <strong>分布式系统 = 在“不可信环境”下做可靠系统</strong></p>
+<h2 id="分布式系统的核心问题必须解决">分布式系统的核心问题（必须解决）<a aria-hidden="true" tabindex="-1" href="#分布式系统的核心问题必须解决"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1️⃣-通信">1️⃣ 通信<a aria-hidden="true" tabindex="-1" href="#1️⃣-通信"><span class="anchor-link"> #</span></a></h3>
+<p>节点之间怎么说话？</p>
+<ul>
+<li>HTTP / RPC / gRPC</li>
+<li>消息队列（Kafka / RocketMQ / RabbitMQ）</li>
+</ul>
+<hr>
+<h3 id="2️⃣-状态一致性最核心">2️⃣ 状态一致性（最核心）<a aria-hidden="true" tabindex="-1" href="#2️⃣-状态一致性最核心"><span class="anchor-link"> #</span></a></h3>
+<p>多台机器的数据怎么保持一致？</p>
+<ul>
+<li>强一致（银行转账）</li>
+<li>最终一致（点赞、推荐）</li>
+</ul>
+<p>👉 这直接引出 <strong>CAP 定理</strong></p>
+<hr>
+<h3 id="3️⃣-容错">3️⃣ 容错<a aria-hidden="true" tabindex="-1" href="#3️⃣-容错"><span class="anchor-link"> #</span></a></h3>
+<p>某台机器挂了怎么办？</p>
+<ul>
+<li>副本（Replica）</li>
+<li>自动切换（Failover）</li>
+<li>重试 / 超时</li>
+</ul>
+<hr>
+<h3 id="4️⃣-扩展性">4️⃣ 扩展性<a aria-hidden="true" tabindex="-1" href="#4️⃣-扩展性"><span class="anchor-link"> #</span></a></h3>
+<p>访问量翻 10 倍怎么办？</p>
+<ul>
+<li>加机器（Horizontal Scaling）</li>
+<li>负载均衡（Load Balancer）</li>
+</ul>
+<blockquote>
+<h2 id="cap-定理分布式的物理定律">CAP 定理（分布式的“物理定律”）<a aria-hidden="true" tabindex="-1" href="#cap-定理分布式的物理定律"><span class="anchor-link"> #</span></a></h2>
+<p>在出现网络分区（P）时，<strong>C 和 A 只能选一个</strong></p>
+<ul>
+<li><strong>C（Consistency）</strong>：一致性</li>
+<li><strong>A（Availability）</strong>：可用性</li>
+<li><strong>P（Partition tolerance）</strong>：分区容错（必须要）</li>
+</ul>
+<p>现实系统：</p>
+<ul>
+<li><strong>金融系统</strong> → CP</li>
+<li><strong>社交/推荐</strong> → AP</li>
+</ul>
+</blockquote>
+<h1 id="设计思路总览">设计思路总览<a aria-hidden="true" tabindex="-1" href="#设计思路总览"><span class="anchor-link"> #</span></a></h1>
+<ul>
+<li>消息驱动：用消息作为服务间协作的“第一公民”，天然解耦，易扩展。</li>
+<li>Actor 模型：把服务实例抽象成 Actor，处理消息、维护自身状态，隔离并发。</li>
+<li>MongoDB/Postgres：模型适配业务对象，支持分片与分区或分集，利于扩展与提高高可用。</li>
+<li>Redis：作为读写热点的高速缓存，也可承担限流、短期队列等角色。</li>
+<li>Kafka/RocketMQ: 作为生产者/消费者的消息通道。</li>
+<li>工程原则：边界清晰、单一职责、幂等与重试、尽量无状态（尤其是网关层）。</li>
+</ul>
+<hr>
+<h2 id="actor-模型">Actor 模型<a aria-hidden="true" tabindex="-1" href="#actor-模型"><span class="anchor-link"> #</span></a></h2>
+<p>Actor的理论性对应到实际工程场景其实就是具备自有状态的微服务子模块。</p>
+<blockquote>
+<p>参考维基百科：<a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
+</blockquote>
+<p>Actor 是一个基本的计算单元：</p>
+<ul>
+<li>接收消息（Mailbox）。</li>
+<li>基于当前状态与行为处理消息（Behavior + State）。</li>
+<li>产生新的状态与可选的响应消息。</li>
+</ul>
+<p>Actor 之间彼此隔离，不共享内存，靠消息通信完成协作。这种模型特别适合高并发、强隔离的分布式场景。</p>
+<p><img src="/post/redistributedservicesystem/1104498e5f0a.png" alt="Actor Model"></p>
+<p>在系统分层中，可以把“服务 N”抽象为一组 Actor：每个服务被拆分为若干职责单一的 Actor，分别负责会话、订单、库存、结算等子域逻辑。这样既降低了耦合，也利于伸缩。</p>
+<h3 id="状态机fsm与-actor">状态机（FSM）与 Actor<a aria-hidden="true" tabindex="-1" href="#状态机fsm与-actor"><span class="anchor-link"> #</span></a></h3>
+<p>很多 Actor 内部可用有限状态机（FSM）来组织逻辑。FSM 的四要素：</p>
+<ul>
+<li>状态（State）</li>
+<li>事件（Event）</li>
+<li>动作（Action）</li>
+<li>变换（Transition）</li>
+</ul>
+<p>状态机从“开始态”出发，在事件触发下迁移到下一状态并执行相应动作，最终到达“结束态”。把状态机视为一个“黑盒”，对外只暴露事件与结果，可以很好地实现内部信息隔离与状态安全。</p>
+<hr>
+<h2 id="数据层mongodbpostgres">数据层：MongoDB/Postgres<a aria-hidden="true" tabindex="-1" href="#数据层mongodbpostgres"><span class="anchor-link"> #</span></a></h2>
+<p>MongoDB 非常契合分布式系统：</p>
+<ul>
+<li>数据模型（Document/Collection/Table）接近业务<strong>对象结构</strong>，读写自然。</li>
+<li>分片（Sharding）为水平扩展而生，可把数据按键均衡分布到多节点。</li>
+<li>副本集（Replica Set）提供高可用与读写分离策略。</li>
+<li>一致性与事务：支持多文档事务，但工程上常以“最终一致性 + 幂等补偿”降低耦合与开销。</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/7ea8177a86d6.png" alt="mongo-db"></p>
+<p>工程实践中的建议：</p>
+<ul>
+<li>设计好分片键（高基数、写入均匀、查询命中高）。</li>
+<li>结合副本集节点角色做读写策略（primary write，secondary read）。</li>
+<li>用合理的索引与 TTL 索引管理热数据与历史数据。</li>
+</ul>
+<blockquote>
+<p>要用好ORM，在Go语言中有个gorm很受欢迎。</p>
+</blockquote>
+<h2 id="缓存层redis">缓存层：Redis<a aria-hidden="true" tabindex="-1" href="#缓存层redis"><span class="anchor-link"> #</span></a></h2>
+<p>Redis 在该体系中的定位：</p>
+<ul>
+<li>热点数据缓存：降低数据库压力，提升读性能（可用 Cache-Aside/Read-Through/Write-Through 等策略）。</li>
+<li>短期队列与限流：基于 List/Stream/令牌桶实现简单队列与限流。</li>
+<li>会话与临时态：存储短期会话、幂等令牌、分布式锁等。</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/b23b8e305828.png" alt="redis"></p>
+<p>注意典型风险与对策：</p>
+<ul>
+<li>缓存穿透：为不存在的键增加空值缓存 + 布隆过滤器。</li>
+<li>缓存击穿：对热点 Key 增加互斥更新或使用逻辑过期 + 后台刷新。</li>
+<li>缓存雪崩：过期时间随机化，设置多级限流与降级策略。</li>
+</ul>
+<hr>
+<h2 id="服务发现与配置etcd">服务发现与配置：etcd<a aria-hidden="true" tabindex="-1" href="#服务发现与配置etcd"><span class="anchor-link"> #</span></a></h2>
+<p>etcd 是一个基于 Raft 共识算法的分布式键值存储，常用于服务注册与发现、动态配置与分布式协调：</p>
+<ul>
+<li>服务注册与发现：
+<ul>
+<li>注册：实例以租约（Lease + TTL）的方式在 <code>/services/{name}/{instanceId}</code> 下写入自身地址与元信息，并定期 KeepAlive。</li>
+<li>发现：网关或调用方 Watch 对应前缀变化，感知实例上下线并更新本地路由。</li>
+<li>健壮性：租约到期自动删除键，避免“僵尸实例”；客户端应实现指数退避与抖动重连。</li>
+</ul>
+</li>
+<li>动态配置：
+<ul>
+<li>将配置组织在 <code>/config/{app}/{env}/</code> 前缀下，发布方写入，客户端 Watch 并热更新。</li>
+<li>大体量配置建议拆分模块/分段加载；敏感配置需配合加密或专用配置中心。</li>
+</ul>
+</li>
+<li>协调能力：
+<ul>
+<li>分布式锁/Leader 选举：使用 etcd concurrency API（基于会话的 Mutex/Campaign）。</li>
+<li>典型用途：任务分片调度、单主写入、限流配额的集中仲裁。</li>
+</ul>
+</li>
+<li>运维要点：
+<ul>
+<li>集群规模以 3 或 5 节点为宜（奇数投票，过大反而降低写性能）。</li>
+<li>合理设置快照与压缩（Compaction），避免 Watch Backlog 过大；对高延迟链路设置超时与心跳阈值。</li>
+</ul>
+</li>
+</ul>
+<p>在本文架构中，etcd 承担“服务注册与发现 + 动态配置 + 协调原语”的基础设施角色，辅助网关路由与内部服务寻址。</p>
+<hr>
+<h2 id="通信与一致性策略">通信与一致性策略<a aria-hidden="true" tabindex="-1" href="#通信与一致性策略"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>通信方式：
+- 同步 RPC（HTTP/gRPC）用于强实时、强一致的小闭环。
+- 异步消息总线用于解耦与削峰填谷（RocketMQ/Kafka/RabbitMQ/Redis Stream 等）。</li>
+<li>重试与幂等：
+<ul>
+<li>下游短暂不可用时可重试；所有可重试的写操作必须幂等（去重键、幂等令牌）。</li>
+</ul>
+</li>
+<li>最终一致性：
+<ul>
+<li>Saga/Outbox Pattern：用本地事务 + 事件外发保证变更可达，失败则编排补偿。</li>
+</ul>
+</li>
+<li>全局标识：
+<ul>
+<li>雪花算法/号段缓存生成可排序的分布式 ID，便于路由与审计。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="消息中间件rocketmqkafka">消息中间件：RocketMQ/Kafka<a aria-hidden="true" tabindex="-1" href="#消息中间件rocketmqkafka"><span class="anchor-link"> #</span></a></h2>
+<p>RocketMQ/Kafka这类是高性能、低延迟的分布式消息中间件，具有完备的消息语义与企业级特性：</p>
+<ul>
+<li>核心概念：Topic、Tag、Message Key、Producer Group、Consumer Group。</li>
+<li>投递语义：默认至少一次（At-Least-Once），精确一次需在业务层通过幂等键/去重表实现。</li>
+<li>顺序消息：基于分片键（Sharding Key）在队列内保证局部有序，适用于订单状态流、资金流水等场景。</li>
+<li>事务消息：
+<ul>
+<li>流程：发送半消息（Prepare）→ 执行本地事务 → Commit/Rollback；</li>
+<li>Broker 可回查事务状态（Transaction Check）以防悬挂，生产者需实现回查接口；</li>
+<li>常用于 Saga/Outbox 的可靠事件外发。</li>
+</ul>
+</li>
+<li>延迟/定时消息：内建多级延迟；配合重试策略实现柔性事务与削峰。</li>
+<li>重试与死信：
+<ul>
+<li>消费失败按重试策略回投，超过阈值进入 DLQ（死信队列），便于排查与人工补偿。</li>
+</ul>
+</li>
+<li>消费模式：集群（负载均衡）与广播（全部消费）；通常业务消费采用集群模式。</li>
+<li>设计建议：
+<ul>
+<li>消息幂等：使用业务唯一键（如订单号）去重；消费者侧“先判重后执行”。</li>
+<li>负载与扩展：按吞吐与有序需求规划队列数；避免消息体过大（建议 &#x3C; 1MB），大对象走存储，消息只放引用。</li>
+<li>可观测：开启消息轨迹与指标上报，关注堆积、耗时与回查比例。</li>
+</ul>
+</li>
+</ul>
+<p>在架构中，RocketMQ/Kafka 作为“事件总线”，支撑跨服务解耦、削峰填谷与最终一致性：</p>
+<ul>
+<li>Outbox：业务表 + outbox 表本地事务提交，后台发布到 RocketMQ，消费侧幂等入库。</li>
+<li>Saga：编排器基于事件推进/回滚步骤，失败走补偿消息。</li>
+</ul>
+<hr>
+<h2 id="拓扑与部署">拓扑与部署<a aria-hidden="true" tabindex="-1" href="#拓扑与部署"><span class="anchor-link"> #</span></a></h2>
+<p>典型拓扑：</p>
+<ul>
+<li>网关（Gateway）：对外唯一入口，做鉴权、路由、限流与聚合。</li>
+<li>服务注册与发现：基于 etcd 的注册表与 Watch，实现动态寻址与健康检查（也可配合 Sidecar）。</li>
+<li>内部服务：按域划分的微服务/Actor 群组，互相通过 RPC/消息交互。</li>
+<li>数据与缓存层：MongoDB 集群 + Redis 集群，结合副本集、哨兵与分片设计。</li>
+<li>消息层：RocketMQ Broker 集群 + NameServer，按 Topic/队列扩展吞吐。</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/a5b1f3959027.png" alt="diagram"></p>
+<hr>
+<h2 id="适用场景">适用场景<a aria-hidden="true" tabindex="-1" href="#适用场景"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>大量并发接入（海量用户、IoT 设备、游戏网关等）。</li>
+<li>数据规模庞大，需要水平扩容与弹性（日志/订单/内容平台等）。</li>
+<li>对高可用有硬性要求（金融支付部分环节、核心交易读路径等）。</li>
+</ul>
+<hr>
+<h2 id="小结">小结<a aria-hidden="true" tabindex="-1" href="#小结"><span class="anchor-link"> #</span></a></h2>
+<p>这套“消息驱动 + Actor + MongoDB/Redis”的组合，工程路径清晰、生态成熟：当性能不够时通过增加节点扩容；当数据增大时通过 MongoDB 分片扩展；当读写压力不均时借助 Redis 缓存与限流削峰。真正的难点不在“能否工作”，而在“能否优雅地扩展与运维”。</p>
+<p>下一步，我会在后续博文中结合具体的设计工具与代码，搭建一个“微型分布式服务系统”的端到端样例，覆盖服务拆分、通信、缓存、一致性与观测的最小闭环。</p>7:["$","$L15",null,{"postData":{"id":"redistributedservicesystem","contentHtml":"$16","title":"分布式服务系统设计概述","date":"$D2020-12-20T10:05:12.000Z","updated":"$D2025-08-10T19:10:00.000Z","categories":["随笔"],"tags":["SQL","Actor","MongoDB","Redis","etcd","RocketMQ"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"分布式服务系统设计概述"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
