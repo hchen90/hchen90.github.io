@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/283bb1ed86b49fd2.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/09ec4099fb721b31.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/09dfadb69bdaa005.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/54b9acc791aa599c.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-ede82f7d0ae11dac.js"/><script src="/_next/static/chunks/4bd1b696-299743f5624cdabe.js" async=""></script><script src="/_next/static/chunks/684-481501000630d05e.js" async=""></script><script src="/_next/static/chunks/main-app-eb9456c5a3bb7ef4.js" async=""></script><script src="/_next/static/chunks/766-f505dbd3efffaa4c.js" async=""></script><script src="/_next/static/chunks/226-13d4d3f1fc18ceb6.js" async=""></script><script src="/_next/static/chunks/app/layout-b3ce58a25da6999d.js" async=""></script><script src="/_next/static/chunks/874-e909718850e7282e.js" async=""></script><script src="/_next/static/chunks/734-02ba314a893e68e9.js" async=""></script><script src="/_next/static/chunks/351-1a0463ef6ec6e59e.js" async=""></script><script src="/_next/static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js" async=""></script><title>使用 LangChain 构建智能体实战</title><meta name="description" content="HCHEN90 博客"/><link rel="alternate" type="application/atom+xml" href="https://hchen90.top/atom.xml"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="antialiased relative"><div class="fixed top-4 right-4 z-50"><a href="https://github.com/hchen90" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" title="Visit my GitHub profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a></div><div class="min-h-screen relative"><div class="fixed top-0 left-0 h-1 bg-blue-500 z-50 transition-all duration-300" style="width:0%"></div><button class="fixed bottom-24 right-8 p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-opacity duration-300 z-50 opacity-0 pointer-events-none" aria-label="Back to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button><div class="main-content transition-all duration-300"><div class="max-w-4xl mx-auto px-4 py-8"><div class="mb-8"><a class="text-blue-500 hover:underline mb-4 inline-block" href="/">← 返回首页</a></div><article><header class="mb-8"><h1 class="text-4xl font-bold mb-4">使用 LangChain 构建智能体实战</h1><div class="text-gray-500 mb-4">2025年12月21日</div></header><div class="markdown-content"><h1 id="使用-langchain-构建智能体实战">使用 LangChain 构建智能体实战<a aria-hidden="true" tabindex="-1" href="#使用-langchain-构建智能体实战"><span class="anchor-link"> #</span></a></h1>
+<p>本文从 LangChain 基础入门开始，从基础智能体（Agent）开始，到构建一个生产级的智能体系统，所需要的知识概念。</p>
+<p>传统的 ChatBot 只能进行<strong>聊天</strong>，人工智能反映在知识输出上，但是这种智能并不能<strong>自出决策</strong>，并使用<strong>工具调用</strong>。虽然后来的 AI 大厂发展出了工具集概念，但是对于很多业务的特殊性，他们的工具能力非常有限。而构建智能体系统，其业务核心不是LLM的模型，而是在于业务的编排层，LangChain 就是这样的编排层的框架，非常便于实现智能体系统。</p>
+<h2 id="一什么是-langchain-agent">一、什么是 LangChain Agent<a aria-hidden="true" tabindex="-1" href="#一什么是-langchain-agent"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-agent-的核心组成">1. Agent 的核心组成<a aria-hidden="true" tabindex="-1" href="#1-agent-的核心组成"><span class="anchor-link"> #</span></a></h3>
+<p>在 LangChain 以及更广义的 AI 系统中，<strong>Agent 并不是一个“会聊天的模型”</strong>，而是一个能够<strong>理解目标、做出决策、并采取行动的系统</strong>。一个实用的 Agent，通常可以抽象为三个核心组成部分：</p>
+<blockquote>
+<p><strong>Agent ≈ 大脑（Brain） + 手（Hands） + 记忆（Memory）</strong></p>
+</blockquote>
+<h4 id="大脑brain负责思考和决策">大脑（Brain）：负责思考和决策<a aria-hidden="true" tabindex="-1" href="#大脑brain负责思考和决策"><span class="anchor-link"> #</span></a></h4>
+<p>大脑对应于大语言模型（LLM），它和聊天式应用存在显著不同，它的职责不是回答问题进行知识输出，而是：</p>
+<ul>
+<li>理解用户意图</li>
+<li>拆解任务步骤</li>
+<li>决定是否调用工具</li>
+<li>调用哪个工具，以及如何调用工具（参数）</li>
+</ul>
+<h4 id="手hands让-agent-能够做事">手（Hands）：让 Agent 能够“做事”<a aria-hidden="true" tabindex="-1" href="#手hands让-agent-能够做事"><span class="anchor-link"> #</span></a></h4>
+<p>手对应于 Tools（工具），工具的本质是可以被模型调用的，并且觉有明确功能的，一种模型外部提供的能力。</p>
+<p>常见的工具有：</p>
+<ul>
+<li>搜索引擎（查阅资料）</li>
+<li>计算（数值计算，统计等等）</li>
+<li>API 调用（查订单，发邮件等等）</li>
+<li>数据库/向量检索（RAG）</li>
+</ul>
+<p>一般来所，Agent 的能力上限，往往不是由模型决定的，而是由工具决定的。</p>
+<h4 id="记忆memory让-agent-有上下文意识">记忆（Memory）：让 Agent 有“上下文意识”<a aria-hidden="true" tabindex="-1" href="#记忆memory让-agent-有上下文意识"><span class="anchor-link"> #</span></a></h4>
+<p>Agent 在启动后，和 ChatBot 聊天应用类似，随着问答的继续会产生大量上下文的内容，如果每次 Agent 启动后不能加载之前保存的上下文内容，那么它就会从 0 开始，对于复杂业务流程，就导致不能中断后继续，所以让 Agent 能够保存上下文能够记忆是十分必要的。</p>
+<p>Agent 的记忆通常有：</p>
+<ul>
+<li>短期记忆：当前上下文对话内容，一般存储在内存中。</li>
+<li>状态信息：中间结果，已经完成的步骤。</li>
+<li>长期记忆：用户偏好，历史行为。</li>
+</ul>
+<blockquote>
+<p>这里的记忆（Memory）并不等同于把对话上下文全量塞入 Promt 提示中，真正的记忆是有选择性地记住重要的信息。</p>
+</blockquote>
+<p>以上三者的协作通过一个核心循环组成，如下图示。</p>
+<p><img src="/post/introtolangchainapp/cbeab51fa0fb.png" alt="agentg"></p>
+<h3 id="2-langchain-中-agent-的基本运行流程">2. LangChain 中 Agent 的基本运行流程<a aria-hidden="true" tabindex="-1" href="#2-langchain-中-agent-的基本运行流程"><span class="anchor-link"> #</span></a></h3>
+<p>在 LangChain 中，<strong>Agent 并不是一个可以直接调用的对象</strong>。真正负责驱动 Agent 运转的，是 <strong>AgentExecutor</strong>。</p>
+<p>在了解 AgentExecutor 之前，我们先看一个例子，这个例子是没有使用 LangChain 的 Agent ，而是尝试手动调用大语言模型来完成工具调用，图示如下。</p>
+<p><img src="/post/introtolangchainapp/637d648535f2.png" alt="mcalltool"></p>
+<p>可见为了和大语言模型进行互动，对于工具的使用，需要非常繁琐的操作（把工具调用ID和手动调用结果，全部添加到上下文的消息里面），这样大语言模型才能使用工具生成的结果，而 LangChain AgentExecutor 是一种高层次的封装，它不仅可以解决以上问题，更有解决其他错误与异常问题。</p>
+<p><img src="/post/introtolangchainapp/36b844684450.png" alt="agentivk"></p>
+<p>如上所示，Agent 下所有的繁琐都被它自动处理掉了，我们只需关心流程和结果即可。</p>
+<p>首先看看 AgentExecutor 主要四类职责：</p>
+<h4 id="1-驱动-agent-思考的循环">1. 驱动 Agent 思考的循环<a aria-hidden="true" tabindex="-1" href="#1-驱动-agent-思考的循环"><span class="anchor-link"> #</span></a></h4>
+<p>Agent 的核心不是一次模型调用，而是一个循环过程：</p>
+<ol>
+<li>将当前输入 + 上下文交给 Agent（LLM）</li>
+<li>解析模型输出，判断下一步是：
+<ul>
+<li>直接给出最终答案</li>
+<li>还是调用某个工具</li>
+</ul>
+</li>
+<li>如果需要调用工具：
+<ul>
+<li>执行工具</li>
+<li>获取结果</li>
+<li>把结果反馈给 Agent</li>
+</ul>
+</li>
+<li>进入下一轮思考</li>
+</ol>
+<p>这个循环本身不是模型做的，而是 AgentExecutor 做的。</p>
+<h4 id="2-工具调用的编排与执行">2. 工具调用的编排与执行<a aria-hidden="true" tabindex="-1" href="#2-工具调用的编排与执行"><span class="anchor-link"> #</span></a></h4>
+<p>AgentExecutor是智能体的核心，它的职责如下：</p>
+<ul>
+<li>根据模型输出，匹配对应的 Tool 工具</li>
+<li>校验参数的合法性</li>
+<li>执行工具函数</li>
+<li>获取工具函数结果或异常</li>
+<li>对结果进行封装</li>
+</ul>
+<p>这里可见，AgentExecutor自动帮我们做完了上述 Jupyter 演示图上的步骤，而且 AgentExecutor 的做法更加规范和优雅。</p>
+<h4 id="3-管理上下文与中间状态">3. 管理上下文与中间状态<a aria-hidden="true" tabindex="-1" href="#3-管理上下文与中间状态"><span class="anchor-link"> #</span></a></h4>
+<p>此外，AgentExecutor 除了封装工具调用的流程步骤外，它还在会话过程中维持了当前会话历史，中间推理结果，中间推理结果，Memory内存读写，以及执行的步骤记录。</p>
+<p>这些信息也是决定了 LLM 能够看到的内容，Agent 是否会陷入死循环，以及调试和观测用途。</p>
+<h4 id="4-运行控制与保护机制">4. 运行控制与保护机制<a aria-hidden="true" tabindex="-1" href="#4-运行控制与保护机制"><span class="anchor-link"> #</span></a></h4>
+<p>在真实系统中，AgentExecutor 还有一些兜底职责，以起到控制保护的作用。</p>
+<p>这些职责包括：</p>
+<ul>
+<li>最大迭代次数（防止死循环）</li>
+<li>超时控制</li>
+<li>错误处理与重试</li>
+<li>日志信息</li>
+</ul>
+<h2 id="二从-0-到-1构建一个基础-agent">二、从 0 到 1：构建一个基础 Agent<a aria-hidden="true" tabindex="-1" href="#二从-0-到-1构建一个基础-agent"><span class="anchor-link"> #</span></a></h2>
+<p>上面已经解释了一些 LangChain Agent 的基本概念，以及它内核的基本结构原理。</p>
+<p>那如果要构建一个这样的 Agent 智能体思路也是清晰可见，按照 Agent 核心组成来做，让 Agent 成为能够思考，并且会用工具的实体，分为三部来完成。</p>
+<h3 id="1-选择基础模型llm-model">1. 选择基础模型（LLM Model）<a aria-hidden="true" tabindex="-1" href="#1-选择基础模型llm-model"><span class="anchor-link"> #</span></a></h3>
+<p>模型的选择对于 Agent 至关重要，一般分为两种类型模型：</p>
+<ul>
+<li>Chat 模型</li>
+<li>Instruct 模型</li>
+</ul>
+<p>这两种模型区别很大，Chat 模型为<strong>多轮对话</strong>优化，擅长理解上下文、角色和对话状态，而 Instruct 模型为<strong>执行指令</strong>优化，擅长一次性把任务做对、做稳。</p>
+<p>例如，deepseek-chat为 Chat 模型，mistral-small-24b-instruct 则是 Instruct 模型。</p>
+<p>对于 Agent 重要的能力分别是指令遵循，以及 Tool Calling 的稳定性。</p>
+<h3 id="2-为-agent-赋予工具能力tools">2. 为 Agent 赋予工具能力（Tools）<a aria-hidden="true" tabindex="-1" href="#2-为-agent-赋予工具能力tools"><span class="anchor-link"> #</span></a></h3>
+<p>Tool 的本质是一个有描述的函数，每个 Tool 都有一个对应的 Tool Schema，用于描述 Tool 函数，它会直接影响到 Agent 的行为。</p>
+<p>Tool 的设计有讲究的，设计的不好，Agent 会呈现出乱用工具的现象（通常 Tool 函数的描述在 Tool Schema中要说明清楚，多个 Tool 函数时，各个函数的职责要分工明确）。</p>
+<p>通过以上三步，我们发现一个可以工作的 Agent 必要具备因素：</p>
+<ul>
+<li>可以思考</li>
+<li>有工具</li>
+<li>可以理解上下文</li>
+</ul>
+<p>下图演示了一个 Tool 工具的定义。</p>
+<p><img src="/post/introtolangchainapp/783d8547cfc6.png" alt="tool"></p>
+<p>这样定义好的 <code>tool1</code> 就可以被模型或者智能体直接拿去引用。</p>
+<h3 id="3-短期记忆short-term-memory">3. 短期记忆（Short-Term Memory）<a aria-hidden="true" tabindex="-1" href="#3-短期记忆short-term-memory"><span class="anchor-link"> #</span></a></h3>
+<p>短期记忆保证了 Agent 可以执行中断，并在后续恢复运行并且不会丢失之前的结果与信息，因为大语言模型 LLM 都是无状态的，如果不提供旧的聊天历史，模型是不知道的。</p>
+<p>这里的记忆是存储在内存中的短期记忆，不会落盘保存的，它用于提供给大语言模型 LLM 的目的，对于落盘保存的属于另一个范畴：向量数据库。</p>
+<p>下图演示了如何建立一个短期会话存储，并进行使用。</p>
+<p><img src="/post/introtolangchainapp/11d7511a6c5f.png" alt="mem"></p>
+<h2 id="三从单体-agent到智能系统">三、从“单体 Agent”到“智能系统”<a aria-hidden="true" tabindex="-1" href="#三从单体-agent到智能系统"><span class="anchor-link"> #</span></a></h2>
+<p>下面从单体 Agent 转变到系统级的角度。</p>
+<h3 id="1-上下文和状态的长期运行">1. 上下文和状态的长期运行<a aria-hidden="true" tabindex="-1" href="#1-上下文和状态的长期运行"><span class="anchor-link"> #</span></a></h3>
+<p>这里的上下文会涉及到概念区分：Context，Prompt。</p>
+<h4 id="什么是-prompt">什么是 Prompt<a aria-hidden="true" tabindex="-1" href="#什么是-prompt"><span class="anchor-link"> #</span></a></h4>
+<p>Prompt 是模型的<strong>一次调用输入，生命周期只存在于当前这次</strong>。</p>
+<h4 id="什么是-context">什么是 Context<a aria-hidden="true" tabindex="-1" href="#什么是-context"><span class="anchor-link"> #</span></a></h4>
+<p>Context 是 Agent 在<strong>多个步骤、多轮决策中共享的信息集合</strong>。</p>
+<p>Context 的内容可以是和模型的历史对话，中间推理结果，调用外部工具的结果，执行的动作，当前任务状态等这些信息。</p>
+<p>LangChain 中也支持一种特殊上下文数据的定义，下面举例说明，如何在 Agent 中设置 Context。</p>
+<p><img src="/post/introtolangchainapp/d06d322aad0e.png" alt="ctx"></p>
+<p>而对于 Agent 运行状态是用于表示当前阶段，以及判断下一步行为，有了状态就可以表示一个持续运行的系统（和状态机一样）。</p>
+<p>那么在 LangChain 中如何定义 Agent 的状态呢？</p>
+<p>LangChain 支持一种特殊 Agent 状态的定义，可以通过新建一个带状态描述 Agent 来实现（和 Context 类似），如下图示例。</p>
+<p><img src="/post/introtolangchainapp/fcbdffb4119f.png" alt="state1"></p>
+<p>通过两种调用方式都能达到效果。</p>
+<p><img src="/post/introtolangchainapp/b4ebcb566e18.png" alt="state2"></p>
+<blockquote>
+<p>值得注意的是 LLM 是 State 的消费者，而不是拥有者。</p>
+</blockquote>
+<h3 id="2-model-context-protocolmcp介绍">2. Model Context Protocol（MCP）介绍<a aria-hidden="true" tabindex="-1" href="#2-model-context-protocolmcp介绍"><span class="anchor-link"> #</span></a></h3>
+<p>随着 Agent 从“单模型 + 少量工具”演变为“多模型 + 多工具 + 长期运行”，那么一个问题开始变得无法回避：</p>
+<blockquote>
+<p><strong>Context 到底应该如何被组织、传递和理解？</strong></p>
+</blockquote>
+<p>这正是 <strong>Model Context Protocol（MCP）</strong> 想要解决的核心问题。</p>
+<p>Agent 系统的工程痛点，与 MCP 的解决方法：</p>
+<h4 id="1-数据孤岛与上下文碎片化">1. 数据孤岛与“上下文”碎片化<a aria-hidden="true" tabindex="-1" href="#1-数据孤岛与上下文碎片化"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>痛点：</strong> AI 往往处于“信息真空”状态。为了让 AI 了解项目背景，你不得不手动复制粘贴文档，或者忍受 RAG（检索增强生成）复杂的搭建过程。</li>
+<li><strong>解决：</strong> MCP 允许 AI 实时、按需地从本地文件、数据库或第三方 API 中提取最相关的上下文，而无需反复上传数据。</li>
+</ul>
+<h4 id="2-极高的集成维护成本">2. 极高的集成维护成本<a aria-hidden="true" tabindex="-1" href="#2-极高的集成维护成本"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>痛点：</strong> API 经常变动。如果 GitHub 更新了 API，你所有集成了 GitHub 的 AI 工具可能都会挂掉。</li>
+<li><strong>解决：</strong> 开发者只需维护一个 <strong>MCP Server</strong>。一旦这个 Server 更新，所有支持 MCP 的 AI 客户端（如 Claude Desktop、Cursor编辑器）都能直接使用更新后的功能。</li>
+</ul>
+<h4 id="3-安全与权限控制的混乱">3. 安全与权限控制的混乱<a aria-hidden="true" tabindex="-1" href="#3-安全与权限控制的混乱"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>痛点：</strong> 给 AI 授权通常意味着要把 API Key 交给第三方应用，存在安全隐患。</li>
+<li><strong>解决：</strong> MCP 支持本地运行的 Server。你的敏感数据（如本地代码、财务报表）不需要上传到云端进行处理，MCP Server 可以在本地运行并只向模型提供必要的摘要信息，保持了<strong>数据所有权</strong>。</li>
+</ul>
+<h4 id="4-缺乏统一的工具调用tool-calling标准">4. 缺乏统一的工具调用（Tool Calling）标准<a aria-hidden="true" tabindex="-1" href="#4-缺乏统一的工具调用tool-calling标准"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>痛点：</strong> 不同模型的 Function Calling 格式略有不同，切换模型往往意味着重写工具逻辑。</li>
+<li><strong>解决：</strong> MCP 定义了统一的资源（Resources）、提示词模板（Prompts）和工具（Tools）交互标准，让“模型驱动工具”变得像调用函数一样简单且通用。</li>
+</ul>
+<p>MCP 是一场关于“解耦”的革命。它把“模型的能力”与“数据的获取”分离开来。</p>
+<p>在 LangChain 中要引用一个 MCP 的话，非常简单，示例如下图。</p>
+<p><img src="/post/introtolangchainapp/002ee0df469e.png" alt="mcp"></p>
+<p>上图先是启用了一个时间获取的 MCP 服务，然后让 Agent 去获取它的工具去使用。</p>
+<blockquote>
+<p>关于如何设计并制作 MCP 服务，请参考 MCP 入门教程，MCP协议可以参照<a href="https://modelcontextprotocol.io/docs/getting-started/intro">这里</a>。</p>
+</blockquote>
+<h3 id="3-多-agent-协作multi-agent-systems">3. 多 Agent 协作（Multi-Agent Systems）<a aria-hidden="true" tabindex="-1" href="#3-多-agent-协作multi-agent-systems"><span class="anchor-link"> #</span></a></h3>
+<p>为什么单 Agent 不够？</p>
+<p>在 Demo 阶段，一个 Agent 往往看起来已经“足够聪明”，但一旦进入真实场景，单 Agent 的问题会迅速暴露出来。</p>
+<h4 id="1-单-agent-的问题">1. 单 Agent 的问题<a aria-hidden="true" tabindex="-1" href="#1-单-agent-的问题"><span class="anchor-link"> #</span></a></h4>
+<p>这些问题包括如下几类：</p>
+<ul>
+<li>
+<p>复杂任务导致职责失控</p>
+<p>需求理解，任务拆解，调用工具等操作导致上下文越来越长，导致推理路径也越来具有不确定性，结果的不确定性。</p>
+</li>
+<li>
+<p>推理、执行、校验混在一起</p>
+<p>三个元素混合，一旦出现错误，问题定位非常困难，相当于工程里出现的没有职责边界的服务。</p>
+</li>
+<li>
+<p>可扩展性和可维护性极差</p>
+<p>例如如果给系统添加审查能力，或者人工介入能力，单 Agent 意味着可能要重写 Prompt，并且需要重试所有的路径，风险巨大。</p>
+</li>
+<li>
+<p>安全与成本问题</p>
+<p>单 Agent 只有一个服务，可能会获得很高的权限，但是实际上可能并不一定需要这种高权限，难以精化，为系统安全和成本都带来压力。</p>
+</li>
+</ul>
+<h4 id="2-多-agent-的设计">2. 多 Agent 的设计<a aria-hidden="true" tabindex="-1" href="#2-多-agent-的设计"><span class="anchor-link"> #</span></a></h4>
+<p>多 Agent 的核心思想：<strong>拆分职责，而不是堆能力</strong>。</p>
+<p>常见的多 Agent 协作模式分为如下几种：</p>
+<ul>
+<li>
+<p>Planner / Executor 模式</p>
+<p>在这种模式下，Planner Agent 负责理解目标，拆解任务，并生成执行计划，而 Executor Agent 则是按照计划调用工具，专注于执行。</p>
+</li>
+<li>
+<p>Reviewer / Worker 模式</p>
+<p>在这种模式下，Reviewer Agent 进行任务的结果审查，找出问题，并提供修改意见，最后决定是否通过，而对应的 Worker Agent 则是完成主要任务，生成初稿或者结果。</p>
+</li>
+<li>
+<p>Manager / Sub-agent 模式</p>
+<p>在这种模式下，Manager Agent 负责分析任务类型，决定调用哪些子 Agent，并最终汇总结果，其下的 Sub-agent 负责某个子模块/自领域的处理能力，工具集和上下文相互独立。</p>
+</li>
+</ul>
+<p>以下示例了一个 Manager / Sub-agent 模式的例子。</p>
+<p>这个例子是一个负责进行游戏玩家监管的 Agent，当检测到作弊玩家后，Agent 会自动发送通知信息，并把玩家在系统中禁用。</p>
+<p>首先，定义工具操作函数（这里都是 mock 操作），并定义子 Agent （分别是发送通知信息和禁止用户）。</p>
+<p><img src="/post/introtolangchainapp/0f5653456c0c.png" alt="multiagssubs"></p>
+<p>然后再定义 Manager Agent （这里对应<code>main_agent</code>）</p>
+<p><img src="/post/introtolangchainapp/ac16add54f40.png" alt="multiagsmain"></p>
+<p>调用 Manager Agent 告诉要进行的操作，效果如下图。</p>
+<p><img src="/post/introtolangchainapp/9e3e46603903.png" alt="multiagsres"></p>
+<p>可见在这种模式下，Agent 的调用与效果如期望相符。</p>
+<h2 id="四迈向生产构建可上线的-agent">四、迈向生产：构建可上线的 Agent<a aria-hidden="true" tabindex="-1" href="#四迈向生产构建可上线的-agent"><span class="anchor-link"> #</span></a></h2>
+<p>构建一个 Agent 系统，不是仅仅能跑就可以了，更关键的是能够长期稳定运行，本节将从生产环境下讲述需要关注的方面。</p>
+<h3 id="1-agent-middleware-介绍">1. Agent Middleware 介绍<a aria-hidden="true" tabindex="-1" href="#1-agent-middleware-介绍"><span class="anchor-link"> #</span></a></h3>
+<p>传统计算机由 CPU ，内存，和外设组成，把这三者联动起来的是计算机的操作系统。按照这个类比的话，LLM 是 CPU ，不同的 Agent 相当于不同的应用程序，而 Agent Middleware 就相当于 Agent 系统的操作系统，它是不同 LLM 和 Agent 的管理组件，假设没有这些 Middleware ，Agent 系统将只能手动管理，不仅管理繁琐，难以复用，拓展性受限，还很容易出错，所以说 Agent Middleware 是 Agent 系统的操作系统。</p>
+<p>Agent Middleware 通常可以分为如下几类：</p>
+<ul>
+<li>
+<p>运行时管理</p>
+<p>这类主要为了解决 Agent 步骤如何推进，失败了如何恢复的问题。</p>
+</li>
+<li>
+<p>上下文记忆</p>
+<p>这类是决定哪些信息应该进入上下文，保证 Agent 不会失忆，同时上下文过长时，如何进行压缩。</p>
+</li>
+<li>
+<p>工具能力类</p>
+<p>这类聚焦于工具如何被安全地调用，如果工具调用失败了，应该如何处理这些问题。</p>
+</li>
+<li>
+<p>流程协作类</p>
+<p>这类是集中多步任务如何拆解，以及多 Agent 如何协作的问题。</p>
+</li>
+<li>
+<p>安全治理类</p>
+<p>这类是 Agent 的安全治理，Agent 在系统中不可以乱来，包括风险操作的拦截，以满足企业合规性要求。</p>
+</li>
+<li>
+<p>观测运维类</p>
+<p>这类用于监控与调试用途，便于错误复现并进行修复，以及日常指标观测。</p>
+</li>
+</ul>
+<p>这类做了一张和计算机类比的图标以比较参考：</p>
+<table>
+<thead>
+<tr>
+<th>Middleware 类别</th>
+<th>类比 OS</th>
+<th>核心职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime &#x26; Execution</td>
+<td>Kernel</td>
+<td>执行与生命周期</td>
+</tr>
+<tr>
+<td>Context &#x26; Memory</td>
+<td>Memory Manager</td>
+<td>状态与记忆</td>
+</tr>
+<tr>
+<td>Tool &#x26; Capability</td>
+<td>Syscall</td>
+<td>能力调用</td>
+</tr>
+<tr>
+<td>Control Flow</td>
+<td>Scheduler</td>
+<td>流程与协作</td>
+</tr>
+<tr>
+<td>Safety &#x26; Governance</td>
+<td>Permission System</td>
+<td>安全合规</td>
+</tr>
+<tr>
+<td>Observability &#x26; Ops</td>
+<td>Debug / Monitor</td>
+<td>调试与运维</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-长对话和上下文压缩">2. 长对话和上下文压缩<a aria-hidden="true" tabindex="-1" href="#2-长对话和上下文压缩"><span class="anchor-link"> #</span></a></h3>
+<p>长对话和上下文压缩是一个很现实的工程问题，随着对话次数增加，这个问题就会呈现出来。过长的对话会消耗大量的 Token 数量，导致系统成本上升。一般方法是忘记掉无效的信息，例如工具调用的中间结果，更常规的方法是是对历史会话做摘要，这样以来，系统会自动总结出历史记忆，仅以简短的信息概括，而不会产生 Agent 失忆。</p>
+<p>如下图示例说明在 LangChain 中，如何使用 SummarizationMiddleware 来完成长对话的上下文压缩。</p>
+<p>首先，定义一个支持短期记忆，并且使用 SummarizationMiddleware 中间件的 Agent，然后开始问答。</p>
+<p><img src="/post/introtolangchainapp/caae2a3bf5a3.png" alt="agentsum"></p>
+<p>可见经过多轮问答后，达到设定的阈值后，<code>messages</code>中的字段就会被压缩成概要描述。</p>
+<p><img src="/post/introtolangchainapp/fdaf729ba2f4.png" alt="agentsum2"></p>
+<h3 id="3-human-in-the-loophitl">3. Human-In-the-Loop（HITL）<a aria-hidden="true" tabindex="-1" href="#3-human-in-the-loophitl"><span class="anchor-link"> #</span></a></h3>
+<p>生产环境下，会遇到一些高风险的决策和操作，因此必须需要人为进行干预，这也是 Agent 系统安全合规的保证。</p>
+<p>下面看一个示例，这个例子是让 Agent 帮自己读取邮件，然后让用户进行确认，再决定发送邮件。</p>
+<p>首先定义两个工具函数，<code>read_email</code>和<code>send_email</code>，它是该 Agent 要进行的操作。</p>
+<p><img src="/post/introtolangchainapp/ac212a186d7a.png" alt="agenthitl1"></p>
+<p>然后，定义支持 HITL 的 Agent，并向其发起操作。</p>
+<p><img src="/post/introtolangchainapp/094c371fd542.png" alt="agenthitl2"></p>
+<p>通过观察输出，可以看到返回输出多出一个<code>__interrupt__</code>的字段，里面还有详细的描述。</p>
+<p>接着可以提交同意（<code>approve</code>）/ 拒绝（<code>reject</code>），这二者其一的决定给 Agent。</p>
+<p><img src="/post/introtolangchainapp/6badd84055ef.png" alt="agenthitl3"></p>
+<p>决定提交完成后，Agent 输出最终的结果。</p>
+<blockquote>
+<p>关于 HITL 的更多细节，可以参考<a href="https://docs.langchain.com/oss/python/langchain/human-in-the-loop">官方文档</a>。</p>
+</blockquote>
+<h2 id="五总结与进阶方向">五、总结与进阶方向<a aria-hidden="true" tabindex="-1" href="#五总结与进阶方向"><span class="anchor-link"> #</span></a></h2>
+<p>第一点，Agent 不是提示词工程，Agent 是一种系统工程，LangChain的角色是打造这座系统的“胶水”。</p>
+<p>其次，并非 Agent 就是一定就是最好的解法，例如对于简单的知识性问答，就不一定用到 Agent 的方法，还有一种就是固定流程的场景，Agent 反而可能打乱了原来稳定的流程，从而导致混乱。</p>
+<p>最后进阶方向，未来的趋势，例如 Agent + RAG，Agent + Workflow，还有 LangGraph 多分支流树，以及如何和业务系统深度集成，这些将会成为发展趋势。</p></div><div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700"><a class="text-blue-500 hover:underline" href="/">← 返回所有文章列表</a></div><div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 text-sm">© 2013 – 2025 陈祥</div></article></div></div></div><!--$--><!--/$--><!--$--><!--/$--><script src="/_next/static/chunks/webpack-ede82f7d0ae11dac.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n4:I[415,[\"766\",\"static/chunks/766-f505dbd3efffaa4c.js\",\"226\",\"static/chunks/226-13d4d3f1fc18ceb6.js\",\"177\",\"static/chunks/app/layout-b3ce58a25da6999d.js\"],\"default\"]\n5:I[9243,[\"766\",\"static/chunks/766-f505dbd3efffaa4c.js\",\"226\",\"static/chunks/226-13d4d3f1fc18ceb6.js\",\"177\",\"static/chunks/app/layout-b3ce58a25da6999d.js\"],\"\"]\n8:I[9665,[],\"MetadataBoundary\"]\na:I[9665,[],\"OutletBoundary\"]\nd:I[4911,[],\"AsyncMetadataOutlet\"]\nf:I[9665,[],\"ViewportBoundary\"]\n11:I[6614,[],\"\"]\n:HL[\"/_next/static/css/283bb1ed86b49fd2.css\",\"style\"]\n:HL[\"/_next/static/css/09ec4099fb721b31.css\",\"style\"]\n:HL[\"/_next/static/css/09dfadb69bdaa005.css\",\"style\"]\n:HL[\"/_next/static/css/54b9acc791aa599c.css\",\"style\"]\n6:T4a2,\n          function copyCode(button) {\n            // Find the code element within the same wrapper\n            const codeWrapper = button.closest('.code-block-wrapper');\n            if (!codeWrapper) return;\n            \n            const codeElement = codeWrapper.querySelector('code');\n            if (!codeElement) return;\n            \n            // Get the text content\n            const text = codeElement.textContent;\n            \n            // Use the clipboard API to copy the text\n            navigator.clipboard.writeText(text).then(() =\u003e {\n              // Update the button state to show \"Copied!\"\n              button.setAttribute('data-copy-state', 'copied');\n              const buttonText = button.querySelector('.copy-button-text');\n              if (buttonText) buttonText.textContent = 'Copied!';\n              \n              // Reset after 2 seconds\n              setTimeout(() =\u003e {\n                button.setAttribute('data-copy-state', 'copy');\n                if (buttonText) buttonText.textContent = 'Copy';\n              }, 2000);\n            }).catch(err =\u003e {\n              console.error('Failed to copy text: ', err);\n            });\n          }\n          "])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"xsQ5PUF4c2cJqxppneo-C\",\"p\":\"\",\"c\":[\"\",\"post\",\"introtolangchainapp\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"post\",{\"children\":[[\"id\",\"introtolangchainapp\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/283bb1ed86b49fd2.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/09ec4099fb721b31.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"2\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/09dfadb69bdaa005.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"antialiased relative\",\"children\":[[\"$\",\"div\",null,{\"className\":\"fixed top-4 right-4 z-50\",\"children\":[\"$\",\"a\",null,{\"href\":\"https://github.com/hchen90\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300\",\"title\":\"Visit my GitHub profile\",\"children\":[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":\"24\",\"height\":\"24\",\"viewBox\":\"0 0 24 24\",\"fill\":\"currentColor\",\"children\":[\"$\",\"path\",null,{\"d\":\"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z\"}]}]}]}],[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}],[\"$\",\"$L4\",null,{}],[\"$\",\"$L5\",null,{\"id\":\"code-copy\",\"children\":\"$6\"}]]}]}]]}],{\"children\":[\"post\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"id\",\"introtolangchainapp\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L7\",[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/54b9acc791aa599c.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$Lb\",\"$Lc\",[\"$\",\"$Ld\",null,{\"promise\":\"$@e\"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"SzdoTJemQ7CUIayTpm8FV\",{\"children\":[[\"$\",\"$Lf\",null,{\"children\":\"$L10\"}],null]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"12:\"$Sreact.suspense\"\n13:I[4911,[],\"AsyncMetadata\"]\n9:[\"$\",\"$12\",null,{\"fallback\":null,\"children\":[\"$\",\"$L13\",null,{\"promise\":\"$@14\"}]}]\n"])</script><script>self.__next_f.push([1,"c:null\n"])</script><script>self.__next_f.push([1,"15:I[9543,[\"874\",\"static/chunks/874-e909718850e7282e.js\",\"734\",\"static/chunks/734-02ba314a893e68e9.js\",\"351\",\"static/chunks/351-1a0463ef6ec6e59e.js\",\"457\",\"static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js\"],\"default\"]\n16:T65d7,"])</script><script>self.__next_f.push([1,"\u003ch1 id=\"使用-langchain-构建智能体实战\"\u003e使用 LangChain 构建智能体实战\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#使用-langchain-构建智能体实战\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h1\u003e\n\u003cp\u003e本文从 LangChain 基础入门开始，从基础智能体（Agent）开始，到构建一个生产级的智能体系统，所需要的知识概念。\u003c/p\u003e\n\u003cp\u003e传统的 ChatBot 只能进行\u003cstrong\u003e聊天\u003c/strong\u003e，人工智能反映在知识输出上，但是这种智能并不能\u003cstrong\u003e自出决策\u003c/strong\u003e，并使用\u003cstrong\u003e工具调用\u003c/strong\u003e。虽然后来的 AI 大厂发展出了工具集概念，但是对于很多业务的特殊性，他们的工具能力非常有限。而构建智能体系统，其业务核心不是LLM的模型，而是在于业务的编排层，LangChain 就是这样的编排层的框架，非常便于实现智能体系统。\u003c/p\u003e\n\u003ch2 id=\"一什么是-langchain-agent\"\u003e一、什么是 LangChain Agent\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#一什么是-langchain-agent\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-agent-的核心组成\"\u003e1. Agent 的核心组成\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-agent-的核心组成\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e在 LangChain 以及更广义的 AI 系统中，\u003cstrong\u003eAgent 并不是一个“会聊天的模型”\u003c/strong\u003e，而是一个能够\u003cstrong\u003e理解目标、做出决策、并采取行动的系统\u003c/strong\u003e。一个实用的 Agent，通常可以抽象为三个核心组成部分：\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eAgent ≈ 大脑（Brain） + 手（Hands） + 记忆（Memory）\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch4 id=\"大脑brain负责思考和决策\"\u003e大脑（Brain）：负责思考和决策\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#大脑brain负责思考和决策\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e大脑对应于大语言模型（LLM），它和聊天式应用存在显著不同，它的职责不是回答问题进行知识输出，而是：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e理解用户意图\u003c/li\u003e\n\u003cli\u003e拆解任务步骤\u003c/li\u003e\n\u003cli\u003e决定是否调用工具\u003c/li\u003e\n\u003cli\u003e调用哪个工具，以及如何调用工具（参数）\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"手hands让-agent-能够做事\"\u003e手（Hands）：让 Agent 能够“做事”\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#手hands让-agent-能够做事\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e手对应于 Tools（工具），工具的本质是可以被模型调用的，并且觉有明确功能的，一种模型外部提供的能力。\u003c/p\u003e\n\u003cp\u003e常见的工具有：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e搜索引擎（查阅资料）\u003c/li\u003e\n\u003cli\u003e计算（数值计算，统计等等）\u003c/li\u003e\n\u003cli\u003eAPI 调用（查订单，发邮件等等）\u003c/li\u003e\n\u003cli\u003e数据库/向量检索（RAG）\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e一般来所，Agent 的能力上限，往往不是由模型决定的，而是由工具决定的。\u003c/p\u003e\n\u003ch4 id=\"记忆memory让-agent-有上下文意识\"\u003e记忆（Memory）：让 Agent 有“上下文意识”\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#记忆memory让-agent-有上下文意识\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003eAgent 在启动后，和 ChatBot 聊天应用类似，随着问答的继续会产生大量上下文的内容，如果每次 Agent 启动后不能加载之前保存的上下文内容，那么它就会从 0 开始，对于复杂业务流程，就导致不能中断后继续，所以让 Agent 能够保存上下文能够记忆是十分必要的。\u003c/p\u003e\n\u003cp\u003eAgent 的记忆通常有：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e短期记忆：当前上下文对话内容，一般存储在内存中。\u003c/li\u003e\n\u003cli\u003e状态信息：中间结果，已经完成的步骤。\u003c/li\u003e\n\u003cli\u003e长期记忆：用户偏好，历史行为。\u003c/li\u003e\n\u003c/ul\u003e\n\u003cblockquote\u003e\n\u003cp\u003e这里的记忆（Memory）并不等同于把对话上下文全量塞入 Promt 提示中，真正的记忆是有选择性地记住重要的信息。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e以上三者的协作通过一个核心循环组成，如下图示。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/cbeab51fa0fb.png\" alt=\"agentg\"\u003e\u003c/p\u003e\n\u003ch3 id=\"2-langchain-中-agent-的基本运行流程\"\u003e2. LangChain 中 Agent 的基本运行流程\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-langchain-中-agent-的基本运行流程\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e在 LangChain 中，\u003cstrong\u003eAgent 并不是一个可以直接调用的对象\u003c/strong\u003e。真正负责驱动 Agent 运转的，是 \u003cstrong\u003eAgentExecutor\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003e在了解 AgentExecutor 之前，我们先看一个例子，这个例子是没有使用 LangChain 的 Agent ，而是尝试手动调用大语言模型来完成工具调用，图示如下。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/637d648535f2.png\" alt=\"mcalltool\"\u003e\u003c/p\u003e\n\u003cp\u003e可见为了和大语言模型进行互动，对于工具的使用，需要非常繁琐的操作（把工具调用ID和手动调用结果，全部添加到上下文的消息里面），这样大语言模型才能使用工具生成的结果，而 LangChain AgentExecutor 是一种高层次的封装，它不仅可以解决以上问题，更有解决其他错误与异常问题。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/36b844684450.png\" alt=\"agentivk\"\u003e\u003c/p\u003e\n\u003cp\u003e如上所示，Agent 下所有的繁琐都被它自动处理掉了，我们只需关心流程和结果即可。\u003c/p\u003e\n\u003cp\u003e首先看看 AgentExecutor 主要四类职责：\u003c/p\u003e\n\u003ch4 id=\"1-驱动-agent-思考的循环\"\u003e1. 驱动 Agent 思考的循环\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-驱动-agent-思考的循环\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003eAgent 的核心不是一次模型调用，而是一个循环过程：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e将当前输入 + 上下文交给 Agent（LLM）\u003c/li\u003e\n\u003cli\u003e解析模型输出，判断下一步是：\n\u003cul\u003e\n\u003cli\u003e直接给出最终答案\u003c/li\u003e\n\u003cli\u003e还是调用某个工具\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e如果需要调用工具：\n\u003cul\u003e\n\u003cli\u003e执行工具\u003c/li\u003e\n\u003cli\u003e获取结果\u003c/li\u003e\n\u003cli\u003e把结果反馈给 Agent\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e进入下一轮思考\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e这个循环本身不是模型做的，而是 AgentExecutor 做的。\u003c/p\u003e\n\u003ch4 id=\"2-工具调用的编排与执行\"\u003e2. 工具调用的编排与执行\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-工具调用的编排与执行\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003eAgentExecutor是智能体的核心，它的职责如下：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e根据模型输出，匹配对应的 Tool 工具\u003c/li\u003e\n\u003cli\u003e校验参数的合法性\u003c/li\u003e\n\u003cli\u003e执行工具函数\u003c/li\u003e\n\u003cli\u003e获取工具函数结果或异常\u003c/li\u003e\n\u003cli\u003e对结果进行封装\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这里可见，AgentExecutor自动帮我们做完了上述 Jupyter 演示图上的步骤，而且 AgentExecutor 的做法更加规范和优雅。\u003c/p\u003e\n\u003ch4 id=\"3-管理上下文与中间状态\"\u003e3. 管理上下文与中间状态\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-管理上下文与中间状态\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e此外，AgentExecutor 除了封装工具调用的流程步骤外，它还在会话过程中维持了当前会话历史，中间推理结果，中间推理结果，Memory内存读写，以及执行的步骤记录。\u003c/p\u003e\n\u003cp\u003e这些信息也是决定了 LLM 能够看到的内容，Agent 是否会陷入死循环，以及调试和观测用途。\u003c/p\u003e\n\u003ch4 id=\"4-运行控制与保护机制\"\u003e4. 运行控制与保护机制\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-运行控制与保护机制\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e在真实系统中，AgentExecutor 还有一些兜底职责，以起到控制保护的作用。\u003c/p\u003e\n\u003cp\u003e这些职责包括：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e最大迭代次数（防止死循环）\u003c/li\u003e\n\u003cli\u003e超时控制\u003c/li\u003e\n\u003cli\u003e错误处理与重试\u003c/li\u003e\n\u003cli\u003e日志信息\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"二从-0-到-1构建一个基础-agent\"\u003e二、从 0 到 1：构建一个基础 Agent\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#二从-0-到-1构建一个基础-agent\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e上面已经解释了一些 LangChain Agent 的基本概念，以及它内核的基本结构原理。\u003c/p\u003e\n\u003cp\u003e那如果要构建一个这样的 Agent 智能体思路也是清晰可见，按照 Agent 核心组成来做，让 Agent 成为能够思考，并且会用工具的实体，分为三部来完成。\u003c/p\u003e\n\u003ch3 id=\"1-选择基础模型llm-model\"\u003e1. 选择基础模型（LLM Model）\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-选择基础模型llm-model\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e模型的选择对于 Agent 至关重要，一般分为两种类型模型：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eChat 模型\u003c/li\u003e\n\u003cli\u003eInstruct 模型\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这两种模型区别很大，Chat 模型为\u003cstrong\u003e多轮对话\u003c/strong\u003e优化，擅长理解上下文、角色和对话状态，而 Instruct 模型为\u003cstrong\u003e执行指令\u003c/strong\u003e优化，擅长一次性把任务做对、做稳。\u003c/p\u003e\n\u003cp\u003e例如，deepseek-chat为 Chat 模型，mistral-small-24b-instruct 则是 Instruct 模型。\u003c/p\u003e\n\u003cp\u003e对于 Agent 重要的能力分别是指令遵循，以及 Tool Calling 的稳定性。\u003c/p\u003e\n\u003ch3 id=\"2-为-agent-赋予工具能力tools\"\u003e2. 为 Agent 赋予工具能力（Tools）\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-为-agent-赋予工具能力tools\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eTool 的本质是一个有描述的函数，每个 Tool 都有一个对应的 Tool Schema，用于描述 Tool 函数，它会直接影响到 Agent 的行为。\u003c/p\u003e\n\u003cp\u003eTool 的设计有讲究的，设计的不好，Agent 会呈现出乱用工具的现象（通常 Tool 函数的描述在 Tool Schema中要说明清楚，多个 Tool 函数时，各个函数的职责要分工明确）。\u003c/p\u003e\n\u003cp\u003e通过以上三步，我们发现一个可以工作的 Agent 必要具备因素：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e可以思考\u003c/li\u003e\n\u003cli\u003e有工具\u003c/li\u003e\n\u003cli\u003e可以理解上下文\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e下图演示了一个 Tool 工具的定义。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/783d8547cfc6.png\" alt=\"tool\"\u003e\u003c/p\u003e\n\u003cp\u003e这样定义好的 \u003ccode\u003etool1\u003c/code\u003e 就可以被模型或者智能体直接拿去引用。\u003c/p\u003e\n\u003ch3 id=\"3-短期记忆short-term-memory\"\u003e3. 短期记忆（Short-Term Memory）\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-短期记忆short-term-memory\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e短期记忆保证了 Agent 可以执行中断，并在后续恢复运行并且不会丢失之前的结果与信息，因为大语言模型 LLM 都是无状态的，如果不提供旧的聊天历史，模型是不知道的。\u003c/p\u003e\n\u003cp\u003e这里的记忆是存储在内存中的短期记忆，不会落盘保存的，它用于提供给大语言模型 LLM 的目的，对于落盘保存的属于另一个范畴：向量数据库。\u003c/p\u003e\n\u003cp\u003e下图演示了如何建立一个短期会话存储，并进行使用。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/11d7511a6c5f.png\" alt=\"mem\"\u003e\u003c/p\u003e\n\u003ch2 id=\"三从单体-agent到智能系统\"\u003e三、从“单体 Agent”到“智能系统”\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#三从单体-agent到智能系统\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e下面从单体 Agent 转变到系统级的角度。\u003c/p\u003e\n\u003ch3 id=\"1-上下文和状态的长期运行\"\u003e1. 上下文和状态的长期运行\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-上下文和状态的长期运行\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e这里的上下文会涉及到概念区分：Context，Prompt。\u003c/p\u003e\n\u003ch4 id=\"什么是-prompt\"\u003e什么是 Prompt\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#什么是-prompt\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003ePrompt 是模型的\u003cstrong\u003e一次调用输入，生命周期只存在于当前这次\u003c/strong\u003e。\u003c/p\u003e\n\u003ch4 id=\"什么是-context\"\u003e什么是 Context\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#什么是-context\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003eContext 是 Agent 在\u003cstrong\u003e多个步骤、多轮决策中共享的信息集合\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003eContext 的内容可以是和模型的历史对话，中间推理结果，调用外部工具的结果，执行的动作，当前任务状态等这些信息。\u003c/p\u003e\n\u003cp\u003eLangChain 中也支持一种特殊上下文数据的定义，下面举例说明，如何在 Agent 中设置 Context。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/d06d322aad0e.png\" alt=\"ctx\"\u003e\u003c/p\u003e\n\u003cp\u003e而对于 Agent 运行状态是用于表示当前阶段，以及判断下一步行为，有了状态就可以表示一个持续运行的系统（和状态机一样）。\u003c/p\u003e\n\u003cp\u003e那么在 LangChain 中如何定义 Agent 的状态呢？\u003c/p\u003e\n\u003cp\u003eLangChain 支持一种特殊 Agent 状态的定义，可以通过新建一个带状态描述 Agent 来实现（和 Context 类似），如下图示例。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/fcbdffb4119f.png\" alt=\"state1\"\u003e\u003c/p\u003e\n\u003cp\u003e通过两种调用方式都能达到效果。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/b4ebcb566e18.png\" alt=\"state2\"\u003e\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e值得注意的是 LLM 是 State 的消费者，而不是拥有者。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3 id=\"2-model-context-protocolmcp介绍\"\u003e2. Model Context Protocol（MCP）介绍\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-model-context-protocolmcp介绍\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e随着 Agent 从“单模型 + 少量工具”演变为“多模型 + 多工具 + 长期运行”，那么一个问题开始变得无法回避：\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eContext 到底应该如何被组织、传递和理解？\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e这正是 \u003cstrong\u003eModel Context Protocol（MCP）\u003c/strong\u003e 想要解决的核心问题。\u003c/p\u003e\n\u003cp\u003eAgent 系统的工程痛点，与 MCP 的解决方法：\u003c/p\u003e\n\u003ch4 id=\"1-数据孤岛与上下文碎片化\"\u003e1. 数据孤岛与“上下文”碎片化\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-数据孤岛与上下文碎片化\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e痛点：\u003c/strong\u003e AI 往往处于“信息真空”状态。为了让 AI 了解项目背景，你不得不手动复制粘贴文档，或者忍受 RAG（检索增强生成）复杂的搭建过程。\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e解决：\u003c/strong\u003e MCP 允许 AI 实时、按需地从本地文件、数据库或第三方 API 中提取最相关的上下文，而无需反复上传数据。\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"2-极高的集成维护成本\"\u003e2. 极高的集成维护成本\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-极高的集成维护成本\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e痛点：\u003c/strong\u003e API 经常变动。如果 GitHub 更新了 API，你所有集成了 GitHub 的 AI 工具可能都会挂掉。\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e解决：\u003c/strong\u003e 开发者只需维护一个 \u003cstrong\u003eMCP Server\u003c/strong\u003e。一旦这个 Server 更新，所有支持 MCP 的 AI 客户端（如 Claude Desktop、Cursor编辑器）都能直接使用更新后的功能。\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"3-安全与权限控制的混乱\"\u003e3. 安全与权限控制的混乱\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-安全与权限控制的混乱\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e痛点：\u003c/strong\u003e 给 AI 授权通常意味着要把 API Key 交给第三方应用，存在安全隐患。\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e解决：\u003c/strong\u003e MCP 支持本地运行的 Server。你的敏感数据（如本地代码、财务报表）不需要上传到云端进行处理，MCP Server 可以在本地运行并只向模型提供必要的摘要信息，保持了\u003cstrong\u003e数据所有权\u003c/strong\u003e。\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"4-缺乏统一的工具调用tool-calling标准\"\u003e4. 缺乏统一的工具调用（Tool Calling）标准\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-缺乏统一的工具调用tool-calling标准\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e痛点：\u003c/strong\u003e 不同模型的 Function Calling 格式略有不同，切换模型往往意味着重写工具逻辑。\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e解决：\u003c/strong\u003e MCP 定义了统一的资源（Resources）、提示词模板（Prompts）和工具（Tools）交互标准，让“模型驱动工具”变得像调用函数一样简单且通用。\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eMCP 是一场关于“解耦”的革命。它把“模型的能力”与“数据的获取”分离开来。\u003c/p\u003e\n\u003cp\u003e在 LangChain 中要引用一个 MCP 的话，非常简单，示例如下图。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/002ee0df469e.png\" alt=\"mcp\"\u003e\u003c/p\u003e\n\u003cp\u003e上图先是启用了一个时间获取的 MCP 服务，然后让 Agent 去获取它的工具去使用。\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e关于如何设计并制作 MCP 服务，请参考 MCP 入门教程，MCP协议可以参照\u003ca href=\"https://modelcontextprotocol.io/docs/getting-started/intro\"\u003e这里\u003c/a\u003e。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3 id=\"3-多-agent-协作multi-agent-systems\"\u003e3. 多 Agent 协作（Multi-Agent Systems）\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-多-agent-协作multi-agent-systems\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e为什么单 Agent 不够？\u003c/p\u003e\n\u003cp\u003e在 Demo 阶段，一个 Agent 往往看起来已经“足够聪明”，但一旦进入真实场景，单 Agent 的问题会迅速暴露出来。\u003c/p\u003e\n\u003ch4 id=\"1-单-agent-的问题\"\u003e1. 单 Agent 的问题\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-单-agent-的问题\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e这些问题包括如下几类：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e复杂任务导致职责失控\u003c/p\u003e\n\u003cp\u003e需求理解，任务拆解，调用工具等操作导致上下文越来越长，导致推理路径也越来具有不确定性，结果的不确定性。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e推理、执行、校验混在一起\u003c/p\u003e\n\u003cp\u003e三个元素混合，一旦出现错误，问题定位非常困难，相当于工程里出现的没有职责边界的服务。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e可扩展性和可维护性极差\u003c/p\u003e\n\u003cp\u003e例如如果给系统添加审查能力，或者人工介入能力，单 Agent 意味着可能要重写 Prompt，并且需要重试所有的路径，风险巨大。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e安全与成本问题\u003c/p\u003e\n\u003cp\u003e单 Agent 只有一个服务，可能会获得很高的权限，但是实际上可能并不一定需要这种高权限，难以精化，为系统安全和成本都带来压力。\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"2-多-agent-的设计\"\u003e2. 多 Agent 的设计\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-多-agent-的设计\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cp\u003e多 Agent 的核心思想：\u003cstrong\u003e拆分职责，而不是堆能力\u003c/strong\u003e。\u003c/p\u003e\n\u003cp\u003e常见的多 Agent 协作模式分为如下几种：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003ePlanner / Executor 模式\u003c/p\u003e\n\u003cp\u003e在这种模式下，Planner Agent 负责理解目标，拆解任务，并生成执行计划，而 Executor Agent 则是按照计划调用工具，专注于执行。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eReviewer / Worker 模式\u003c/p\u003e\n\u003cp\u003e在这种模式下，Reviewer Agent 进行任务的结果审查，找出问题，并提供修改意见，最后决定是否通过，而对应的 Worker Agent 则是完成主要任务，生成初稿或者结果。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003eManager / Sub-agent 模式\u003c/p\u003e\n\u003cp\u003e在这种模式下，Manager Agent 负责分析任务类型，决定调用哪些子 Agent，并最终汇总结果，其下的 Sub-agent 负责某个子模块/自领域的处理能力，工具集和上下文相互独立。\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e以下示例了一个 Manager / Sub-agent 模式的例子。\u003c/p\u003e\n\u003cp\u003e这个例子是一个负责进行游戏玩家监管的 Agent，当检测到作弊玩家后，Agent 会自动发送通知信息，并把玩家在系统中禁用。\u003c/p\u003e\n\u003cp\u003e首先，定义工具操作函数（这里都是 mock 操作），并定义子 Agent （分别是发送通知信息和禁止用户）。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/0f5653456c0c.png\" alt=\"multiagssubs\"\u003e\u003c/p\u003e\n\u003cp\u003e然后再定义 Manager Agent （这里对应\u003ccode\u003emain_agent\u003c/code\u003e）\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/ac16add54f40.png\" alt=\"multiagsmain\"\u003e\u003c/p\u003e\n\u003cp\u003e调用 Manager Agent 告诉要进行的操作，效果如下图。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/9e3e46603903.png\" alt=\"multiagsres\"\u003e\u003c/p\u003e\n\u003cp\u003e可见在这种模式下，Agent 的调用与效果如期望相符。\u003c/p\u003e\n\u003ch2 id=\"四迈向生产构建可上线的-agent\"\u003e四、迈向生产：构建可上线的 Agent\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#四迈向生产构建可上线的-agent\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e构建一个 Agent 系统，不是仅仅能跑就可以了，更关键的是能够长期稳定运行，本节将从生产环境下讲述需要关注的方面。\u003c/p\u003e\n\u003ch3 id=\"1-agent-middleware-介绍\"\u003e1. Agent Middleware 介绍\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-agent-middleware-介绍\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e传统计算机由 CPU ，内存，和外设组成，把这三者联动起来的是计算机的操作系统。按照这个类比的话，LLM 是 CPU ，不同的 Agent 相当于不同的应用程序，而 Agent Middleware 就相当于 Agent 系统的操作系统，它是不同 LLM 和 Agent 的管理组件，假设没有这些 Middleware ，Agent 系统将只能手动管理，不仅管理繁琐，难以复用，拓展性受限，还很容易出错，所以说 Agent Middleware 是 Agent 系统的操作系统。\u003c/p\u003e\n\u003cp\u003eAgent Middleware 通常可以分为如下几类：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\n\u003cp\u003e运行时管理\u003c/p\u003e\n\u003cp\u003e这类主要为了解决 Agent 步骤如何推进，失败了如何恢复的问题。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e上下文记忆\u003c/p\u003e\n\u003cp\u003e这类是决定哪些信息应该进入上下文，保证 Agent 不会失忆，同时上下文过长时，如何进行压缩。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e工具能力类\u003c/p\u003e\n\u003cp\u003e这类聚焦于工具如何被安全地调用，如果工具调用失败了，应该如何处理这些问题。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e流程协作类\u003c/p\u003e\n\u003cp\u003e这类是集中多步任务如何拆解，以及多 Agent 如何协作的问题。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e安全治理类\u003c/p\u003e\n\u003cp\u003e这类是 Agent 的安全治理，Agent 在系统中不可以乱来，包括风险操作的拦截，以满足企业合规性要求。\u003c/p\u003e\n\u003c/li\u003e\n\u003cli\u003e\n\u003cp\u003e观测运维类\u003c/p\u003e\n\u003cp\u003e这类用于监控与调试用途，便于错误复现并进行修复，以及日常指标观测。\u003c/p\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这类做了一张和计算机类比的图标以比较参考：\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eMiddleware 类别\u003c/th\u003e\n\u003cth\u003e类比 OS\u003c/th\u003e\n\u003cth\u003e核心职责\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eRuntime \u0026#x26; Execution\u003c/td\u003e\n\u003ctd\u003eKernel\u003c/td\u003e\n\u003ctd\u003e执行与生命周期\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eContext \u0026#x26; Memory\u003c/td\u003e\n\u003ctd\u003eMemory Manager\u003c/td\u003e\n\u003ctd\u003e状态与记忆\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eTool \u0026#x26; Capability\u003c/td\u003e\n\u003ctd\u003eSyscall\u003c/td\u003e\n\u003ctd\u003e能力调用\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eControl Flow\u003c/td\u003e\n\u003ctd\u003eScheduler\u003c/td\u003e\n\u003ctd\u003e流程与协作\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eSafety \u0026#x26; Governance\u003c/td\u003e\n\u003ctd\u003ePermission System\u003c/td\u003e\n\u003ctd\u003e安全合规\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eObservability \u0026#x26; Ops\u003c/td\u003e\n\u003ctd\u003eDebug / Monitor\u003c/td\u003e\n\u003ctd\u003e调试与运维\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3 id=\"2-长对话和上下文压缩\"\u003e2. 长对话和上下文压缩\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-长对话和上下文压缩\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e长对话和上下文压缩是一个很现实的工程问题，随着对话次数增加，这个问题就会呈现出来。过长的对话会消耗大量的 Token 数量，导致系统成本上升。一般方法是忘记掉无效的信息，例如工具调用的中间结果，更常规的方法是是对历史会话做摘要，这样以来，系统会自动总结出历史记忆，仅以简短的信息概括，而不会产生 Agent 失忆。\u003c/p\u003e\n\u003cp\u003e如下图示例说明在 LangChain 中，如何使用 SummarizationMiddleware 来完成长对话的上下文压缩。\u003c/p\u003e\n\u003cp\u003e首先，定义一个支持短期记忆，并且使用 SummarizationMiddleware 中间件的 Agent，然后开始问答。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/caae2a3bf5a3.png\" alt=\"agentsum\"\u003e\u003c/p\u003e\n\u003cp\u003e可见经过多轮问答后，达到设定的阈值后，\u003ccode\u003emessages\u003c/code\u003e中的字段就会被压缩成概要描述。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/fdaf729ba2f4.png\" alt=\"agentsum2\"\u003e\u003c/p\u003e\n\u003ch3 id=\"3-human-in-the-loophitl\"\u003e3. Human-In-the-Loop（HITL）\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-human-in-the-loophitl\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e生产环境下，会遇到一些高风险的决策和操作，因此必须需要人为进行干预，这也是 Agent 系统安全合规的保证。\u003c/p\u003e\n\u003cp\u003e下面看一个示例，这个例子是让 Agent 帮自己读取邮件，然后让用户进行确认，再决定发送邮件。\u003c/p\u003e\n\u003cp\u003e首先定义两个工具函数，\u003ccode\u003eread_email\u003c/code\u003e和\u003ccode\u003esend_email\u003c/code\u003e，它是该 Agent 要进行的操作。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/ac212a186d7a.png\" alt=\"agenthitl1\"\u003e\u003c/p\u003e\n\u003cp\u003e然后，定义支持 HITL 的 Agent，并向其发起操作。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/094c371fd542.png\" alt=\"agenthitl2\"\u003e\u003c/p\u003e\n\u003cp\u003e通过观察输出，可以看到返回输出多出一个\u003ccode\u003e__interrupt__\u003c/code\u003e的字段，里面还有详细的描述。\u003c/p\u003e\n\u003cp\u003e接着可以提交同意（\u003ccode\u003eapprove\u003c/code\u003e）/ 拒绝（\u003ccode\u003ereject\u003c/code\u003e），这二者其一的决定给 Agent。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/introtolangchainapp/6badd84055ef.png\" alt=\"agenthitl3\"\u003e\u003c/p\u003e\n\u003cp\u003e决定提交完成后，Agent 输出最终的结果。\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e关于 HITL 的更多细节，可以参考\u003ca href=\"https://docs.langchain.com/oss/python/langchain/human-in-the-loop\"\u003e官方文档\u003c/a\u003e。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2 id=\"五总结与进阶方向\"\u003e五、总结与进阶方向\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#五总结与进阶方向\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e第一点，Agent 不是提示词工程，Agent 是一种系统工程，LangChain的角色是打造这座系统的“胶水”。\u003c/p\u003e\n\u003cp\u003e其次，并非 Agent 就是一定就是最好的解法，例如对于简单的知识性问答，就不一定用到 Agent 的方法，还有一种就是固定流程的场景，Agent 反而可能打乱了原来稳定的流程，从而导致混乱。\u003c/p\u003e\n\u003cp\u003e最后进阶方向，未来的趋势，例如 Agent + RAG，Agent + Workflow，还有 LangGraph 多分支流树，以及如何和业务系统深度集成，这些将会成为发展趋势。\u003c/p\u003e"])</script><script>self.__next_f.push([1,"7:[\"$\",\"$L15\",null,{\"postData\":{\"id\":\"introtolangchainapp\",\"contentHtml\":\"$16\",\"title\":\"使用 LangChain 构建智能体实战\",\"date\":\"$D2025-12-21T14:02:32.000Z\",\"categories\":[\"随笔\"],\"tags\":[\"Python\",\"LangChain\",\"AI\"]}}]\n"])</script><script>self.__next_f.push([1,"10:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\nb:null\n"])</script><script>self.__next_f.push([1,"14:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"使用 LangChain 构建智能体实战\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"HCHEN90 博客\"}],[\"$\",\"link\",\"2\",{\"rel\":\"alternate\",\"type\":\"application/atom+xml\",\"href\":\"https://hchen90.top/atom.xml\"}],[\"$\",\"link\",\"3\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]],\"error\":null,\"digest\":\"$undefined\"}\ne:{\"metadata\":\"$14:metadata\",\"error\":null,\"digest\":\"$undefined\"}\n"])</script></body></html>

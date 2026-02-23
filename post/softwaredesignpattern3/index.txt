@@ -1,0 +1,479 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","softwaredesignpattern3",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","softwaredesignpattern3","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","softwaredesignpattern3","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","FABV-k5l4R44YT1HlKbMq",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T83ce,<h1 id="软件设计模式---结构型模式">软件设计模式 - 结构型模式<a aria-hidden="true" tabindex="-1" href="#软件设计模式---结构型模式"><span class="anchor-link"> #</span></a></h1>
+<p>结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。</p>
+<p>结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。</p>
+<h2 id="适配器模式adapter">适配器模式（Adapter）<a aria-hidden="true" tabindex="-1" href="#适配器模式adapter"><span class="anchor-link"> #</span></a></h2>
+<p>适配器模式是为了解决不同接口之间的适配问题。</p>
+<p>适配器通常分为两类：对象适配器，类适配器。</p>
+<h3 id="对象适配器">对象适配器<a aria-hidden="true" tabindex="-1" href="#对象适配器"><span class="anchor-link"> #</span></a></h3>
+<p>对象适配器是通过实现接口来做到适配的，如下：</p>
+<p><img src="/post/softwaredesignpattern3/5f2239c668b3.png" alt="Object Adapter"></p>
+<p>示例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawService</span> {
+    <span class="hljs-comment">// 绘图服务</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// 使用Graphics绘图</span>
+    }
+    <span class="hljs-function">Graphics&#x26; <span class="hljs-title">getCanvasGraphics</span><span class="hljs-params">(canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// 图形绘板转换</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawInterface</span> {
+    <span class="hljs-comment">// 绘图适配器接口</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawAdapter</span> : <span class="hljs-keyword">public</span> DrawInterface {
+    <span class="hljs-comment">// 绘图适配器</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26; c)</span> </span>{ <span class="hljs-comment">// 接口适配</span>
+        <span class="hljs-keyword">auto</span> g = service.<span class="hljs-built_in">getCanvasGraphics</span>(c);
+        service.<span class="hljs-built_in">paint</span>(g);
+    }
+<span class="hljs-keyword">private</span>:
+    DrawService service;
+};
+</code></pre></div>
+<h3 id="类适配器">类适配器<a aria-hidden="true" tabindex="-1" href="#类适配器"><span class="anchor-link"> #</span></a></h3>
+<p>类适配器是通过面相对象编程的继承达到的，用于多继承方式实现。</p>
+<p>如图所示：</p>
+<p><img src="/post/softwaredesignpattern3/7b312890a4c8.png" alt="Class Adapter"></p>
+<p>实例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawGraphics</span> {
+    <span class="hljs-comment">// 图案绘制</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// 绘制函数</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawService</span> {
+    <span class="hljs-comment">// 绘制服务</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// 绘制</span>
+    }
+    <span class="hljs-function">Graphics&#x26; <span class="hljs-title">getCanvasGraphics</span><span class="hljs-params">(canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// 转换画板</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawAdapter</span> : <span class="hljs-keyword">public</span> DrawGraphics, <span class="hljs-keyword">public</span> DrawService {
+    <span class="hljs-comment">// 绘制适配器</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26; c)</span> </span>{
+        <span class="hljs-keyword">auto</span> g = <span class="hljs-built_in">getCanvasGraphics</span>(c);
+        <span class="hljs-built_in">paint</span>(g);
+    }
+};
+</code></pre></div>
+<h2 id="桥接模式bridge">桥接模式（Bridge）<a aria-hidden="true" tabindex="-1" href="#桥接模式bridge"><span class="anchor-link"> #</span></a></h2>
+<p>桥接模式是将抽象和实现分为两个独立的层次，将原本不同维度的继承方式改成组合方式。</p>
+<p>如下图所示：</p>
+<p><img src="/post/softwaredesignpattern3/d48eba393b9c.png" alt="Bridge"></p>
+<p>示例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// 画笔风格</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Style</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Pencil</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 铅笔绘制实现</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Brush</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 画刷绘制实现</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Pastel</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 蜡笔绘制实现</span>
+    }
+};
+
+<span class="hljs-comment">// 形状</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawWithPen</span><span class="hljs-params">(Style&#x26; pen)</span> </span>{
+        pen.<span class="hljs-built_in">draw</span>(<span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>());
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawWithPen</span><span class="hljs-params">(Style&#x26; pen)</span> </span>{
+        pen.<span class="hljs-built_in">draw</span>(<span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>());
+    }
+};
+</code></pre></div>
+<p>形状类只是抽象绘制层，可以绘制不同风格的图形，但是对于具体的绘制实现其实由不同风格的画笔来实现。</p>
+<h2 id="组合模式composite">组合模式（Composite）<a aria-hidden="true" tabindex="-1" href="#组合模式composite"><span class="anchor-link"> #</span></a></h2>
+<p>组合模式用于将对象组合成树状结构，通常这种模式的实现方式多见为“盒子”（Box）与“产品”（Item）的交互方式，盒子本身也是产品，盒子可以存放产品，从而产生递归嵌套的结构。</p>
+<p>结构如下：</p>
+<p><img src="/post/softwaredesignpattern3/4c391f951bae.png" alt="Composite"></p>
+<p>示例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-type">float</span> x, y;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 绘制圆形</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> radius;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 绘制方块</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> width, height;
+};
+
+<span class="hljs-comment">// 组合图形</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CompoundShape</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 迭代绘制所有子图形</span>
+    }
+<span class="hljs-keyword">private</span>:
+    std::vector&#x3C;Shape> childs;
+};
+</code></pre></div>
+<h2 id="装饰模式decorator">装饰模式（Decorator）<a aria-hidden="true" tabindex="-1" href="#装饰模式decorator"><span class="anchor-link"> #</span></a></h2>
+<p>装饰器模式允许将对象放入包含某种行为的特殊对象，从而为原来的对象绑定特殊对象的新行为。</p>
+<p>结构如下：</p>
+<p><img src="/post/softwaredesignpattern3/c0920326f4f1.png" alt="Decorator"></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 绘制</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> radius;
+};
+
+<span class="hljs-comment">// 装饰器</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BrushDecorator</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">BrushDecorator</span>(Shape&#x26; s) {
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 设置画刷风格</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 绘制</span>
+        Shape::<span class="hljs-built_in">draw</span>();
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PastelDecorator</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">PastelDecorator</span>(Shape&#x26; s) {
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 设置蜡笔风格</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 绘制</span>
+        Shape::<span class="hljs-built_in">draw</span>();
+    }
+};
+</code></pre></div>
+<p>使用装饰器模式，如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">Circle circle;
+
+<span class="hljs-keyword">auto</span> circleWithBrush = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BrushDecorator</span>(circle);
+<span class="hljs-keyword">auto</span> circleWithPastel = <span class="hljs-keyword">new</span> <span class="hljs-built_in">PastelDecorator</span>(circle);
+<span class="hljs-keyword">auto</span> circleWithBrushPastel = <span class="hljs-keyword">new</span> <span class="hljs-built_in">PastelDecorator</span>(circleWithBrush); <span class="hljs-comment">// 嵌套装饰</span>
+
+circleWithBrush.<span class="hljs-built_in">draw</span>();
+circleWithPastel.<span class="hljs-built_in">draw</span>();
+circleWithBrushPastel.<span class="hljs-built_in">draw</span>();
+</code></pre></div>
+<h2 id="外观模式facade">外观模式（Facade）<a aria-hidden="true" tabindex="-1" href="#外观模式facade"><span class="anchor-link"> #</span></a></h2>
+<p>外观模式是为了给库/框架设计一套简单的接口，这样对外减少细节暴露，从而减少系统的耦合度。</p>
+<p>如下示例，设计了一种统一风格的徽章绘制模式：</p>
+<p><img src="/post/softwaredesignpattern3/eb503e9c579c.png" alt="Facade"></p>
+<p>示例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CompoundShape</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addChild</span><span class="hljs-params">(Shape&#x26; c)</span> </span>{
+        <span class="hljs-comment">// 添加图形</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// 绘制图形</span>
+    }
+<span class="hljs-keyword">private</span>:
+    std::vector&#x3C;Shape> childs;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Brush</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setPen</span><span class="hljs-params">(Canvas&#x26;)</span></span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Background</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fill</span><span class="hljs-params">(Canvas&#x26;)</span></span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Badget</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawBadget</span><span class="hljs-params">(Shape&#x26; s)</span> </span>{
+        <span class="hljs-comment">// 绘制徽章</span>
+        <span class="hljs-keyword">auto</span> canvas = <span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>();
+        <span class="hljs-built_in">assert</span>(canvas != <span class="hljs-literal">nullptr</span>);
+        br.<span class="hljs-built_in">setPen</span>(*canvas);
+        bg.<span class="hljs-built_in">fill</span>(*canvas);
+        s.<span class="hljs-built_in">draw</span>(*canvas);
+    }
+<span class="hljs-keyword">private</span>:
+    Brush br;
+    Background bg;
+    CompundShape cshape;
+};
+</code></pre></div>
+<p>对于外部调用者来说，只需调用<code>drawBadget()</code>，将徽章复杂图形变量作为形式参数传入函数，即可完成各种徽章的绘制。</p>
+<h2 id="享元模式flyweight">享元模式（Flyweight）<a aria-hidden="true" tabindex="-1" href="#享元模式flyweight"><span class="anchor-link"> #</span></a></h2>
+<p>享元模式是通过共享对象状态，使得对象不必保存所有的状态，从而达到在内存中载入更多的对象。</p>
+<p>常见应用场景是游戏制作场景，游戏中最常见的元素是粒子系统，每一个粒子都有自己的坐标，颜色，状态等信息，如果每一个粒子对象都存储所有的信息，那么在实际游戏场景中将会对内存需求巨大，几十万个粒子就会导致系统内存被用完，从而导致OOM，为了解决这个问题，可以从对象的类来分析，提取其中的常量和变量，对于常量使用共享对象存储。</p>
+<p>如下：</p>
+<p><img src="/post/softwaredesignpattern3/977e46e42cd8.png" alt="Flyweight"></p>
+<p>示例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Background</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Color</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Flyweight</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// 绘制粒子</span>
+    }
+<span class="hljs-keyword">private</span>:
+    Background bg;
+    Color cr;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightFactory</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Flyweight* <span class="hljs-title">getFlyweight</span><span class="hljs-params">(state s)</span> </span>{
+        <span class="hljs-keyword">auto</span> f = cache.<span class="hljs-built_in">find</span>(s);
+        <span class="hljs-keyword">if</span> (f != <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> f;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>();
+    }
+<span class="hljs-keyword">private</span>:
+    Cache cache;
+};
+</code></pre></div>
+<p>享元模式使用前还需要进行初始化，以便将常量对象存储到享元工厂的cache中。</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// 初始化享元工厂</span>
+<span class="hljs-keyword">auto</span> particle1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// 静态粒子1</span>
+<span class="hljs-keyword">auto</span> particle2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// 静态粒子2</span>
+<span class="hljs-comment">// ...</span>
+
+FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">addFlyweight</span>(particle1);
+FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">addFlyweight</span>(particle2);
+
+<span class="hljs-keyword">auto</span> particle = FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">getFlyweight</span>(<span class="hljs-number">-1</span>); <span class="hljs-comment">// 普通动态粒子</span>
+</code></pre></div>
+<h2 id="代理模式proxy">代理模式（Proxy）<a aria-hidden="true" tabindex="-1" href="#代理模式proxy"><span class="anchor-link"> #</span></a></h2>
+<p>代理模式提供对对象访问的占位，控制对原始对象的访问，可以做到在外界对对象请求操作前后添加额外处理。</p>
+<p>还是以绘图案例为例，这里绘制的是图片，这些图片以tag为唯一名称存储在数据库中，每次绘制需要从数据库获取相应的图片，再进行绘制，但是，如果绘制的图形复杂，包含的图片较多的时候，绘制效率会很低，绘制界面就会出现绘制延迟的现象，根本原因是从数据库获取图片的累加时间太长了。所以解决这种问题，就要用到代理器的模式，如下：</p>
+<p><img src="/post/softwaredesignpattern3/68bf559f3059.png" alt="Proxy"></p>
+<p>这里的代理器在获取到图片的时候，会对已经获取的图片做缓存，这样下次再次获取该图片，就可以立即返回该图片，从而大大减少绘制时间，使绘制效率变高。</p>
+<p>案例代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Image</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DBImage</span> : <span class="hljs-keyword">public</span> Image {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">auto</span> result = db.<span class="hljs-built_in">findAll</span>();
+        <span class="hljs-comment">// 数据库查询返回所有的图片的tag列表</span>
+    };
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26;)</span> </span>{
+        <span class="hljs-comment">// 返回对应tag的图片数据</span>
+    };
+<span class="hljs-keyword">private</span>:
+    DB db;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CachedImage</span> : <span class="hljs-keyword">public</span> Image {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CachedImage</span>(DBImage&#x26; dbi) {}
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">auto</span> result = cache.<span class="hljs-built_in">findAll</span>(); <span class="hljs-comment">// 缓存查找</span>
+        <span class="hljs-keyword">if</span> (!result.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">return</span> result;
+        }
+        result = service.<span class="hljs-built_in">findAll</span>(); <span class="hljs-comment">// 原始服务查找</span>
+        cache.<span class="hljs-built_in">store</span>(result);
+        <span class="hljs-keyword">return</span> result;
+    };
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26; tag)</span> </span>{
+        <span class="hljs-keyword">auto</span> img = cache.<span class="hljs-built_in">find</span>(tag); <span class="hljs-comment">// 缓存查找图片</span>
+        <span class="hljs-keyword">if</span> (!img.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">return</span> img;
+        }
+        img = service.<span class="hljs-built_in">find</span>(tag); <span class="hljs-comment">// 原始服务获取图片</span>
+        cache.<span class="hljs-built_in">store</span>(tag, img);
+        <span class="hljs-keyword">return</span> img;
+    };
+<span class="hljs-keyword">private</span>:
+    DBImage service;
+    Cache cache;
+};
+</code></pre></div>
+<p>实际使用时，直接调用代理器即可：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function">DBImage <span class="hljs-title">dbi</span><span class="hljs-params">(<span class="hljs-string">"mongo://xxxx"</span>)</span></span>;
+<span class="hljs-function">CachedImage <span class="hljs-title">ci</span><span class="hljs-params">(dbi)</span></span>;
+
+<span class="hljs-keyword">auto</span> result = ci.<span class="hljs-built_in">listImages</span>();
+<span class="hljs-keyword">auto</span> image = ci.<span class="hljs-built_in">getImage</span>(result[<span class="hljs-number">0</span>]); <span class="hljs-comment">// 第一个tag的图片</span>
+</code></pre></div>
+<blockquote>
+<p>CacheImage</p>
+<blockquote>
+<p>CacheImage中使用的Cache，根据实际应用场景，可以是中间件存储，例如：Memcached，redis等。</p>
+</blockquote>
+</blockquote>
+<h2 id="mvc模式mvc">MVC模式（MVC）<a aria-hidden="true" tabindex="-1" href="#mvc模式mvc"><span class="anchor-link"> #</span></a></h2>
+<p>MVC分别代表：Model-View-Controller，这种方式应用于程序的分层开发，减少数据，视图界面，和逻辑控制之间的耦合，使开发维护更加清晰。</p>
+<p>这种模式在传统的MFC开发框架中广泛使用。下面演示一个富文本编辑器的MVC设计。</p>
+<p><img src="/post/softwaredesignpattern3/816f2afd2731.png" alt="MVC"></p>
+<p>代码如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Model</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">View</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Controller</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setView</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setModel</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Document</span> : <span class="hljs-keyword">public</span> Model {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">Document</span>(Controller* ctrl) {
+        <span class="hljs-keyword">this</span>->ctrl = ctrl;
+    }
+<span class="hljs-keyword">private</span>:
+    Controller* ctrl;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RichEditCtrl</span> : <span class="hljs-keyword">public</span> Controller {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setView</span><span class="hljs-params">(View* v)</span> </span>{
+        <span class="hljs-keyword">this</span>->view = v;
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setModel</span><span class="hljs-params">(Model* m)</span> </span>{
+        <span class="hljs-keyword">this</span>->model = m;
+    }
+<span class="hljs-keyword">private</span>:
+    View* view;
+    Model* model;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RichEditView</span> : <span class="hljs-keyword">public</span> View {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">View</span>(Controller* ctrl) {
+        <span class="hljs-keyword">this</span>->ctrl = ctrl;
+    }
+<span class="hljs-keyword">private</span>:
+    Controller* ctrl;
+};
+</code></pre></div>
+<p>构造MVC时如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">RichEditCtrl ctrl;
+<span class="hljs-function">RichEditView <span class="hljs-title">view</span><span class="hljs-params">(&#x26;ctrl)</span></span>;
+<span class="hljs-function">Document <span class="hljs-title">doc</span><span class="hljs-params">(&#x26;ctrl)</span></span>;
+ctrl.<span class="hljs-built_in">setView</span>(&#x26;view);
+ctrl.<span class="hljs-built_in">setModel</span>(&#x26;doc);
+
+<span class="hljs-comment">// 视图的更新通知控制器</span>
+ctrl.<span class="hljs-built_in">notify</span>();
+<span class="hljs-comment">// 控制器更新数据模型</span>
+doc.<span class="hljs-built_in">update</span>();
+<span class="hljs-comment">// 模型更新完后刷新视图</span>
+view.<span class="hljs-built_in">refresh</span>();
+</code></pre></div>7:["$","$L15",null,{"postData":{"id":"softwaredesignpattern3","contentHtml":"$16","title":"软件设计模式 - 结构型模式","date":"$D2017-06-05T21:11:12.000Z","updated":"$D2017-06-05T21:11:12.000Z","categories":["总结"],"tags":["设计模式"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"软件设计模式 - 结构型模式"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

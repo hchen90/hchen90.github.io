@@ -1,0 +1,172 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","ai2-studylog-ml",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","ai2-studylog-ml","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","ai2-studylog-ml","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","3HpuzdsOYnxxD_TRQ3Luk",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T3f3b,<h1 id="人工智能---机器学习">人工智能 - 机器学习<a aria-hidden="true" tabindex="-1" href="#人工智能---机器学习"><span class="anchor-link"> #</span></a></h1>
+<p>人工智能的基础是机器学习，顾名思义就是让机器能够处理数据，并在处理的数据中进行学习，从而能够自主地做出决策。简单来说，机器学习是让机器能够在不需要特别编程的情况下进行学习和改进。</p>
+<p>而机器学习，大体上分为三种，分别为：监督式学习，无监督式学习，和深度学习。</p>
+<h2 id="监督式学习">监督式学习<a aria-hidden="true" tabindex="-1" href="#监督式学习"><span class="anchor-link"> #</span></a></h2>
+<p>监督式学习是一种机器学习方法，它通过使用带有标签的训练数据（也就是已知的输入和输出）来学习一种模型或函数。然后，这种模型或函数可以用于预测新的、未知的数据。在训练过程中，如果模型的预测结果与实际结果出现差异，就会进行调整，以减小这种差异。这种学习方式就好比有一位“监督者”指导机器如何进行学习。</p>
+<p>监督式学习自然离不开训练算法，它的算法特征是需要输入输出，并且有反馈的输出结果（并且监督式学习的数据都是有标签的数据）。</p>
+<p>常见的监督式学习算法有线性回归，逻辑回归，决策树，支持向量机（SVM），以及K-NN算法（最相邻算法）。</p>
+<h3 id="线性回归">线性回归<a aria-hidden="true" tabindex="-1" href="#线性回归"><span class="anchor-link"> #</span></a></h3>
+<p>线性回归是一种常见的预测分析方法，适用于两个或更多变量之间存在线性关系的情况。在机器学习中，线性回归的目标是找到一条最佳拟合线，使得所有数据点到这条线的垂直距离（也就是误差）之和最小。这个过程也被称为最小二乘法。</p>
+<p>线性回归模型的一般形式是 Y = aX + b，其中，Y 是因变量（我们想要预测的目标），X 是自变量（我们用来进行预测的输入），a 和 b 是模型参数，它们决定了线的斜率和截距。</p>
+<p>线性回归提供了一种量化自变量和因变量之间关系的方式，是很多更复杂模型和技术的基础。它在多个领域都有广泛的应用，包括经济、生物、环境和社会科学等。</p>
+<p>下面以一个例子示范：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">x</span>):
+    np.random.seed(<span class="hljs-number">42</span>)
+    y = <span class="hljs-number">0.1</span> * x + <span class="hljs-number">1.25</span> + <span class="hljs-number">0.2</span> * np.random.randn(x.shape[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">return</span> y
+
+x = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">20</span>, <span class="hljs-number">0.5</span>)
+y = f(x)
+
+plt.scatter(x, y, label=<span class="hljs-string">'Actual Data'</span>, color=<span class="hljs-string">'blue'</span>)
+plt.title(<span class="hljs-string">'Data'</span>)
+plt.legend()
+</code></pre></div>
+<p>上面的代码，生成了一些散列点，表示一系列的算计事件，如图：</p>
+<p><img src="/post/ai2-studylog-ml/08429d71f88f.png" alt="Screenshot 2024-07-01 at 00.48.33.png"></p>
+<p>这样样本数据就准备好了。</p>
+<p>下面就是进行模型训练了，使用机器学习库中的线性回归算法，并进行模型训练（打印了斜率系数和截距）：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+
+regression_lineal = LinearRegression()
+regression_lineal.fit(x.reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), y)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">'w = '</span> + <span class="hljs-built_in">str</span>(regression_lineal.coef_) + <span class="hljs-string">', b = '</span> + <span class="hljs-built_in">str</span>(regression_lineal.intercept_))
+</code></pre></div>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">w = [<span class="hljs-number">0.09183522</span>], b = <span class="hljs-number">1.2858792525736682</span>
+</code></pre></div>
+<p>之后，再进行预测（这里输入值是5，和图中的点的位置比较接近）</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">new_x = np.array([<span class="hljs-number">5</span>])
+prediction = regression_lineal.predict(new_x.reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>))
+<span class="hljs-built_in">print</span>(prediction)
+</code></pre></div>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">[<span class="hljs-number">1.74505534</span>]
+</code></pre></div>
+<p>除此之外，还可以计算出来模型的评估参数，这里计算了标准差和R2的值：</p>
+<p><img src="/post/ai2-studylog-ml/975edaa12afe.png" alt="Screenshot 2024-07-01 at 01.00.18.png"></p>
+<p>可见，这里的得分接近0.9，说明模型适配比较不错，最后再看一下这条拟合线：</p>
+<p><img src="/post/ai2-studylog-ml/16783c57471c.png" alt="Screenshot 2024-07-01 at 01.04.02.png"></p>
+<h3 id="逻辑回归">逻辑回归<a aria-hidden="true" tabindex="-1" href="#逻辑回归"><span class="anchor-link"> #</span></a></h3>
+<p>逻辑回归是一种预测分析的统计技术，用于解决二分类问题。它通过使用逻辑函数将线性回归的输出映射到0和1之间，这使得其成为一种处理分类问题的好工具。逻辑回归的主要目标是找到一个将输入变量和输出之间关系最好的逻辑函数，这个函数的输出可以被解释为某一事件发生的概率。</p>
+<p>逻辑回归模型的一般形式是 p = 1 / (1 + e^(-z))，其中，p 是预测的概率，z = aX + b，a 和 b 是模型参数，X 是输入变量。在训练过程中，我们需要找到这样的 a 和 b，使得预测的概率和实际的类别标签之间的差异最小。这个过程通常通过最大似然估计或梯度下降算法来完成。</p>
+<p>逻辑回归对于理解影响结果的因素、预测结果、以及创建简单的分类模型都非常有用。它在金融、医疗、社会科学等多个领域都有广泛的应用。</p>
+<h3 id="决策树">决策树<a aria-hidden="true" tabindex="-1" href="#决策树"><span class="anchor-link"> #</span></a></h3>
+<p>决策树是一种用于分类和回归的树状结构的机器学习模型。它通过一系列的分裂规则将数据集划分成不同的子集，并最终形成一个树形结构，每个节点代表一个特征，每个分支代表该特征的一个可能值，每个叶子节点代表一个分类或回归结果。</p>
+<p>决策树的主要优点包括：</p>
+<ol>
+<li><strong>易于理解和解释</strong>：决策树模型的结构直观，便于解释和理解，适合可视化展示。</li>
+<li><strong>少量的数据预处理</strong>：决策树不需要对数据进行过多的预处理，如归一化、填补缺失值等。</li>
+<li><strong>处理多种数据类型</strong>：决策树可以处理数值型和分类型数据，具有较强的灵活性。</li>
+</ol>
+<p>决策树的构建过程通常包括以下几个步骤：</p>
+<ol>
+<li><strong>选择最优特征</strong>：根据某种度量标准（如信息增益、基尼指数等）选择最优的特征进行分裂。</li>
+<li><strong>创建分裂点</strong>：根据选定的特征创建分裂点，将数据划分为若干子集。</li>
+<li><strong>递归分裂</strong>：对每一个子集递归地重复步骤1和2，直到满足停止条件（如达到最大树深度或叶子节点中的样本数小于某个阈值）。</li>
+</ol>
+<p>决策树的缺点包括：</p>
+<ol>
+<li><strong>容易过拟合</strong>：决策树容易对训练数据过拟合，特别是当树过深时，可以通过剪枝或设置最大深度等方法来缓解。</li>
+<li><strong>对噪声敏感</strong>：决策树对噪声数据较为敏感，噪声数据可能导致树的不稳定。</li>
+</ol>
+<p>决策树在很多实际应用中表现良好，如信用评分、医疗诊断、市场分析等。它还可以与其他模型结合，如在随机森林和梯度提升树等集成学习方法中。</p>
+<p>下面是一个简单的决策树分类示例：</p>
+<p><img src="/post/ai2-studylog-ml/ed5c515526f0.png" alt="Screenshot 2024-07-04 at 01.29.11.png"></p>
+<p><img src="/post/ai2-studylog-ml/058f8c213f29.png" alt="Screenshot 2024-07-04 at 01.30.18.png"></p>
+<p><img src="/post/ai2-studylog-ml/067ad6d7e168.png" alt="Screenshot 2024-07-04 at 01.30.48.png"></p>
+<h3 id="k-nn算法最相邻算法">K-NN算法（最相邻算法）<a aria-hidden="true" tabindex="-1" href="#k-nn算法最相邻算法"><span class="anchor-link"> #</span></a></h3>
+<p>K-NN算法，全称为K最近邻算法（K-Nearest Neighbors），是一种简单且直观的分类和回归方法。K-NN算法的基本思想是：给定一个待分类的样本，找到训练集中距离该样本最近的K个样本，然后根据这K个样本的类别，通过投票或平均的方法决定待分类样本的类别。</p>
+<p>K-NN算法的步骤如下：</p>
+<ol>
+<li><strong>选择参数K</strong>：选择一个正整数K，表示要考虑的最近邻居的数量。</li>
+<li><strong>计算距离</strong>：对待分类样本，与训练集中每一个样本计算距离。常用的距离度量方法有欧氏距离、曼哈顿距离等。</li>
+<li><strong>选择最近的K个邻居</strong>：根据计算出的距离，从训练集中选择距离最近的K个样本。</li>
+<li><strong>投票或平均</strong>：对K个最近邻的样本进行投票，选择出现次数最多的类别作为待分类样本的类别；或在回归问题中，取K个最近邻样本的平均值作为预测值。</li>
+</ol>
+<p>K-NN算法的优点包括：</p>
+<ul>
+<li><strong>简单易实现</strong>：K-NN算法不需要显式的训练过程，直接基于距离进行分类和回归。</li>
+<li><strong>无参数模型</strong>：K-NN算法不需要学习模型参数，适合于小规模的训练集。</li>
+</ul>
+<p>K-NN算法的缺点包括：</p>
+<ul>
+<li><strong>计算量大</strong>：对于每一个待分类样本，都需要计算与训练集中所有样本的距离，计算量较大。</li>
+<li><strong>高维数据效果差</strong>：在高维空间中，数据点之间的距离变得难以度量，K-NN算法效果不佳。</li>
+<li><strong>对噪声敏感</strong>：K-NN算法对噪声和异常值较为敏感，影响分类结果。</li>
+</ul>
+<p>尽管如此，K-NN算法在很多实际应用中依然表现出色，尤其是在分类问题中。例如，在手写数字识别、图像分类、文本分类等领域，K-NN算法具有较好的表现。</p>
+<h2 id="非监督式学习">非监督式学习<a aria-hidden="true" tabindex="-1" href="#非监督式学习"><span class="anchor-link"> #</span></a></h2>
+<p>非监督式学习是一种机器学习方法，其在训练过程中不需要使用标签的数据。这种学习方式允许算法对输入数据进行自我学习，并识别其中的模式和结构。它的目标通常是找出隐藏在数据中的模式或关系，如聚类或降维。因为没有预先设定的目标或输出变量，非监督式学习常常被用于探索性分析，以帮助研究者识别未知的模式或关系。</p>
+<p>它的典型特征是有输入数据，但是没有输出数据（无监督学习使用无标签的数据）。</p>
+<p>对于非监督学习，输入的数据都是混沌的数据，为了处理这些无标签的混沌数据，需要把它们进行聚类和降维，这样才便于提取有用的数据信息。</p>
+<p>常见的非监督算法，包含聚类算法（K-means算法），以及主成分分析（PCA）算法。</p>
+<h3 id="k-means算法">K-means算法<a aria-hidden="true" tabindex="-1" href="#k-means算法"><span class="anchor-link"> #</span></a></h3>
+<p>K-means算法是一种常见的非监督式学习算法，用于将数据集分成K个簇（clusters）。其工作原理是通过迭代优化的方法，将数据点分配到最接近的簇中心，最终使每个簇内的数据点之间的相似性最大化，而不同簇之间的相似性最小化。具体步骤包括：</p>
+<ol>
+<li>随机选择K个初始簇中心。</li>
+<li>将每个数据点分配到最接近的簇中心。</li>
+<li>计算每个簇的新的中心点，即簇内所有数据点的均值。</li>
+<li>重复步骤2和3，直到簇中心不再发生显著变化或达到预定的迭代次数。</li>
+</ol>
+<p>K-means算法简单高效，适用于大规模数据集，但需要预先指定K值，并且对初始簇中心的选择较为敏感。</p>
+<h3 id="主成分分析pca算法">主成分分析（PCA）算法<a aria-hidden="true" tabindex="-1" href="#主成分分析pca算法"><span class="anchor-link"> #</span></a></h3>
+<p>主成分分析（PCA）是一种统计学上的处理方法，用于通过降维技术简化数据集。它的目的是找到最能代表原始数据分布的低维度空间。PCA的工作原理是通过创建一个新的坐标系统，将原始数据重新映射到这个新的坐标系统上。新坐标系统的基底由原始数据的主成分（即方差最大的方向）构成。在新的坐标系统中，大部分的信息都被压缩到了第一主成分上，第二大的信息被压缩到了第二主成分上，以此类推。这样，我们就可以通过保留前几个主成分，丢弃剩下的主成分，实现对数据的降维。PCA广泛应用于图像压缩、数据可视化、噪声过滤、特征抽取和数据预处理等领域。</p>
+<h2 id="深度学习">深度学习<a aria-hidden="true" tabindex="-1" href="#深度学习"><span class="anchor-link"> #</span></a></h2>
+<p>深度学习是一种机器学习的方法，它试图模拟人脑的工作方式，通过训练大量的数据，让计算机模型学习识别模式和进行高级决策。深度学习的核心是神经网络，特别是深度神经网络，它包含多层的隐藏层，每一层都在进行特定的数据处理。深度学习在语音识别、图像识别、自然语言处理等领域有广泛的应用，并带来了显著的效果。</p>7:["$","$L15",null,{"postData":{"id":"ai2-studylog-ml","contentHtml":"$16","title":"人工智能笔记 - 机器学习","date":"$D2024-07-02T11:36:12.000Z","categories":["总结"],"tags":["人工智能","AI"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"人工智能笔记 - 机器学习"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

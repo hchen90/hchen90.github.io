@@ -1,0 +1,237 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","lzsscompalgo",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","lzsscompalgo","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","lzsscompalgo","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","mdeXlA6fm4i7UjLexfNbP",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T3c25,<h1 id="lzss算法简介">LZSS算法简介<a aria-hidden="true" tabindex="-1" href="#lzss算法简介"><span class="anchor-link"> #</span></a></h1>
+<p>LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。</p>
+<blockquote>
+<p>参考维基百科<a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Storer%E2%80%93Szymanski">lzss</a></p>
+</blockquote>
+<h1 id="算法逻辑">算法逻辑<a aria-hidden="true" tabindex="-1" href="#算法逻辑"><span class="anchor-link"> #</span></a></h1>
+<p>在看本篇博文之前，需要知道LZ77算法的大体流程，如果不清楚可以点击<a href="/2018/03/31/lz77compalgo">这里</a>浏览。</p>
+<p>LZSS算法和LZ77算法的编码/解码流程逻辑是一致的，区别在于数据编码标记上，这里详细叙述一下LZSS的数据编码标记，可以看到它这种方式是如何显著提高压缩效率的。</p>
+<p>在LZSS算法的数据编码里面有一个重要概念，就是：数据分组。</p>
+<p>一个字节由8位组成，因此可以用一个字节来标记后面的至少8字节是否存在压缩编码，而不用<code>\0x00\0x00</code>的前缀来区分是否被压缩，从而节省了大量的<code>\0x00\0x00</code>前缀空间开销。</p>
+<p>数据分组标记方式：</p>
+<p><img src="/post/lzsscompalgo/9c651b397128.png" alt="databits"></p>
+<blockquote>
+<p>由此看见，这种数据分组的方式，最坏的情况下，只会每8个字节增加一个字节的额外空间开销，比起每个字节另外需要2个字节的空间开销而言，效率大幅提升。</p>
+</blockquote>
+<h1 id="源码实现">源码实现<a aria-hidden="true" tabindex="-1" href="#源码实现"><span class="anchor-link"> #</span></a></h1>
+<p>辅助函数：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search_maxlen_p</span><span class="hljs-params">( <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>**  pt, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* head, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* tail, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* end)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* tmp = *pt;
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> leng = <span class="hljs-number">0</span>, i;
+
+  <span class="hljs-keyword">for</span>(tmp;tmp >= head;tmp--){
+    <span class="hljs-keyword">if</span>(tmp[<span class="hljs-number">0</span>] == tail[<span class="hljs-number">0</span>]){
+      <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;(i &#x3C; ((<span class="hljs-number">1</span> &#x3C;&#x3C; LENGTHBITS) + <span class="hljs-number">1</span>)) &#x26;&#x26; (&#x26;tmp[i] > head) &#x26;&#x26; (&#x26;tmp[i] &#x3C; tail) &#x26;&#x26; (&#x26;tail[i] &#x3C; end) &#x26;&#x26; (tmp[i] == tail[i]);i++);
+      <span class="hljs-keyword">if</span>(i > leng){
+        leng = i;
+        *pt = tmp;
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> leng;
+}
+</code></pre></div>
+<p>编码实现：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">lzss_encode</span><span class="hljs-params">(FILE* in,FILE* out)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* buf = <span class="hljs-number">0</span>,* head = <span class="hljs-number">0</span>,* tail = <span class="hljs-number">0</span>;
+  <span class="hljs-type">long</span> size = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">if</span>(! in || ! out)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  get_filesize(in,size);
+  <span class="hljs-keyword">if</span>(size &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  buf = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(size* <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>));
+  <span class="hljs-keyword">if</span>(! buf)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  <span class="hljs-keyword">if</span>(fread(buf,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),size,in) == size){
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>  np      =  <span class="hljs-number">1</span> ,control_count = <span class="hljs-number">0</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> suf[<span class="hljs-number">17</span>] = {<span class="hljs-number">0</span>}; <span class="hljs-comment">// 2*8 + 1</span>
+
+    fputc((size >> <span class="hljs-number">24</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >> <span class="hljs-number">16</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >>  <span class="hljs-number">8</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >>  <span class="hljs-number">0</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+
+    head = tail = buf;
+
+    <span class="hljs-keyword">for</span>(;;){
+      head = tail - WINDOWSIZE;
+      <span class="hljs-keyword">if</span>(head &#x3C; buf)head = buf;
+
+      <span class="hljs-keyword">if</span>(control_count >= <span class="hljs-number">8</span>){
+        put_bytes(suf,np,out);
+        <span class="hljs-built_in">memset</span>(suf,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(suf));
+        np = <span class="hljs-number">1</span>;
+        control_count = <span class="hljs-number">1</span>;
+      } <span class="hljs-keyword">else</span> {
+        control_count++;
+      }
+
+      <span class="hljs-keyword">if</span>(tail > buf + size - <span class="hljs-number">1</span>)<span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">if</span>(head &#x3C; tail){
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> bytes = <span class="hljs-number">0</span>;
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* pt = tail - <span class="hljs-number">1</span>;
+        bytes = search_maxlen_p(&#x26;pt,head,tail,buf + size);
+        <span class="hljs-keyword">if</span>(bytes > <span class="hljs-number">2</span>){ <span class="hljs-comment">// if find a pattern more than 2 bytes, save its offset-length.</span>
+          suf[<span class="hljs-number">0</span>]  &#x3C;&#x3C;= <span class="hljs-number">1</span>;
+          suf[<span class="hljs-number">0</span>]   |= OFFLENFLAG;
+          suf[np++] = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)(( (tail - pt) >> LENGTHBITS) &#x26; <span class="hljs-number">0xff</span>);
+          suf[np++] = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)((((tail - pt) &#x3C;&#x3C; LENGTHBITS) + bytes - <span class="hljs-number">2</span>) &#x26; <span class="hljs-number">0xff</span>);
+          tail += bytes;
+        } <span class="hljs-keyword">else</span> {
+          suf[<span class="hljs-number">0</span>]  &#x3C;&#x3C;= <span class="hljs-number">1</span>;
+          suf[np++] = tail[<span class="hljs-number">0</span>];
+          tail++;
+        }
+      } <span class="hljs-keyword">else</span> {
+        suf[<span class="hljs-number">0</span>]  &#x3C;&#x3C;= <span class="hljs-number">1</span>;
+        suf[np++] = tail[<span class="hljs-number">0</span>];
+        tail++;
+      }
+
+    }
+
+    <span class="hljs-keyword">for</span>(control_count;control_count &#x3C;= <span class="hljs-number">8</span>;control_count++)suf[<span class="hljs-number">0</span>] &#x3C;&#x3C;= <span class="hljs-number">1</span>; <span class="hljs-comment">// must keep highest bit is aligned to first byte.</span>
+    put_bytes(suf,np,out);
+  }
+
+  <span class="hljs-built_in">free</span>(buf);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre></div>
+<p>解码实现：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">lzss_decode</span><span class="hljs-params">(FILE* in,FILE* out)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* in_buffer = <span class="hljs-number">0</span>,* out_buffer = <span class="hljs-number">0</span>,* head = <span class="hljs-number">0</span>,* tail = <span class="hljs-number">0</span>;
+  <span class="hljs-type">long</span> in_size = <span class="hljs-number">0</span>,out_size = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">if</span>(! in || ! out)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  get_filesize(in,in_size);
+  <span class="hljs-keyword">if</span>(in_size &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  out_size  = (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C; <span class="hljs-number">24</span>;
+  out_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C; <span class="hljs-number">16</span>;
+  out_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C;  <span class="hljs-number">8</span>;
+  out_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C;  <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">if</span>(out_size &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  in_buffer = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)* in_size);
+  <span class="hljs-keyword">if</span>(! in_buffer)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  out_buffer = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)* out_size);
+  <span class="hljs-keyword">if</span>(out_buffer){
+    <span class="hljs-keyword">if</span>(fread(in_buffer,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),in_size,in) == in_size - <span class="hljs-number">4</span>){
+      <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>  control_count = <span class="hljs-number">0</span>;
+      <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> control_flags = <span class="hljs-number">0</span>;
+      <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*           pt = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)in_buffer;
+
+      head  = tail  = out_buffer;
+      control_flags = pt[<span class="hljs-number">0</span>];
+      pt++;
+
+      <span class="hljs-keyword">for</span>(;;){
+        <span class="hljs-keyword">if</span>(pt >= (in_buffer + in_size - <span class="hljs-number">4</span>))<span class="hljs-keyword">break</span>;
+
+        <span class="hljs-keyword">if</span>(control_count >= <span class="hljs-number">8</span>){
+          control_flags = pt[<span class="hljs-number">0</span>];
+          pt++;
+          control_count = <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> {
+          control_count++;
+        }
+
+        <span class="hljs-keyword">if</span>(control_flags >> <span class="hljs-number">7</span>){ <span class="hljs-comment">// offset-length.</span>
+          <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> offset = <span class="hljs-number">0</span>,length = <span class="hljs-number">0</span>,i;
+          offset  =  pt[<span class="hljs-number">0</span>] &#x3C;&#x3C; LENGTHBITS;
+          offset += (pt[<span class="hljs-number">1</span>] >> LENGTHBITS) &#x26; <span class="hljs-number">0x0f</span>;
+          length  = (pt[<span class="hljs-number">1</span>] &#x26; <span class="hljs-number">0x0f</span>) + <span class="hljs-number">2</span>;
+          <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &#x3C; length;i++){
+            tail[i] = ((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)(tail - offset))[i];
+          }
+          tail += length;
+          pt += <span class="hljs-number">2</span>;
+          control_flags &#x3C;&#x3C;= <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// literal.</span>
+          tail[<span class="hljs-number">0</span>] = pt[<span class="hljs-number">0</span>];
+          tail++;
+          pt++;
+          control_flags &#x3C;&#x3C;= <span class="hljs-number">1</span>;
+        }
+      }
+      fwrite(out_buffer,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),out_size,out);
+
+    }
+    <span class="hljs-built_in">free</span>(out_buffer);
+  }
+
+  <span class="hljs-built_in">free</span>(in_buffer);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre></div>
+<h1 id="算法分析">算法分析<a aria-hidden="true" tabindex="-1" href="#算法分析"><span class="anchor-link"> #</span></a></h1>
+<p>经过LZSS压缩的数据，已经算得上很不错的了，可见下图的十六进制展示：</p>
+<p><img src="/post/lzsscompalgo/6db6b2ec019e.png" alt="hexdat"></p>
+<p>但是，这里面的数据还有进一步空间优化，可以使用LZ77算法博文里面提到的哈夫曼编码进一步编码，就可以得到理想的压缩效果。</p>
+<p>链接：<a href="https://github.com/hchen90/lzss">Github上的代码</a></p>7:["$","$L15",null,{"postData":{"id":"lzsscompalgo","contentHtml":"$16","title":"LZSS压缩算法","date":"$D2018-04-01T21:12:32.000Z","updated":"$D2018-04-01T21:12:32.000Z","categories":["算法"],"tags":["lzss","algorithm"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"LZSS压缩算法"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

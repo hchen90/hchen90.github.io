@@ -1,0 +1,226 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","introtopytorchlinearregr",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","introtopytorchlinearregr","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","introtopytorchlinearregr","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","6zYgT4T2fQcCag0vsQnN_",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T6ebe,<h1 id="使用-pytorch-进行线性回归模型训练实战">使用 PyTorch 进行线性回归模型训练实战<a aria-hidden="true" tabindex="-1" href="#使用-pytorch-进行线性回归模型训练实战"><span class="anchor-link"> #</span></a></h1>
+<p>本文结合个人实验的Jupyter Notebook示例，从零开始使用<strong>PyTorch</strong>完成一个<strong>线形回归模型的构建、训练与理解</strong>。内容面向初学者，同时也帮助你建立对 PyTorch 自动求导与训练流程的正确认知。</p>
+<h2 id="一线性回归问题回顾">一、线性回归问题回顾<a aria-hidden="true" tabindex="-1" href="#一线性回归问题回顾"><span class="anchor-link"> #</span></a></h2>
+<p>线性回归是最基础的监督学习模型，其数学形式为：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover><mo>=</mo><mi>w</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\hat{y} = w x + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+<p>其中：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>：输入特征</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>：权重（weight）</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>：偏置（bias）</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span>：预测值</li>
+</ul>
+<p>模型训练的目标是通过数据学习合适的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>，使预测值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> 尽可能接近真实值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>。</p>
+<h2 id="二pytorch-基础tensor-与自动求导">二、PyTorch 基础：Tensor 与自动求导<a aria-hidden="true" tabindex="-1" href="#二pytorch-基础tensor-与自动求导"><span class="anchor-link"> #</span></a></h2>
+<h3 id="什么是tensor">什么是Tensor<a aria-hidden="true" tabindex="-1" href="#什么是tensor"><span class="anchor-link"> #</span></a></h3>
+<p>在Jupyter Notebook的环境里，先安装好torch，然后新建一个tensor示例，如下：</p>
+<p><img src="/post/introtopytorchlinearregr/a571579617c9.png" alt="crttensorsim"></p>
+<p>这个是一个最简单的Tensor，它不带梯度，由一个矩阵数组构造而来。Tensor有几个重要属性，包括：<code>shape</code>，<code>dtype</code>，以及<code>device</code>。</p>
+<ul>
+<li><code>shape</code>: 它的含义就是矩阵的形状，几行几列。</li>
+<li><code>dtype</code>: 它表示元素的数据类型。</li>
+<li><code>device</code>: 它表示的是使用的设备类型，一般为<code>cpu</code>，或者<code>cuda</code>。</li>
+</ul>
+<blockquote>
+<p><code>device</code>为<code>cuda</code>的是启用Nvdia的CUDA机制，通过GPU进行计算，可以显著提高Tensor的计算效率。</p>
+</blockquote>
+<p>示例如下图：</p>
+<p><img src="/post/introtopytorchlinearregr/ffbe12c0bdd3.png" alt="tensorshape"></p>
+<p>由此可见，Tensor是一种矩阵的数据封装器，那么再来探索一下这个矩阵封装器的其他特性。</p>
+<h3 id="tensor的自动求导">Tensor的自动求导<a aria-hidden="true" tabindex="-1" href="#tensor的自动求导"><span class="anchor-link"> #</span></a></h3>
+<p>我们探索了 <strong>Tensor 的创建与属性</strong>，下面是一个做ML/LLM都会用到的参数<code>requires_grad</code>，这是创建自动求导Tensor的核心数据结构:</p>
+<p><img src="/post/introtopytorchlinearregr/521dc31c8d4e.png" alt="tensorautograd"></p>
+<p><code>requires_grad</code> 表示对Tensor进行计算时，可以跟踪它的计算过程，将来可以对它求导（梯度计算）。</p>
+<p>示例如下，首先使用Tensor进行系列计算：</p>
+<p><img src="/post/introtopytorchlinearregr/6f168e362648.png" alt="tensorcompu"></p>
+<p>可以看见<code>a</code>，<code>b</code>，<code>c</code>，<code>d</code>，这几个Tensor变量，都带有grad_fn的属性，它表示该Tensor是通过什么运算得到的。</p>
+<h3 id="tensor的反向传播">Tensor的反向传播<a aria-hidden="true" tabindex="-1" href="#tensor的反向传播"><span class="anchor-link"> #</span></a></h3>
+<p>Tensor的反向传播机制提供了一种可以跟踪计算的能力，但是只能针对于标量。</p>
+<p><img src="/post/introtopytorchlinearregr/55f6edf4d802.png" alt="tensotgradscal"></p>
+<p>从上图可以看出，<code>x</code>标量被进行一系列的计算，最终都可以通过<code>.grad</code>的属性来得到梯度斜率。</p>
+<blockquote>
+<p>Tensor除了介绍的以外，还有中位数，最大数，求和等等，详情可以参考<a href="https://docs.pytorch.org/docs/stable/torch.html">官方资料</a>。</p>
+</blockquote>
+<h2 id="三使用-torchnnlinear-构建线性层">三、使用 <code>torch.nn.Linear</code> 构建线性层<a aria-hidden="true" tabindex="-1" href="#三使用-torchnnlinear-构建线性层"><span class="anchor-link"> #</span></a></h2>
+<p>这里需要使用到torch中的Neural Network模块的线形模型，核心是构建一个基本的线形层：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">linear_layer = torch.nn.Linear(in_features=<span class="hljs-number">1</span>, out_features=<span class="hljs-number">1</span>)
+
+<span class="hljs-built_in">print</span>(linear_layer.weight)
+<span class="hljs-built_in">print</span>(linear_layer.bias)
+</code></pre></div>
+<p>这一步等价于定义公式：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>w</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = wx + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+<p>其中：</p>
+<ul>
+<li><code>weight</code> 对应 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span></li>
+<li><code>bias</code> 对应 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></li>
+</ul>
+<h2 id="四定义线性回归模型">四、定义线性回归模型<a aria-hidden="true" tabindex="-1" href="#四定义线性回归模型"><span class="anchor-link"> #</span></a></h2>
+<p>定义线形回归模型分为多个步骤。</p>
+<h3 id="第一步准备好数据">第一步：准备好数据<a aria-hidden="true" tabindex="-1" href="#第一步准备好数据"><span class="anchor-link"> #</span></a></h3>
+<p>这里的数据是用随机数生成公式中的<code>X</code>，然后通过基本计算加上一点随机数模拟噪音，以此模拟现实环境。</p>
+<p><img src="/post/introtopytorchlinearregr/8d73bda6f09c.png" alt="regrdata"></p>
+<p>其中，<code>true_W</code>和<code>true_b</code>是理论值，<code>y_true</code>是模拟结果值，我们通过数据模型训练找到接近理论值的<code>W</code>，'b'。</p>
+<blockquote>
+<p>对应现实情况下，<code>X</code>可能是仪器的输入值（自变量），<code>y_true</code>是历史记录中的关于<code>X</code>对应的结果值（应变量），这段数据就是机器训练用的数据，现实情况中该数据量会很大。</p>
+</blockquote>
+<h3 id="第二步定义回归模型">第二步：定义回归模型<a aria-hidden="true" tabindex="-1" href="#第二步定义回归模型"><span class="anchor-link"> #</span></a></h3>
+<p>到这里了，实现的方法不是唯一的，虽然一般推荐使用继承<code>torch.nn.Module</code>的方式来定义模型，但是便于说明其内部原理，这里使用函数式，参数计算也是自己手动计算。</p>
+<p><img src="/post/introtopytorchlinearregr/a76db5f8343b.png" alt="regrmodelfd"></p>
+<p>就是这么一个loop，我们就完成了模型训练。</p>
+<h2 id="五forward-pass前向传播">五、Forward Pass（前向传播）<a aria-hidden="true" tabindex="-1" href="#五forward-pass前向传播"><span class="anchor-link"> #</span></a></h2>
+<h3 id="什么是前向传播">什么是前向传播<a aria-hidden="true" tabindex="-1" href="#什么是前向传播"><span class="anchor-link"> #</span></a></h3>
+<p>前向传播就是通过模型输入数据，进而得到预测结果。</p>
+<div class="code-block-wrapper"><div class="code-block-header"><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs">输入数据 → 模型 → 得到预测结果
+</code></pre></div>
+<blockquote>
+<p>这里的模型是不准确的，得到的结果可能是错误的，需要进一步参数调整，才能提高准确度。</p>
+</blockquote>
+<h3 id="对应代码解释">对应代码解释<a aria-hidden="true" tabindex="-1" href="#对应代码解释"><span class="anchor-link"> #</span></a></h3>
+<p>下面是代码说明，具体代码：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-comment"># forward pass and loss</span>
+y_hat = X @ W + b
+</code></pre></div>
+<p>这里PyTorch自动构建计算图，并且记录计算关系（可以参考上面Tensor内容介绍）。</p>
+<h2 id="六定义损失函数loss-function">六、定义损失函数（Loss Function）<a aria-hidden="true" tabindex="-1" href="#六定义损失函数loss-function"><span class="anchor-link"> #</span></a></h2>
+<p>线性回归中最常用的是 <strong>均方误差（MSE）</strong>：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">loss = torch.mean((y_hat - y_true) ** <span class="hljs-number">2</span>)
+</code></pre></div>
+<p>数学形式为：</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>MSE</mtext><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo>∑</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mover accent="true"><mi>y</mi><mo>^</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\text{MSE} = \frac{1}{N} \sum (y - \hat{y})^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">MSE</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>
+<p>损失值用于衡量模型预测的好坏，可见损失量越小越好。</p>
+<h2 id="七backward-pass反向传播">七、Backward Pass（反向传播）<a aria-hidden="true" tabindex="-1" href="#七backward-pass反向传播"><span class="anchor-link"> #</span></a></h2>
+<h3 id="什么是反向传播">什么是反向传播<a aria-hidden="true" tabindex="-1" href="#什么是反向传播"><span class="anchor-link"> #</span></a></h3>
+<p>在前向传播时，构建了计算图，并且记录了计算关系。反向传播就是沿着计算图的相反方向传播，计算所有<code>requires_grad=True</code>的参数梯度。</p>
+<h3 id="对应代码解释-1">对应代码解释<a aria-hidden="true" tabindex="-1" href="#对应代码解释-1"><span class="anchor-link"> #</span></a></h3>
+<p>反向传播只有一行代码；</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-comment"># backward pass</span>
+loss.backward()
+</code></pre></div>
+<p>通过这个反向函数调用，对于之前的两个参数：<code>W</code>，<code>b</code>。</p>
+<p>我们可以将这两个参数的梯度斜率算出来。</p>
+<h2 id="八参数更新">八、参数更新<a aria-hidden="true" tabindex="-1" href="#八参数更新"><span class="anchor-link"> #</span></a></h2>
+<p>参数更新的核心代码片段：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-comment"># update parameters</span>
+<span class="hljs-keyword">with</span> torch.no_grad():
+    W -= learning_rate * W.grad
+    b -= learning_rate * b.grad
+
+<span class="hljs-comment"># zero gradients</span>
+W.grad.zero_()
+b.grad.zero_()
+</code></pre></div>
+<p>这里通过微调参数来减小上面的损失率，从而达到参数（<code>W</code>，<code>b</code>）接近理论值。</p>
+<p>这里有两点注意：</p>
+<ul>
+<li>为了使微调<code>W</code>，<code>b</code>时，不会把计算记录到计算图上，这里使用了<code>torch.no_grad</code>函数，在它作用下，计算Tensor不会记录到计算图上。</li>
+<li>在完成参数更新后，我们需要重置<code>W</code>和<code>b</code>的梯度，避免累加到下次循环，从而产生混乱。</li>
+</ul>
+<h2 id="九更高级的写法">九、更高级的写法<a aria-hidden="true" tabindex="-1" href="#九更高级的写法"><span class="anchor-link"> #</span></a></h2>
+<p>对于实际场景下，一般模型训练不会像上面这样写，对于只有两个参数可以手动写写，但是一般LLM模型有7B，256B等等，这么多参数这样去写一点都不现实，对于手动计算那块代码，在torch中其实有现成的实现，除此之外它还有更多的内容，下面是展示一个更加通用的写法（使用继承<code>torch.nn.Module</code>的方式来定义模型，并且使用torch内部的实现机制）。</p>
+<p><img src="/post/introtopytorchlinearregr/c28cf58dab1a.png" alt="regrmodel"></p>
+<p>因为torch中对于常规的模型，优化器，损失函数都有定义，按照这种约定俗成的方式，对于参数更新那块全部被隐藏到了优化器中，处理非常优雅。</p>
+<h2 id="十总结">十、总结<a aria-hidden="true" tabindex="-1" href="#十总结"><span class="anchor-link"> #</span></a></h2>
+<p>通过本文的实战示例，我们从 <strong>最基础的数学模型</strong> 出发，完整走了一遍使用 PyTorch 训练线性回归模型的全过程，并逐步揭开了 PyTorch 自动求导与训练机制的“黑盒”。</p>
+<p>核心收获可以归纳为以下几点：</p>
+<ol>
+<li>
+<p><strong>线性回归的本质并不复杂</strong>
+无论是数学公式</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>w</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = wx + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+<p>还是 PyTorch 中的 <code>nn.Linear</code>，本质都是对这一公式的工程化封装。理解这一点，有助于你在学习更复杂模型时始终保持“模型直觉”。</p>
+</li>
+<li>
+<p><strong>Tensor 是 PyTorch 的核心数据结构</strong>
+Tensor 不只是一个“多维数组”，当 <code>requires_grad=True</code> 时，它会成为计算图中的节点，自动参与梯度计算，这是 PyTorch 能够高效训练模型的基础。</p>
+</li>
+<li>
+<p><strong>Forward / Backward 构成了训练闭环</strong></p>
+<ul>
+<li>Forward Pass：根据当前参数计算预测值与损失</li>
+<li>Backward Pass：根据损失反向计算梯度</li>
+<li>Parameter Update：利用梯度更新参数</li>
+</ul>
+<p>这一流程不仅适用于线性回归，也适用于几乎所有深度学习模型。</p>
+</li>
+<li>
+<p><strong>理解“手写训练循环”非常重要</strong>
+虽然在实际工程中我们通常会使用：</p>
+<ul>
+<li><code>nn.Module</code></li>
+<li><code>torch.optim</code></li>
+<li><code>nn.MSELoss</code></li>
+</ul>
+<p>但通过手动实现参数更新与梯度清零，你可以真正理解：</p>
+<ul>
+<li>梯度从哪里来</li>
+<li>为什么要 <code>zero_grad()</code></li>
+<li>为什么参数更新要放在 <code>torch.no_grad()</code> 中</li>
+</ul>
+</li>
+<li>
+<p><strong>高级封装是建立在底层原理之上的</strong>
+PyTorch 提供的高级 API 并不是“魔法”，而是对这些基础流程的高度抽象。当你理解了底层逻辑，再回过头看标准写法，会发现它既优雅又可靠。</p>
+</li>
+</ol>
+<p>总的来说，<strong>线性回归是学习 PyTorch 和深度学习的最佳起点</strong>。只要你真正理解了本文中的每一步，那么无论是多层神经网络、CNN、RNN，还是今天流行的大模型（LLM），它们在训练流程上都是一脉相承的。</p>
+<p>后续你可以尝试的方向包括：</p>
+<ul>
+<li>使用真实数据集（如房价、时间序列）</li>
+<li>引入 <code>Dataset</code> / <code>DataLoader</code></li>
+<li>将模型迁移到 GPU（CUDA）</li>
+<li>扩展到多维特征或多层网络</li>
+</ul>
+<p>理解基础，才能走得更远。</p>7:["$","$L15",null,{"postData":{"id":"introtopytorchlinearregr","contentHtml":"$16","title":"使用 PyTorch 进行线性回归模型训练实战","date":"$D2025-09-12T21:11:12.000Z","categories":["随笔"],"tags":["Python","PyTorch","AI"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"使用 PyTorch 进行线性回归模型训练实战"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

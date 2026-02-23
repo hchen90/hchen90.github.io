@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/283bb1ed86b49fd2.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/09ec4099fb721b31.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/09dfadb69bdaa005.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-ede82f7d0ae11dac.js"/><script src="/_next/static/chunks/4bd1b696-299743f5624cdabe.js" async=""></script><script src="/_next/static/chunks/684-481501000630d05e.js" async=""></script><script src="/_next/static/chunks/main-app-eb9456c5a3bb7ef4.js" async=""></script><script src="/_next/static/chunks/766-f505dbd3efffaa4c.js" async=""></script><script src="/_next/static/chunks/226-13d4d3f1fc18ceb6.js" async=""></script><script src="/_next/static/chunks/app/layout-b3ce58a25da6999d.js" async=""></script><title>HCHEN90 博客</title><meta name="description" content="HCHEN90 博客"/><link rel="alternate" type="application/atom+xml" href="https://hchen90.top/atom.xml"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="antialiased relative"><div class="fixed top-4 right-4 z-50"><a href="https://github.com/hchen90" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" title="Visit my GitHub profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a></div><div class="p-8"><h1 class="text-3xl font-bold mb-6">调试页面</h1><div class="bg-gray-100 p-4 rounded mb-6"><h2 class="text-xl mb-4">已加载的文章数量: <!-- -->30</h2><pre class="bg-white p-4 rounded overflow-auto max-h-96">[
+  {
+    &quot;id&quot;: &quot;introtolangchainapp&quot;,
+    &quot;summary&quot;: &quot;使用 LangChain 构建智能体实战  本文从 LangChain 基础入门开始，从基础智能体（Agent）开始，到构建一个生产级的智能体系统，所需要的知识概念。  传统的 ChatBot 只能进行聊天，人工智能反映在知识输出上，但是这种智能并不能自出决策，并使用工具调用。虽然后来的 AI...&quot;,
+    &quot;title&quot;: &quot;使用 LangChain 构建智能体实战&quot;,
+    &quot;date&quot;: &quot;2025-12-21T14:02:32.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;Python&quot;,
+      &quot;LangChain&quot;,
+      &quot;AI&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;highconcuravabackendingo&quot;,
+    &quot;summary&quot;: &quot;聊聊高并发高可用云服务设计（Go语言版）  本文以 Go 语言云服务为例，系统性介绍如何设计、实现、测试一个高并发、高可用的生产级后 端系统。文章不仅覆盖架构设计思想，也结合常见中间件（Kafka / Redis / Postgres / etcd / Kubernetes 等）给出工程实践建议...&quot;,
+    &quot;title&quot;: &quot;聊聊高并发高可用云服务设计（Go语言版）&quot;,
+    &quot;date&quot;: &quot;2025-10-25T16:31:07.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;高并发&quot;,
+      &quot;高可用&quot;,
+      &quot;架构设计&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;introtopytorchlinearregr&quot;,
+    &quot;summary&quot;: &quot;使用 PyTorch 进行线性回归模型训练实战  本文结合个人实验的Jupyter Notebook示例，从零开始使用PyTorch完成一个线形回归模型的构建、训练与理解。内容面向初学者，同时也帮助你建立对 PyTorch 自动求导与训练流程的正确认知。   一、线性回归问题回顾  线性回归是最...&quot;,
+    &quot;title&quot;: &quot;使用 PyTorch 进行线性回归模型训练实战&quot;,
+    &quot;date&quot;: &quot;2025-09-12T21:11:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;Python&quot;,
+      &quot;PyTorch&quot;,
+      &quot;AI&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;llmappfunctioncallingmech&quot;,
+    &quot;summary&quot;: &quot;LLM应用中的Function Calling机制  LLM在当下应用非常广泛，从最常见的聊天问答（例如：Chatgpt，DeekSeek聊天），到基于内容检索的问答系统，处处可见它的身影。  在LLM（大型语言模型）应用开发中，Function Calling（函数调用）是一项强大的机制，它使...&quot;,
+    &quot;title&quot;: &quot;LLM应用中的Function Calling机制&quot;,
+    &quot;date&quot;: &quot;2025-04-20T02:12:08.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;AI&quot;,
+      &quot;人工智能&quot;,
+      &quot;LLM&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;mltraningfittingissues&quot;,
+    &quot;summary&quot;: &quot;机器学习中模型训练的拟合问题   拟合问题简介  拟合问题可以归纳为模型对数据的规律学得好不好，对于学得好的就称为拟合适中，对于学得不好的可以分类两种：过拟合，欠拟合。  拟合就是用模型函数去逼近数据之间的关系，拟合程度反映了模型函数和实际数据的贴合程度。   过拟合问题  过拟合的意思是模型在...&quot;,
+    &quot;title&quot;: &quot;机器学习中模型训练的拟合问题&quot;,
+    &quot;date&quot;: &quot;2024-09-15T20:03:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;AI&quot;,
+      &quot;人工智能&quot;,
+      &quot;机器学习&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;ai2-studylog-ml&quot;,
+    &quot;summary&quot;: &quot;人工智能 - 机器学习  人工智能的基础是机器学习，顾名思义就是让机器能够处理数据，并在处理的数据中进行学习，从而能够自主地做出决策。简单来说，机器学习是让机器能够在不需要特别编程的情况下进行学习和改进。  而机器学习，大体上分为三种，分别为：监督式学习，无监督式学习，和深度学习。     监督...&quot;,
+    &quot;title&quot;: &quot;人工智能笔记 - 机器学习&quot;,
+    &quot;date&quot;: &quot;2024-07-02T11:36:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;人工智能&quot;,
+      &quot;AI&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;ai1-studylog-dataanalysis&quot;,
+    &quot;summary&quot;: &quot;人工智能 - 数据分析和决策  这部分主要分为四个层次：  - 数据收集 - 数据清理 - 数据分析 - 决策     数据收集  在人工智能领域数据收集是至关重要的一个环节，它是用于训练模式的输入来源。  作为基础的概念复习，数据收集无非是把目标进行采样，同时我们需要使用科学的方法使样本接近于...&quot;,
+    &quot;title&quot;: &quot;人工智能笔记 - 数据分析和决策&quot;,
+    &quot;date&quot;: &quot;2024-06-12T21:36:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;人工智能&quot;,
+      &quot;AI&quot;
+    ],
+    &quot;mathjax&quot;: true
+  },
+  {
+    &quot;id&quot;: &quot;advlangmemmanagement&quot;,
+    &quot;summary&quot;: &quot;高级语言内存管理那些事：C++、Go 与 Rust 的对决  高级语言C++，Go，和Rust，是三种典型不同的内存管理风格的语言，它的风格也间接展示高级语言的发展历程，其中重要一项就是内存管理的变化。   一、前言：为什么内存管理很重要  内存管理是高级编程语言的基石，它影响程序的性能，安全和...&quot;,
+    &quot;title&quot;: &quot;高级语言内存管理那些事：C++、Go 与 Rust 的对决&quot;,
+    &quot;date&quot;: &quot;2024-04-20T20:14:02.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;C++&quot;,
+      &quot;Rust&quot;,
+      &quot;Go&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;openaiapirsh&quot;,
+    &quot;summary&quot;: &quot;简介  人工智能并不是一个新鲜事物，早在多年前就已经在发展中，于此同时发展出的数值，矩阵，图形，和相关算法库，都是实现人工智能的必要生态组件。  其实人工智能经历了许多年的发展，目前逐渐成熟，平时大众与其在生活的交叉比较隐晦，所以难以引人注目，不过这次的 ChatGPT 展现出它强大的语言功能，...&quot;,
+    &quot;title&quot;: &quot;OpenAI之OpenAPI初探&quot;,
+    &quot;date&quot;: &quot;2023-03-28T22:11:08.000Z&quot;,
+    &quot;updated&quot;: &quot;2023-03-28T22:11:08.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;OpenAI&quot;,
+      &quot;AI&quot;,
+      &quot;ChatGPT&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;deploygitlabcerunner&quot;,
+    &quot;summary&quot;: &quot;玩转自搭建 GitLab 社区版  本文的自搭建是基于docker容器技术而实现的，其中包括gitlab-ce和gitlab-runner两个部分。   什么是 GitLab  GitLab是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，Gi...&quot;,
+    &quot;title&quot;: &quot;玩转自搭建 GitLab 社区版&quot;,
+    &quot;date&quot;: &quot;2022-07-02T10:03:12.000Z&quot;,
+    &quot;updated&quot;: &quot;2022-07-02T10:03:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;git&quot;,
+      &quot;linux&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;codemodification&quot;,
+    &quot;summary&quot;: &quot;什么是代码改动  在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。     为什么会发生代码改动  代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容...&quot;,
+    &quot;title&quot;: &quot;程序的代码修改问题&quot;,
+    &quot;date&quot;: &quot;2022-06-11T08:53:02.000Z&quot;,
+    &quot;updated&quot;: &quot;2022-06-11T08:53:02.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;expr&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;mongodbcloudcluster&quot;,
+    &quot;summary&quot;: &quot;什么是MongoDB Cloud  MongoDB Cloud 的核心是  ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。    这是官网的简介，然后，再看一下它的...&quot;,
+    &quot;title&quot;: &quot;MongoDB Cloud云平台简单使用简介&quot;,
+    &quot;date&quot;: &quot;2022-04-03T14:22:06.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;MongoDB&quot;,
+      &quot;SQL&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;jnithreadsafe&quot;,
+    &quot;summary&quot;: &quot;JNI 开发是什么  因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。...&quot;,
+    &quot;title&quot;: &quot;JNI函数调用之线程安全问题&quot;,
+    &quot;date&quot;: &quot;2021-11-29T23:03:02.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;jni&quot;,
+      &quot;java&quot;,
+      &quot;cpp&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;redistributedservicesystem&quot;,
+    &quot;summary&quot;: &quot;概述与定义  分布式系统是由一组通过网络协同工作的独立计算机（节点）组成的系统。它们共同完成一项业务目标，并对用户展现为“单一的系统”。从用户视角出发，分布式系统应尽量保持透明性：用户不需要知道请求被哪台机器处理、数据位于哪里，也不应感知到节点的增删与迁移。  一句话以概之：  &gt; 分布式系统...&quot;,
+    &quot;title&quot;: &quot;分布式服务系统设计概述&quot;,
+    &quot;date&quot;: &quot;2020-12-20T10:05:12.000Z&quot;,
+    &quot;updated&quot;: &quot;2025-08-10T19:10:00.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;SQL&quot;,
+      &quot;Actor&quot;,
+      &quot;MongoDB&quot;,
+      &quot;Redis&quot;,
+      &quot;etcd&quot;,
+      &quot;RocketMQ&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;githuboauthappintro&quot;,
+    &quot;summary&quot;: &quot;Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。   OAuth2的定义  OAuth（开放授权）是一个开放标准，允许用户授权第三方...&quot;,
+    &quot;title&quot;: &quot;GitHub的OAuth App的使用&quot;,
+    &quot;date&quot;: &quot;2020-04-15T14:23:07.000Z&quot;,
+    &quot;updated&quot;: &quot;2020-04-15T14:23:07.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;github&quot;,
+      &quot;oauth&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;linuxcoredumptofindbug&quot;,
+    &quot;summary&quot;: &quot;什么是coredump？  Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这...&quot;,
+    &quot;title&quot;: &quot;利用Linux的coredump机制快速定位程序BUG&quot;,
+    &quot;date&quot;: &quot;2019-11-12T09:12:29.000Z&quot;,
+    &quot;updated&quot;: &quot;2019-11-12T09:12:29.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;linux&quot;,
+      &quot;debug&quot;,
+      &quot;coredump&quot;,
+      &quot;gdb&quot;,
+      &quot;objdump&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;linuxstartup&quot;,
+    &quot;summary&quot;: &quot;内核加载  在里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。  通常在系统/boot目录下放着内核文件，如下：  shell initramfs-linux.img vmlinuz-lin...&quot;,
+    &quot;title&quot;: &quot;Linux系统启动流程&quot;,
+    &quot;date&quot;: &quot;2018-06-24T11:50:03.000Z&quot;,
+    &quot;updated&quot;: &quot;2018-06-24T11:50:03.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;linux&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;systemstartup&quot;,
+    &quot;summary&quot;: &quot;远古时代   这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。  计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。    &gt; 一般计算机...&quot;,
+    &quot;title&quot;: &quot;计算机系统启动流程&quot;,
+    &quot;date&quot;: &quot;2018-06-16T20:40:10.000Z&quot;,
+    &quot;updated&quot;: &quot;2018-06-16T20:40:10.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;GRUB&quot;,
+      &quot;UEFI&quot;,
+      &quot;BIOS&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;lzsscompalgo&quot;,
+    &quot;summary&quot;: &quot;LZSS算法简介  LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。    &gt; 参考维基百科   算法逻辑  在看本篇博文之...&quot;,
+    &quot;title&quot;: &quot;LZSS压缩算法&quot;,
+    &quot;date&quot;: &quot;2018-04-01T21:12:32.000Z&quot;,
+    &quot;updated&quot;: &quot;2018-04-01T21:12:32.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;算法&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;lzss&quot;,
+      &quot;algorithm&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;lz77compalgo&quot;,
+    &quot;summary&quot;: &quot;LZ77算法简介  LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。    &gt; 参考维基百科   算法逻辑  LZ77的算法核...&quot;,
+    &quot;title&quot;: &quot;LZ77压缩算法&quot;,
+    &quot;date&quot;: &quot;2018-03-31T20:38:24.000Z&quot;,
+    &quot;updated&quot;: &quot;2018-03-31T20:38:24.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;算法&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;lz77&quot;,
+      &quot;algorithm&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;enablesbonlinux&quot;,
+    &quot;summary&quot;: &quot;概述  Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不...&quot;,
+    &quot;title&quot;: &quot;如何在 Linux 系统启用 UEFI 的 Secure Boot&quot;,
+    &quot;date&quot;: &quot;2017-09-02T00:17:02.000Z&quot;,
+    &quot;updated&quot;: &quot;2017-09-02T00:17:02.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;linux&quot;,
+      &quot;uefi&quot;,
+      &quot;openssl&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;linuxsystemasyncio&quot;,
+    &quot;summary&quot;: &quot;Linux系统中的异步I/O问题  系统编程中，I/O（输入/输出）模型决定了如何和数据进行交互，它对整个系统性能影响至关重要。I/O模型会直接影响如下几大方面：   吞吐量  机器资源利用率，例如：CPU使用率  系统的可拓展性  编程复杂性  I/O模型在网络编程中，是高性能服务器的基础，如...&quot;,
+    &quot;title&quot;: &quot;Linux系统中的异步I/O问题&quot;,
+    &quot;date&quot;: &quot;2017-07-08T00:02:11.000Z&quot;,
+    &quot;updated&quot;: &quot;2017-07-08T00:02:11.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;linux&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;softwaredesignpattern4&quot;,
+    &quot;summary&quot;: &quot;软件设计模式 - 行为模式  行为模式负责对象之间的高效沟通和职责委派。  行为模式包括：责任链，命令，迭代器，中介者，备忘录，观察者，状态，策略，模版方法，访问者。     责任链模式（Chain of Responsibility/CoR）  责任链模式允许你将请求沿着处理者链进行传递。每个...&quot;,
+    &quot;title&quot;: &quot;软件设计模式 - 行为模式&quot;,
+    &quot;date&quot;: &quot;2017-06-08T22:01:03.000Z&quot;,
+    &quot;updated&quot;: &quot;2024-10-08T20:15:08.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;设计模式&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;softwaredesignpattern3&quot;,
+    &quot;summary&quot;: &quot;软件设计模式 - 结构型模式  结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。  结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。     适配器模式（Adapter）  适配器模式是为了解决不同接口之间的适配问题。  适配器通常分为两类：对象适配器，类适配器。...&quot;,
+    &quot;title&quot;: &quot;软件设计模式 - 结构型模式&quot;,
+    &quot;date&quot;: &quot;2017-06-05T21:11:12.000Z&quot;,
+    &quot;updated&quot;: &quot;2017-06-05T21:11:12.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;设计模式&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;softwaredesignpattern2&quot;,
+    &quot;summary&quot;: &quot;软件设计模式 - 创建型模式  创建型模式分为：工厂方法，抽象工厂，生成器，原型，单例。     工厂方法模式（Factory Method）  工厂方法模式是一种在父类声明方法，在子类实例化该对象的方法。在C++中通常以虚函数形式来表示，在其他语言，例如Java中则是抽象函数来表示。  工厂方...&quot;,
+    &quot;title&quot;: &quot;软件设计模式 - 创建型模式&quot;,
+    &quot;date&quot;: &quot;2017-06-04T19:04:11.000Z&quot;,
+    &quot;updated&quot;: &quot;2017-06-04T19:04:11.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;设计模式&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;softwaredesignpattern1&quot;,
+    &quot;summary&quot;: &quot;软件设计模式简介  软件设计模式属于软件工程领域的解决问题的基本方法，它提供了一种合理地达成目标的处理步骤。本文主要简单提出为何需要它，它的作用，以及它的主要组成元素。     什么是软件设计模式  软件设计模式其实就是为了解决问题，而制定的一种抽象层面的合理地达到目标的处理步骤。  设计模式的...&quot;,
+    &quot;title&quot;: &quot;软件设计模式简介&quot;,
+    &quot;date&quot;: &quot;2017-06-02T20:12:01.000Z&quot;,
+    &quot;updated&quot;: &quot;2017-06-02T20:12:01.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;总结&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;设计模式&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;minix&quot;,
+    &quot;summary&quot;: &quot;问题来源  直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。  然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它...&quot;,
+    &quot;title&quot;: &quot;如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来&quot;,
+    &quot;date&quot;: &quot;2016-10-03T00:16:13.000Z&quot;,
+    &quot;updated&quot;: &quot;2016-10-03T00:16:13.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;minix&quot;,
+      &quot;qemu&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;linuxlatex&quot;,
+    &quot;summary&quot;: &quot;TeX系统简介  TeX系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。  实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系...&quot;,
+    &quot;title&quot;: &quot;Linux环境搭建中文LaTeX排版系统&quot;,
+    &quot;date&quot;: &quot;2016-05-03T04:12:20.000Z&quot;,
+    &quot;updated&quot;: &quot;2016-05-03T04:12:20.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;linux&quot;,
+      &quot;latex&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;vssqlserver2008&quot;,
+    &quot;summary&quot;: &quot;SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。  首先在菜单的视图-&gt;其他...&quot;,
+    &quot;title&quot;: &quot;如何在Visual Studio 2010中使用SQL Server 2008&quot;,
+    &quot;date&quot;: &quot;2014-08-02T12:54:52.000Z&quot;,
+    &quot;updated&quot;: &quot;2014-08-02T12:54:52.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;SQL&quot;
+    ]
+  },
+  {
+    &quot;id&quot;: &quot;mspeshell&quot;,
+    &quot;summary&quot;: &quot;简介  今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。  壳的一个加载过程在许多书上都将过，这里就以图来复习一次：    !  这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加...&quot;,
+    &quot;title&quot;: &quot;PE文件壳的设计过程&quot;,
+    &quot;date&quot;: &quot;2013-10-26T23:44:15.000Z&quot;,
+    &quot;updated&quot;: &quot;2013-10-26T23:44:15.000Z&quot;,
+    &quot;categories&quot;: [
+      &quot;随笔&quot;
+    ],
+    &quot;tags&quot;: [
+      &quot;Windows&quot;,
+      &quot;EXE&quot;
+    ]
+  }
+]</pre></div></div><!--$--><!--/$--><!--$--><!--/$--><script src="/_next/static/chunks/webpack-ede82f7d0ae11dac.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n4:I[415,[\"766\",\"static/chunks/766-f505dbd3efffaa4c.js\",\"226\",\"static/chunks/226-13d4d3f1fc18ceb6.js\",\"177\",\"static/chunks/app/layout-b3ce58a25da6999d.js\"],\"default\"]\n5:I[9243,[\"766\",\"static/chunks/766-f505dbd3efffaa4c.js\",\"226\",\"static/chunks/226-13d4d3f1fc18ceb6.js\",\"177\",\"static/chunks/app/layout-b3ce58a25da6999d.js\"],\"\"]\n8:I[9665,[],\"MetadataBoundary\"]\na:I[9665,[],\"OutletBoundary\"]\nd:I[4911,[],\"AsyncMetadataOutlet\"]\nf:I[9665,[],\"ViewportBoundary\"]\n11:I[6614,[],\"\"]\n:HL[\"/_next/static/css/283bb1ed86b49fd2.css\",\"style\"]\n:HL[\"/_next/static/css/09ec4099fb721b31.css\",\"style\"]\n:HL[\"/_next/static/css/09dfadb69bdaa005.css\",\"style\"]\n6:T4a2,\n          function copyCode(button) {\n            // Find the code element within the same wrapper\n            const codeWrapper = button.closest('.code-block-wrapper');\n            if (!codeWrapper) return;\n            \n            const codeElement = codeWrapper.querySelector('code');\n            if (!codeElement) return;\n            \n            // Get the text content\n            const text = codeElement.textContent;\n            \n            // Use the clipboard API to copy the text\n            navigator.clipboard.writeText(text).then(() =\u003e {\n              // Update the button state to show \"Copied!\"\n              button.setAttribute('data-copy-state', 'copied');\n              const buttonText = button.querySelector('.copy-button-text');\n              if (buttonText) buttonText.textContent = 'Copied!';\n              \n              // Reset after 2 seconds\n              setTimeout(() =\u003e {\n                button.setAttribute('data-copy-state', 'copy');\n                if (buttonText) buttonText.textContent = 'Copy';\n              }, 2000);\n            }).catch(err =\u003e {\n              console.error('Failed to copy text: ', err);\n            });\n          }\n          "])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"xsQ5PUF4c2cJqxppneo-C\",\"p\":\"\",\"c\":[\"\",\"debug\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"debug\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/283bb1ed86b49fd2.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/09ec4099fb721b31.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"2\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/09dfadb69bdaa005.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"antialiased relative\",\"children\":[[\"$\",\"div\",null,{\"className\":\"fixed top-4 right-4 z-50\",\"children\":[\"$\",\"a\",null,{\"href\":\"https://github.com/hchen90\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300\",\"title\":\"Visit my GitHub profile\",\"children\":[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":\"24\",\"height\":\"24\",\"viewBox\":\"0 0 24 24\",\"fill\":\"currentColor\",\"children\":[\"$\",\"path\",null,{\"d\":\"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z\"}]}]}]}],[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}],[\"$\",\"$L4\",null,{}],[\"$\",\"$L5\",null,{\"id\":\"code-copy\",\"children\":\"$6\"}]]}]}]]}],{\"children\":[\"debug\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L7\",[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],null,[\"$\",\"$La\",null,{\"children\":[\"$Lb\",\"$Lc\",[\"$\",\"$Ld\",null,{\"promise\":\"$@e\"}]]}]]}],{},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"5vZymxJFXfHwgrWKtZNMK\",{\"children\":[[\"$\",\"$Lf\",null,{\"children\":\"$L10\"}],null]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"12:\"$Sreact.suspense\"\n13:I[4911,[],\"AsyncMetadata\"]\n9:[\"$\",\"$12\",null,{\"fallback\":null,\"children\":[\"$\",\"$L13\",null,{\"promise\":\"$@14\"}]}]\n15:T4ca0,"])</script><script>self.__next_f.push([1,"[\n  {\n    \"id\": \"introtolangchainapp\",\n    \"summary\": \"使用 LangChain 构建智能体实战  本文从 LangChain 基础入门开始，从基础智能体（Agent）开始，到构建一个生产级的智能体系统，所需要的知识概念。  传统的 ChatBot 只能进行聊天，人工智能反映在知识输出上，但是这种智能并不能自出决策，并使用工具调用。虽然后来的 AI...\",\n    \"title\": \"使用 LangChain 构建智能体实战\",\n    \"date\": \"2025-12-21T14:02:32.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"Python\",\n      \"LangChain\",\n      \"AI\"\n    ]\n  },\n  {\n    \"id\": \"highconcuravabackendingo\",\n    \"summary\": \"聊聊高并发高可用云服务设计（Go语言版）  本文以 Go 语言云服务为例，系统性介绍如何设计、实现、测试一个高并发、高可用的生产级后 端系统。文章不仅覆盖架构设计思想，也结合常见中间件（Kafka / Redis / Postgres / etcd / Kubernetes 等）给出工程实践建议...\",\n    \"title\": \"聊聊高并发高可用云服务设计（Go语言版）\",\n    \"date\": \"2025-10-25T16:31:07.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"高并发\",\n      \"高可用\",\n      \"架构设计\"\n    ]\n  },\n  {\n    \"id\": \"introtopytorchlinearregr\",\n    \"summary\": \"使用 PyTorch 进行线性回归模型训练实战  本文结合个人实验的Jupyter Notebook示例，从零开始使用PyTorch完成一个线形回归模型的构建、训练与理解。内容面向初学者，同时也帮助你建立对 PyTorch 自动求导与训练流程的正确认知。   一、线性回归问题回顾  线性回归是最...\",\n    \"title\": \"使用 PyTorch 进行线性回归模型训练实战\",\n    \"date\": \"2025-09-12T21:11:12.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"Python\",\n      \"PyTorch\",\n      \"AI\"\n    ]\n  },\n  {\n    \"id\": \"llmappfunctioncallingmech\",\n    \"summary\": \"LLM应用中的Function Calling机制  LLM在当下应用非常广泛，从最常见的聊天问答（例如：Chatgpt，DeekSeek聊天），到基于内容检索的问答系统，处处可见它的身影。  在LLM（大型语言模型）应用开发中，Function Calling（函数调用）是一项强大的机制，它使...\",\n    \"title\": \"LLM应用中的Function Calling机制\",\n    \"date\": \"2025-04-20T02:12:08.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"AI\",\n      \"人工智能\",\n      \"LLM\"\n    ]\n  },\n  {\n    \"id\": \"mltraningfittingissues\",\n    \"summary\": \"机器学习中模型训练的拟合问题   拟合问题简介  拟合问题可以归纳为模型对数据的规律学得好不好，对于学得好的就称为拟合适中，对于学得不好的可以分类两种：过拟合，欠拟合。  拟合就是用模型函数去逼近数据之间的关系，拟合程度反映了模型函数和实际数据的贴合程度。   过拟合问题  过拟合的意思是模型在...\",\n    \"title\": \"机器学习中模型训练的拟合问题\",\n    \"date\": \"2024-09-15T20:03:12.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"AI\",\n      \"人工智能\",\n      \"机器学习\"\n    ]\n  },\n  {\n    \"id\": \"ai2-studylog-ml\",\n    \"summary\": \"人工智能 - 机器学习  人工智能的基础是机器学习，顾名思义就是让机器能够处理数据，并在处理的数据中进行学习，从而能够自主地做出决策。简单来说，机器学习是让机器能够在不需要特别编程的情况下进行学习和改进。  而机器学习，大体上分为三种，分别为：监督式学习，无监督式学习，和深度学习。     监督...\",\n    \"title\": \"人工智能笔记 - 机器学习\",\n    \"date\": \"2024-07-02T11:36:12.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"人工智能\",\n      \"AI\"\n    ]\n  },\n  {\n    \"id\": \"ai1-studylog-dataanalysis\",\n    \"summary\": \"人工智能 - 数据分析和决策  这部分主要分为四个层次：  - 数据收集 - 数据清理 - 数据分析 - 决策     数据收集  在人工智能领域数据收集是至关重要的一个环节，它是用于训练模式的输入来源。  作为基础的概念复习，数据收集无非是把目标进行采样，同时我们需要使用科学的方法使样本接近于...\",\n    \"title\": \"人工智能笔记 - 数据分析和决策\",\n    \"date\": \"2024-06-12T21:36:12.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"人工智能\",\n      \"AI\"\n    ],\n    \"mathjax\": true\n  },\n  {\n    \"id\": \"advlangmemmanagement\",\n    \"summary\": \"高级语言内存管理那些事：C++、Go 与 Rust 的对决  高级语言C++，Go，和Rust，是三种典型不同的内存管理风格的语言，它的风格也间接展示高级语言的发展历程，其中重要一项就是内存管理的变化。   一、前言：为什么内存管理很重要  内存管理是高级编程语言的基石，它影响程序的性能，安全和...\",\n    \"title\": \"高级语言内存管理那些事：C++、Go 与 Rust 的对决\",\n    \"date\": \"2024-04-20T20:14:02.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"C++\",\n      \"Rust\",\n      \"Go\"\n    ]\n  },\n  {\n    \"id\": \"openaiapirsh\",\n    \"summary\": \"简介  人工智能并不是一个新鲜事物，早在多年前就已经在发展中，于此同时发展出的数值，矩阵，图形，和相关算法库，都是实现人工智能的必要生态组件。  其实人工智能经历了许多年的发展，目前逐渐成熟，平时大众与其在生活的交叉比较隐晦，所以难以引人注目，不过这次的 ChatGPT 展现出它强大的语言功能，...\",\n    \"title\": \"OpenAI之OpenAPI初探\",\n    \"date\": \"2023-03-28T22:11:08.000Z\",\n    \"updated\": \"2023-03-28T22:11:08.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"OpenAI\",\n      \"AI\",\n      \"ChatGPT\"\n    ]\n  },\n  {\n    \"id\": \"deploygitlabcerunner\",\n    \"summary\": \"玩转自搭建 GitLab 社区版  本文的自搭建是基于docker容器技术而实现的，其中包括gitlab-ce和gitlab-runner两个部分。   什么是 GitLab  GitLab是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，Gi...\",\n    \"title\": \"玩转自搭建 GitLab 社区版\",\n    \"date\": \"2022-07-02T10:03:12.000Z\",\n    \"updated\": \"2022-07-02T10:03:12.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"git\",\n      \"linux\"\n    ]\n  },\n  {\n    \"id\": \"codemodification\",\n    \"summary\": \"什么是代码改动  在软件项目中都存在一个生命周期，无论周期长短，都会涉及到代码改动，不管是对以前缺陷的修复，还是在敏捷开发中（每一个故事的迭代），都会或多或少地产生代码修改。     为什么会发生代码改动  代码修改其实是很常见的，但代码修改却是要尽量避免的，我们可以使用极限思维，一种是无比兼容...\",\n    \"title\": \"程序的代码修改问题\",\n    \"date\": \"2022-06-11T08:53:02.000Z\",\n    \"updated\": \"2022-06-11T08:53:02.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"expr\"\n    ]\n  },\n  {\n    \"id\": \"mongodbcloudcluster\",\n    \"summary\": \"什么是MongoDB Cloud  MongoDB Cloud 的核心是  ，这是一个适用于现代应用程序的完全托管的云数据库。Atlas 是运行领先的现代数据库 MongoDB 的最佳方式。 的文档模型是一种更快的创新方式，可为数据库带来灵活性和易用性。    这是官网的简介，然后，再看一下它的...\",\n    \"title\": \"MongoDB Cloud云平台简单使用简介\",\n    \"date\": \"2022-04-03T14:22:06.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"MongoDB\",\n      \"SQL\"\n    ]\n  },\n  {\n    \"id\": \"jnithreadsafe\",\n    \"summary\": \"JNI 开发是什么  因本人以前工作中做过此类工作，再加上老同事的疑问，所以，今天抽出时间来探讨一下JNI的开发问题和特定细节（调用的线程安全问题），其实这种JNI层调用和任何其他语言调用C/C++层结构都差不多，比如说CGO，其涉及到Golang和C/C++层的调用，很多方面都存在类似之处。...\",\n    \"title\": \"JNI函数调用之线程安全问题\",\n    \"date\": \"2021-11-29T23:03:02.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"jni\",\n      \"java\",\n      \"cpp\"\n    ]\n  },\n  {\n    \"id\": \"redistributedservicesystem\",\n    \"summary\": \"概述与定义  分布式系统是由一组通过网络协同工作的独立计算机（节点）组成的系统。它们共同完成一项业务目标，并对用户展现为“单一的系统”。从用户视角出发，分布式系统应尽量保持透明性：用户不需要知道请求被哪台机器处理、数据位于哪里，也不应感知到节点的增删与迁移。  一句话以概之：  \u003e 分布式系统...\",\n    \"title\": \"分布式服务系统设计概述\",\n    \"date\": \"2020-12-20T10:05:12.000Z\",\n    \"updated\": \"2025-08-10T19:10:00.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"SQL\",\n      \"Actor\",\n      \"MongoDB\",\n      \"Redis\",\n      \"etcd\",\n      \"RocketMQ\"\n    ]\n  },\n  {\n    \"id\": \"githuboauthappintro\",\n    \"summary\": \"Github的App有两种，一种是普通的App，一般用以制作自动化机器人，另一种是利用用户登录的App，它可以操作登录用户的Github里面的API定义的操作，包括：用户信息获取，仓库信息修改，用户信息修改，等等。   OAuth2的定义  OAuth（开放授权）是一个开放标准，允许用户授权第三方...\",\n    \"title\": \"GitHub的OAuth App的使用\",\n    \"date\": \"2020-04-15T14:23:07.000Z\",\n    \"updated\": \"2020-04-15T14:23:07.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"github\",\n      \"oauth\"\n    ]\n  },\n  {\n    \"id\": \"linuxcoredumptofindbug\",\n    \"summary\": \"什么是coredump？  Coredump是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，Coredump的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这...\",\n    \"title\": \"利用Linux的coredump机制快速定位程序BUG\",\n    \"date\": \"2019-11-12T09:12:29.000Z\",\n    \"updated\": \"2019-11-12T09:12:29.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"linux\",\n      \"debug\",\n      \"coredump\",\n      \"gdb\",\n      \"objdump\"\n    ]\n  },\n  {\n    \"id\": \"linuxstartup\",\n    \"summary\": \"内核加载  在里面我说明过计算机如何从远古到近代的启动流程，然后，走到操作系统一层的时候就没有深入阐述了，在这篇博文我将以Linux系统为例来叙述操作系统是如何启动的。  通常在系统/boot目录下放着内核文件，如下：  shell initramfs-linux.img vmlinuz-lin...\",\n    \"title\": \"Linux系统启动流程\",\n    \"date\": \"2018-06-24T11:50:03.000Z\",\n    \"updated\": \"2018-06-24T11:50:03.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"linux\"\n    ]\n  },\n  {\n    \"id\": \"systemstartup\",\n    \"summary\": \"远古时代   这个时期，计算机是处于电气化高度相关的环境下，几乎没有软件的概念（这里有点瑕疵，稍后补充）。  计算机这个时候会进行一系列针对硬件的自测试，尤其检测一些必要硬件是否可用，这个过程成为POST自检，如果检测通过就会进行下一个步骤：BIOS模式，或者UEFI模式。    \u003e 一般计算机...\",\n    \"title\": \"计算机系统启动流程\",\n    \"date\": \"2018-06-16T20:40:10.000Z\",\n    \"updated\": \"2018-06-16T20:40:10.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"GRUB\",\n      \"UEFI\",\n      \"BIOS\"\n    ]\n  },\n  {\n    \"id\": \"lzsscompalgo\",\n    \"summary\": \"LZSS算法简介  LZSS算法是LZ77算法的改良版，由James A. Storer和Thomas Szymacski于1982年发表在ACM杂志上。LZSS算法充分地利用了位的标记，从而使得压缩效率相比较于LZ77而言，有了显著提高。    \u003e 参考维基百科   算法逻辑  在看本篇博文之...\",\n    \"title\": \"LZSS压缩算法\",\n    \"date\": \"2018-04-01T21:12:32.000Z\",\n    \"updated\": \"2018-04-01T21:12:32.000Z\",\n    \"categories\": [\n      \"算法\"\n    ],\n    \"tags\": [\n      \"lzss\",\n      \"algorithm\"\n    ]\n  },\n  {\n    \"id\": \"lz77compalgo\",\n    \"summary\": \"LZ77算法简介  LZ77算法是一种无损压缩算法，最早由两位以色列人于1977发表，它是一种典型的字典型压缩算法，目前几乎大多数的无损压缩算法都是基于这个LZ77算法，也就是在其基础上优化修改，此算法可以称得上是无损压缩算法界的鼻祖了。    \u003e 参考维基百科   算法逻辑  LZ77的算法核...\",\n    \"title\": \"LZ77压缩算法\",\n    \"date\": \"2018-03-31T20:38:24.000Z\",\n    \"updated\": \"2018-03-31T20:38:24.000Z\",\n    \"categories\": [\n      \"算法\"\n    ],\n    \"tags\": [\n      \"lz77\",\n      \"algorithm\"\n    ]\n  },\n  {\n    \"id\": \"enablesbonlinux\",\n    \"summary\": \"概述  Secure Boot 作为 UEFI 的一个选项，它可以被设置为开启或关闭 ( 有少数的计算机里面， Secure Boot 被设置为开启，却不存在关闭它的选项，但系统主板内置有 Windows 系统的公钥证书签名，使其只能加载 Windows ，其他系统一律不以加载，用户没有选项，不...\",\n    \"title\": \"如何在 Linux 系统启用 UEFI 的 Secure Boot\",\n    \"date\": \"2017-09-02T00:17:02.000Z\",\n    \"updated\": \"2017-09-02T00:17:02.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"linux\",\n      \"uefi\",\n      \"openssl\"\n    ]\n  },\n  {\n    \"id\": \"linuxsystemasyncio\",\n    \"summary\": \"Linux系统中的异步I/O问题  系统编程中，I/O（输入/输出）模型决定了如何和数据进行交互，它对整个系统性能影响至关重要。I/O模型会直接影响如下几大方面：   吞吐量  机器资源利用率，例如：CPU使用率  系统的可拓展性  编程复杂性  I/O模型在网络编程中，是高性能服务器的基础，如...\",\n    \"title\": \"Linux系统中的异步I/O问题\",\n    \"date\": \"2017-07-08T00:02:11.000Z\",\n    \"updated\": \"2017-07-08T00:02:11.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"linux\"\n    ]\n  },\n  {\n    \"id\": \"softwaredesignpattern4\",\n    \"summary\": \"软件设计模式 - 行为模式  行为模式负责对象之间的高效沟通和职责委派。  行为模式包括：责任链，命令，迭代器，中介者，备忘录，观察者，状态，策略，模版方法，访问者。     责任链模式（Chain of Responsibility/CoR）  责任链模式允许你将请求沿着处理者链进行传递。每个...\",\n    \"title\": \"软件设计模式 - 行为模式\",\n    \"date\": \"2017-06-08T22:01:03.000Z\",\n    \"updated\": \"2024-10-08T20:15:08.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"设计模式\"\n    ]\n  },\n  {\n    \"id\": \"softwaredesignpattern3\",\n    \"summary\": \"软件设计模式 - 结构型模式  结构型模式介绍类和对象的组装方式，同时保持较大的灵活性和高效性。  结构型模式包括：适配器，桥接，组合，装饰，外观，享元，代理。     适配器模式（Adapter）  适配器模式是为了解决不同接口之间的适配问题。  适配器通常分为两类：对象适配器，类适配器。...\",\n    \"title\": \"软件设计模式 - 结构型模式\",\n    \"date\": \"2017-06-05T21:11:12.000Z\",\n    \"updated\": \"2017-06-05T21:11:12.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"设计模式\"\n    ]\n  },\n  {\n    \"id\": \"softwaredesignpattern2\",\n    \"summary\": \"软件设计模式 - 创建型模式  创建型模式分为：工厂方法，抽象工厂，生成器，原型，单例。     工厂方法模式（Factory Method）  工厂方法模式是一种在父类声明方法，在子类实例化该对象的方法。在C++中通常以虚函数形式来表示，在其他语言，例如Java中则是抽象函数来表示。  工厂方...\",\n    \"title\": \"软件设计模式 - 创建型模式\",\n    \"date\": \"2017-06-04T19:04:11.000Z\",\n    \"updated\": \"2017-06-04T19:04:11.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"设计模式\"\n    ]\n  },\n  {\n    \"id\": \"softwaredesignpattern1\",\n    \"summary\": \"软件设计模式简介  软件设计模式属于软件工程领域的解决问题的基本方法，它提供了一种合理地达成目标的处理步骤。本文主要简单提出为何需要它，它的作用，以及它的主要组成元素。     什么是软件设计模式  软件设计模式其实就是为了解决问题，而制定的一种抽象层面的合理地达到目标的处理步骤。  设计模式的...\",\n    \"title\": \"软件设计模式简介\",\n    \"date\": \"2017-06-02T20:12:01.000Z\",\n    \"updated\": \"2017-06-02T20:12:01.000Z\",\n    \"categories\": [\n      \"总结\"\n    ],\n    \"tags\": [\n      \"设计模式\"\n    ]\n  },\n  {\n    \"id\": \"minix\",\n    \"summary\": \"问题来源  直接在虚拟机MINIX中阅读它的源代码，十分不便，修改调试做移植也非常困难，如果将MINIX系统中的部分源代码拷贝到实体机LINUX中，在LINUX系统中进行修改调试将会非常方便。  然而，MINIX系统是一种比较基本的系统，不能像vmware中使用Windows类系统那样，直接给它...\",\n    \"title\": \"如何将处于虚拟机中的MINIX系统中的文件复制到实体机的LINUX系统中来\",\n    \"date\": \"2016-10-03T00:16:13.000Z\",\n    \"updated\": \"2016-10-03T00:16:13.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"minix\",\n      \"qemu\"\n    ]\n  },\n  {\n    \"id\": \"linuxlatex\",\n    \"summary\": \"TeX系统简介  TeX系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。  实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系...\",\n    \"title\": \"Linux环境搭建中文LaTeX排版系统\",\n    \"date\": \"2016-05-03T04:12:20.000Z\",\n    \"updated\": \"2016-05-03T04:12:20.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"linux\",\n      \"latex\"\n    ]\n  },\n  {\n    \"id\": \"vssqlserver2008\",\n    \"summary\": \"SQL Server是微软的数据库产品，也是一个较为众所周知的数据库产品，其中SQL Server 2000深受广大的用户的青睐，知名度较高，SQL Server 2008是其的后继产品之一，废话不多说了（本文不讨论VS或SQL Server的安装，假设预制环境就绪）。  首先在菜单的视图-\u003e其他...\",\n    \"title\": \"如何在Visual Studio 2010中使用SQL Server 2008\",\n    \"date\": \"2014-08-02T12:54:52.000Z\",\n    \"updated\": \"2014-08-02T12:54:52.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"SQL\"\n    ]\n  },\n  {\n    \"id\": \"mspeshell\",\n    \"summary\": \"简介  今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。  壳的一个加载过程在许多书上都将过，这里就以图来复习一次：    !  这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加...\",\n    \"title\": \"PE文件壳的设计过程\",\n    \"date\": \"2013-10-26T23:44:15.000Z\",\n    \"updated\": \"2013-10-26T23:44:15.000Z\",\n    \"categories\": [\n      \"随笔\"\n    ],\n    \"tags\": [\n      \"Windows\",\n      \"EXE\"\n    ]\n  }\n]"])</script><script>self.__next_f.push([1,"7:[\"$\",\"div\",null,{\"className\":\"p-8\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold mb-6\",\"children\":\"调试页面\"}],[\"$\",\"div\",null,{\"className\":\"bg-gray-100 p-4 rounded mb-6\",\"children\":[[\"$\",\"h2\",null,{\"className\":\"text-xl mb-4\",\"children\":[\"已加载的文章数量: \",30]}],[\"$\",\"pre\",null,{\"className\":\"bg-white p-4 rounded overflow-auto max-h-96\",\"children\":\"$15\"}]]}]]}]\n"])</script><script>self.__next_f.push([1,"c:null\n"])</script><script>self.__next_f.push([1,"10:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\nb:null\n"])</script><script>self.__next_f.push([1,"14:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"HCHEN90 博客\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"HCHEN90 博客\"}],[\"$\",\"link\",\"2\",{\"rel\":\"alternate\",\"type\":\"application/atom+xml\",\"href\":\"https://hchen90.top/atom.xml\"}],[\"$\",\"link\",\"3\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]],\"error\":null,\"digest\":\"$undefined\"}\ne:{\"metadata\":\"$14:metadata\",\"error\":null,\"digest\":\"$undefined\"}\n"])</script></body></html>

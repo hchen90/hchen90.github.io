@@ -1,0 +1,90 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","softwaredesignpattern1",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","softwaredesignpattern1","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","softwaredesignpattern1","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","BYpi9LoYjuCnJuvfLrB9P",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T12be,<h1 id="软件设计模式简介">软件设计模式简介<a aria-hidden="true" tabindex="-1" href="#软件设计模式简介"><span class="anchor-link"> #</span></a></h1>
+<p>软件设计模式属于软件工程领域的解决问题的基本方法，它提供了一种合理地达成目标的处理步骤。本文主要简单提出为何需要它，它的作用，以及它的主要组成元素。</p>
+<h2 id="什么是软件设计模式">什么是软件设计模式<a aria-hidden="true" tabindex="-1" href="#什么是软件设计模式"><span class="anchor-link"> #</span></a></h2>
+<p>软件设计模式其实就是为了解决问题，而制定的一种抽象层面的合理地达到目标的处理步骤。</p>
+<p>设计模式的不同需要更具特定的业务场景来决定，每一种模式都包含特定的意图，动机和结构。</p>
+<blockquote>
+<p>谁发明了设计模式</p>
+<blockquote>
+<p>模式的概念源自于建筑学概念，最早由克里斯托佛·亚历山大提出。后来该概念被应用到软件开发领域以解决程序设计中遇到的各种问题，最初代表就是GoF四人组的书，从上个世纪末以来，这种方法一直在大中型软件设计处处可见，成为软件设计参考的通用标准。</p>
+</blockquote>
+</blockquote>
+<h2 id="为什么需要软件设计模式">为什么需要软件设计模式<a aria-hidden="true" tabindex="-1" href="#为什么需要软件设计模式"><span class="anchor-link"> #</span></a></h2>
+<p>软件设计模式是解决问题的工具箱，对于面向对象的问题场景时，这点尤为重要。</p>
+<p>同时，软件设计模式也是一种通用的沟通语言，试想：如果一位同事用纯函数式的流程式写了一个很大的模块，然后现在需要把模块交接给另一位来维护，那么后交接的这位就可能面临理解偏差等等未知风险（俗称“屎山代码”）。人对于结构化的，图形化的事物更容易理解，软件设计模式即是一种通用方法学。</p>
+<blockquote>
+<p>一些需要注意的地方</p>
+<blockquote>
+<p>软件设计模式虽然有居多好处，但是也并非没有缺点。最常见的问题就是不当使用，有的现代高级语言提供了更好的解决方式，可以替代原有的设计模式，还有一种是过度使用，设计模式只有给项目带来可观改善时，它的作用才可展现出来，例如：有的业务场景为了达到接口通用性，隐藏掉系统内部的复杂性，可以使用外观模式来改善，但是对于系统内部本身就不复杂的来说，其实可以不用这样操作。</p>
+</blockquote>
+</blockquote>
+<h2 id="软件设计模式有哪些">软件设计模式有哪些<a aria-hidden="true" tabindex="-1" href="#软件设计模式有哪些"><span class="anchor-link"> #</span></a></h2>
+<p>设计模式主要分为三个类别：</p>
+<ul>
+<li>创建型模式（Creational Pattern）</li>
+<li>结构型模式（Structural Pattern）</li>
+<li>行为型模式（Behavioral Pattern）</li>
+</ul>
+<p>逻辑关系如下图所示：</p>
+<p><img src="/post/softwaredesignpattern1/61b6ed2bec38.png" alt="Design Pattern"></p>
+<h3 id="创建型模式creational-pattern">创建型模式（Creational Pattern）<a aria-hidden="true" tabindex="-1" href="#创建型模式creational-pattern"><span class="anchor-link"> #</span></a></h3>
+<p>创建型模式是一种构造模式，可以提升代码的灵活性和可复用性，常见的模式有：
+工厂方法（Factory Method），抽象工厂方法（Abstract Factory），生成器（Builder），原型（Prototype），单例（Singleton）。</p>
+<h3 id="结构型模式structural-pattern">结构型模式（Structural Pattern）<a aria-hidden="true" tabindex="-1" href="#结构型模式structural-pattern"><span class="anchor-link"> #</span></a></h3>
+<p>结构型模式是描述对象数据结构的组装与分配，常见的模式有：
+适配器模式（Adapter），桥接模式（Bridge），组合模式（Composite），装饰模式（Decorator），外观模式（Facade），享元模式（Flyweight），代理模式（Proxy）。</p>
+<h3 id="行为型模式behavioral-pattern">行为型模式（Behavioral Pattern）<a aria-hidden="true" tabindex="-1" href="#行为型模式behavioral-pattern"><span class="anchor-link"> #</span></a></h3>
+<p>行为型模式是负责对象间的高效沟通与职责委派，常见的模式有：
+责任链模式（Chain of Responsibility），命令模式（Command），迭代器模式（Iterator），中介者模式（Mediator），备忘录模式（Memento），观察者模式（Observer），状态模式（State），策略模式（Strategy），模板方法模式（Template Method），访问者模式（Visitor），解释器（Interpreter）。</p>7:["$","$L15",null,{"postData":{"id":"softwaredesignpattern1","contentHtml":"$16","title":"软件设计模式简介","date":"$D2017-06-02T20:12:01.000Z","updated":"$D2017-06-02T20:12:01.000Z","categories":["总结"],"tags":["设计模式"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"软件设计模式简介"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

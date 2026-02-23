@@ -1,0 +1,98 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-b3ce58a25da6999d.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"xsQ5PUF4c2cJqxppneo-C","p":"","c":["","post","mltraningfittingissues",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","mltraningfittingissues","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","mltraningfittingissues","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","xO4mJoY7zWsH9n-9swlW4",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-1a0463ef6ec6e59e.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T192a,<h1 id="机器学习中模型训练的拟合问题">机器学习中模型训练的拟合问题<a aria-hidden="true" tabindex="-1" href="#机器学习中模型训练的拟合问题"><span class="anchor-link"> #</span></a></h1>
+<h2 id="拟合问题简介">拟合问题简介<a aria-hidden="true" tabindex="-1" href="#拟合问题简介"><span class="anchor-link"> #</span></a></h2>
+<p>拟合问题可以归纳为模型对数据的规律学得好不好，对于学得好的就称为拟合适中，对于学得不好的可以分类两种：过拟合，欠拟合。</p>
+<p>拟合就是用模型函数去逼近数据之间的关系，拟合程度反映了模型函数和实际数据的贴合程度。</p>
+<h2 id="过拟合问题">过拟合问题<a aria-hidden="true" tabindex="-1" href="#过拟合问题"><span class="anchor-link"> #</span></a></h2>
+<p>过拟合的意思是模型在数据上表现非常好，但是在测试数据上表现很差。通常是原因是在训练集合上拟合太高，以至于学习到了集合上的噪音细节，导致推广到新数据时出现很大的偏差。</p>
+<h3 id="过拟合现象说明">过拟合现象说明<a aria-hidden="true" tabindex="-1" href="#过拟合现象说明"><span class="anchor-link"> #</span></a></h3>
+<p>下面举例说明，以bigml上的训练实例说明，下面的案例是一个用于预测预定酒店用户，是否会预定后又取消订单的预测模型。</p>
+<p>模型数据集如下图。</p>
+<p><img src="/post/mltraningfittingissues/e1a6ccff4af1.png" alt="of_tran_dataset"></p>
+<p>预测量是reservation_status的值。</p>
+<p><img src="/post/mltraningfittingissues/a51ce4a9bfa4.png" alt="of_tran_predi"></p>
+<p>准备好数据集后，就可以开始模型训练，这里的模型使用了决策树模型。下图是我按比例8:2的训练和验证的评估分数。</p>
+<p><img src="/post/mltraningfittingissues/7a15aed8baba.png" alt="of_tran_sam_full_acc"></p>
+<p>从图中可以看出预测准确性达到了惊人的100%，这一看就不太可能，所以可能出现了过拟合问题，吸收了数据集噪音导致。</p>
+<p>再看它的系数与曲线。</p>
+<p><img src="/post/mltraningfittingissues/3ba51051620d.png" alt="of_tran_sam_full_acc_par"></p>
+<p>这是评估系数，可见准确性只有42%，说明模型的数据集是有问题的，不能达到合适的预测效果。</p>
+<h3 id="如何解决过拟合问题">如何解决过拟合问题<a aria-hidden="true" tabindex="-1" href="#如何解决过拟合问题"><span class="anchor-link"> #</span></a></h3>
+<p>在这个案例中，使用了决策树的模型，打开决策树查看决策分支。</p>
+<p><img src="/post/mltraningfittingissues/cef5f782439a.png" alt="of_tran_br"></p>
+<p>一眼可见问题出在了标记数据上了，这里的reservation_status和is_canceled，实际上都是输出参数标记，而模型训练时却把它识别为输入，从而导致问题，以至于其他参数标记根本就没有参与计算。</p>
+<p>对于这种问题，我们把数据集中的is_canceled剔除出训练标记，更新完成后，再重新训练，并评估分数，可以得到如下的结果。</p>
+<p><img src="/post/mltraningfittingissues/3da0847efbbb.png" alt="of_tran_sam_ok"></p>
+<p>这里的准确度已经比较符合正常情况，准确度来说，相对理想，再看看它的评估参数。</p>
+<p><img src="/post/mltraningfittingissues/68a26e0c6e2d.png" alt="of_tran_sam_ok_par"></p>
+<p>评估系数的准确性也能达到80%以上，这是非常好的结果。</p>
+<p>可以在观察一下它的决策树形态，如下图所示。</p>
+<p><img src="/post/mltraningfittingissues/9f2736e50a05.png" alt="of_tran_tree"></p>
+<p>看起来一切完美，这里成功消除了过拟合问题。</p>
+<h2 id="欠拟合问题">欠拟合问题<a aria-hidden="true" tabindex="-1" href="#欠拟合问题"><span class="anchor-link"> #</span></a></h2>
+<p>欠拟合问题是在训练数据集和测试数据集上都表现不好，因为拟合程度太低，无法从中找到数据的规律。</p>
+<h3 id="欠拟合现象说明">欠拟合现象说明<a aria-hidden="true" tabindex="-1" href="#欠拟合现象说明"><span class="anchor-link"> #</span></a></h3>
+<p>仍然用bigml来说明，我找了一份欠拟合的数据，在bigml上制作好数据集，并进行训练模型，仍然使用决策树模型。</p>
+<p><img src="/post/mltraningfittingissues/efbad76148fd.png" alt="uf_tran_dataset"></p>
+<p>评估模型参数的分数如下图。</p>
+<p><img src="/post/mltraningfittingissues/c0e5a232e33e.png" alt="uf_tran_st"></p>
+<p>准确度参数看起来并不是特别低，但是它的Phi系数值只有0.3，这说明预测值和真实值的关联度非常低，这种模型也是有问题的，不能进行预测。</p>
+<blockquote>
+<p>Phi系数的含义</p>
+<p>Phi系数表示预测结果和真实情况的关联程度，+1表示完美预测，0表示完全随机，-1表示完全颠倒，系数值一般介于-1至1之间，越接近1越好。</p>
+</blockquote>
+<h3 id="如何解决欠拟合问题">如何解决欠拟合问题<a aria-hidden="true" tabindex="-1" href="#如何解决欠拟合问题"><span class="anchor-link"> #</span></a></h3>
+<p>对于欠拟合问题的解决方法通常有多种。第一种是添加或减少数据标记（特征太少的数据集添加特征，特征太多的减少特征），更新数据特征数量，这样模型训练的时候就可以学习到数据规律。第二种方法是更换其他的模型进行尝试，因为不同的模型对于不同的数据集有偏好，例如数据集是简单的线形数据特征，那么它更适合线形回归或逻辑回归这类线形预测模型，如果有很多数据特征，且特征不呈现线形关系，那么决策树就更加适合。第三种方法是如果样本数量太少，可以适当增加样本数量，这样也有助于模型从数据集中学习到规律。</p>
+<h2 id="总结">总结<a aria-hidden="true" tabindex="-1" href="#总结"><span class="anchor-link"> #</span></a></h2>
+<p>总之在机器学习中，对于数据集中遇到过拟合和欠拟合问题，都是可以模型训练，再评估，看出它的结果。通常过拟合问题都是数据集的标记问题，进行恰当修正都可以解决。欠拟合问题需要进一步观察，再决定是否是模型选择有问题，还是数据集特征不够，或者样本空间太小。</p>7:["$","$L15",null,{"postData":{"id":"mltraningfittingissues","contentHtml":"$16","title":"机器学习中模型训练的拟合问题","date":"$D2024-09-15T20:03:12.000Z","categories":["总结"],"tags":["AI","人工智能","机器学习"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"机器学习中模型训练的拟合问题"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
