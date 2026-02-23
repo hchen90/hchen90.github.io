@@ -1,0 +1,92 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"ZnA_pffjAXy0PvB3tEph0","p":"","c":["","post","openaiapirsh",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","openaiapirsh","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","openaiapirsh","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","u9kC_Njlg6aETPGavMREE",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-7dd07b3f065cc09a.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T11c0,<h1 id="简介">简介<a aria-hidden="true" tabindex="-1" href="#简介"><span class="anchor-link"> #</span></a></h1>
+<p>人工智能并不是一个新鲜事物，早在多年前就已经在发展中，于此同时发展出的数值，矩阵，图形，和相关算法库，都是实现人工智能的必要生态组件。</p>
+<p>其实人工智能经历了许多年的发展，目前逐渐成熟，平时大众与其在生活的交叉比较隐晦，所以难以引人注目，不过这次的 ChatGPT 展现出它强大的语言功能，配合逐渐的人工智能算法，让它大火了一把，让人们看到深度学习下的用户最容易接触的成果。</p>
+<p>对于 ChatGPT 可以直接从<a href="https://chat.openai.com/">网页访问</a>，打开后可以用聊天方式进行问答。</p>
+<p>这种问答的通过调用核心大语言模型来完成，OpenAI 把这部分以 API 形式展现出来的，在网页端即可使用，通过第三方访问他们的大语言服务API亦是如此，因此我们也可以调用他们的 API 来获取 AI 的智能问答（自动补全），从而实现我们的demo程序集成人工智能的需求。</p>
+<h1 id="api初探">API初探<a aria-hidden="true" tabindex="-1" href="#api初探"><span class="anchor-link"> #</span></a></h1>
+<p>本文研究的是基于程序 API 调用的方式，亦不讨论如何打开或者如何注册 ChatGPT 账号的相关事宜。</p>
+<h2 id="获取-api-key">获取 API Key<a aria-hidden="true" tabindex="-1" href="#获取-api-key"><span class="anchor-link"> #</span></a></h2>
+<p>登陆账号，在 API Keys 导航页中，点击 <code>Create new secret key</code> 即可生成用于 API 登陆的验证 Key。</p>
+<p><img src="/post/openaiapirsh/4be36f91ce93.png" alt="API Key"></p>
+<h2 id="功能模块">功能模块<a aria-hidden="true" tabindex="-1" href="#功能模块"><span class="anchor-link"> #</span></a></h2>
+<p>功能模块包括多个部分。</p>
+<h3 id="聊天补全">聊天补全<a aria-hidden="true" tabindex="-1" href="#聊天补全"><span class="anchor-link"> #</span></a></h3>
+<p>聊天补全是该项目中的一个重要功能，它基于的 AI 可以快速训练知识结构，而且具有较高准确的语言识别与反馈。</p>
+<p><img src="/post/openaiapirsh/57a4bd3490ec.png" alt="官方文档"></p>
+<p>通过参考官方的 API 文档，上面有较为详细的各种 API 调用说明：</p>
+<p><img src="/post/openaiapirsh/b40c146873c9.png" alt="聊天API文档"></p>
+<p>可以看到聊天的请求格式，下面是我们发出的一个事例：</p>
+<p><img src="/post/openaiapirsh/d7ffc532bab4.png" alt="聊天实例"></p>
+<p>可见它的返回结果和网页版的 ChatGPT 大体一致。</p>
+<h3 id="图片生成">图片生成<a aria-hidden="true" tabindex="-1" href="#图片生成"><span class="anchor-link"> #</span></a></h3>
+<p>图片生成也是该项目的一个重要功能，查看 API 文档：</p>
+<p><img src="/post/openaiapirsh/dd7f30cba907.png" alt="图片API文档"></p>
+<p>调用事例：</p>
+<p><img src="/post/openaiapirsh/b12bddc7fd2c.png" alt="图片生成"></p>
+<p>可以访问它生成图片的链接：</p>
+<p><img src="/post/openaiapirsh/ed4cdf7d324f.png" alt="生成图片"></p>
+<h3 id="其他">其他<a aria-hidden="true" tabindex="-1" href="#其他"><span class="anchor-link"> #</span></a></h3>
+<p>其他部分有文字补全，文字语音转换，等等，感兴趣可以自行去官网查看。</p>
+<h1 id="api应用">API应用<a aria-hidden="true" tabindex="-1" href="#api应用"><span class="anchor-link"> #</span></a></h1>
+<p>这里有一个很有意思的项目，它是 Github 上的开源项目，用于证明 ChatGPT 在 DOS 系统上的可行性，项目<a href="https://github.com/yeokm1/doschgpt">链接</a>。</p>
+<p><img src="/post/openaiapirsh/54e707065009.png" alt="doschgpt"></p>
+<h1 id="注意事项">注意事项<a aria-hidden="true" tabindex="-1" href="#注意事项"><span class="anchor-link"> #</span></a></h1>
+<p>注意事项包括：</p>
+<ul>
+<li>中国大陆地区不支持浏览 ChatGPT 网页，需要通过其他代理方式方可访问</li>
+<li>免费版的 Open API 有流量限制，请求数到达阀值后会触发限流</li>
+<li>收费版的 Open API 对中国大陆的国际信用卡支持不太好（即使付款成功了，可能还会面临封号风险）</li>
+</ul>
+<p>一般只用一个免费账号用用也可以，真要用高级模型，可以通过其他途径绕弯弯来用（方法很多，主要思路是通过那些模型代理商）。</p>7:["$","$L15",null,{"postData":{"id":"openaiapirsh","contentHtml":"$16","title":"OpenAI之OpenAPI初探","date":"$D2023-03-28T22:11:08.000Z","updated":"$D2023-03-28T22:11:08.000Z","categories":["随笔"],"tags":["OpenAI","AI","ChatGPT"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"OpenAI之OpenAPI初探"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

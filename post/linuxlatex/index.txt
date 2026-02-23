@@ -1,0 +1,118 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"ZnA_pffjAXy0PvB3tEph0","p":"","c":["","post","linuxlatex",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","linuxlatex","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","linuxlatex","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","oKOQfqLLZxRgyTY7Pg82u",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-7dd07b3f065cc09a.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T233b,<h2 id="tex系统简介">TeX系统简介<a aria-hidden="true" tabindex="-1" href="#tex系统简介"><span class="anchor-link"> #</span></a></h2>
+<p><strong>TeX</strong>系统最早由Stanford大学教授Donald E. Kunth制成的计算机排版软件系统，大家对他的《The Art of Computer Programming》应该不会陌生。</p>
+<p>实际上，TeX的制成正是由于上述的书出版样本，令他不满意，所以激发了他创制了TeX排版系统。正所谓：一个确定性的需求比十所大学更能把握前进的方向。</p>
+<p>大家可能经常以据如MS Word等这类简单排版的所见即所得的软件，或者在Linux中以LibreOffice中的Word这样的软件，来完成文字排版等操作，但是对于论文，书籍这样的文档，和TeX相比，MS Word这些软件就成了小儿科了。</p>
+<p>说了这么多，今天的主题可是在Linux中搭建TeX系统，所以我就不废话了，如有疑惑，可以自己百度。</p>
+<p>首先需要准备如下软件包或压缩包：</p>
+<ul>
+<li>texlive 或 tetex</li>
+<li>CJK</li>
+<li>字体，比如：nsung-tl,nkai-tl <em>（后面的tl应该表示texlive）</em></li>
+</ul>
+<p>下面逐个简单介绍各个包的功能和作用。</p>
+<h3 id="1-texlive或tetex">1. texlive或tetex<a aria-hidden="true" tabindex="-1" href="#1-texlive或tetex"><span class="anchor-link"> #</span></a></h3>
+<p>这个包是整个排版系统的主要部分，它是排版系统的核心，texlive和tetex是两个发行版，但是它们实现功能基本相同，大同小异，只要有其中一个即可，下文以texlive为例，当然还有很多实现TeX系统的其他软件。</p>
+<p>上述所述的texlive，虽然从理论上说，TeX已经可以完成排版，但是它只包含基本命令，使用起来会非常麻烦，很繁琐，要写更多的代码，这就类似于：在Windows环境里，用纯C写个GUI程序与用MFC写个GUI程序相比较，或者在Linux环境里，用纯C调用xlib的X Windows的API来写GUI程序与调用gtk+或qt(用C++)来写GUI程序。</p>
+<p>LaTex同TeX一样，也是texlive的一个组件，Latex主要特色是其自动编号，包括章，节，段落，公式，图表等，这给排版工作带来极大的方便。</p>
+<h3 id="2-cjk">2. CJK<a aria-hidden="true" tabindex="-1" href="#2-cjk"><span class="anchor-link"> #</span></a></h3>
+<p>原始的LaTex版本是不支持中文这些文字的，它只支持英文，即ASCII字符中小于0x80的字符。为了让LaTex能够支持中文，需要为LaTeX系统添加宏，使得其可以处理中文，而CJK，除了可以处理中文，还可处理日文，韩文，CJK意为Chinese，Japanese，Korean。</p>
+<h3 id="3-字体">3. 字体<a aria-hidden="true" tabindex="-1" href="#3-字体"><span class="anchor-link"> #</span></a></h3>
+<p>仅仅安装了CJK宏包，仍然不能输出中文（编译.tex文件时会输出找不到字体的错误），这些字体中的汉字的标点符号会被当作汉字字体来处理的，不会影响到任何汉字标点符号的表示。字体同宏包一样，以压缩包形式存放。</p>
+<h2 id="具体操作步骤">具体操作步骤<a aria-hidden="true" tabindex="-1" href="#具体操作步骤"><span class="anchor-link"> #</span></a></h2>
+<p>当以上软件包或压缩包都下载好后，首先，安装texlive，使系统具备TeX系统基础环境，如果是首次安装texlive，需要在安装前先安装一个install-tl-unx的包，这个包包含一些Perl脚本，用来设置在安装texlive之前的基本环境条件。</p>
+<p>基本的TeX环境制好后，我们需要的LaTeX便就有了，必须需要它。LaTex也可理解为是TeX的拓展，使得TeX系统使用起来更加简单，方便。</p>
+<p>把texlive软件安装好后，就是安装CJK宏包了，这是个压缩包，把它解压缩后，依据里面的texmf相对目录，在找到系统中的texmf系统的相对目录，把压缩包解开后的文件一一对应地复制到系统的texmf相对目录下的对应位置。这个texmf系统目录在不同的Linux发行版可能存在差别，我的texmf目录在<code>/usr/share/texmf</code>，还有的系统把它放到<code>/opt/texlive/texmf</code>，甚至<code>/usr/local/share/texmf</code>。</p>
+<p>CJK宏包复制完毕过后，用texhash命令更新一下，这样刚才复制过去的宏包就可以被TeX系统找到了。<em>（在用texhash时，CJK下的目录及文件会被添加到ls-R的索引文件中）</em></p>
+<p>到这里，基本快大功告成了。但是，没有字体还是不能输出中文字体的，字体文件的安装不同于上述的软件包或压缩包安装，它是直接安装在用户目录的，比如：<code>/home/xxx</code>，安装之后，用户目录会多出一个texmf文件夹，里面包含字体文件的相关数据，因此不要删除它，否则，字体就又没有了。</p>
+<p>这里详述一下字体安装，解开字体的压缩包后，终端跳到解开后的压缩包的目录下，可以用<code>ls</code>命令看到有个<code>install.sh</code>和<code>uninstall.sh</code>。</p>
+<p>若想安装该字体，只要输入：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">./install.sh
+</code></pre></div>
+<p>即可安装该字体，但不想要这个字体时，只要输入：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">./uninstall.sh
+</code></pre></div>
+<p>这些字体会安装在用户的<code>texmf</code>目录下，无需切换到root用户来安装，而且安装的字体也只对该用户有效。</p>
+<blockquote>
+<p>上面对于软件的安装没有详述，那些步骤都是常规软件安装步骤，在此略过，比如，rpm包用rpm来装，解决依赖项，如果是源代码编译安装，用<code>./configure</code>配置，生成Makefile，再<code>make</code>，再<code>make install</code>来安装，有的有许多选项，自己可以用<code>./configure --help</code>来参考一下，make那两个命令是最基本的，据如<code>make dist/test/pdf/...</code><em>（实际上，可以在Makefile中查看）</em>，普通非软件专业人不知也罢。</p>
+</blockquote>
+<h2 id="相关文件下载地址">相关文件下载地址<a aria-hidden="true" tabindex="-1" href="#相关文件下载地址"><span class="anchor-link"> #</span></a></h2>
+<p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a>
+<a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a>
+<a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a>
+<a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a>
+<a href="http://cjk.ffii.org/">CJK</a>
+<a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">字体文件</a></p>
+<p><em>注：另外在tug.org站点(TeX User Group)上有很多有用的东西，自己在上面找一下</em></p>
+<h2 id="实例">实例<a aria-hidden="true" tabindex="-1" href="#实例"><span class="anchor-link"> #</span></a></h2>
+<p>下面我写的一个代码实验：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">ruby</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-ruby">\documentclass[10pt]{article}
+\usepackage{<span class="hljs-variable constant_">CJK</span>}
+\<span class="hljs-keyword">begin</span>{document}
+\<span class="hljs-keyword">begin</span>{<span class="hljs-variable constant_">CJK</span>}{<span class="hljs-variable constant_">UTF8</span>}{nsung}
+这是一个测试 
+\section{章标题}
+这是章的介绍
+\subsection{节的标题}
+这是节的介绍
+\subsubsection{子节的标题}
+这是子节的介绍 \\
+数学公式的测试：\\
+\<span class="hljs-title class_">Huge</span>{<span class="hljs-variable">$y</span>=<span class="hljs-number">2</span>^x+\frac{<span class="hljs-number">4</span>}{<span class="hljs-number">6</span>^z}<span class="hljs-variable">$}</span>
+\footnote{这仍然是个测试，一个脚注}
+\<span class="hljs-keyword">end</span>{<span class="hljs-variable constant_">CJK</span>}
+\<span class="hljs-keyword">end</span>{document}
+</code></pre></div>
+<p>实验打印出的.dvi文件：</p>
+<p><img src="/post/linuxlatex/1ee5ee5e92bb.png" alt="dvi"></p>7:["$","$L15",null,{"postData":{"id":"linuxlatex","contentHtml":"$16","title":"Linux环境搭建中文LaTeX排版系统","date":"$D2016-05-03T04:12:20.000Z","updated":"$D2016-05-03T04:12:20.000Z","categories":["随笔"],"tags":["linux","latex"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Linux环境搭建中文LaTeX排版系统"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

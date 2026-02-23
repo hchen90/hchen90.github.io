@@ -1,0 +1,128 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"ZnA_pffjAXy0PvB3tEph0","p":"","c":["","post","mspeshell",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","mspeshell","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","mspeshell","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Z5zBFJShZizr_OQNYAAY9",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-7dd07b3f065cc09a.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T380a,<h1 id="简介">简介<a aria-hidden="true" tabindex="-1" href="#简介"><span class="anchor-link"> #</span></a></h1>
+<p>今天来讨论一下PE文件的壳，壳主要用于PE文件的商业保护，以此达到软件不被暴掉的可能性，随着破解知识的普及，软件的壳也愈加复杂才可勉强不被暴。</p>
+<p>壳的一个加载过程在许多书上都将过，这里就以图来复习一次：</p>
+<p><img src="/post/mspeshell/5053c5d77cf8.png" alt="pic1"></p>
+<p>这张图其实是一种情形，原程序被压缩引擎压过，还可以是在EXE文件上直接加壳不压缩，这样到省了壳的大小，但原EXE代码没有压缩，反而变大了一点，还有一种是在EXE文件的节区的空隙中添加，这样压缩过的文件和原文件一样大，但是对节区的大小有要求。这是三种常规的加壳思路。</p>
+<p>如果单单是加一个简单的壳，象罗云彬的*《windows32位环境下的汇编语言程序设计》*中的那个<code>AddCode</code>就是一个典型代表。主要步骤如下：</p>
+<p>首先在节区表上添加一个节区表信息，把代码写到文件的最后面（已经与新的节区表信息对应），主要注意一下，节区的<code>SectionAlignment</code>和<code>FileAlignment</code>，按照这两个参数写节区信息表，跳到节区表中对应文件偏移位置处，写入代码，代码在节区写不满，要填充<code>0</code>，保持文件对齐的值，通常<code>200</code>，最后是收尾工作，PE文件的<code>NumberOfSections</code>加<code>1</code>，<code>SizeOfImage</code>要加上新节区按照<code>SectionAlignment</code>的值对齐后的大小的值，<code>SizeOfHeaders</code>要按照<code>FileAlignment</code>对齐的，如果加上一个<code>IMAGE_SECTION_HEADER</code>，大小不过<code>FileAlignment</code>，就可能不用修改其值的，还有个<code>SizeOfCode</code>是添加代码的大小，就是将含有代码的节区的大小值相加（这个值已经按<code>FileAlignment</code>对齐，载节区表中）。</p>
+<p>刚才讲的是上面说的第二个思路，还有两个思路，在下面的附件中有个与此类似的思路的一个，还有个是第三个思路的方法。</p>
+<p>上面的这个方法实现是比较简单的，但是这种方法没有什么程序保护功能，下面讲一下又保护功能的方法。</p>
+<p>要实现保护功能，可以保护的内容常见的有，导入函数，导出函数，代码段，数据段等。</p>
+<h1 id="如何实现导入函数的保护">如何实现导入函数的保护?<a aria-hidden="true" tabindex="-1" href="#如何实现导入函数的保护"><span class="anchor-link"> #</span></a></h1>
+<p>在PE文件的头中的<code>DataDirectory</code>有个导入函数的列表，指定<code>RVA</code>和大小，许多PE文件分析，如PEID，LoadPE，还有我的PE Scanner,都是根据这里找到函数的信息的。</p>
+<p>这个RVA，在PE文件加载后，会指定到一个<code>IMAGE_IMPORT_DESCRIPTOR</code>，这个结构如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">_IMAGE_IMPORT_DESCRIPTOR</span> {
+    <span class="hljs-keyword">union</span> {
+        DWORD   Characteristics;            <span class="hljs-comment">// 0 for terminatin gnull import descriptor</span>
+        DWORD   OriginalFirstThunk;         <span class="hljs-comment">// RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span>
+    } DUMMYUNIONNAME;
+    DWORD   TimeDateStamp;                  <span class="hljs-comment">// 0 if not bound,</span>
+                                            <span class="hljs-comment">// -1 if bound, and real date\time stamp</span>
+                                            <span class="hljs-comment">//     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span>
+                                            <span class="hljs-comment">// O.W. date/time stamp of DLL bound to (Old BIND)</span>
+
+    DWORD   ForwarderChain;                 <span class="hljs-comment">// -1 if no forwarders</span>
+    DWORD   Name;
+    DWORD   FirstThunk;                     <span class="hljs-comment">// RVA to IAT (if bound this IAT has actual addresses)</span>
+} IMAGE_IMPORT_DESCRIPTOR;
+
+<span class="hljs-keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;
+</code></pre></div>
+<p>在这个结构体中<code>OriginalFirstThunk</code>和<code>FirstThunk</code>虽然不指同一位置，但是它们指向的<code>ThunkData</code>所知的位置是相同的，等于一个是另一个的备份，在Windows的装载器加载时，会将<code>FirstThunk</code>指向的所有的<code>ThunkData</code>替换成<code>ThunkData</code>指向的函数的真正的地址，如下图：</p>
+<p><img src="/post/mspeshell/4bf2684e3b58.png" alt="pic2"></p>
+<p>在程序未加载时，可以看到磁盘文件如下：</p>
+<p><img src="/post/mspeshell/948f3eb1dd9b.png" alt="pic3"></p>
+<p><code>402014</code>的位置是<code>000020F4</code>，这个是<code>RVA</code>，在看这个<code>ThunkData</code>指向哪里，如下：</p>
+<p><img src="/post/mspeshell/00e48c9cd0f6.png" alt="pic4"></p>
+<p>可以看出再过去两个字节就是<code>ExitProcess</code>的函数名，这是个<code>IMAGE_IMPORT_BY_NAME</code>的结构，前两个字节是<code>HINT</code>，是个无关紧要的<code>WORD</code>字段，大致熟悉了一下PE的加载原理，如果自己写保护导入表的保护的话，这些过程需要自己代码“手动”完成。</p>
+<p>再来看一下PE文件加载后的情形，用windbg打开文件。</p>
+<p><img src="/post/mspeshell/5d1be787a24a.png" alt="pic5"></p>
+<p>这些<code>402014</code>的位置已经被填充数据，而不再是原来的<code>RVA</code>：<code>000020F4</code></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">css</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-css">JMP DWORD DS：<span class="hljs-selector-attr">[402014]</span>
+</code></pre></div>
+<p>也就成了：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs">JMP 754879f8
+</code></pre></div>
+<p>再看看<code>754879f8</code>处的数据：</p>
+<p><img src="/post/mspeshell/5bba3bb8e98c.png" alt="pic6"></p>
+<p>可以看到这里到了<code>Kernel32</code>中的<code>ExitProcessStub</code>，整个加载过程也就明了了。</p>
+<h2 id="如何加载藏的导入表">如何加载“藏”的导入表<a aria-hidden="true" tabindex="-1" href="#如何加载藏的导入表"><span class="anchor-link"> #</span></a></h2>
+<p>因此如果要保护输入表里的函数，就必须把原来的导入表的那些信息（包括<code>IMAGE_IMPORT_DESCRIPTOR</code>和一系列的<code>ThunkData</code>）“藏”起来，自己定义一个<code>IMAGE_IMPORT_DESCRIPTOR</code>和<code>ThunkData</code>，用于定义自己必须的API函数，这样自己就不用再堆中找Kernel32的基址，查导出函数等一系列的复杂工作，比如自己定义两个位于Kernel32.dll中的函数：<code>LoadLibraryA</code>和<code>GetProcAddressA</code>，自己把原来的导入函数信息表“藏”了起来，自己在程序加载时要把找出来，并且在<code>FirstThunk</code>中找函数，因为导入表被“藏”，PE的装载器没有为程序将<code>ThunkData</code>的值换成据如<code>754879f8</code>等这样的真正的函数地址，所以自己要找函数（有按序号导入的和按名称导入的两种），需要注意的是若找到的函数是序号导入的话，需去掉高位用于检测的<code>1</code>（即与<code>80000000H</code>检测），然后直接将其作为函数的名称，用<code>GetProcAddressA</code>来获取地址，DLL的名称获取更加简单，直接，用Name的<code>RVA</code>加基址，即可，获取DLL名称的字符串，可用<code>LoadLibraryA</code>，来加载。</p>
+<p>通过上面这些步骤，举例来说，使先前的<code>402014</code>的这些位置得到修正，自己用<code>LoadLibrary</code>加载<code>Kernel32.dll</code>，获取<code>ExitProcess</code>的地址，并且把得到的地址填到<code>402014</code>的位置处，这样<code>ExitProcess</code>函数才得以顺利执行，其他的函数其次类推，要把所有的<code>IMAGE_IMPORT_DESCRIPTOR</code>找遍，保证所有的函数地址都被填到恰当的位置。</p>
+<h2 id="关于加密数据和代码">关于加密数据和代码<a aria-hidden="true" tabindex="-1" href="#关于加密数据和代码"><span class="anchor-link"> #</span></a></h2>
+<p>上面的这些方法，其实只保护了导入表，但只要会点反汇编的人都能知道前面的代码，因为程序的入口虽改变，但是代码任在那里，可以改变偏移即可看到，如下两个对比图：</p>
+<p>没有加密代码段的情况（start处是我的代码）：</p>
+<p><img src="/post/mspeshell/7ca09d572900.png" alt="pic7"></p>
+<p>加密代码段的情况（start是我的代码）：</p>
+<p><img src="/post/mspeshell/999711ac8a3b.png" alt="pic8"></p>
+<p>加密代码段的情况下，需要在自己的代码里有揭秘代码的内容，以便代码得以执行，我的这个例子只是简单的转位，<code>rol</code>，<code>ror</code>，所以解密相当简单，如果要复杂的话，可以用压缩引擎压缩代码（<code>lz77</code>，<code>lzss</code>，或者复杂点的哈弗曼编码等等），这样还能更多节省空间，还可以用其他的密码学原理来加密等，具体细节，自由发挥。</p>
+<p>但是这种方式基本上还是经不住考验，ASPack，UPX，Pecompact等，还有附件中我自己编写的这个，用的都是这种方法。</p>
+<p>这种类型壳非常好脱，下面举个例子：</p>
+<p><img src="/post/mspeshell/6076c2fd91ef.png" alt="pic9"></p>
+<p>这是个ASPack的壳，刚开始的时候，断点处<code>push</code>后面的还是<code>0</code>，到此处已经变为<code>004013da</code>，这个正是原来程序的<code>ep</code>，其实ASPack前面的工作跟我的那个壳差不多，无非就是填充<code>ThunkData</code>和解密数据。</p>
+<p><img src="/post/mspeshell/e475c283bee9.png" alt="pic10"></p>
+<p>到此处，可见，ASPack把所有的<code>ThunkData</code>都填充了，用OllyDump顺便dump下，在看一下，导入表信息，借助LoadPE将其中的<code>NtDllDefWindowProc_A</code>改成<code>DefWindowProcA</code>，程序脱壳完成。</p>
+<p>这种壳之所以好脱，是因为，外壳代码，在程序揭秘后又将代码写到原来的位置，相当于把一件东西藏进一个多么可靠的容器中来保护它，但是要使用它就必须拿出来（壳的自解密），而就在拿出来时，我们可以把它恢复原始形态！！！</p>
+<p>如果设计一种机制，这个机制是每次需要执行代码时，先读取加密的数据，揭秘一条指令长的数据，然后再执行，然后再取，再揭秘，在执行，这个循环的过程一直执行下去，直到最后，而且用的空间只是一个指令长的地址空间，后面执行的代码覆盖前面的代码，短的指令，填充<code>90H</code>（<code>nop</code>），这样揭秘的数据不会记录，提高了安全性，但这个方法，需要面临下个数据的指令的长度，就需要个小型反汇编引擎嵌在壳上，还有<code>eip</code>跳转位置等的问题，但是就复杂了。</p>
+<h2 id="虚拟机的构想">虚拟机的构想<a aria-hidden="true" tabindex="-1" href="#虚拟机的构想"><span class="anchor-link"> #</span></a></h2>
+<p>上面的问题引起这个问题的产生，虚拟机就是模仿CPU指令执行，I/O环境等的一种机制，这种机制在虚拟机软件较常见，如：vmware，vbox等，壳也可以用虚拟机这种机制，只不过它主要模仿CPU的指令，也可模仿I/O环境等，将上面的机制设置的复杂一点，如：<code>pop eax</code>，转到虚拟机执行，变成，<code>dec eax</code>，<code>inc eax</code>转到虚拟机变成<code>push eax</code>，还可以更复杂，自己模拟一个I/O环境，每次<code>IN 45H</code>，表示<code>eax</code>加<code>1</code>，每次<code>IN 46H</code>表示<code>eax</code>减去<code>1</code>，<code>IN 50H</code>表示<code>ebx</code>加<code>1</code>等等（简而言之，就是模拟一套新的指令集，前面几个设想是自己天马行空，不必当真：）。</p>
+<p>虚拟机还可以参入密码学加密机制，等。</p>
+<p>总的来说，内容较多，涉及范围较广，而且若要设计起来，将是一个大的工程，估计壳的添加代码也较多。</p>
+<h2 id="最后一点补充">最后一点补充<a aria-hidden="true" tabindex="-1" href="#最后一点补充"><span class="anchor-link"> #</span></a></h2>
+<p>如果加壳的程序是个随机加载基址的程序，可能会影响到自己的揭秘后的代码正常执行，这时需要修正PE，去掉<code>.reloc</code>的节，主要是要将<code>DataDirectory</code>的随机加载的数据项清零，<code>NumberOfSections</code>减掉<code>1</code>，修正<code>SizeOfHeaders</code>，也有可能不需要修正，但是最重要的是要把<code>OptionalHeader</code>中的<code>DllCharacteristics</code>的值清零。</p>
+<p>附件中有两个是向程序的空余间隙添加代码，因此程序的空余间隙必须大一点，否则会失败。</p>
+<blockquote>
+<p>链接：<a href="https://bbs.pediy.com/thread-180609.htm">我在看雪上的帖子</a></p>
+</blockquote>7:["$","$L15",null,{"postData":{"id":"mspeshell","contentHtml":"$16","title":"PE文件壳的设计过程","date":"$D2013-10-26T23:44:15.000Z","updated":"$D2013-10-26T23:44:15.000Z","categories":["随笔"],"tags":["Windows","EXE"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"PE文件壳的设计过程"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

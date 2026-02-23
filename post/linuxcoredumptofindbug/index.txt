@@ -1,0 +1,110 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"ZnA_pffjAXy0PvB3tEph0","p":"","c":["","post","linuxcoredumptofindbug",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","linuxcoredumptofindbug","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","linuxcoredumptofindbug","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","I1FPqLmqeRGbORQAIvrlX",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-7dd07b3f065cc09a.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T1c5c,<h1 id="什么是coredump">什么是coredump？<a aria-hidden="true" tabindex="-1" href="#什么是coredump"><span class="anchor-link"> #</span></a></h1>
+<p><strong>Coredump</strong>是继承于UNIX系统的机制，它用于保存程序出错而崩溃时的栈，内存，PID，UID，GID，时间等等信息的快照，通常用于程序诊断和调试，<strong>Coredump</strong>的信息在计算机中一般保存三天左右（依系统设定而定），如果出错的程序BUG不及时查找，超过三天系统会吧这些<strong>Coredump</strong>删除。</p>
+<h1 id="需要些什么工具">需要些什么工具？<a aria-hidden="true" tabindex="-1" href="#需要些什么工具"><span class="anchor-link"> #</span></a></h1>
+<p>一般来说，只需要objdump和gdb即可，诊断时源代码以原始为佳（core dumped时的未修改的代码）。</p>
+<h1 id="案例分析">案例分析<a aria-hidden="true" tabindex="-1" href="#案例分析"><span class="anchor-link"> #</span></a></h1>
+<p>下面是我展示的一个出错事例，供参考观摩。</p>
+<h2 id="程序崩溃了">程序崩溃了<a aria-hidden="true" tabindex="-1" href="#程序崩溃了"><span class="anchor-link"> #</span></a></h2>
+<p>这个程序运行时，一点问题也没有，就是退出时有小概率的情况出现崩溃，这种最让人头疼，像这种隐蔽BUG，很多情形不会触发它，却在某个特殊条件下，它突然就发生了。总结为两难：</p>
+<ul>
+<li>难确定（是否发生）</li>
+<li>难定位</li>
+</ul>
+<p>见下图：</p>
+<p><img src="/post/linuxcoredumptofindbug/362a65b8f108.png" alt="pic1"></p>
+<h2 id="尝试用coredumpctl工具直接调试">尝试用coredumpctl工具直接调试<a aria-hidden="true" tabindex="-1" href="#尝试用coredumpctl工具直接调试"><span class="anchor-link"> #</span></a></h2>
+<p><em>coredumpctl</em>是systemd的工具之一，只要用的是这个系统服务的，应该都有，此工具使用非常简单，可以命令输入以获帮助：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">coredumpctl --<span class="hljs-built_in">help</span>
+</code></pre></div>
+<p>或者，也可以查看它的man文档。</p>
+<p>好了，言归正传，尝试输入命令以调试：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">coredumpctl debug xxxx
+</code></pre></div>
+<blockquote>
+<p>上面的xxxx是程序文件名，关于该程序名，可以用<code>coredumpctl list</code>查看到</p>
+</blockquote>
+<p>出现如下图的结果：</p>
+<p><img src="/post/linuxcoredumptofindbug/6c64330d950e.png" alt="pic2"></p>
+<p>这种情况就比较复杂了，可以看见<code>0x00007f77be94cf25 in ?? ()</code>这句，<strong>Coredump</strong>也不能在源代码确定具体出错的位置了，作为比较，我展示另一个例子：</p>
+<p><img src="/post/linuxcoredumptofindbug/71ba8acd8596.png" alt="pic3"></p>
+<p>上图这个例子出错代码立马被<strong>Coredump</strong>断定出来，很显然执行这句代码时崩溃的：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">*a = <span class="hljs-number">0</span>;
+</code></pre></div>
+<p>这句是我故意改错用于比较的，源代码是这样的：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">	<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">input</span><span class="hljs-params">(string&#x26; filename, ...)</span> </span>{
+	  cout &#x3C;&#x3C; filename &#x3C;&#x3C; endl;
+	  <span class="hljs-type">int</span>* a = <span class="hljs-number">0</span>;
+	  *a = <span class="hljs-number">0</span>;
+	  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+	}
+</code></pre></div>
+<p>好了，我们继续前面的<code>0x00007f77be94cf25 in ?? ()</code>这句，我们不能像前面这个立马断定，那该怎么办呢？</p>
+<h2 id="用coredumctl-info查看栈信息">用<code>coredumctl info</code>查看栈信息<a aria-hidden="true" tabindex="-1" href="#用coredumctl-info查看栈信息"><span class="anchor-link"> #</span></a></h2>
+<p>下面两张图展示了这个崩溃程序的栈信息。</p>
+<p>图一：</p>
+<p><img src="/post/linuxcoredumptofindbug/150a7f25d236.png" alt="pic4"></p>
+<p>图二：
+<img src="/post/linuxcoredumptofindbug/a6ba03170bef.png" alt="pic5"></p>
+<p>因为输出信息较宽，被我分成了两张图，注意图二中栈的调用列表，下面我们接着反汇编原始程序文件。</p>
+<h2 id="反汇编程序文件">反汇编程序文件<a aria-hidden="true" tabindex="-1" href="#反汇编程序文件"><span class="anchor-link"> #</span></a></h2>
+<p>反汇编原始崩溃程序文件时，不要忘记加<code>--source</code>参数，不然全是汇编代码查找效率就不是很高，即输入命令带反汇编：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">objdump --<span class="hljs-built_in">source</span> -d xxxx | less
+</code></pre></div>
+<p>图片展示：</p>
+<p><img src="/post/linuxcoredumptofindbug/9202c3c3e25b.png" alt="pic6"></p>
+<blockquote>
+<p>同样，xxxx为程序文件名</p>
+</blockquote>
+<p>这时，我们可以在<code>less</code>中依次查找各个栈地址（见图二所述），转到那个从<code>libc</code>刚出来，在程序文件最先出错位置，即：<code>0x42ce8</code>的文件位置，错误立马被锁定位置（可以依次查找栈上面的地址，顺藤摸瓜，可以断定那是在给<code>list</code>进行<code>clear</code>操作），原来是C++的类析构函数在析构一个<code>list</code>时出的错误，继而判定这个错误实际上是个多线程引起的错误，因为程序中还有一个子线程也在释放操作，是主线程和子线程同时释放引起，对于释放资源，主/子线程没有加同步，从而导致时而正常，时而出错，加上一个最简单的同步机制，问题解决。</p>7:["$","$L15",null,{"postData":{"id":"linuxcoredumptofindbug","contentHtml":"$16","title":"利用Linux的coredump机制快速定位程序BUG","date":"$D2019-11-12T09:12:29.000Z","updated":"$D2019-11-12T09:12:29.000Z","categories":["随笔"],"tags":["linux","debug","coredump","gdb","objdump"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"利用Linux的coredump机制快速定位程序BUG"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

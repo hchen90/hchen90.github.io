@@ -1,0 +1,191 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[415,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],"default"]
+5:I[9243,["766","static/chunks/766-f505dbd3efffaa4c.js","226","static/chunks/226-13d4d3f1fc18ceb6.js","177","static/chunks/app/layout-bc83bfd6141341e7.js"],""]
+8:I[9665,[],"MetadataBoundary"]
+a:I[9665,[],"OutletBoundary"]
+d:I[4911,[],"AsyncMetadataOutlet"]
+f:I[9665,[],"ViewportBoundary"]
+11:I[6614,[],""]
+:HL["/_next/static/css/283bb1ed86b49fd2.css","style"]
+:HL["/_next/static/css/09ec4099fb721b31.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/54b9acc791aa599c.css","style"]
+6:T4a2,
+          function copyCode(button) {
+            // Find the code element within the same wrapper
+            const codeWrapper = button.closest('.code-block-wrapper');
+            if (!codeWrapper) return;
+            
+            const codeElement = codeWrapper.querySelector('code');
+            if (!codeElement) return;
+            
+            // Get the text content
+            const text = codeElement.textContent;
+            
+            // Use the clipboard API to copy the text
+            navigator.clipboard.writeText(text).then(() => {
+              // Update the button state to show "Copied!"
+              button.setAttribute('data-copy-state', 'copied');
+              const buttonText = button.querySelector('.copy-button-text');
+              if (buttonText) buttonText.textContent = 'Copied!';
+              
+              // Reset after 2 seconds
+              setTimeout(() => {
+                button.setAttribute('data-copy-state', 'copy');
+                if (buttonText) buttonText.textContent = 'Copy';
+              }, 2000);
+            }).catch(err => {
+              console.error('Failed to copy text: ', err);
+            });
+          }
+          0:{"P":null,"b":"ZnA_pffjAXy0PvB3tEph0","p":"","c":["","post","deploygitlabcerunner",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","deploygitlabcerunner","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/283bb1ed86b49fd2.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09ec4099fb721b31.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"fixed top-4 right-4 z-50","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"id":"code-copy","children":"$6"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","deploygitlabcerunner","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/54b9acc791aa599c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","PuA4jbcl-4jJzQKxYLo92",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[4911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[9543,["874","static/chunks/874-e909718850e7282e.js","734","static/chunks/734-02ba314a893e68e9.js","351","static/chunks/351-7dd07b3f065cc09a.js","457","static/chunks/app/post/%5Bid%5D/page-871a46f82159f9c4.js"],"default"]
+16:T3b3c,<h1 id="玩转自搭建-gitlab-社区版">玩转自搭建 GitLab 社区版<a aria-hidden="true" tabindex="-1" href="#玩转自搭建-gitlab-社区版"><span class="anchor-link"> #</span></a></h1>
+<p>本文的自搭建是基于docker容器技术而实现的，其中包括<code>gitlab-ce</code>和<code>gitlab-runner</code>两个部分。</p>
+<h2 id="什么是-gitlab">什么是 GitLab<a aria-hidden="true" tabindex="-1" href="#什么是-gitlab"><span class="anchor-link"> #</span></a></h2>
+<p><strong>GitLab</strong>是一个代码仓库管理系统（它是一套开源项目），使用 Git 作为代码管理工具，集成 Web 管理的服务，<strong>GitLab</strong>被广泛用于基于 Git 代码管理平台，在很多一些结构不是复杂的组织结构中都会优先使用它。</p>
+<h2 id="它能做什么">它能做什么<a aria-hidden="true" tabindex="-1" href="#它能做什么"><span class="anchor-link"> #</span></a></h2>
+<p><strong>GitLab</strong>是代码仓库管理系统，它实现了一个更加界面友好的交互方式来对项目代码进行管理，除此之外，它还可以集成CI/CD特性，通过部署 <strong>GitLab-Runner</strong> 来对项目代码进行持续集成和部署分发。</p>
+<p>功能很实用，可以满足常规的项目开发工作。</p>
+<blockquote>
+<p>对比一些大项目，其设计复杂，对于代码的管控也非常复杂，采取的管理手段也多样化，GitLab可能不一定适应这种场景，为此大多数的做法是仓库管理系统和CI/CD系统分离的结构，仓库管理系统有五花八门的，有自己开发的（或者基于其他的开源项目），而对于CI/CD系统一般都是采用Jenkins，其有更加丰富的成熟套件和流程方案。</p>
+</blockquote>
+<h2 id="搭建步骤">搭建步骤<a aria-hidden="true" tabindex="-1" href="#搭建步骤"><span class="anchor-link"> #</span></a></h2>
+<p>这里介绍我测试搭建这套系统的搭建步骤。</p>
+<h3 id="搭建-gitlab-主框架">搭建 GitLab 主框架<a aria-hidden="true" tabindex="-1" href="#搭建-gitlab-主框架"><span class="anchor-link"> #</span></a></h3>
+<p>在Docker镜像的主官网上，我们其实可以搜索到<strong>GitLab</strong>的镜像，所以我们很方便的使用Docker技术来部署我们需要的服务。</p>
+<p><img src="/post/deploygitlabcerunner/530bd021d4e1.png" alt="docker-gitlab-ce"></p>
+<p>该镜像下有很多的<code>tags</code>，可以指定特定的版本，或者使用默认的最近版本。</p>
+<p><strong>GitLab</strong>的管理系统搭建，我使用编写<code>docker-compose.yml</code>方式来部署的，注意添加服务的时候，设置的环境变量<code>GITLAB_OMNIBUS_CONFIG</code>，可以为服务启动传递启动参数。</p>
+<p>当仓库管理系统服务创建并启动后，我们就可以打开浏览器来访问自搭建部署的<strong>GitLab</strong>服务了，如下图所示：</p>
+<p><img src="/post/deploygitlabcerunner/e2e1519d6a0e.png" alt="login"></p>
+<h3 id="登录管理员账号">登录管理员账号<a aria-hidden="true" tabindex="-1" href="#登录管理员账号"><span class="anchor-link"> #</span></a></h3>
+<p>以上步骤之后，需要登录管理员的账号，来进一步对系统进行配置，管理员的用户名是<code>root</code>，而密码需要从容器里面去获取，我们也可以获取容器的IP，便于后面的设置使用，如下：</p>
+<p><img src="/post/deploygitlabcerunner/9442444b2afa.png" alt="gitlab-ce-info"></p>
+<p>据此我们得到管理员的密码来登录系统。</p>
+<p><img src="/post/deploygitlabcerunner/1c87025556eb.png" alt="admin-dashboard"></p>
+<p>系统登录后进入系统配置的页面，在此页面上，我们可以完成仓库管理系统的所有配置工作。</p>
+<blockquote>
+<p>我们弄这个GitLab绝对不是仅仅作为代码管理系统而用的，如果仅仅为了代码仓库管理，可以移步到<code>gogs</code>这些代码仓库管理系统，它速度快，简洁而且美观，很有Github的界面感。</p>
+</blockquote>
+<h4 id="cicd环境部署配置">CI/CD环境部署配置<a aria-hidden="true" tabindex="-1" href="#cicd环境部署配置"><span class="anchor-link"> #</span></a></h4>
+<p>这是配置的重头戏了。</p>
+<p>当上面的步骤都差不多了，就要进行<strong>GitLab-Runner</strong>的部署，它是CI/CD的代理节点，我们可以在管理员界面下点开<strong>Runner</strong>查看可以用的列表：</p>
+<p><img src="/post/deploygitlabcerunner/f6e0f2e2f440.png" alt="runners"></p>
+<p>上面啥也没有，我们需要弄一个代理机器作为节点，让它去跑<strong>Runner</strong>，为此我们需要在代理机器上安装<strong>GitLab-Runner</strong>，这是常规操作。</p>
+<p>但是，我只是测试一下GitLab的特性，把玩一下而已，所有不需要那么复杂，仍然可以通过部署Docker的<strong>GitLab-Runner</strong>服务的运行它，并把它注册到本地，这样为了便于解析IP，我需要调整一下Hosts文件的内容，增加一行解析：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">vbnet</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-vbnet"><span class="hljs-number">192.168</span>.<span class="hljs-number">176.2</span> gitlab.<span class="hljs-keyword">me</span>
+</code></pre></div>
+<p>上面的<code>192.168.176.2</code>，不一定和你的一样，需要和上面的容器内的IP对应，这样多个容器都可以正确解析到正确的IP上去。</p>
+<p>下面是注册 Runner （这里的<code>token</code>可以从上图的<code>Registration token</code>处复制过来），如图所示：</p>
+<p><img src="/post/deploygitlabcerunner/53a51f2560c9.png" alt="runner-register"></p>
+<p>注册成功后，会在上面的Runners列表里面刷新出来。</p>
+<blockquote>
+<p>注意到，我这里的<code>executor</code>用的是<code>docker</code>，这样我可以用Docker镜像（gcc）来编译代码，这适合这种用Docker容器部署的情形，但是如果是直接把Runner安装在了实体机器上的，并且实体机器上已经存在开发环境，那么我们可以直接用<code>shell</code>方式来编译。如果是需要在代理节点上再次ssh登录远程机器来编译代码，那么<code>executor</code>就应该选用<code>ssh</code>的方式。具体使用哪种方式取决于实际环境。</p>
+</blockquote>
+<p>注册成功后，在 <strong>Runners</strong> 列表刷新出刚刚新加的<strong>Runner</strong>，如下图：</p>
+<p><img src="/post/deploygitlabcerunner/d954e9363c1c.png" alt="runner-list"></p>
+<p>上图中，点击左边的链接可以看到 <strong>Runner</strong> 的详情：</p>
+<p><img src="/post/deploygitlabcerunner/1e90dd45eba5.png" alt="runner-details"></p>
+<p>点击右边的铅笔，可以修改Runner的参数设定：</p>
+<p><img src="/post/deploygitlabcerunner/5329eafbdd66.png" alt="runner-enable-untag"></p>
+<p>这里我把<code>Run untagged jobs</code>复选框勾上，并保存修改。</p>
+<p>到这里整个<strong>Runner</strong>的配置基本就完成了。</p>
+<blockquote>
+<p>Runner还有更多的配置，详情可以参考官方文档介绍。</p>
+</blockquote>
+<h3 id="创建普通用户帐号">创建普通用户帐号<a aria-hidden="true" tabindex="-1" href="#创建普通用户帐号"><span class="anchor-link"> #</span></a></h3>
+<p>接着我们打开一个隐私页面，进入登录界面，这次我们点击<code>Register now</code>来新建用户，填写完用户信息后，注册一个新的用户，然后需要管理员在用户管理界面上进行批准，批准通过后，刚注册的用户就可以正常登录系统了，如下图（图中的用户已经新建了一个仓库）：</p>
+<p><img src="/post/deploygitlabcerunner/279ae5d2774b.png" alt="user-projects"></p>
+<p>该普通用户帐户是开发者，后面测试CI/CD系统将以该用户进行测试。</p>
+<h4 id="创建仓库">创建仓库<a aria-hidden="true" tabindex="-1" href="#创建仓库"><span class="anchor-link"> #</span></a></h4>
+<p>新建仓库非常简单，只需点击<code>New project</code>后，填写项目基本信息即可：</p>
+<p><img src="/post/deploygitlabcerunner/e89af7df63df.png" alt="new-project"></p>
+<h4 id="设置仓库的-gitlab-ci">设置仓库的 gitlab-ci<a aria-hidden="true" tabindex="-1" href="#设置仓库的-gitlab-ci"><span class="anchor-link"> #</span></a></h4>
+<p>设置仓库根目录下的<code>.gitlab-ci.yml</code>文件，添加流水线任务。</p>
+<p>我写的非常简单，<code>script</code>指定编译命令，<code>only</code>指定在哪一个分支下进行CI部署（我指定的是：main分支），然后<code>tags</code>和注册<strong>Runner</strong>的<code>tags</code>一一对应的。</p>
+<blockquote>
+<p>关于<code>gitlab-ci.yml</code>文件的更多细节可以参考<a href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">官方文档</a>。</p>
+</blockquote>
+<h4 id="提交代码并进行-ci-操作">提交代码并进行 CI 操作<a aria-hidden="true" tabindex="-1" href="#提交代码并进行-ci-操作"><span class="anchor-link"> #</span></a></h4>
+<p>当一切都准备妥当后，下面就是写代码，并提交到远程仓库的main分支下：</p>
+<p><img src="/post/deploygitlabcerunner/fc979b40e6df.png" alt="git-push"></p>
+<p>刚提交了代码，系统上立即显示流水线就已经在更新了。</p>
+<p><img src="/post/deploygitlabcerunner/94be700a77c7.png" alt="pipelines"></p>
+<p>可以点开正在执行的流水，查看任务细节：</p>
+<p><img src="/post/deploygitlabcerunner/121b5fa098bf.png" alt="pipeline-success"></p>
+<p>至此，这个<strong>GitLab</strong>的基本配置，和它的CI/CD流水配置，以及使用也已经完成，这套代码管理系统的实用性，总体来说还算不错的。</p>
+<h2 id="具体配置">具体配置<a aria-hidden="true" tabindex="-1" href="#具体配置"><span class="anchor-link"> #</span></a></h2>
+<p>以下两个文件是我的测试配置，仅供参考。</p>
+<h3 id="我的测试配置">我的测试配置<a aria-hidden="true" tabindex="-1" href="#我的测试配置"><span class="anchor-link"> #</span></a></h3>
+<p><code>.gitlab-ci.yml</code>配置如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">yaml</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-yaml"><span class="hljs-attr">stages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+
+<span class="hljs-attr">build source:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">build</span>
+  <span class="hljs-attr">tags:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">linux</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">gcc</span> <span class="hljs-string">-o</span> <span class="hljs-string">main</span> <span class="hljs-string">main.c</span>
+  <span class="hljs-attr">only:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">main</span>
+  <span class="hljs-attr">interruptible:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p><code>docker-compose.yml</code>配置如下：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">yaml</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.0"</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">gitlab-web:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">gitlab/gitlab-ce</span>
+    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attr">hostname:</span> <span class="hljs-string">'gitlab.me'</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="hljs-string">|
+        external_url 'http://gitlab.me:2080/'
+</span>    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'2080:2080'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'2443:443'</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/config:/etc/gitlab</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/logs:/var/log/gitlab</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/data:/var/opt/gitlab</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab</span>
+
+  <span class="hljs-attr">gitlab-runner:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">gitlab/gitlab-runner:alpine</span>
+    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab-web</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">/var/run/docker.sock:/var/run/docker.sock</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/gitlab-runner:/etc/gitlab-runner</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab</span>
+
+<span class="hljs-attr">networks:</span>
+  <span class="hljs-attr">gitlab:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">gitlab-network</span>
+
+</code></pre></div>
+<h3 id="我遇到的坑">我遇到的坑<a aria-hidden="true" tabindex="-1" href="#我遇到的坑"><span class="anchor-link"> #</span></a></h3>
+<blockquote>
+<p>可能会碰到的坑：</p>
+<ol>
+<li><code>docker-compose.yml</code>文件中设置环境变量<code>GITLAB_OMNIBUS_CONFIG</code>中的<code>external_url</code>，如果域名带端口，docker的服务监听会绑定到该端口上；</li>
+<li><code>gitlab-runner</code>的配置（config.toml），<code>runner.docker</code>节区下添加<code>network_mode</code>为<code>gitlab-network</code>以对应<code>docker-compose.yml</code></li>
+</ol>
+</blockquote>
+<h2 id="链接">链接<a aria-hidden="true" tabindex="-1" href="#链接"><span class="anchor-link"> #</span></a></h2>
+<p><a href="https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/">how-to-install-gitlab-using-docker-compose</a></p>7:["$","$L15",null,{"postData":{"id":"deploygitlabcerunner","contentHtml":"$16","title":"玩转自搭建 GitLab 社区版","date":"$D2022-07-02T10:03:12.000Z","updated":"$D2022-07-02T10:03:12.000Z","categories":["随笔"],"tags":["git","linux"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"玩转自搭建 GitLab 社区版"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.top/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
