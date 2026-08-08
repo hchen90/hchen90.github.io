@@ -1,0 +1,461 @@
+1:"$Sreact.fragment"
+2:I[7555,[],""]
+3:I[1295,[],""]
+4:I[4336,["177","static/chunks/app/layout-a3d389bf62394e40.js"],"default"]
+5:I[9243,["177","static/chunks/app/layout-a3d389bf62394e40.js"],""]
+7:I[9665,[],"MetadataBoundary"]
+9:I[9665,[],"OutletBoundary"]
+c:I[4911,[],"AsyncMetadataOutlet"]
+e:I[9665,[],"ViewportBoundary"]
+10:I[6614,[],""]
+:HL["/_next/static/css/0985a83a51673296.css","style"]
+:HL["/_next/static/css/09dfadb69bdaa005.css","style"]
+:HL["/_next/static/css/2669132bb555f7cd.css","style"]
+0:{"P":null,"b":"7y-iY95K969faH09LGqXq","p":"","c":["","post","pkitrustarch",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","pkitrustarch","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/0985a83a51673296.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/09dfadb69bdaa005.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","pkitrustarch","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",["$","$L7",null,{"children":"$L8"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/2669132bb555f7cd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L9",null,{"children":["$La","$Lb",["$","$Lc",null,{"promise":"$@d"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","-bJ5CiZuk_PA4uFKJ44jw",{"children":[["$","$Le",null,{"children":"$Lf"}],null]}],null]}],false]],"m":"$undefined","G":["$10","$undefined"],"s":false,"S":true}
+11:"$Sreact.suspense"
+12:I[4911,[],"AsyncMetadata"]
+8:["$","$11",null,{"fallback":null,"children":["$","$L12",null,{"promise":"$@13"}]}]
+b:null
+14:I[5077,["874","static/chunks/874-892b5f337f9dcf9c.js","734","static/chunks/734-02ba314a893e68e9.js","838","static/chunks/838-0055fbe9a114ce94.js","457","static/chunks/app/post/%5Bid%5D/page-8f85d8b918908b1e.js"],"default"]
+15:T8ea9,<h1 id="pki-体系结构与证书信任链">PKI 体系结构与证书信任链<a aria-hidden="true" tabindex="-1" href="#pki-体系结构与证书信任链"><span class="anchor-link"> #</span></a></h1>
+<p>日常上网时，浏览器地址栏的小锁、HTTPS、代码签名、邮件加密……背后都依赖同一套机制：<strong>公钥基础设施（PKI, Public Key Infrastructure）</strong>。</p>
+<p>本人曾多年就职于CA行业，此文不仅是个人的总结，也算是小白科普文。本文先粗略梳理 PKI 的基本结构，以及证书如何把「不认识的对方」变成「可验证的信任」。</p>
+<h2 id="核心问题如何信任一把公钥">核心问题：如何信任一把公钥？<a aria-hidden="true" tabindex="-1" href="#核心问题如何信任一把公钥"><span class="anchor-link"> #</span></a></h2>
+<p>非对称加密本身只解决「谁有私钥谁能解密/签名」，并不回答：<strong>这把公钥到底属于谁？</strong></p>
+<p>如果攻击者用自己的密钥对冒充目标，你拿到的公钥再「正确」也没用。PKI 要解决的，就是在开放网络里建立对公钥归属的信任。</p>
+<h2 id="pki-的基本角色">PKI 的基本角色<a aria-hidden="true" tabindex="-1" href="#pki-的基本角色"><span class="anchor-link"> #</span></a></h2>
+<p>一个典型的 PKI 可以看成一套「发证—用证—验真」的协作体系。下面按角色拆开看。</p>
+<h3 id="ca证书颁发机构">CA（证书颁发机构）<a aria-hidden="true" tabindex="-1" href="#ca证书颁发机构"><span class="anchor-link"> #</span></a></h3>
+<p>CA 是整套体系的信任核心：审核申请方身份后，用自己的私钥对证书内容签名，从而声明「这份公钥属于某某主体」。</p>
+<p>实务上 CA 通常分层：</p>
+<ul>
+<li><strong>根 CA（Root CA）</strong>：私钥离线保管，极少直接签发终端证书；其证书被预置进操作系统 / 浏览器的 <strong>Root Store</strong>，是信任的起点。</li>
+<li><strong>中间 CA（Intermediate CA）</strong>：由根（或上级中间）签发，日常负责签发服务器证、客户端证等。根私钥一旦泄露影响面极大，所以用中间层把风险隔离开。</li>
+</ul>
+<p>你之所以信某个网站，本质上是因为你信本地 Root Store 里那批根，以及它们签发下来的整条链。</p>
+<h3 id="ra注册机构">RA（注册机构）<a aria-hidden="true" tabindex="-1" href="#ra注册机构"><span class="anchor-link"> #</span></a></h3>
+<p>RA 不是必须独立存在的组件，但在规模化 CA 里很常见。它负责证书申请入口、身份核验、资料收集，再把「已通过审核」的请求交给 CA 签发。</p>
+<p>可以把它理解成 CA 的「前台 + 审核岗」：CA 专注密钥与签发，RA 专注业务受理。小规模或私有 CA 里，这两步往往合在同一个系统里完成。</p>
+<h3 id="证书持有者subscriber">证书持有者（Subscriber）<a aria-hidden="true" tabindex="-1" href="#证书持有者subscriber"><span class="anchor-link"> #</span></a></h3>
+<p>持有者生成（或由 HSM 等托管）密钥对，把公钥交给 CA/RA 申请证书；证书签发后，<strong>私钥始终留在持有者侧</strong>，证书则对外出示。</p>
+<p>常见持有者包括：</p>
+<ul>
+<li>Web 服务器（TLS 服务器证书）</li>
+<li>个人 / 设备（客户端证书、邮件签名加密）</li>
+<li>软件发布者（代码签名证书）</li>
+</ul>
+<p>证书只证明「公钥与身份的绑定」；真正能证明「我就是证书主人」的，是私钥参与的签名或握手。</p>
+<h3 id="依赖方relying-party">依赖方（Relying Party）<a aria-hidden="true" tabindex="-1" href="#依赖方relying-party"><span class="anchor-link"> #</span></a></h3>
+<p>依赖方是「信不信这张证书」的实际决策者：浏览器、操作系统、API 客户端、邮件客户端等。</p>
+<p>它的工作大致是：拿到对方证书链 → 校验签名与路径 → 检查有效期 / 用途 / 域名 → 查询是否吊销 → 决定是否建立信任。依赖方不签发证书，但决定信任是否生效；Root Store 配错、校验逻辑松，都会直接削弱 PKI 的安全效果。</p>
+<h3 id="吊销与状态服务crl--ocsp">吊销与状态服务（CRL / OCSP）<a aria-hidden="true" tabindex="-1" href="#吊销与状态服务crl--ocsp"><span class="anchor-link"> #</span></a></h3>
+<p>证书有有效期，但有效期内也可能作废（私钥泄露、域名易主、员工离职等）。这时需要一种机制告诉依赖方：「这张证别再信了」。</p>
+<ul>
+<li><strong>CRL（Certificate Revocation List）</strong>：CA 定期发布的吊销列表，依赖方下载后本地比对。</li>
+<li><strong>OCSP（Online Certificate Status Protocol）</strong>：按证书实时查询状态，更细粒度；也有 OCSP Stapling 等优化，减轻对 OCSP 服务的依赖。</li>
+</ul>
+<p>没有可靠的吊销通道，被盗私钥对应的证书在过期前仍可能被滥用——因此吊销是 PKI 运转中不可省略的一环。</p>
+<h2 id="证书把身份绑到公钥上">证书：把身份绑到公钥上<a aria-hidden="true" tabindex="-1" href="#证书把身份绑到公钥上"><span class="anchor-link"> #</span></a></h2>
+<p>数字证书本质上是一份由 CA <strong>签名</strong>的文档，把「主体是谁」和「公钥是什么」绑在一起。常见字段至少包括：</p>
+<ul>
+<li>主体信息（域名、组织、个人标识等）</li>
+<li>公钥及算法标识</li>
+<li>有效期</li>
+<li>颁发者</li>
+<li>扩展项（密钥用途、SAN、CRL 分发点等）</li>
+<li>CA 的数字签名</li>
+</ul>
+<p>验证时：用颁发者的公钥校验签名 → 确认「这份绑定关系未经篡改，且由该 CA 声明」。若颁发者本身也被上级 CA 信任，信任就可以沿链条向上传递。</p>
+<h3 id="证书格式大家都站在-x509-上">证书格式：大家都站在 X.509 上<a aria-hidden="true" tabindex="-1" href="#证书格式大家都站在-x509-上"><span class="anchor-link"> #</span></a></h3>
+<p>无论国际还是国密，实务里主流证书几乎都落在 <strong>X.509 v3</strong> 骨架上：ASN.1 定义结构，DER 编码成字节流，再用 PEM（<code>-----BEGIN CERTIFICATE-----</code>）或 DER 文件分发。</p>
+<p>也就是说，<strong>格式框架是统一的</strong>；真正拉开差异的，是里面填的算法、OID、密钥用途约定，以及信任体系与协议栈是否认这套算法。</p>
+<p>常见「外壳」还可以顺带提一句：</p>
+<ul>
+<li><strong>证书本身</strong>：X.509（<code>.cer</code> / <code>.crt</code> / <code>.pem</code>）</li>
+<li><strong>私钥与证书打包</strong>：PKCS#12（<code>.p12</code> / <code>.pfx</code>）、PKCS#8 等</li>
+<li><strong>申请材料</strong>：PKCS#10（CSR）</li>
+</ul>
+<p>这些容器国际与国密场景都会用，差别仍在算法套件。</p>
+<h3 id="国际证书rsa--ecc-体系">国际证书（RSA / ECC 体系）<a aria-hidden="true" tabindex="-1" href="#国际证书rsa--ecc-体系"><span class="anchor-link"> #</span></a></h3>
+<p>常说的「国际证书」，一般指遵循 IETF <strong>PKIX</strong>（RFC 5280 等）实践、算法走国际主流套件的 X.509 证书：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>常见选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公钥算法</td>
+<td>RSA（2048/3072…）、ECDSA（P-256 / P-384 等）</td>
+</tr>
+<tr>
+<td>摘要 / 签名</td>
+<td>SHA-256、SHA-384 等；如 <code>sha256WithRSAEncryption</code>、<code>ecdsa-with-SHA256</code></td>
+</tr>
+<tr>
+<td>对称加密（协议侧）</td>
+<td>AES 等（证书本身不承载会话密钥，TLS 里另协商）</td>
+</tr>
+</tbody>
+</table>
+<p>特点可以概括为：</p>
+<ul>
+<li><strong>生态成熟</strong>：浏览器、操作系统、OpenSSL、Java、Go 等默认支持，Root Store 也以国际公信 CA 为主。</li>
+<li><strong>一张证多用</strong>：TLS 服务器证书常见同一把密钥既做握手认证，也参与密钥交换相关能力（具体取决于 Key Usage / 协议版本）；个人证书、代码签名等按用途拆分，但<strong>签名与加密密钥分离不是硬性制度</strong>。</li>
+<li><strong>互操作性好</strong>：跨国网站、公有云、开源软件栈基本以此为准。</li>
+</ul>
+<h3 id="国密证书sm-算法体系">国密证书（SM 算法体系）<a aria-hidden="true" tabindex="-1" href="#国密证书sm-算法体系"><span class="anchor-link"> #</span></a></h3>
+<p>国密证书同样可以是 X.509 v3，但算法与规范约束换成国家商用密码体系，相关格式要求见 <strong>GM/T 0015</strong>（《数字证书格式》）等标准。核心算法通常是：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SM2</strong></td>
+<td>椭圆曲线公钥算法（签名、密钥交换、公钥加密）</td>
+</tr>
+<tr>
+<td><strong>SM3</strong></td>
+<td>杂凑算法（类似 SHA 族的角色）</td>
+</tr>
+<tr>
+<td><strong>SM4</strong></td>
+<td>分组对称算法（多用于协议层加解密）</td>
+</tr>
+</tbody>
+</table>
+<p>证书里用国密 OID 标明算法，例如（常见值，便于对照）：</p>
+<ul>
+<li>SM2 公钥：<code>1.2.156.10197.1.301</code></li>
+<li>SM3withSM2 签名：<code>1.2.156.10197.1.501</code></li>
+</ul>
+<p>国密实践里一个醒目特点是<strong>双证书</strong>（尤其在电子政务、金融等场景）：</p>
+<ul>
+<li><strong>签名证书</strong>：Key Usage 侧重 <code>digitalSignature</code>（及不可否认等），私钥本地生成、不可导出为宜。</li>
+<li><strong>加密证书</strong>：Key Usage 侧重 <code>keyEncipherment</code> / 数据加密，加密私钥常由 CA 侧参与生成或托管，便于密钥恢复等业务要求。</li>
+</ul>
+<p>两张证 Subject 指向同一主体，但密钥、序列号、用途分离——这和许多国际 TLS 场景「一张服务器证打天下」的习惯不同。</p>
+<h4 id="双证私钥生成差异">双证私钥生成差异<a aria-hidden="true" tabindex="-1" href="#双证私钥生成差异"><span class="anchor-link"> #</span></a></h4>
+<p>双证不只是「发两张证」，关键在于<strong>两把私钥从哪来、谁能拿到</strong>。这直接决定了抗抵赖和密钥恢复能不能同时成立。</p>
+<p><strong>签名私钥：用户侧生成，CA 碰不到</strong></p>
+<p>典型流程：</p>
+<ol>
+<li>在 USB Key / 智能卡 / 本地密码模块里生成 SM2 签名密钥对</li>
+<li>私钥不出载体（不可导出）</li>
+<li>仅把公钥打进 CSR，交给 RA/CA 审核签发签名证书</li>
+</ol>
+<p>这样「谁签的谁负责」才说得通：CA 从未持有签名私钥，事后无法伪造用户签名，也满足不可否认的业务要求。</p>
+<p><strong>加密私钥：CA / 密钥管理中心生成，可托管恢复</strong></p>
+<p>加密密钥若也只存在用户本地、丢失即无法解密历史密文，对邮件归档、公文、监管取证都不友好。因此常见做法是：</p>
+<ol>
+<li><strong>KMC（密钥管理中心）或 CA</strong> 生成加密密钥对</li>
+<li>用加密公钥签发加密证书</li>
+<li>加密私钥经保护后下发给用户（常见：用用户的<strong>签名公钥</strong>做数字信封 / SM2 加密包裹，用户再用签名私钥解开并写入 Key）</li>
+<li>CA/KMC <strong>留存或可恢复</strong>加密私钥副本（密钥托管 / 密钥恢复）</li>
+</ol>
+<p>于是出现不对称的安全模型：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>签名密钥</th>
+<th>加密密钥</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谁生成</td>
+<td>用户（或用户侧密码设备）</td>
+<td>CA / KMC</td>
+</tr>
+<tr>
+<td>私钥是否离开生成方</td>
+<td>一般否</td>
+<td>会安全下发到用户，且服务端可保留恢复能力</td>
+</tr>
+<tr>
+<td>设计目标</td>
+<td>抗抵赖、身份认证</td>
+<td>保密通信，且支持遗失/离职后的密文恢复</td>
+</tr>
+<tr>
+<td>丢失后果</td>
+<td>重新申请签名证即可（历史签名仍可验）</td>
+<td>若无托管，历史密文可能永久无法解密</td>
+</tr>
+</tbody>
+</table>
+<p>申请双证时，客户端往往先完成签名证申请，再凭已有的签名能力去「拆开」CA 下发的加密私钥保护包——所以你会看到不少国密 RA/客户端流程里，<strong>签名证与加密证成对申请、顺序依赖</strong>。</p>
+<p>需要注意：不是所有国密部署都严格走「加密钥必托管」。设备证、某些 TLS 网关场景可能简化；但在电子签章、安全邮件、政务公文这类「既要抗抵赖又要能解密归档」的业务里，上述差异几乎是标配。</p>
+<h3 id="特性对比">特性对比<a aria-hidden="true" tabindex="-1" href="#特性对比"><span class="anchor-link"> #</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>国际证书</th>
+<th>国密证书</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结构骨架</td>
+<td>X.509 v3</td>
+<td>X.509 v3（GM/T 0015 约束）</td>
+</tr>
+<tr>
+<td>典型算法</td>
+<td>RSA / ECDSA + SHA-2</td>
+<td>SM2 + SM3（协议侧常配 SM4）</td>
+</tr>
+<tr>
+<td>密钥组织</td>
+<td>多为单证；按业务再拆分</td>
+<td>常强制签名证 + 加密证</td>
+</tr>
+<tr>
+<td>信任源</td>
+<td>国际 Root Store / 公信 CA</td>
+<td>国密根体系、行业/政务 CA</td>
+</tr>
+<tr>
+<td>协议与客户端</td>
+<td>标准 TLS、主流浏览器原生支持</td>
+<td>国密 TLS（如 GMTLS）、需国密栈或网关</td>
+</tr>
+<tr>
+<td>主要驱动力</td>
+<td>全球互联互通</td>
+<td>国内合规（《密码法》、等保等）</td>
+</tr>
+</tbody>
+</table>
+<p>一句话：<strong>格式可以长得很像，算法、OID、双证约定和信任域却不是一回事。</strong> 把国密证塞进只认 RSA/ECDSA 的浏览器，或把国际证接到只认 SM 套件的国密网关，都会在校验或握手阶段失败——问题往往不在「是不是证书」，而在「对方认不认这套密码与 OID」。</p>
+<p>实际部署里也常见「双栈」：同一业务同时提供国际 TLS 与国密 TLS，或由 SSL 网关做算法终结，对内再转统一协议。选型时先分清合规要求与客户端能力，再谈证书申请与链搭建。</p>
+<h2 id="信任链从叶子到根">信任链：从叶子到根<a aria-hidden="true" tabindex="-1" href="#信任链从叶子到根"><span class="anchor-link"> #</span></a></h2>
+<p>实际场景很少直接用根 CA 签终端证书，而是分层：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">swift</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-swift">根 <span class="hljs-type">CA（Root）</span>
+  <span class="hljs-operator">└──</span> 中间 <span class="hljs-type">CA（Intermediate）</span>
+        <span class="hljs-operator">└──</span> 服务器<span class="hljs-operator">/</span>用户证书（<span class="hljs-type">Leaf）</span>
+</code></pre></div>
+<p>校验流程可以概括为：</p>
+<ol>
+<li>拿到对方出示的叶子证书（及中间证书）</li>
+<li>沿签发关系向上验证签名，直到某个<strong>本地已信任的根</strong></li>
+<li>检查有效期、用途（Extended Key Usage）、域名匹配（SAN）等</li>
+<li>查询是否被吊销（CRL / OCSP）</li>
+</ol>
+<p>任一步失败，信任不成立。这就是「证书链校验」。</p>
+<p>理想情况下，依赖方本地只认「自家」那一棵树。现实里机构并购、行业互联、国密与国际双栈、根密钥轮换，都会打破这种单树假设——于是出现<strong>交叉信任</strong>与<strong>信任根更换</strong>两类高频问题。</p>
+<h3 id="证书交叉信任">证书交叉信任<a aria-hidden="true" tabindex="-1" href="#证书交叉信任"><span class="anchor-link"> #</span></a></h3>
+<p>交叉信任（cross-certification）解决的是：<strong>两套各自独立的 PKI，如何让对方的用户也能验对方的证书。</strong></p>
+<p>常见形态：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">css</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-css">PKI-<span class="hljs-selector-tag">A</span> 的根 ──交叉签──→ PKI-<span class="hljs-selector-tag">B</span> 的根（或中间）
+PKI-<span class="hljs-selector-tag">B</span> 的根 ──交叉签──→ PKI-<span class="hljs-selector-tag">A</span> 的根（或中间）   // 双向时
+</code></pre></div>
+<p>含义是：A 根用自己的私钥给 B 的 CA 证书签名（或反之），于是「只信任 A 根」的依赖方，可以把 B 域下的叶子证书<strong>桥接</strong>到 A 根上完成路径构建。行业里也常见用**桥 CA（Bridge CA）**做星型枢纽，避免每两家都签一对交叉证。</p>
+<p>交叉信任带来的实际麻烦：</p>
+<ul>
+<li><strong>路径不再唯一</strong>：同一张叶子证可能走出多条到不同信任锚的路径，客户端要做路径构建与策略筛选（证书策略 OID、名称约束、路径长度约束等）。</li>
+<li><strong>策略不对齐</strong>：A 的审核标准、密钥用途、算法套件若与 B 不一致，交叉签等于「把信任边界开口」——开口多大，风险就多大。</li>
+<li><strong>国密 / 国际并存</strong>：两边算法、OID、双证约定不同时，交叉往往不只是「签一张交叉证」，还要保证依赖方密码栈两边都能验；很多现场干脆用网关或双证书部署回避真交叉。</li>
+<li><strong>吊销与生命周期</strong>：交叉证本身也要管有效期和吊销；交叉关系撤销后，原先「绕过去」的信任路径应立即失效，否则会出现幽灵信任。</li>
+</ul>
+<p>一句话：交叉信任是组织间互联的刚需，但也是 PKI 运维里最容易配错、最难排查的一环——出问题时常表现为「有的客户端能过、有的不能」，根因多在路径构建或策略约束，而不在叶子证本身坏了。</p>
+<h3 id="信任根更换root-rollover">信任根更换（Root Rollover）<a aria-hidden="true" tabindex="-1" href="#信任根更换root-rollover"><span class="anchor-link"> #</span></a></h3>
+<p>根 CA 也有寿命：算法升级（如淘汰弱签名）、密钥泄露应对、合规要求更换、厂商/行业根迁移，都会触发<strong>信任根更换</strong>。根不能「说换就换」，因为依赖方 Root Store 的更新往往滞后于 CA 侧发证。</p>
+<p>实务上更稳妥的是<strong>新旧根并存的滚动切换</strong>，而不是硬切：</p>
+<ol>
+<li><strong>生成新根</strong>，私钥离线保管；必要时先发新中间 CA。</li>
+<li><strong>交叉或链桥过渡</strong>：用旧根给新根（或新中间）签名，和/或用新根给旧中间签名，让「只信旧根」与「已信新根」的客户端在过渡期都能构出有效路径。</li>
+<li><strong>并行签发</strong>：过渡期内叶子证可挂在新旧两条链上，或服务器同时下发可被两边锚定的证书链。</li>
+<li><strong>推动信任锚更新</strong>：操作系统、浏览器、行业终端、嵌入式设备逐步纳入新根；内网场景则靠组策略 / MDM / 镜像预置。</li>
+<li><strong>退役旧根</strong>：确认依赖方已普遍信任新根、旧链上证书到期或完成再签发后，停止用旧根签发，并按计划吊销/过期旧交叉关系，最后从 Root Store 移除旧锚。</li>
+</ol>
+<p>几个容易踩坑的点：</p>
+<ul>
+<li><strong>只换了服务器证、没管客户端 Root Store</strong> → 外网浏览器可能已有新根，内网老系统、IoT、定制 App 仍只认旧根。</li>
+<li><strong>过渡期太短</strong> → 嵌入式与离线设备更新周期以年计，根切换窗口往往以年而不是以周计。</li>
+<li><strong>链不完整</strong>：服务器只送叶子、漏送「旧根→新中间」所需的交叉/中间证书，部分客户端无法完成路径构建。</li>
+<li><strong>国密根迁移</strong>同样适用上述节奏，还要额外确认新根算法、OID 与终端国密模块是否匹配。</li>
+</ul>
+<p>信任链的本质是「走到本地某个已信锚为止」。交叉信任是在<strong>空间上</strong>把多棵树接起来；根更换是在<strong>时间上</strong>把锚点平滑迁走。两者都要求 CA、业务系统和依赖方三方协同，单靠「重新申请一张叶子证」通常不够。</p>
+<h3 id="证书透明与-ct-logs">证书透明与 CT Logs<a aria-hidden="true" tabindex="-1" href="#证书透明与-ct-logs"><span class="anchor-link"> #</span></a></h3>
+<p>根与公信 CA 之所以「换得慎重」，不只因为 Root Store 更新慢，还因为公网 PKI 默认假设：<strong>任意被浏览器信任的 CA，理论上都能给你的域名签一张证</strong>。若某家 CA 被攻破或违规签发，受害者往往事后才发现。**证书透明（Certificate Transparency, CT）**就是为这件事加的一层「公开发行账本」。</p>
+<h4 id="ct-在解决什么">CT 在解决什么<a aria-hidden="true" tabindex="-1" href="#ct-在解决什么"><span class="anchor-link"> #</span></a></h4>
+<p>CT 要求公信 CA 在签发（或预证书阶段）后，把证书提交到公开的 <strong>CT Log</strong>，换取 <strong>SCT（Signed Certificate Timestamp）</strong>。主流浏览器对公信 TLS 证书会检查：是否带有足够数量、来自合规日志的 SCT；不满足则握手失败或告警。</p>
+<p>效果是：</p>
+<ul>
+<li><strong>签发不可偷偷摸摸</strong>：进了 Log，域名所有者、安全研究员、浏览器厂商都能扫到「谁给我的域名发过证」。</li>
+<li><strong>误签发可被追责</strong>：历史上多起 CA 不信任 / 根降级事件，都与公开可审计的签发记录有关；CT 让「悄悄发一张钓鱼证」变得很难长期瞒住。</li>
+<li><strong>与根更换联动</strong>：新根、新中间要进入公信生态，除了过 Root Store 审核，签发流程也要接入 CT；旧 CA 被移出信任时，人们也能回溯 Log，评估影响面。</li>
+</ul>
+<h4 id="ct-log-长什么样">CT Log 长什么样<a aria-hidden="true" tabindex="-1" href="#ct-log-长什么样"><span class="anchor-link"> #</span></a></h4>
+<p>CT Log 是<strong>只能追加、带密码学承诺</strong>的日志（基于 Merkle Tree）：</p>
+<ol>
+<li>CA 提交预证书 / 证书</li>
+<li>Log 返回 SCT（可视为「我已承诺收录」的回执）</li>
+<li>证书稍后正式进入 Log；任何人可查询、监控</li>
+<li>Log 定期公布树根哈希（STH），便于外部审计「历史有没有被改写」</li>
+</ol>
+<p>SCT 出现在证书扩展、OCSP、或 TLS 握手扩展里均可，浏览器认的是「有没有合规 SCT」，不要求你亲自去翻 Log。</p>
+<p>Log 的运营方需要长期高可用与社区审计，常见参与者包括 Google、Cloudflare、DigiCert、Let's Encrypt 等；国内公信 CA 亚洲诚信（TrustAsia） 也对外运营 CT 日志服务，是公网 CT 生态里为数不多的非美运营商之一。CA 既是 Log 的「投稿人」（自己签发的证要送去记账），也可以是 Log 的「记账人」。</p>
+<h4 id="跟运维--换根的关系">跟运维 / 换根的关系<a aria-hidden="true" tabindex="-1" href="#跟运维--换根的关系"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>申请公网证书</strong>：现在几乎默认走 CT；Let's Encrypt、商业 CA 都会帮你搞定提交与 SCT 嵌入。</li>
+<li><strong>自己监控域名</strong>：用 CRT.sh、各大 CT 监控服务盯 SAN/CN，一旦出现未知 CA 签发的证，往往是最早的告警信号——换根、换 CA、被误签时都很有用。</li>
+<li><strong>私有 CA / 国密内网</strong>：一般<strong>不强制</strong> CT；浏览器 CT 策略针对的是公信根。内网自签、行业国密根通常靠自己的信任锚与管理制度，而不是公共 CT Log。</li>
+<li><strong>根或 CA 退役期</strong>：一边滚新旧链，一边用 CT 确认「新链是否已在公网可见、旧 CA 是否还在异常签发」；对依赖方来说，这是换锚之外的另一层可见性。</li>
+</ul>
+<p>可以把它理解成：证书链回答「这张证密码学上能否验过」；CT 回答「这张证的签发有没有被公开记账」。信任根更换改变的是锚点，CT 改变的是公信签发的可审计性——两者一起，才让现代公网 PKI 在「不得不信一批根」的前提下，还能对误签与作恶保持压力。</p>
+<h2 id="信任如何落地到-https">信任如何落地到 HTTPS<a aria-hidden="true" tabindex="-1" href="#信任如何落地到-https"><span class="anchor-link"> #</span></a></h2>
+<p>HTTPS 可以粗理解为 <strong>HTTP over TLS</strong>：浏览器先和服务器完成一次 TLS 握手，谈妥身份与会话密钥，再在加密通道里传 HTTP。PKI 证书主要出现在握手阶段——用来回答「对面是不是我要访问的那个站点」。</p>
+<p>以访问 <code>https://example.com</code> 为例，证书相关步骤通常是：</p>
+<ol>
+<li>服务器在 TLS 握手中出示证书链</li>
+<li>浏览器验证链是否锚定到本地根 CA（以及 SCT / 吊销等策略）</li>
+<li>确认证书主体匹配当前域名（SAN）</li>
+<li>用证书中的公钥（或证书证明的身份）完成认证与密钥协商</li>
+</ol>
+<p>之后应用数据加密传输；「对方确实是 example.com」来自 PKI，会话机密性来自握手谈成的对称密钥。两者缺一，都称不上完整的 HTTPS 信任。</p>
+<h3 id="tls-握手在做什么">TLS 握手在做什么<a aria-hidden="true" tabindex="-1" href="#tls-握手在做什么"><span class="anchor-link"> #</span></a></h3>
+<p>握手要同时办成三件事：<strong>协商版本与算法、认证身份、得出共享密钥</strong>。以仍广泛部署的 <strong>TLS 1.2</strong> 心智模型为例（简化）：</p>
+<ol>
+<li><strong>ClientHello</strong>：客户端声明支持的协议版本、加密套件列表、扩展（SNI、ALPN、supported_groups 等）</li>
+<li><strong>ServerHello</strong>：服务端选定版本与套件，下发证书链（Certificate），必要时发送密钥交换参数（ServerKeyExchange）</li>
+<li><strong>客户端验证书</strong>：链校验、域名匹配、用途检查；失败则直接断连</li>
+<li><strong>密钥交换</strong>：双方用 ECDHE 等机制生成预主密钥 / 共享秘密，再派生出流量密钥</li>
+<li><strong>Finished</strong>：用握手摘要做完整性确认，此后切换到应用数据加密</li>
+</ol>
+<p><strong>TLS 1.3</strong> 把流程压得更扁：去掉了静态 RSA 密钥传输、合并了不少消息，通常 <strong>1-RTT</strong> 就能完成（还有 0-RTT 早期数据，但有重放风险，需谨慎开启）。对运维而言，体感就是：更少往返、密码套件更短、老旧算法被直接剔除。</p>
+<p>证书在这里的角色很明确：它不加密整条 HTTP，而是证明「持有对应私钥的那一方，身份已由 CA 担保」；真正的大批量加解密，交给握手后派生的对称密钥（AES-GCM、ChaCha20-Poly1305 等）。</p>
+<p>双向 TLS（mTLS）只是在对称位置再加一步：服务器也要求客户端出示证书并校验——常见于 API、微服务、国密网关内侧。</p>
+<h3 id="ssl--tls-协议版本简史">SSL / TLS 协议版本简史<a aria-hidden="true" tabindex="-1" href="#ssl--tls-协议版本简史"><span class="anchor-link"> #</span></a></h3>
+<p>名字上还常听到 SSL，实际上现代 HTTPS 用的是 TLS；SSL 已属历史包袱。</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>大致状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSL 2.0 / 3.0</td>
+<td>禁用</td>
+<td>设计缺陷与已知攻击（如 POODLE），不应再启用</td>
+</tr>
+<tr>
+<td>TLS 1.0 / 1.1</td>
+<td>已淘汰</td>
+<td>主流浏览器与 PCI 等规范已弃用</td>
+</tr>
+<tr>
+<td>TLS 1.2</td>
+<td>仍广泛使用</td>
+<td>需正确配置套件与扩展，避免老旧算法</td>
+</tr>
+<tr>
+<td>TLS 1.3</td>
+<td>当前推荐</td>
+<td>更简洁、默认前向保密，公网新部署优先</td>
+</tr>
+</tbody>
+</table>
+<p>版本协商发生在握手开头：客户端报支持列表，服务端选双方交集中的一个。配错的典型症状是「有的旧客户端能连、新浏览器反而报错」，或反过来——多半是服务端只开了过窄/过老的版本集。</p>
+<p>国密场景还有 <strong>GB/T 38636、GMTLS</strong> 等国密 TLS 协议栈（常与 SM2/SM3/SM4 套件绑定），和 IETF TLS 并行存在；双栈站点往往国际走 TLS 1.2/1.3，国密走专用端口或网关，而不是在同一握手里「混用两套密码哲学」。</p>
+<h3 id="加密套件与协议怎么配合">加密套件与协议怎么配合<a aria-hidden="true" tabindex="-1" href="#加密套件与协议怎么配合"><span class="anchor-link"> #</span></a></h3>
+<p>**加密套件（Cipher Suite）**是握手时点名的一串算法组合。TLS 1.2 的名字较长，大致编码了：</p>
+<ul>
+<li>密钥交换 / 认证（如 <code>ECDHE_RSA</code>、<code>ECDHE_ECDSA</code>）</li>
+<li>批量加密（如 <code>AES_128_GCM</code>、<code>CHACHA20_POLY1305</code>）</li>
+<li>伪随机与完整性相关组件（AEAD 套件里完整性已含在 GCM/Poly1305 中）</li>
+</ul>
+<p>例如 <code>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</code> 可读成：用 ECDHE 交换密钥、用 RSA 证书做服务器身份认证、用 AES-GCM 保护记录层。</p>
+<p>选型时几个实用点：</p>
+<ul>
+<li><strong>优先 ECDHE + AEAD</strong>：具备前向保密（PFS），服务器长期私钥泄露也不应解密历史流量。</li>
+<li><strong>证书算法要对上套件</strong>：RSA 证书对 <code>_RSA_</code>，ECDSA 证书对 <code>_ECDSA_</code>；国密则是 SM2 证书配 SM 套件。证书换了算法，套件列表也要跟着改，否则握手失败。</li>
+<li><strong>TLS 1.3 套件更短</strong>：形如 <code>TLS_AES_128_GCM_SHA256</code>，密钥交换与认证从套件名里拆出去，由扩展协商（<code>supported_groups</code>、证书类型等）。能开 1.3 就少纠结一长串 1.2 套件名。</li>
+<li><strong>协议与套件是两层旋钮</strong>：只升级到 TLS 1.2 但仍启用 <code>RSA</code> 密钥传输、RC4、3DES 等，安全性依旧差；反过来套件很新但版本锁死在 1.0，也会被策略拦截。</li>
+</ul>
+<h4 id="新成员后量子算法pqc">新成员：后量子算法（PQC）<a aria-hidden="true" tabindex="-1" href="#新成员后量子算法pqc"><span class="anchor-link"> #</span></a></h4>
+<p>经典套件里的 RSA / ECDH / ECDSA，安全性建立在大数分解或椭圆曲线离散对数上。大规模量子计算机一旦可用，Shor 算法会把这些难题「拆掉」——于是出现 <strong>Harvest Now, Decrypt Later</strong>：对手先囤积密文，等量子能力成熟再解密。HTTPS 要抗这一威胁，密钥交换与签名两侧都得换血。</p>
+<p>NIST 已落地第一批后量子标准（2024），名字从竞赛代号改成了正式名：</p>
+<table>
+<thead>
+<tr>
+<th>正式名</th>
+<th>来源 / 标准</th>
+<th>角色</th>
+<th>大致对应今天的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML-KEM</strong></td>
+<td>Kyber，FIPS 203</td>
+<td>密钥封装（KEM），做密钥建立</td>
+<td>ECDHE / 经典密钥交换</td>
+</tr>
+<tr>
+<td><strong>ML-DSA</strong></td>
+<td>Dilithium，FIPS 204</td>
+<td>数字签名（主推）</td>
+<td>RSA / ECDSA 签名与证书</td>
+</tr>
+<tr>
+<td><strong>SLH-DSA</strong></td>
+<td>SPHINCS+，FIPS 205</td>
+<td>无状态哈希签名（备份路线）</td>
+<td>长寿命信任锚、算法多样性</td>
+</tr>
+<tr>
+<td><strong>FN-DSA</strong>（进行中）</td>
+<td>Falcon，FIPS 206 草案</td>
+<td>更紧凑的格基签名</td>
+<td>受限环境、要更小签名时</td>
+</tr>
+</tbody>
+</table>
+<p>对 TLS / PKI 的直觉映射：</p>
+<ul>
+<li><strong>握手里的「密钥交换」</strong> → 看 <code>supported_groups</code>：除了 <code>x25519</code>、<code>secp256r1</code>，会逐渐出现 <code>mlkem768</code> 等；实务过渡期大量用 <strong>混合（hybrid）</strong>，例如 X25519 + ML-KEM，两边都过才算成功，避免「PQC 实现尚新、经典仍兜底」。</li>
+<li><strong>握手里的「身份认证」</strong> → 看 <code>signature_algorithms</code> / 证书：IETF 正在把 <strong>ML-DSA-44 / 65 / 87</strong> 挂进 TLS（如 <code>mldsa44</code>、<code>mldsa65</code>、<code>mldsa87</code>）。证书里的公钥与 CA 签名算法也会走向 ML-DSA（或混合证书链）。</li>
+<li><strong>记录层对称加密</strong> → AES-GCM、ChaCha20 等本身对量子攻击相对更稳（主要担心 Grover，靠加长密钥应对），所以「套件名里那截 AES」往往暂时不动，变的是前面的 <strong>KEM + 签名</strong>。</li>
+</ul>
+<p>和传统套件选型相比，PQC 多几条现实约束：</p>
+<ul>
+<li><strong>体积变大</strong>：ML-DSA 公钥、签名比 ECDSA 大一个数量级上下，证书链、握手报文、CT Log 条目都会变胖；CDN / 嵌入式要重新估带宽与 MTU。</li>
+<li><strong>生态仍在爬坡</strong>：浏览器、OpenSSL、商用 CA、国密侧的后量子路线并不整齐；公网常见路径是「先开 hybrid KEM，签名/证书稍后再迁」。</li>
+<li><strong>算法多样性</strong>：主路径 ML-KEM + ML-DSA，关键根或长期签名可考虑 SLH-DSA 做异构备份，避免「一个格基假设塌了全军覆没」。</li>
+<li><strong>与国密关系</strong>：国密当前主战场仍是 SM2/SM3/SM4；后量子是另一条并行演进线。长期可能出现「国密 + PQC」或国际 hybrid 并存，草稿阶段先分清两条时间表，不要假设已经互相取代。</li>
+</ul>
+<p>一句话：加密套件的「成员名单」正在从 RSA/ECDHE 扩到 <strong>ML-KEM / ML-DSA</strong> 等后量子算法；TLS 1.3 的扩展机制正好适合接纳它们，而 PKI 要同步准备更大的证书与可能的混合信任链。</p>
+<p>可以把关系收成一句：</p>
+<ul>
+<li><strong>协议版本</strong>决定握手怎么走、哪些能力允许存在</li>
+<li><strong>加密套件 / 协商扩展</strong>决定这一次连接具体用哪组算法（含经典与后量子）</li>
+<li><strong>证书 / PKI</strong>决定身份能不能被信（签名算法同样在迁向 ML-DSA 等）</li>
+</ul>
+<p>HTTPS 的「小锁」是这三层一起亮起来的结果，而不是单独某一层的功劳。</p>
+<h2 id="小结">小结<a aria-hidden="true" tabindex="-1" href="#小结"><span class="anchor-link"> #</span></a></h2>
+<p>回头串一下这条线：</p>
+<ol>
+<li><strong>问题</strong>：非对称加密能用密钥，但不能单独证明「公钥属于谁」。</li>
+<li><strong>角色</strong>：CA 签发、RA 审核、持有者保管私钥、依赖方做校验、CRL/OCSP 处理作废——PKI 是一套协作，而不是一张证。</li>
+<li><strong>证书</strong>：X.509 把身份绑到公钥；国际体系走 RSA/ECDSA，国密走 SM2 双证（签名钥本地生成、加密钥常可托管恢复），格式骨架相近，算法与信任域不同。</li>
+<li><strong>信任链</strong>：校验要走到本地信任锚；交叉信任在空间上接树，根更换在时间上迁锚；公网还有 <strong>CT Logs</strong> 给签发记账，让误签与作恶更难藏。</li>
+<li><strong>落到 HTTPS</strong>：TLS 握手完成认证与密钥协商；版本（如今主看 1.2/1.3）、加密套件/协商扩展、证书三者缺一不可。套件名单已从 ECDHE+AES 扩到 <strong>ML-KEM / ML-DSA</strong> 等后量子成员，过渡期多见 hybrid。</li>
+</ol>
+<p>一句话：<strong>加密保证信道安全，证书与信任链保证身份可信，CT 与协议演进保证这套信任还能被审计、还能跟着密码学一起升级。</strong> 小锁背后，是角色、格式、锚点、日志和握手共同撑起来的体系。</p>6:["$","$L14",null,{"postData":{"id":"pkitrustarch","contentHtml":"$15","title":"PKI 体系结构与证书信任链","date":"$D2025-10-02T13:50:00.000Z","updated":"$D2025-10-02T13:50:00.000Z","categories":["总结"],"tags":["pki","certificate","security"]}}]
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+13:{"metadata":[["$","title","0",{"children":"PKI 体系结构与证书信任链"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+d:{"metadata":"$13:metadata","error":null,"digest":"$undefined"}
