@@ -1,0 +1,190 @@
+1:"$Sreact.fragment"
+2:I[87555,[],""]
+3:I[31295,[],""]
+4:I[4336,["7177","static/chunks/app/layout-c5b02ab1b7f60c39.js"],"default"]
+5:I[69243,["7177","static/chunks/app/layout-c5b02ab1b7f60c39.js"],""]
+7:I[59665,[],"MetadataBoundary"]
+9:I[59665,[],"OutletBoundary"]
+c:I[74911,[],"AsyncMetadataOutlet"]
+e:I[59665,[],"ViewportBoundary"]
+10:I[26614,[],""]
+:HL["/_next/static/css/20fa0173b94b3511.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"eXZiARhz87ulkokpOXt-o","p":"","c":["","post","aiagentharness",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","aiagentharness","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/20fa0173b94b3511.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","aiagentharness","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",["$","$L7",null,{"children":"$L8"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L9",null,{"children":["$La","$Lb",["$","$Lc",null,{"promise":"$@d"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","LSw5YFz6UFQ_hQbfzt1aD",{"children":[["$","$Le",null,{"children":"$Lf"}],null]}],null]}],false]],"m":"$undefined","G":["$10","$undefined"],"s":false,"S":true}
+11:"$Sreact.suspense"
+12:I[74911,[],"AsyncMetadata"]
+8:["$","$11",null,{"fallback":null,"children":["$","$L12",null,{"promise":"$@13"}]}]
+b:null
+14:I[5077,["6874","static/chunks/6874-a930f608622f31bb.js","9734","static/chunks/9734-a892d5b43813f592.js","4457","static/chunks/4457-815017086c29bc54.js","6457","static/chunks/app/post/%5Bid%5D/page-7dcaef8d4d6851cc.js"],"default"]
+15:T4fa9,<p>ChatGPT 刚火起来的时候，我的使用方式是打开浏览器，把代码片段贴进去，等它给建议，再手动复制回 IDE。这种模式叫「聊天式辅助」—— AI 只管说，不动手。真正改变效率曲线的是 Agent：它不只是给答案，而是直接读文件、跑命令、改代码、提交 PR。问题是，把一个大语言模型放进能操作文件系统的环境里，相当于给一个没有身体感知的小孩一把螺丝刀。它可以修东西，也可以把主板捅穿。</p>
+<p>Harness 就是这把螺丝刀的「安全手柄」。它不是 Agent 本身，而是 Agent 与真实工程环境之间的中间层：决定 Agent 能调用哪些工具、能看到什么上下文、执行结果如何回传，以及出了错怎么兜底。本文想聊的是，怎么设计一个靠谱的 Harness，让 Agent 真正融入日常开发，而不是成为需要人盯着的麻烦。</p>
+<h2 id="核心问题agent-能力很好但怎么让它安全地操作代码">核心问题：Agent 能力很好，但怎么让它安全地操作代码？<a aria-hidden="true" tabindex="-1" href="#核心问题agent-能力很好但怎么让它安全地操作代码"><span class="anchor-link"> #</span></a></h2>
+<p>Agent 的能力边界在快速扩展。从早期的文本补全，到 GitHub Copilot 的 inline suggestion，再到 Cursor Composer、Pi Coding Agent 这类能跨文件改代码的系统，AI 正在从「副驾驶」变成「轮班工程师」。但能力越大，风险越具体：</p>
+<ul>
+<li><strong>幻觉导致破坏</strong>：LLM 可能自信地删除看起来「没用」的代码，而那恰好是兼容旧版本的 fallback。</li>
+<li><strong>权限过大</strong>：如果 Agent 拿到了 shell 和 git 权限，一次误判就能 <code>git push --force</code> 到主分支。</li>
+<li><strong>上下文错配</strong>：Agent 看不到 CI 失败日志，却基于过时的本地状态给出修复建议。</li>
+<li><strong>不可审计</strong>：手动操作至少有人记得改了什么，Agent 半夜跑了 20 个步骤，第二天没人说得清。</li>
+</ul>
+<p>一句话：<strong>Agent 需要工程环境的能力，但工程环境不能毫无保留地信任 Agent。</strong> Harness 就是这个信任交换的协议层。</p>
+<h2 id="harness-是什么不只是工具调用">Harness 是什么：不只是「工具调用」<a aria-hidden="true" tabindex="-1" href="#harness-是什么不只是工具调用"><span class="anchor-link"> #</span></a></h2>
+<p>先说清楚 Harness 不是什么。OpenAI 的 Function Calling、Anthropic 的 Tool Use、以及社区里的 MCP（Model Context Protocol），本质都是<strong>定义一套 Schema，让模型学会在什么时候调用外部函数</strong>。它们解决的是「模型怎么请求工具」的问题。</p>
+<p>Harness 解决的是<strong>谁来执行、怎么准备环境、怎么保证安全、怎么把结果喂回去</strong>的问题。打个比方：</p>
+<ul>
+<li>Function Calling 是「餐厅菜单」—— 告诉模型有哪些菜可以点。</li>
+<li>Harness 是「后厨 + 服务员 + 收银系统」—— 接单、备料、烹饪、上菜、处理退单。</li>
+</ul>
+<p>在 Pi Coding Agent 这类系统里，Harness 通常表现为一个本地守护进程（或者嵌入在 IDE 插件里的进程）。它向 Agent 暴露一组<strong>能力声明</strong>（Capabilities），Agent 根据当前任务选择调用。Harness 收到请求后，做四件事：</p>
+<ol>
+<li><strong>能力发现（Discovery）</strong>：告诉 Agent 当前环境有哪些工具可用。比如在一个没有 Docker 的机器上，就不应该暴露 <code>docker_build</code> 这个工具。</li>
+<li><strong>上下文注入（Context Injection）</strong>：把 Agent 需要的背景信息打包进请求。不是把整个项目目录 dump 过去，而是按需读取相关文件、最近修改、测试失败摘要。</li>
+<li><strong>执行沙箱（Sandboxed Execution）</strong>：在受控环境里跑命令或写文件。沙箱可以是 chroot、容器、或者最简单的白名单校验。</li>
+<li><strong>结果回传（Result Feedback）</strong>：把 stdout、stderr、文件 diff、HTTP 响应格式化后返回给 Agent，通常附带结构化的元数据（退出码、耗时、影响文件列表）。</li>
+</ol>
+<p>Function Calling 和 MCP 是<strong>协议</strong>，Harness 是<strong>运行时</strong>。两者配合：Agent 用协议表达意图，Harness 在运行时把它落地。</p>
+<p><img src="/post/aiagentharness/1e4c509b3953.svg" alt="Harness 架构：Agent 通过 Harness 与工程环境交互"></p>
+<p><em>图：Harness 作为中间层，向上暴露能力声明，向下管控对文件系统、Shell 和网络的访问。</em></p>
+<h2 id="一个最小-harness从文件读写到命令执行">一个最小 Harness：从文件读写到命令执行<a aria-hidden="true" tabindex="-1" href="#一个最小-harness从文件读写到命令执行"><span class="anchor-link"> #</span></a></h2>
+<p>为了把概念落地，我设想一个最简 Harness，只有两个工具：<code>read_file</code> 和 <code>exec_command</code>。Agent 想修改项目里的 <code>src/config.ts</code>，流程如下：</p>
+<p><img src="/post/aiagentharness/8bed9f47a6ee.svg" alt="一次工具调用的典型流程"></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">vbnet</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-vbnet"><span class="hljs-symbol">Agent:</span> read_file(<span class="hljs-string">"src/config.ts"</span>)
+<span class="hljs-symbol">Harness:</span> 校验路径是否在项目根目录内 → 读取内容 → 返回
+
+<span class="hljs-symbol">Agent:</span> exec_command(<span class="hljs-string">"git diff"</span>)
+<span class="hljs-symbol">Harness:</span> 校验命令在白名单内 → 在仓库根目录执行 → 捕获 stdout/stderr → 返回
+</code></pre></div>
+<p>下面是一个粗糙但可用的 Harness 骨架（TypeScript 伪代码）：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">typescript</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ToolRequest</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'read_file'</span> | <span class="hljs-string">'exec_command'</span>;
+  <span class="hljs-attr">args</span>: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MiniHarness</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">rootDir</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">private</span> allowedCommands = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([<span class="hljs-string">'git'</span>, <span class="hljs-string">'npm'</span>, <span class="hljs-string">'node'</span>, <span class="hljs-string">'cat'</span>]);
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">dispatch</span>(<span class="hljs-params"><span class="hljs-attr">req</span>: <span class="hljs-title class_">ToolRequest</span></span>) {
+    <span class="hljs-keyword">switch</span> (req.<span class="hljs-property">name</span>) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'read_file'</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">safeRead</span>(req.<span class="hljs-property">args</span>.<span class="hljs-property">path</span>);
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'exec_command'</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">safeExec</span>(req.<span class="hljs-property">args</span>.<span class="hljs-property">cmd</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">safeRead</span>(<span class="hljs-params"><span class="hljs-attr">rawPath</span>: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">const</span> resolved = path.<span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>, rawPath);
+    <span class="hljs-comment">// 路径逃逸检查</span>
+    <span class="hljs-keyword">if</span> (!resolved.<span class="hljs-title function_">startsWith</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Path escape detected'</span>);
+    }
+    <span class="hljs-keyword">return</span> fs.<span class="hljs-title function_">readFileSync</span>(resolved, <span class="hljs-string">'utf-8'</span>);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">safeExec</span>(<span class="hljs-params"><span class="hljs-attr">rawCmd</span>: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">const</span> [bin, ...args] = rawCmd.<span class="hljs-title function_">split</span>(<span class="hljs-string">' '</span>);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedCommands</span>.<span class="hljs-title function_">has</span>(bin)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Command not allowed'</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">execFileSync</span>(bin, args, { <span class="hljs-attr">cwd</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>, <span class="hljs-attr">encoding</span>: <span class="hljs-string">'utf-8'</span> });
+  }
+}
+</code></pre></div>
+<p>这个骨架能跑，但生产环境马上会踩坑：</p>
+<ul>
+<li><strong>路径逃逸</strong>：<code>../etc/passwd</code> 被 <code>startsWith</code> 挡住，但符号链接可以绕过去。稳妥做法是先 <code>realpath</code> 再比较。</li>
+<li><strong>命令注入</strong>：上面用 <code>split(' ')</code> 解析命令是错的。<code>git log --format="%H %s"</code> 里的空格会把参数切碎。应该用数组传参（<code>execFile</code> 而非 <code>exec</code>）。</li>
+<li><strong>并发写冲突</strong>：两个 Agent 线程同时修改同一个文件，后提交的会覆盖前者。Harness 要么加文件锁，要么把写操作串行化。</li>
+<li><strong>副作用不可控</strong>：Agent 调用 <code>npm install</code> 改了 <code>node_modules</code>， Harness 如果没有快照机制，回滚时只能 <code>git checkout .</code>，代价很大。</li>
+</ul>
+<h2 id="上下文窗口与工具协议设计">上下文窗口与「工具协议」设计<a aria-hidden="true" tabindex="-1" href="#上下文窗口与工具协议设计"><span class="anchor-link"> #</span></a></h2>
+<p>Agent 每次做决策，依赖的是 Harness 喂给它的上下文。上下文给多了浪费 token，给少了 Agent 瞎猜。Harness 的职责之一就是<strong>做信息的策展人（Curator）</strong>。</p>
+<p>以代码修 bug 为例，理想的信息流应该是：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>Harness 提供的上下文</th>
+<th>为什么不是全部</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定位</td>
+<td>报错堆栈 + 相关文件路径</td>
+<td>不需要整个仓库的 AST</td>
+</tr>
+<tr>
+<td>理解</td>
+<td>报错函数及其调用链的源码</td>
+<td>不需要 node_modules</td>
+</tr>
+<tr>
+<td>修复</td>
+<td>目标文件完整内容 + 依赖接口签名</td>
+<td>不需要测试文件全文</td>
+</tr>
+<tr>
+<td>验证</td>
+<td>测试命令输出（失败用例摘要）</td>
+<td>不需要 CI 完整日志</td>
+</tr>
+</tbody>
+</table>
+<p>Harness 实现这种分层，通常依赖几种机制：</p>
+<p><strong>1. 符号索引（Symbol Index）</strong>
+预先构建文件 → 符号 → 引用的索引（比如用 Tree-sitter 或 LSP）。Agent 提到 <code>UserService.authenticate</code>，Harness 能快速找到定义位置和调用点，而不是让 Agent 在全仓库里 grep。</p>
+<p><strong>2. 最近变更优先</strong>
+Agent 刚修改过的文件、当前打开的编辑器标签页、最近的 git diff，这些「热数据」命中概率最高，应该优先注入上下文。</p>
+<p><strong>3. 结构化摘要</strong>
+不要把 10 MB 的日志全文塞给 Agent。Harness 可以先做一层预处理：提取报错行、去重堆栈、统计失败频率，再生成一段结构化摘要：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"test_suite"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"auth.spec.ts"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"failed_count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"first_failure"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UserService.authenticate throws TypeError"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"stack_top"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"src/services/user.ts:42"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p><strong>4. 动态上下文协议</strong>
+Agent 和 Harness 可以约定一种「按需拉取」的协议。Agent 先拿到骨架，发现缺某个接口定义，再显式请求 <code>read_symbol("PaymentGateway.charge")</code>。这比一次性 dump 所有内容更可控。</p>
+<p>关键是：<strong>Harness 比 Agent 更了解工程环境的结构，因此应该由 Harness 决定「什么值得看」，而不是让 Agent 自己翻仓库。</strong></p>
+<h2 id="安全边界最小权限与可审计">安全边界：最小权限与可审计<a aria-hidden="true" tabindex="-1" href="#安全边界最小权限与可审计"><span class="anchor-link"> #</span></a></h2>
+<p>前面提到了路径逃逸和命令注入，但 Harness 的安全设计不止于输入校验。它是一个纵深防御体系：</p>
+<p><strong>1. 文件系统沙箱</strong>
+最轻量的做法是用 <code>chroot</code> 或绑定挂载把 Agent 限制在项目目录。更现代的做法是在容器里跑 Harness（比如 Docker 的 rootless 模式），配合只读卷挂载。关键是<strong>默认拒绝</strong>：Agent 想写文件？先问过白名单。</p>
+<p><strong>2. 命令白名单与参数校验</strong>
+不要只校验命令名，还要校验参数模式。比如允许 <code>git diff</code>，但不允许 <code>git push</code>；允许 <code>npm test</code>，但不允许 <code>npm publish</code>。正则或预定义模板都可以：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">typescript</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> rules = [
+  { <span class="hljs-attr">cmd</span>: <span class="hljs-string">'git'</span>, <span class="hljs-attr">args</span>: <span class="hljs-regexp">/^diff\s/</span> },
+  { <span class="hljs-attr">cmd</span>: <span class="hljs-string">'npm'</span>, <span class="hljs-attr">args</span>: <span class="hljs-regexp">/^run\s(test|lint|build)$/</span> },
+];
+</code></pre></div>
+<p><strong>3. 网络隔离</strong>
+Agent 理论上不应该随意访问外网。但有些任务确实需要（比如查 npm 包版本）。Harness 可以维护一个允许列表（registry.npmjs.org, pypi.org），其余请求默认阻断。如果 Agent 需要搜索，Harness 自己代理请求，再把脱敏后的结果返回。</p>
+<p><strong>4. 操作审计</strong>
+每一次工具调用都应该留下结构化日志，至少包含：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2025-07-15T09:23:17Z"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"agent_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"pi-session-42"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"tool"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"write_file"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"args"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"src/config.ts"</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"diff_hash"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"sha256:a1b2c3..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"exit_code"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>有了审计日志，才能在事后回答「Agent 到底改了什么」。更进一步，Harness 可以在执行敏感操作前要求人类确认（比如 <code>git push</code>、<code>rm -rf</code>），把 Agent 的自主性限制在「建议」层面，而非「执行」层面。</p>
+<p><strong>5. 回滚能力</strong>
+Agent 改坏了代码怎么办？Harness 可以在每次写操作前自动 <code>git stash</code> 或打临时分支。如果 Agent 连续多步修改后整体失败，Harness 能一次性回滚到起点，而不是让用户手动 <code>git checkout</code> 20 个文件。</p>
+<h2 id="小结">小结<a aria-hidden="true" tabindex="-1" href="#小结"><span class="anchor-link"> #</span></a></h2>
+<p>把 AI Agent 接入工程工作流，不能只靠模型能力的提升，还需要一个可靠的 Harness 来做「安全手柄」。几个核心观点：</p>
+<ol>
+<li><strong>Harness 是运行时，不是协议</strong>。Function Calling / MCP 定义了 Agent 怎么表达意图，Harness 负责在真实环境里安全地执行和回传结果。</li>
+<li><strong>上下文应该由 Harness 策展</strong>。Agent 不该自己翻仓库，Harness 要根据任务阶段，按需注入符号、摘要和动态数据，控制 token 消耗和信息精度。</li>
+<li><strong>安全是默认拒绝 + 可审计</strong>。沙箱、白名单、网络隔离是基础，操作日志和回滚能力才是让人敢把 Agent 放进 CI 的底气。</li>
+</ol>
+<p>如果你正在做一个 IDE 插件、一个 CI Agent、或者一个内部 DevOps 机器人， Harness 的设计质量直接决定了「AI 辅助」和「AI 自动化」之间的鸿沟能不能跨过去。</p>6:["$","$L14",null,{"postData":{"id":"aiagentharness","contentHtml":"$15","title":"智能体 Harness：把 AI Agent 接入工程工作流","date":"$D2026-09-26T13:40:00.000Z","updated":"$D2026-09-26T14:30:00.000Z","categories":["总结"],"tags":["AI","Agent","工程效率","Pi","智能体"]}}]
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+13:{"metadata":[["$","title","0",{"children":"智能体 Harness：把 AI Agent 接入工程工作流"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+d:{"metadata":"$13:metadata","error":null,"digest":"$undefined"}

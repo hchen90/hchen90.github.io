@@ -1,0 +1,101 @@
+1:"$Sreact.fragment"
+2:I[87555,[],""]
+3:I[31295,[],""]
+4:I[4336,["7177","static/chunks/app/layout-c5b02ab1b7f60c39.js"],"default"]
+5:I[69243,["7177","static/chunks/app/layout-c5b02ab1b7f60c39.js"],""]
+7:I[59665,[],"MetadataBoundary"]
+9:I[59665,[],"OutletBoundary"]
+c:I[74911,[],"AsyncMetadataOutlet"]
+e:I[59665,[],"ViewportBoundary"]
+10:I[26614,[],""]
+:HL["/_next/static/css/20fa0173b94b3511.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"eXZiARhz87ulkokpOXt-o","p":"","c":["","post","agente2bcodeinterp",""],"i":false,"f":[[["",{"children":["post",{"children":[["id","agente2bcodeinterp","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/20fa0173b94b3511.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"antialiased relative","children":[["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L4",null,{}],["$","$L5",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","agente2bcodeinterp","d"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6",["$","$L7",null,{"children":"$L8"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L9",null,{"children":["$La","$Lb",["$","$Lc",null,{"promise":"$@d"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","hx7lYPbl7KnHl9IHNsorU",{"children":[["$","$Le",null,{"children":"$Lf"}],null]}],null]}],false]],"m":"$undefined","G":["$10","$undefined"],"s":false,"S":true}
+11:"$Sreact.suspense"
+12:I[74911,[],"AsyncMetadata"]
+8:["$","$11",null,{"fallback":null,"children":["$","$L12",null,{"promise":"$@13"}]}]
+b:null
+14:I[5077,["6874","static/chunks/6874-a930f608622f31bb.js","9734","static/chunks/9734-a892d5b43813f592.js","4457","static/chunks/4457-815017086c29bc54.js","6457","static/chunks/app/post/%5Bid%5D/page-7dcaef8d4d6851cc.js"],"default"]
+15:T31ae,<p>做智能体时，最诱人的能力之一是让模型自己写代码、自己跑结果：清洗数据、试算公式、画图验证。麻烦也在这里——一旦「生成」和「执行」接在同一条链上，你等于把一段默认不可信的代码放进了自己的运行环境。</p>
+<p>一种直觉是：干脆把<strong>整个智能体</strong>都塞进沙箱。隔离是更彻底了，但成本往往不划算。智能体项目通常很大——依赖、模型客户端、编排框架、业务代码一起进镜像，冷启动与加载会明显变慢；若工作目录还要挂对象存储做读写，每次文件访问又叠一层网络延迟。真正需要隔离的，常常只是那一小段「模型生成、即将执行」的代码，而不是整条 Agent 进程。</p>
+<p>因此更常见的切法是：Agent 仍跑在你的服务侧，只把<strong>不安全的执行</strong>交给 Code Interpreter 沙箱。本文从智能体的执行面出发，说明为什么宿主直跑不安全，以及如何用 <a href="https://e2b.dev">E2B</a> 的 <a href="https://github.com/e2b-dev/code-interpreter">Code Interpreter</a>（<code>e2b-code-interpreter</code> / <code>@e2b/code-interpreter</code>）做这层隔离，并划清它能挡住什么、不能代替什么。</p>
+<h2 id="核心问题智能体为什么不能在宿主上直接跑代码">核心问题：智能体为什么不能在宿主上直接跑代码？<a aria-hidden="true" tabindex="-1" href="#核心问题智能体为什么不能在宿主上直接跑代码"><span class="anchor-link"> #</span></a></h2>
+<p>智能体（Agent）和「只会聊天的模型」差在一步：它往往会把生成结果接到工具上——算表、画图、调库、拼一段脚本，<strong>写完就跑</strong>。方便的同时，执行权落在哪就成了硬问题。</p>
+<p>这里的代码默认应视为<strong>不安全</strong>：不一定出自攻击者，但模型可能 hallucinate 出危险命令；用户输入可能被拼进 prompt；工具链也可能被间接投毒。若解释器与宿主同权——同一台机器、同一用户、同一文件系统与网络——一次 <code>os.system</code>、一次随意写盘、一次外联，影响面就不再是会话里的变量，而是密钥、仓库、内网。</p>
+<p>所以对智能体而言，正确问法不是「这段代码看起来能不能跑」，而是：<strong>执行必须落在边界清晰、可销毁、与宿主隔离的环境里</strong>。没有这层隔离，「Code Interpreter」只是把攻击面从对话扩成了任意代码执行。数据分析 Agent、带 function calling 的应用、IDE 里的 AI 助手，都在把「生成 + 执行」做成默认路径——隔离因此是能力前提，不是事后补丁。</p>
+<h2 id="e2b给智能体一块可销毁的执行环境">E2B：给智能体一块可销毁的执行环境<a aria-hidden="true" tabindex="-1" href="#e2b给智能体一块可销毁的执行环境"><span class="anchor-link"> #</span></a></h2>
+<p><a href="https://e2b.dev">E2B</a> 做的事很聚焦：在云端提供<strong>安全隔离的沙箱</strong>，专门用来跑 AI 生成的代码。你通过 SDK 创建、控制沙箱；代码在沙箱里执行，宿主进程只负责下发代码、收回结果。对智能体来说，这等于把「执行面」从本机挪到一块用完可丢的远程环境——Agent 本体仍留在服务侧，沙箱只承接那一段危险代码，正是开篇说的切法。</p>
+<p>和常见做法比一下边界：</p>
+<table>
+<thead>
+<tr>
+<th>做法</th>
+<th>隔离大致在哪</th>
+<th>实务代价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本机 <code>subprocess</code> / 同进程解释器</td>
+<td>几乎没有；与 Agent 服务同权</td>
+<td>实现最快，风险也最大</td>
+</tr>
+<tr>
+<td>本机 Docker / 自管容器</td>
+<td>进程与文件系统可隔离，但仍占你的机器与网络</td>
+<td>要自己管镜像、资源、清理与逃逸面</td>
+</tr>
+<tr>
+<td>E2B 云端沙箱</td>
+<td>执行落在远端隔离环境，与宿主机器分离</td>
+<td>用 API 启停；密钥与配额在服务侧管理</td>
+</tr>
+</tbody>
+</table>
+<p>本机容器当然也能隔离，但 Agent 往往是「短生命周期、高并发、要快速销毁」的工作负载；把沙箱运维外包给专用基础设施，通常比在业务进程旁再挂一套容器编排更省事。E2B 的定位就是这条路径上的开源基础设施，而不是又一个嵌在应用里的本地解释器。</p>
+<p>落到智能体链路里，位置通常是：</p>
+<p><strong>模型决策 → 工具调用（把代码当参数）→ E2B 沙箱执行 → stdout / 返回值回传 → 模型继续推理</strong></p>
+<p>Agent 框架（LangChain、自研 function calling 等）只负责「何时调工具、传什么代码」；真正危险的那一步——解释执行——发生在沙箱内。下一节看 Code Interpreter SDK 怎样把这一步接进工具函数。</p>
+<h2 id="用-e2b-code-interpreter-让智能体跑代码">用 e2b-code-interpreter 让智能体跑代码<a aria-hidden="true" tabindex="-1" href="#用-e2b-code-interpreter-让智能体跑代码"><span class="anchor-link"> #</span></a></h2>
+<p><a href="https://github.com/e2b-dev/code-interpreter">e2b-dev/code-interpreter</a> 提供面向「在沙箱里解释执行代码」的 SDK：Python 包 <code>e2b-code-interpreter</code>，JS/TS 包 <code>@e2b/code-interpreter</code>。（SDK 源码现已迁到 <a href="https://github.com/e2b-dev/E2B">E2B monorepo</a>；该仓库仍保留沙箱 template 等资源。）对智能体而言，它通常被包成一个工具：入参是一段代码字符串，出参是执行文本或结构化结果。</p>
+<p>安装与鉴权很直接：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">pip install e2b-code-interpreter
+<span class="hljs-comment"># 或: npm i @e2b/code-interpreter</span>
+<span class="hljs-built_in">export</span> E2B_API_KEY=e2b_***
+</code></pre></div>
+<p>最小闭环是：创建沙箱 → <code>run_code</code> / <code>runCode</code> → 读返回值。Python 示例如下（与官方 README 一致）：</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">from</span> e2b_code_interpreter <span class="hljs-keyword">import</span> Sandbox
+
+<span class="hljs-keyword">with</span> Sandbox.create() <span class="hljs-keyword">as</span> sandbox:
+    sandbox.run_code(<span class="hljs-string">"x = 1"</span>)
+    execution = sandbox.run_code(<span class="hljs-string">"x += 1; x"</span>)
+    <span class="hljs-built_in">print</span>(execution.text)  <span class="hljs-comment"># 2</span>
+</code></pre></div>
+<p>JS/TS 同理：<code>Sandbox.create()</code> 后两次 <code>runCode</code>，第二次能读到第一次留下的 <code>x</code>。接进 Agent 时，工具函数往往长这样：收到模型给出的 <code>code</code> → 在已有（或临时创建的）<code>Sandbox</code> 上执行 → 把 <code>execution.text</code>（以及错误信息）作为 tool result 回给模型。宿主进程里不要 <code>exec</code> / <code>eval</code> 这段代码。</p>
+<p>同一沙箱内多次调用会共享解释器状态（变量、已 import 的模块等），这很适合多步 Agent：先加载数据、再变换、再画图或汇总，而不必把全部逻辑塞进一次 tool call。任务结束应关闭沙箱，避免会话与计费悬空；需要额外依赖时，则走自定义 sandbox template，而不是在宿主上 <code>pip install</code>。</p>
+<h2 id="隔离边界与能力边界">隔离边界与能力边界<a aria-hidden="true" tabindex="-1" href="#隔离边界与能力边界"><span class="anchor-link"> #</span></a></h2>
+<p>把执行丢进 E2B，解决的是<strong>宿主侧</strong>风险：模型或用户给出的代码，默认碰不到你机器上的密钥文件、源码树、本机进程，也不会自动继承 Agent 主机的本地权限与网络身份。沙箱可创建、可销毁，一次任务的脏状态不必留在业务服务器上。对智能体来说，这是「敢让它跑代码」的基础隔离；也正因为只隔离执行面，才不必把整颗 Agent（连同大镜像与对象存储挂载）都推进沙箱里。</p>
+<p>但隔离不是万能盾，至少要分清这几层：</p>
+<ul>
+<li><strong>沙箱内仍是完整执行环境。</strong> 代码可以在沙箱里读写其可见文件系统、消耗 CPU/内存、按产品策略访问网络。你传进去的临时数据、中间结果，对沙箱内进程是可读可改的；隔离的是「出沙箱打宿主」，不是「沙箱里绝对老实」。</li>
+<li><strong>业务信任假设不会自动消失。</strong> 若 Agent 把沙箱输出当真理写进数据库、或把高权限 API Key 塞进沙箱环境变量，问题就从「宿主机被攻陷」变成「被工具结果骗了 / 密钥进了执行面」。沙箱不替你做输出校验，也不替你做最小权限。</li>
+<li><strong>配额与滥用是另一条线。</strong> 恶意或失控的循环、大批量创建沙箱，打的是账单与可用性，不是传统意义的本机提权。限流、超时、每会话沙箱数，属于产品层控制，要单独设计。</li>
+</ul>
+<p>默认 Code Interpreter 模板够用多数「算一下、画个图」的场景；当 Agent 需要特定版本的库、系统依赖或定制运行时，应按官方方式做<strong>自定义 sandbox template</strong>（仓库里的 template 指南），把依赖打进镜像，而不是在每次 <code>run_code</code> 里临时乱装、或退回宿主安装。模板定制的是<strong>能力面</strong>，隔离边界仍然由「远端沙箱 vs 宿主」这条线决定。</p>
+<h2 id="实践注意点">实践注意点<a aria-hidden="true" tabindex="-1" href="#实践注意点"><span class="anchor-link"> #</span></a></h2>
+<p><strong>API Key 只放在 Agent 服务侧。</strong> <code>E2B_API_KEY</code> 用于创建和控制沙箱，属于基础设施凭证，应放在后端环境变量或密钥管理里，不要写进前端、Prompt、日志，更不要随 tool 参数传给模型。用户浏览器直连 E2B 等于把账单与沙箱创建权交出去。</p>
+<p><strong>管好沙箱生命周期。</strong> 按会话或按任务创建沙箱，设超时，用完关闭（Python 的 <code>with Sandbox.create()</code> 就是一种自然收口）。多步 Agent 可复用同一沙箱以保留变量；跨用户、跨会话则不要共用，以免状态串扰。长期挂起的沙箱既费钱，也扩大窗口期。</p>
+<p><strong>把结果当成不可信输入再喂回模型。</strong> <code>execution.text</code>、stdout、沙箱里生成的文件，都应经工具层整理后再作为 tool result 返回——截断过长输出、区分成功与报错、必要时只回摘要。需要图表或文件时，按 SDK / 文档提供的方式取回，再决定是否落盘到你自己的对象存储；默认不要假设「跑完就安全可写库」。</p>
+<p>常见坑可以记三条：密钥进仓库或进沙箱环境变量；只 <code>create</code> 不关闭；以及把「上了 E2B」理解成「输出可信、权限不用收」。前两者是工程失误，第三者是威胁模型画错了。</p>
+<h2 id="小结">小结<a aria-hidden="true" tabindex="-1" href="#小结"><span class="anchor-link"> #</span></a></h2>
+<ol>
+<li><strong>智能体要跑代码，执行面就该外置。</strong> 与宿主同权的解释器，把「生成」放大成任意代码执行；隔离是能力前提，不是锦上添花。</li>
+<li><strong>E2B + Code Interpreter 是一条可落地的实现。</strong> 用 <code>e2b-code-interpreter</code> / <code>@e2b/code-interpreter</code> 把 tool call 接到远端沙箱，宿主只下发代码、收回结果。</li>
+<li><strong>分清隔离边界。</strong> 挡的是对宿主的直接伤害；沙箱内行为、输出信任、密钥与配额，仍要你自己收口。</li>
+</ol>
+<p>延伸阅读：<a href="https://docs.e2b.dev/">E2B 文档</a>、<a href="https://github.com/e2b-dev/code-interpreter">code-interpreter 仓库</a>、<a href="https://github.com/e2b-dev/e2b-cookbook">E2B Cookbook</a>。</p>6:["$","$L14",null,{"postData":{"id":"agente2bcodeinterp","contentHtml":"$15","title":"智能体如何用 E2B Code Interpreter 隔离执行不安全代码","date":"$D2026-08-08T00:16:00.000Z","updated":"$D2026-08-08T00:54:00.000Z","categories":["随笔"],"tags":["e2b","sandbox","code-interpreter","agent","security"]}}]
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+a:null
+13:{"metadata":[["$","title","0",{"children":"智能体如何用 E2B Code Interpreter 隔离执行不安全代码"}],["$","meta","1",{"name":"description","content":"HCHEN90 博客"}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom.xml"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+d:{"metadata":"$13:metadata","error":null,"digest":"$undefined"}

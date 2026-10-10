@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340">
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 12px; }
+      .title { font-size: 13px; font-weight: 600; }
+      .box { rx: 6; ry: 6; stroke-width: 1.5; }
+      .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#ah); }
+      .darrow { stroke: #888; stroke-width: 1.2; fill: none; stroke-dasharray: 4,3; marker-end: url(#ah2); }
+      .ok { fill: #16a34a; }
+      .no { fill: #dc2626; }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    <marker id="ah2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+
+  <!-- Agent -->
+  <rect x="20" y="130" width="120" height="50" class="box" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="80" y="150" text-anchor="middle" class="title" fill="#1e40af">Agent</text>
+  <text x="80" y="168" text-anchor="middle" font-size="11" fill="#1e3a8a">read_file("config.ts")</text>
+
+  <!-- Arrow to Harness -->
+  <line x1="140" y1="155" x2="190" y2="155" class="arrow"/>
+
+  <!-- Harness: Auth -->
+  <rect x="190" y="110" width="130" height="40" class="box" fill="#ffedd5" stroke="#f97316"/>
+  <text x="255" y="125" text-anchor="middle" class="title" fill="#9a3412" font-size="12">1. 路径校验</text>
+  <text x="255" y="141" text-anchor="middle" font-size="11" fill="#7c2d12">realpath + startsWith</text>
+
+  <!-- Decision diamond -->
+  <polygon points="255,170 290,195 255,220 220,195" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="255" y="190" text-anchor="middle" font-size="11" fill="#374151">合法?</text>
+  <text x="255" y="202" text-anchor="middle" font-size="10" fill="#374151">路径</text>
+
+  <!-- NO: reject -->
+  <line x1="220" y1="195" x2="160" y2="195" class="arrow"/>
+  <text x="185" y="188" font-size="10" fill="#dc2626">否</text>
+  <rect x="40" y="220" width="120" height="36" class="box" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="100" y="243" text-anchor="middle" class="title" fill="#991b1b" font-size="12">拒绝 + 记录日志</text>
+
+  <!-- YES: to sandbox -->
+  <line x1="290" y1="195" x2="360" y2="195" class="arrow"/>
+  <text x="320" y="188" font-size="10" fill="#16a34a">是</text>
+
+  <!-- Sandbox -->
+  <rect x="360" y="170" width="140" height="50" class="box" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="430" y="188" text-anchor="middle" class="title" fill="#374151">2. 沙箱执行</text>
+  <text x="430" y="206" text-anchor="middle" font-size="11" fill="#4b5563">fs.readFileSync</text>
+
+  <!-- Arrow to format -->
+  <line x1="500" y1="195" x2="550" y2="195" class="arrow"/>
+
+  <!-- Format -->
+  <rect x="550" y="170" width="140" height="50" class="box" fill="#ffedd5" stroke="#f97316"/>
+  <text x="620" y="188" text-anchor="middle" class="title" fill="#9a3412">3. 格式化结果</text>
+  <text x="620" y="206" text-anchor="middle" font-size="11" fill="#7c2d12">content + metadata</text>
+
+  <!-- Return dashed -->
+  <line x1="620" y1="170" x2="620" y2="90" class="darrow"/>
+  <line x1="620" y1="90" x2="80" y2="90" class="darrow"/>
+  <line x1="80" y1="90" x2="80" y2="130" class="darrow"/>
+  <text x="350" y="82" text-anchor="middle" font-size="11" fill="#6b7280">返回结构化结果</text>
+
+  <!-- Legend -->
+  <rect x="20" y="290" width="680" height="40" class="box" fill="#fafafa" stroke="#d1d5db"/>
+  <text x="40" y="305" font-size="11" fill="#6b7280">实线箭头 = 正向请求流程</text>
+  <text x="40" y="320" font-size="11" fill="#6b7280">虚线箭头 = 结果回传</text>
+  <text x="280" y="305" font-size="11" fill="#6b7280">橙色 = Harness 控制逻辑</text>
+  <text x="280" y="320" font-size="11" fill="#6b7280">灰色 = 实际执行环境</text>
+</svg>
