@@ -1,0 +1,295 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","cryptoandhashintro",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","cryptoandhashintro","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","cryptoandhashintro","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","EyijEq2l4-FtR-V3LzpsZ",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T7fd6,<p>In day-to-day development, "encryption" tends to be used as a catch-all: HTTPS, password storage, file checksums, API signing… In reality there are at least several distinct capabilities behind it: <strong>confidentiality (encryption/decryption)</strong>, <strong>integrity (digests)</strong>, <strong>identity and key distribution (asymmetric cryptography)</strong>, and the <strong>threshold control (secret sharing)</strong> commonly seen in HSM scenarios. Separating these categories is more useful than memorizing a pile of algorithm names.</p>
+<p>This post walks through common algorithms grouped as digests, symmetric encryption, asymmetric encryption (RSA / ECC), and threshold secret sharing, covering each from both the <strong>principle</strong> and the <strong>application</strong> side; the last section briefly touches on post-quantum cryptography (PQC). For details on certificates and trust chains, see the earlier post <a href="/post/en/pkitrustarch">PKI Architecture and Certificate Trust Chains</a>.</p>
+<h2 id="first-identify-the-problem-you-are-solving">First, identify the problem you are solving<a aria-hidden="true" tabindex="-1" href="#first-identify-the-problem-you-are-solving"><span class="anchor-link"> #</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Typical mechanism</th>
+<th>In one sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confidentiality</td>
+<td>Symmetric / asymmetric encryption</td>
+<td>Without the key, nobody can read the plaintext</td>
+</tr>
+<tr>
+<td>Integrity</td>
+<td>Digest (hash)</td>
+<td>Any modification to the content is detectable</td>
+</tr>
+<tr>
+<td>Authentication / non-repudiation</td>
+<td>Signatures, MAC</td>
+<td>Prove "who sent it", or authenticate a message under a shared key</td>
+</tr>
+<tr>
+<td>Key distribution</td>
+<td>Asymmetric crypto, key agreement</td>
+<td>Establish a shared key over an untrusted channel</td>
+</tr>
+<tr>
+<td>Threshold control</td>
+<td>Secret sharing (e.g. Shamir)</td>
+<td>Any set of shares below the threshold cannot reconstruct the secret</td>
+</tr>
+</tbody>
+</table>
+<p>Real systems almost always <strong>combine</strong> these: TLS uses asymmetric crypto for identity and the handshake, then AES to protect the session; Git and software packages use digests for integrity; HSMs use threshold shares to manage master keys and admin tokens. The sections below go through each algorithm family.</p>
+<h2 id="digest-algorithms-turning-arbitrary-input-into-a-fixed-size-fingerprint">Digest algorithms: turning arbitrary input into a fixed-size fingerprint<a aria-hidden="true" tabindex="-1" href="#digest-algorithms-turning-arbitrary-input-into-a-fixed-size-fingerprint"><span class="anchor-link"> #</span></a></h2>
+<h3 id="principle-a-one-way-collision-resistant-compression-function">Principle: a one-way, collision-resistant compression function<a aria-hidden="true" tabindex="-1" href="#principle-a-one-way-collision-resistant-compression-function"><span class="anchor-link"> #</span></a></h3>
+<p>A digest (hash) algorithm maps input of arbitrary length to output of fixed length; SHA-256, for example, produces 256 bits. Desired properties include:</p>
+<ul>
+<li><strong>One-wayness</strong>: recovering the input from the digest is infeasible</li>
+<li><strong>Collision resistance</strong>: it is hard to find two different inputs with the same digest</li>
+<li><strong>Avalanche effect</strong>: flipping one input bit changes the output beyond recognition</li>
+</ul>
+<p>Common members:</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Output length</th>
+<th>Status (engineering view)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MD5</td>
+<td>128 bit</td>
+<td>No longer suitable for security use; collision attacks are mature</td>
+</tr>
+<tr>
+<td>SHA-1</td>
+<td>160 bit</td>
+<td>Not suitable for new systems; long deprecated by browsers/CAs</td>
+</tr>
+<tr>
+<td>SHA-256 / SHA-384 / SHA-512</td>
+<td>256/384/512 bit</td>
+<td>Current mainstream default</td>
+</tr>
+<tr>
+<td>SHA-3 (e.g. SHA3-256)</td>
+<td>Variable</td>
+<td>Backup family; structurally different from SHA-2</td>
+</tr>
+<tr>
+<td>BLAKE2 / BLAKE3</td>
+<td>Variable</td>
+<td>Performance-friendly; used by some newer protocols</td>
+</tr>
+</tbody>
+</table>
+<p>Note: a digest is <strong>not encryption</strong>. Digest outputs are usually public; they provide no confidentiality, only a "fingerprint". When you need integrity plus keyed authentication, use <strong>HMAC</strong> (e.g. HMAC-SHA256) rather than a bare hash of a password or of API parameters.</p>
+<p>Password storage typically uses <strong>slow hashes / key derivation functions</strong>: bcrypt, scrypt, Argon2, PBKDF2, and so on. Their goal is to be deliberately slow and resist brute force, which is a different problem from storing a plain SHA-256 hash of the password.</p>
+<h3 id="applications-verification-signature-preprocessing-key-derivation">Applications: verification, signature preprocessing, key derivation<a aria-hidden="true" tabindex="-1" href="#applications-verification-signature-preprocessing-key-derivation"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li><strong>Integrity checks</strong>: ISO images, software packages, object storage ETag / Content-MD5 (legacy), Git object IDs</li>
+<li><strong>Input to digital signatures</strong>: RSA / ECDSA usually sign the message digest, not the full plaintext</li>
+<li><strong>Certificates and PKI</strong>: certificate fingerprints, OCSP / CRL identifiers; algorithm choice affects the whole trust chain (see the PKI post)</li>
+<li><strong>TLS / protocols</strong>: hashing the handshake transcript, key derivation such as HKDF</li>
+<li><strong>Deduplication and indexing</strong>: content-addressable storage (CAS) uses hashes as keys; here uniqueness and performance matter most, and the collision-resistance requirement depends on the scenario</li>
+</ul>
+<p>Recommendation: new systems should default to <strong>SHA-256</strong> (or SHA-384/512 as the protocol requires); do not use MD5/SHA-1 for anything security-related. Legacy systems that show "SHA1 fingerprints" should be flagged as tech debt with a migration plan.</p>
+<h2 id="aes-the-workhorse-of-symmetric-encryption">AES: the workhorse of symmetric encryption<a aria-hidden="true" tabindex="-1" href="#aes-the-workhorse-of-symmetric-encryption"><span class="anchor-link"> #</span></a></h2>
+<h3 id="principle-one-shared-key-the-same-algorithm-for-encryption-and-decryption">Principle: one shared key, the same algorithm for encryption and decryption<a aria-hidden="true" tabindex="-1" href="#principle-one-shared-key-the-same-algorithm-for-encryption-and-decryption"><span class="anchor-link"> #</span></a></h3>
+<p>In symmetric encryption, encryption and decryption use <strong>the same key</strong>. AES (Advanced Encryption Standard) is a block cipher: plaintext is processed in fixed 128-bit blocks, with a key length of 128, 192, or 256 bits.</p>
+<p>The algorithm alone is not enough; you also need to pick a <strong>mode of operation</strong>:</p>
+<ul>
+<li><strong>GCM</strong>: the most common authenticated encryption (AEAD) mode today, providing both confidentiality and integrity</li>
+<li><strong>CBC</strong> and others: still found in older systems; they need a separate MAC and carry higher misuse risk</li>
+<li><strong>ECB</strong>: really only good as a textbook counterexample; identical plaintext blocks produce identical ciphertext blocks</li>
+</ul>
+<p>The security boundary is clear: <strong>key secrecy ≈ security</strong>. A public algorithm and open-source implementation do not weaken security; what really hurts is key leakage, weak randomness, the wrong mode, or plaintext keys hardcoded in source.</p>
+<p>Compared with asymmetric crypto, AES is <strong>fast and suited to large volumes of data</strong>; its weakness is that both parties must first share the key securely.</p>
+<h3 id="applications-disks-tls-sessions-application-level-sealing">Applications: disks, TLS sessions, application-level sealing<a aria-hidden="true" tabindex="-1" href="#applications-disks-tls-sessions-application-level-sealing"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li><strong>Full-disk / volume encryption</strong>: BitLocker, FileVault, LUKS, etc. commonly use AES underneath</li>
+<li><strong>TLS record layer</strong>: after the handshake, application data is mostly protected by AES-GCM (or ChaCha20-Poly1305)</li>
+<li><strong>Application layer</strong>: database field encryption, server-side encryption in object storage, sealing message payloads in middleware</li>
+<li><strong>Tokens and local storage</strong>: some frameworks wrap sessions or sensitive config with AES (the master key still needs proper management)</li>
+</ul>
+<p>In practice the hard part is rarely "choosing AES"; it is <strong>where the key comes from, where it is stored, how it is rotated, and who is allowed to decrypt</strong>. Establishing a shared key across a network for the first time is where asymmetric crypto or key-agreement protocols come in.</p>
+<h2 id="rsa-the-classic-asymmetric-scheme">RSA: the classic asymmetric scheme<a aria-hidden="true" tabindex="-1" href="#rsa-the-classic-asymmetric-scheme"><span class="anchor-link"> #</span></a></h2>
+<h3 id="principle-the-hardness-of-factoring-large-integers">Principle: the hardness of factoring large integers<a aria-hidden="true" tabindex="-1" href="#principle-the-hardness-of-factoring-large-integers"><span class="anchor-link"> #</span></a></h3>
+<p>Asymmetric schemes use a <strong>key pair</strong>: the public key can be published, while the private key is kept only by its owner. RSA's security rests on the difficulty of factoring large integers: choose large primes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span>, set the modulus <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>p</mi><mo>⋅</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">n = p \cdot q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span>, then choose a public exponent <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span> and private exponent <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> such that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>d</mi><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444em"></mspace><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333em"></mspace><mi>φ</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">ed \equiv 1 \pmod{\varphi(n)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.3333em;"></span><span class="mord mathnormal">φ</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">))</span></span></span></span>. The public key is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n, e)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">e</span><span class="mclose">)</span></span></span></span>, and the private key contains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span> (implementations usually also store <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span>, and other parameters for speedups).</p>
+<p>Do not confuse its two main uses:</p>
+<ul>
+<li><strong>Encryption</strong>: encrypt with the public key → decrypt with the private key (usually to wrap a small symmetric key, not to encrypt large files directly)</li>
+<li><strong>Signing</strong>: sign with the private key → verify with the public key (proves possession of the private key and that the content was not tampered with; usually signs a digest)</li>
+</ul>
+<p>RSA operations are modular exponentiations, <strong>more than an order of magnitude slower</strong> than AES, with larger keys. New systems today typically start at <strong>2048 bits</strong>, with <strong>3072</strong> and above for long-term or high-assurance needs. Using RSA to "encrypt an entire disk" is both slow and unnecessary; the standard approach is <strong>RSA/ECC carries the key, AES carries the data</strong> (hybrid encryption).</p>
+<p>Padding is not optional: use <strong>OAEP</strong> for encryption and <strong>PSS</strong> for signatures (or whatever the protocol specifies). Raw RSA or misuse of the old PKCS#1 v1.5 has been a breeding ground for historical vulnerabilities.</p>
+<h3 id="applications-certificates-signatures-key-wrapping">Applications: certificates, signatures, key wrapping<a aria-hidden="true" tabindex="-1" href="#applications-certificates-signatures-key-wrapping"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li><strong>TLS / HTTPS</strong>: RSA was once used for key exchange; in modern cipher suites RSA certificates mainly serve the <strong>signing</strong> role, while key agreement is usually done with ECDHE</li>
+<li><strong>Certificates and PKI</strong>: many server certificates and code-signing certificates still carry RSA public keys</li>
+<li><strong>Code signing, document signing, S/MIME email</strong>: the private key proves the publisher's identity</li>
+<li><strong>JWT / JWS</strong>, etc.: algorithms like <code>RS256</code> mean "SHA-256 + RSA signature"</li>
+</ul>
+<p>Common pitfalls: keys that are too short, private keys committed to repositories, using one key pair for both encryption and signing with a muddled lifecycle, and home-made "encryption padding". If a system or mature library offers a high-level API, do not assemble modular exponentiation yourself.</p>
+<h2 id="ecc-shorter-keys-equivalent-strength">ECC: shorter keys, equivalent strength<a aria-hidden="true" tabindex="-1" href="#ecc-shorter-keys-equivalent-strength"><span class="anchor-link"> #</span></a></h2>
+<h3 id="principle-the-elliptic-curve-discrete-logarithm">Principle: the elliptic curve discrete logarithm<a aria-hidden="true" tabindex="-1" href="#principle-the-elliptic-curve-discrete-logarithm"><span class="anchor-link"> #</span></a></h3>
+<p>Elliptic curve cryptography (ECC) is built on the <strong>discrete logarithm problem</strong> over the group of points on a curve: given a base point <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> and the scalar multiple <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>G</mi></mrow><annotation encoding="application/x-tex">kG</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mord mathnormal">G</span></span></span></span>, recovering the scalar <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span> is hard. The core operation is scalar multiplication of points, and for the same security level, keys are much shorter than RSA's; a curve with roughly <strong>256-bit</strong> strength is broadly comparable to RSA with thousands of bits.</p>
+<p>Common curves and their uses (briefly):</p>
+<ul>
+<li><strong>NIST P-256</strong> and similar: very common in TLS and the certificate ecosystem</li>
+<li><strong>X25519</strong>: key agreement (a Diffie–Hellman variant)</li>
+<li><strong>Ed25519</strong>: signatures (EdDSA), with a simple implementation and good performance</li>
+</ul>
+<p>Shorter keys mean smaller certificates and faster handshakes, which particularly helps mobile clients and high-concurrency TLS termination. The cost is that curves and parameters must come from a trusted set; "inventing your own curve" is usually a preview of an incident.</p>
+<h3 id="applications-the-default-choice-for-modern-tls-and-mobile">Applications: the default choice for modern TLS and mobile<a aria-hidden="true" tabindex="-1" href="#applications-the-default-choice-for-modern-tls-and-mobile"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li><strong>ECDHE</strong>: key agreement with forward secrecy in TLS (leaking a session key does not expose past traffic)</li>
+<li><strong>ECDSA / EdDSA</strong>: certificate signatures, JWT (e.g. <code>ES256</code>), SSH host and user keys</li>
+<li><strong>Trade-off with RSA</strong>: new systems should prefer ECC (performance, size); keep RSA when you must support old clients or existing RSA certificate chains</li>
+</ul>
+<p>The "public key algorithm" field in a certificate is exactly where RSA / ECC show up; for how relying parties validate the full chain, see the <a href="/post/en/pkitrustarch">PKI post</a>.</p>
+<h2 id="threshold-schemes-and-secret-sharing-shamir-and-others">Threshold schemes and secret sharing: Shamir and others<a aria-hidden="true" tabindex="-1" href="#threshold-schemes-and-secret-sharing-shamir-and-others"><span class="anchor-link"> #</span></a></h2>
+<p>What is commonly called <strong>Shamir's Secret Sharing (SSS)</strong> was proposed by Adi Shamir. It is <strong>not</strong> an encryption algorithm like AES, nor a public-key algorithm like RSA/ECC; it is a <strong>secret sharing</strong> scheme. With the constraint "at least t shares are needed to reconstruct", it is often classified under the broader category of <strong>threshold cryptography / threshold schemes</strong>.</p>
+<p>Do not mix up neighboring concepts:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What it solves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secret sharing (e.g. Shamir)</td>
+<td>Split a secret into n shares; any t shares reconstruct it, fewer than t reveal nothing</td>
+</tr>
+<tr>
+<td>Threshold signatures / threshold decryption</td>
+<td>Multiple private key shares cooperate to sign or decrypt; the full private key need never exist in one place</td>
+</tr>
+<tr>
+<td>Plain backup copies</td>
+<td>Every copy is the full key; any single leak compromises everything, with no threshold protection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="principle-t-of-n-and-polynomial-interpolation">Principle: t-of-n and polynomial interpolation<a aria-hidden="true" tabindex="-1" href="#principle-t-of-n-and-polynomial-interpolation"><span class="anchor-link"> #</span></a></h3>
+<p>The intuition behind Shamir's scheme: over a finite field, construct a random polynomial of degree <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> and put the secret in the constant term (or at an agreed evaluation point); give each participant one point on the curve (a share). Any <strong>t</strong> points uniquely determine the polynomial and therefore recover the secret; <strong>fewer than t points</strong> yield no useful information about the secret in the information-theoretic sense.</p>
+<p>The engineering parameter is written as <strong>t-of-n</strong> (or m-of-n): for example 3-of-5 means 5 admin shares are issued, any 3 can be combined, and 2 cannot. The threshold provides both:</p>
+<ul>
+<li><strong>Resistance to a single bad actor</strong>: no one person can obtain the full master key / admin token</li>
+<li><strong>Resistance to partial loss</strong>: a few shares can be lost and recovery is still possible (as long as t remain)</li>
+</ul>
+<p>The shares themselves must still be handled as sensitive material (separate people, locations, media); the algorithm only guarantees "below the threshold, nothing combines", and does not replace physical and procedural controls.</p>
+<h3 id="applications-hsm-administration-and-key-ceremonies">Applications: HSM administration and key ceremonies<a aria-hidden="true" tabindex="-1" href="#applications-hsm-administration-and-key-ceremonies"><span class="anchor-link"> #</span></a></h3>
+<p>The most typical use is in <strong>HSMs</strong> and high-assurance key management:</p>
+<ul>
+<li><strong>Threshold tokens / admin card distribution</strong>: during device initialization or a key ceremony, the master key, unseal key, or admin privileges are split across multiple smart cards / tokens handed to several administrators; booting, unsealing, and critical operations require a quorum</li>
+<li><strong>Root keys and CA ceremonies</strong>: the root private key or seed is not held by any single person, reducing insider threat and single-person error</li>
+<li><strong>System unsealing</strong>: for example, some key management systems split the master key with Shamir, and starting the cluster requires several operators to unseal it together</li>
+</ul>
+<p>Relationship to AES/RSA: a threshold scheme governs <strong>"who is allowed to assemble that critical key"</strong>; once assembled, business data is still usually encrypted with AES and signed with RSA/ECC. A common combination in HSMs is: <strong>business keys stay inside the device</strong>, while <strong>administrative privileges are controlled by threshold tokens for export, unsealing, and dual-control review</strong>.</p>
+<h2 id="pqc-algorithm-families-for-the-quantum-era">PQC: algorithm families for the quantum era<a aria-hidden="true" tabindex="-1" href="#pqc-algorithm-families-for-the-quantum-era"><span class="anchor-link"> #</span></a></h2>
+<h3 id="principle-switch-to-a-different-set-of-hard-problems">Principle: switch to a different set of "hard problems"<a aria-hidden="true" tabindex="-1" href="#principle-switch-to-a-different-set-of-hard-problems"><span class="anchor-link"> #</span></a></h3>
+<p>If large-scale fault-tolerant quantum computers become available, Shor's algorithm would seriously threaten the mathematical problems that <strong>RSA and ECC</strong> depend on. Symmetric algorithms and hashes are comparatively robust: the main countermeasure is <strong>longer keys / outputs</strong> (e.g. AES-256, longer digests), not replacing the whole family.</p>
+<p>Post-quantum cryptography (PQC) uses problems believed to be quantum-resistant (lattices, hash-based signatures, etc.). NIST has been driving standardization, and the directions you commonly hear about in engineering include:</p>
+<ul>
+<li><strong>ML-KEM</strong> (Kyber): a key encapsulation mechanism (KEM), used to negotiate/wrap symmetric keys</li>
+<li><strong>ML-DSA</strong> (Dilithium) and others: digital signatures</li>
+</ul>
+<p>The transition period commonly uses <strong>hybrid mode</strong>: a classical algorithm (such as X25519) runs alongside a PQC KEM, and the session is only at risk if both are broken, which reduces the risk of "betting everything on one scheme before the standards settle".</p>
+<h3 id="applications-standards-rollout-and-migration-reality">Applications: standards rollout and migration reality<a aria-hidden="true" tabindex="-1" href="#applications-standards-rollout-and-migration-reality"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li><strong>TLS / certificates</strong>: browsers and some CDNs and cloud providers are already experimenting with or gradually rolling out hybrid key exchange; PQC signatures and dual certificate chains on the certificate side are still evolving</li>
+<li><strong>Engineering cost</strong>: public keys and ciphertexts are often larger, increasing handshake size and CPU; protocols, hardware, HSMs, and compliance checklists all need to change</li>
+<li><strong>Pragmatic judgment</strong>: secrets with very long retention ("harvest now, decrypt later") should be assessed first; typical web workloads can simply follow mainstream protocols and vendor roadmaps, with no need to implement PQC primitives yourself</li>
+</ul>
+<p>PQC is a <strong>long-term migration problem</strong>, not a switch that replaces RSA everywhere tomorrow. Retiring MD5/SHA-1 for digests, using AEAD for symmetric encryption, and getting asymmetric key lengths and padding right yield more certain returns first.</p>
+<h2 id="comparison-and-selection-what-to-use-where">Comparison and selection: what to use where<a aria-hidden="true" tabindex="-1" href="#comparison-and-selection-what-to-use-where"><span class="anchor-link"> #</span></a></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Representative</th>
+<th>Good at</th>
+<th>Main cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digest</td>
+<td>SHA-256</td>
+<td>Integrity, signature preprocessing, derivation</td>
+<td>No confidentiality; never use MD5/SHA-1 for security</td>
+</tr>
+<tr>
+<td>MAC</td>
+<td>HMAC-SHA256</td>
+<td>Message authentication under a shared key</td>
+<td>Requires a pre-shared key</td>
+</tr>
+<tr>
+<td>Symmetric encryption</td>
+<td>AES-GCM</td>
+<td>Confidentiality + integrity for bulk data</td>
+<td>Key distribution and custody</td>
+</tr>
+<tr>
+<td>Asymmetric (RSA)</td>
+<td>RSA-OAEP / RSA-PSS</td>
+<td>Widely compatible key wrapping and signatures</td>
+<td>Slow, large keys</td>
+</tr>
+<tr>
+<td>Asymmetric (ECC)</td>
+<td>X25519 / Ed25519 / P-256</td>
+<td>Cost-effective key agreement and signatures</td>
+<td>Choice of curve and ecosystem</td>
+</tr>
+<tr>
+<td>Threshold / secret sharing</td>
+<td>Shamir t-of-n</td>
+<td>Multi-party custody, no single point, fault-tolerant recovery</td>
+<td>Process and share custody overhead</td>
+</tr>
+<tr>
+<td>PQC</td>
+<td>ML-KEM / ML-DSA, etc.</td>
+<td>Long-term quantum-resistant security</td>
+<td>Size and ecosystem maturity</td>
+</tr>
+</tbody>
+</table>
+<p>A typical pipeline fits in one sentence:</p>
+<p><strong>Digests preserve integrity → asymmetric crypto identifies parties / delivers keys → symmetric crypto protects bulk data; critical master keys can be held in threshold shares.</strong></p>
+<p>Take TLS: the certificate (RSA/ECC public key + signature) proves the server's identity → ECDHE (or hybrid PQC) negotiates the session key → AES-GCM encrypts application data, with SHA-family hashes used repeatedly throughout. On the HSM side there is a separate administrative chain: Shamir threshold tokens → unseal/authorize → symmetric or asymmetric operations for business inside the device.</p>
+<h2 id="summary">Summary<a aria-hidden="true" tabindex="-1" href="#summary"><span class="anchor-link"> #</span></a></h2>
+<ol>
+<li><strong>Digests</strong> answer "has this been modified?"; <strong>symmetric encryption</strong> answers "how do we keep large amounts of data confidential?"; <strong>asymmetric crypto</strong> answers "how are keys distributed and identities proven?"; <strong>threshold secret sharing</strong> (e.g. Shamir) answers "how do we prevent any one person from holding the complete secret?".</li>
+<li>A reasonable default for new systems is roughly: SHA-256 (or as the protocol specifies), AES-GCM, and ECC (key agreement/signatures); RSA appears mostly for compatibility and existing certificates; HSM administration commonly uses t-of-n shares.</li>
+<li><strong>PQC</strong> is worth tracking, but get the classical algorithms right first: retire MD5/SHA-1, use AEAD, and use sufficient key lengths with correct padding.</li>
+</ol>7:["$","$L15",null,{"postData":{"id":"cryptoandhashintro","locale":"en","contentHtml":"$16","title":"Encryption, Hashing, and Threshold Schemes: Types and Applications","date":"$D2025-10-01T00:32:00.000Z","updated":"$D2025-10-01T00:53:00.000Z","categories":["Notes"],"tags":["cryptography","hash","aes","rsa","ecc"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Encryption, Hashing, and Threshold Schemes: Types and Applications | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"In day-to-day development, \"encryption\" tends to be used as a catch-all: HTTPS,..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/cryptoandhashintro/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/cryptoandhashintro/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/cryptoandhashintro/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Encryption, Hashing, and Threshold Schemes: Types and Applications"}],["$","meta","7",{"property":"og:description","content":"In day-to-day development, \"encryption\" tends to be used as a catch-all: HTTPS,..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/cryptoandhashintro/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"cryptography"}],["$","meta","13",{"property":"article:tag","content":"hash"}],["$","meta","14",{"property":"article:tag","content":"aes"}],["$","meta","15",{"property":"article:tag","content":"rsa"}],["$","meta","16",{"property":"article:tag","content":"ecc"}],["$","meta","17",{"name":"twitter:card","content":"summary"}],["$","meta","18",{"name":"twitter:title","content":"Encryption, Hashing, and Threshold Schemes: Types and Applications"}],["$","meta","19",{"name":"twitter:description","content":"In day-to-day development, \"encryption\" tends to be used as a catch-all: HTTPS,..."}],["$","link","20",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

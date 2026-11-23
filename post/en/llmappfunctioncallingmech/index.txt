@@ -1,0 +1,231 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","llmappfunctioncallingmech",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","llmappfunctioncallingmech","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","llmappfunctioncallingmech","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","C7YOWnFOuKxxVos7GS49C",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T6cd5,<p>LLMs are used very widely today, from the most common chat Q&#x26;A (e.g. ChatGPT, DeepSeek chat) to retrieval-based question answering systems; you see them everywhere.</p>
+<p>In LLM (large language model) application development, <strong>Function Calling</strong> is a powerful mechanism that lets a model go beyond pure text generation and interact with the outside world more deeply. Through it, we can give an LLM the ability to invoke specific tools or APIs, unlocking countless complex and practical use cases.</p>
+<h2 id="what-is-function-calling">What is Function Calling<a aria-hidden="true" tabindex="-1" href="#what-is-function-calling"><span class="anchor-link"> #</span></a></h2>
+<p>Simply put, Function Calling is the ability for an LLM to understand and generate specific structured data (JSON) that triggers an external function or tool. You don't have the model perform an operation directly; instead you tell it, "when the user wants to do X, return a function name with specific arguments to me." Your application code then receives this "function call" instruction and is responsible for actually executing the function.</p>
+<p>By definition, Function Calling is the model generating structured data to trigger an external function.</p>
+<p>The overall workflow is:</p>
+<ol>
+<li>The developer provides function descriptions (schemas) to the LLM.</li>
+<li>The user's input creates a need for one of the functions.</li>
+<li>The LLM generates a JSON object containing the function name and arguments, based on the function description.</li>
+<li>The developer's application code parses and executes the function.</li>
+</ol>
+<h2 id="why-function-calling-is-needed">Why Function Calling is needed<a aria-hidden="true" tabindex="-1" href="#why-function-calling-is-needed"><span class="anchor-link"> #</span></a></h2>
+<p>Without Function Calling, an LLM can only answer with what it already "knows". Ask "What's the weather like today?" and it may produce a description of weather, but it can't actually tell you the current conditions.</p>
+<h3 id="limitations-of-llms">Limitations of LLMs<a aria-hidden="true" tabindex="-1" href="#limitations-of-llms"><span class="anchor-link"> #</span></a></h3>
+<p>Function Calling addresses several limitations of LLMs.</p>
+<h4 id="a-static-knowledge-base">A static knowledge base<a aria-hidden="true" tabindex="-1" href="#a-static-knowledge-base"><span class="anchor-link"> #</span></a></h4>
+<p>An LLM is trained on a huge body of knowledge, but that knowledge is static: it cannot get the current weather in Shanghai.</p>
+<h4 id="limited-model-capabilities">Limited model capabilities<a aria-hidden="true" tabindex="-1" href="#limited-model-capabilities"><span class="anchor-link"> #</span></a></h4>
+<p>Continuing the example above: if we want to save the weather we retrieved, the LLM cannot store it in a database for later analysis on our behalf.</p>
+<h4 id="limited-reliability-of-model-output">Limited reliability of model output<a aria-hidden="true" tabindex="-1" href="#limited-reliability-of-model-output"><span class="anchor-link"> #</span></a></h4>
+<p>LLMs have always had the "hallucination" problem. Without grounding in a specific context, their answers may be inaccurate; for example, if you ask one to guess how to use an API without giving it the exact format, what it produces may well be wrong.</p>
+<h2 id="building-a-simple-function-calling-application">Building a simple Function Calling application<a aria-hidden="true" tabindex="-1" href="#building-a-simple-function-calling-application"><span class="anchor-link"> #</span></a></h2>
+<p>To demonstrate a Function Calling application, I chose OpenRouter as the LLM cloud provider. It integrates a large number of LLM vendors, which makes choosing a model convenient.</p>
+<p>One thing to note: OpenRouter offers many models, many of them free. If you want to use Function Calling, whether the model is free or paid, first check whether it supports Function Calling; you can use the filter on the left side of the page (filter by Tools support).</p>
+<p><img src="/post/llmappfunctioncallingmech/1c3a72fe6c9d.png" alt="Filtering OpenRouter models that support tools"></p>
+<p>I use the DeepSeek V3.1 model for the demo, with an example external function that counts the number of articles on the site. Let's go through the call flow step by step:</p>
+<h4 id="step-1-define-the-function-tool-definition"><strong>Step 1: Define the function (tool definition)</strong><a aria-hidden="true" tabindex="-1" href="#step-1-define-the-function-tool-definition"><span class="anchor-link"> #</span></a></h4>
+<p>Defining the function tells the LLM which external functions this application supports. In practice, you create a JSON Schema for each external function and put it in the LLM request parameters.</p>
+<p>For example:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"model"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"deepseek/deepseek-chat-v3-0324"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tools"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"function"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"function"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"count_of_articles"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Return of total count of blog articles in the website"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"parameters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                    <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"object"</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">"properties"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+                    <span class="hljs-attr">"required"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span>
+                <span class="hljs-punctuation">}</span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"messages"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-comment">// ...</span>
+     <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>This example defines an external function that counts how many articles the blog has in total. When the LLM receives the external functions defined in <code>tools</code>, it parses them; how a function is used and what it means are specified through <code>description</code> and <code>parameters</code>.</p>
+<h4 id="step-2-call-the-llm-api">Step 2: Call the LLM API<a aria-hidden="true" tabindex="-1" href="#step-2-call-the-llm-api"><span class="anchor-link"> #</span></a></h4>
+<p>With the function defined in JSON, we send it to the LLM as part of the request. We also put our text request in <code>messages</code>, for example (the system prompt says, roughly, "You are an AI assistant that answers user questions so they can quickly get information about blog articles; tell users that heavy usage will trigger rate limits", and the user asks "How many articles does the site have?"):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-attr">"messages"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"system"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"You are an AI assistant that answers user questions so they can quickly find blog posts. Tell users that frequent use may trigger rate limits."</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"user"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"How many posts does the site have?"</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Once these are added, the whole request can be sent to the LLM.</p>
+<h4 id="step-3-parse-and-execute-the-function">Step 3: Parse and execute the function<a aria-hidden="true" tabindex="-1" href="#step-3-parse-and-execute-the-function"><span class="anchor-link"> #</span></a></h4>
+<p>While processing the request, the LLM notices there is an external function for counting articles, so it returns:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"gen-1750571355-aHglwd9IFp4rXZs92i"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"provider"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Novita"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"model"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"deepseek/deepseek-chat-v3-0324"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"object"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"chat.completion"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"created"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1750571355</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"choices"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"logprobs"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"finish_reason"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"tool_calls"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"native_finish_reason"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"tool_calls"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"index"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"assistant"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"refusal"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"reasoning"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"tool_calls"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+                    <span class="hljs-punctuation">{</span>
+                        <span class="hljs-attr">"index"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+                        <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"call_7gp5viqwa4lku1jy1xep1tfw"</span><span class="hljs-punctuation">,</span>
+                        <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"function"</span><span class="hljs-punctuation">,</span>
+                        <span class="hljs-attr">"function"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"count_of_articles"</span><span class="hljs-punctuation">,</span>
+                            <span class="hljs-attr">"arguments"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"{}"</span>
+                        <span class="hljs-punctuation">}</span>
+                    <span class="hljs-punctuation">}</span>
+                <span class="hljs-punctuation">]</span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-comment">// ...</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>It returns a <code>tool_calls</code> request from the assistant role, containing the requested external function name (<code>function.name</code>) and arguments (<code>function.arguments</code>). Note the <code>tool_calls.id</code> here as well; it is needed later.</p>
+<h4 id="step-4-feed-the-function-result-back-to-the-llm">Step 4: Feed the function result back to the LLM<a aria-hidden="true" tabindex="-1" href="#step-4-feed-the-function-result-back-to-the-llm"><span class="anchor-link"> #</span></a></h4>
+<p>Once we have the function call returned by the LLM, we execute the external function as requested and add the result to the message list.</p>
+<blockquote>
+<p>External functions</p>
+<p>The external function here can be a locally executed function that looks up or performs a local task, but it can just as well be a remote API endpoint, fetching the result of a remote operation using an API key.</p>
+</blockquote>
+<p>Suppose our blog's external function ends up counting 232 articles. We then add the result to the messages:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">"messages"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"system"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"You are an AI assistant that answers user questions so they can quickly find blog posts. Tell users that frequent use may trigger rate limits."</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"user"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"How many posts does the site have?"</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"tool"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"tool_call_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"call_7gp5viqwa4lku1jy1xep1tfw"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"count_of_articles"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"232"</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>The added message has the <code>tool</code> role and specifies the tool call ID (<code>tool_call_id</code>), the function name, and the result. We send this request to the LLM again, and it finally produces a natural-language answer (here: "The site currently has 232 articles. Heavy querying may trigger rate limits, so please use it reasonably."):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">"choices"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"logprobs"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"finish_reason"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"stop"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"native_finish_reason"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"stop"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"index"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">"role"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"assistant"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"content"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"The site currently has 232 posts. Frequent queries may trigger rate limits — please use them reasonably."</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"refusal"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"reasoning"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>That completes the full Function Calling flow. Real applications can do much more.</p>
+<h2 id="advanced-usage-and-best-practices">Advanced usage and best practices<a aria-hidden="true" tabindex="-1" href="#advanced-usage-and-best-practices"><span class="anchor-link"> #</span></a></h2>
+<p>The above demonstrates a simple example with a single external function; depending on the use case, there are more sophisticated patterns.</p>
+<h3 id="multi-tool-calling">Multi-tool calling<a aria-hidden="true" tabindex="-1" href="#multi-tool-calling"><span class="anchor-link"> #</span></a></h3>
+<p>Note that the example above defines only one external function (counting articles). Real applications often expose more than one: several external functions with different purposes for the LLM to use.</p>
+<p>Compared with the simple example, the only difference with multiple tools is in the function definitions; nothing else changes much. Here is how multiple external tool functions are defined:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-attr">"tools"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"function"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"function"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"count_of_articles"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Return of total count of blog articles in the website"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"parameters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                    <span class="hljs-comment">// ...</span>
+                <span class="hljs-punctuation">}</span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">"type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"function"</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">"function"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"search_article"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"description"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Search a specific article by the content"</span><span class="hljs-punctuation">,</span>
+                <span class="hljs-attr">"parameters"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+                    <span class="hljs-comment">// ...</span>
+                <span class="hljs-punctuation">}</span>
+            <span class="hljs-punctuation">}</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-comment">// ...</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>Pretty simple, right? When multiple external tool functions are defined, the LLM automatically picks the right one (mainly based on the function descriptions, so don't write them carelessly).</p>
+<h3 id="chaining">Chaining<a aria-hidden="true" tabindex="-1" href="#chaining"><span class="anchor-link"> #</span></a></h3>
+<p>Chaining is a popular style. It abstracts each conversation with the LLM into a session transaction, where each transaction handles one step of solving a problem (this eases the LLM's token limit and matches a problem-decomposition mindset). Linking these steps into a chain gives you a solution to a complex problem.</p>
+<blockquote>
+<p>LangChain</p>
+<p>LangChain is an open-source framework designed specifically to implement and manage "chains". It provides a full toolkit for this and is very easy to get started with.</p>
+</blockquote>
+<p>As an example of chaining, consider a novel-summarization system. Traditionally, with a single LLM session, a whole novel obviously can't fit, so we decompose the problem, for instance by defining some external functions:</p>
+<ul>
+<li>List the chapters</li>
+<li>Measure each chapter's size and summarize it in segments</li>
+<li>Combine the chapter summaries</li>
+<li>Summarize the whole novel</li>
+</ul>
+<p>The flow looks like this:
+<img src="/post/llmappfunctioncallingmech/ebd0ff9ba8e7.png" alt="LangChain summarization flow"></p>
+<blockquote>
+<p>Improving on LangChain</p>
+<p>The problem with LangChain is that it is sequential, which inevitably leads to overly long chains for complex problems. This led to LangGraph, whose main feature is running things that can be parallelized in parallel, so answers come back faster, at the cost of added system complexity.</p>
+</blockquote>
+<h2 id="summary-and-outlook">Summary and outlook<a aria-hidden="true" tabindex="-1" href="#summary-and-outlook"><span class="anchor-link"> #</span></a></h2>
+<p>Function Calling gives LLMs the ability to invoke external functions, letting them interact much better with the outside world. It is the bridge to the external world, with very broad applications in AI agents and automation, and the technology will keep iterating and evolving.</p>7:["$","$L15",null,{"postData":{"id":"llmappfunctioncallingmech","locale":"en","contentHtml":"$16","title":"Function Calling in LLM Applications","date":"$D2025-04-20T02:12:08.000Z","categories":["Essays"],"tags":["AI","LLM"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Function Calling in LLM Applications | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"LLMs are used very widely today, from the most common chat Q&A (e.g. ChatGPT, DeepSeek chat) to retrieval-base..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/llmappfunctioncallingmech/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/llmappfunctioncallingmech/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/llmappfunctioncallingmech/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Function Calling in LLM Applications"}],["$","meta","7",{"property":"og:description","content":"LLMs are used very widely today, from the most common chat Q&A (e.g. ChatGPT, DeepSeek chat) to retrieval-base..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/llmappfunctioncallingmech/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"AI"}],["$","meta","13",{"property":"article:tag","content":"LLM"}],["$","meta","14",{"name":"twitter:card","content":"summary"}],["$","meta","15",{"name":"twitter:title","content":"Function Calling in LLM Applications"}],["$","meta","16",{"name":"twitter:description","content":"LLMs are used very widely today, from the most common chat Q&A (e.g. ChatGPT, DeepSeek chat) to retrieval-base..."}],["$","link","17",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

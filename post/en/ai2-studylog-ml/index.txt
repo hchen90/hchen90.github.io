@@ -1,0 +1,144 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","ai2-studylog-ml",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","ai2-studylog-ml","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","ai2-studylog-ml","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","SrRq0JxqiZ27pNSH95owZ",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T43a3,<h1 id="artificial-intelligence---machine-learning">Artificial Intelligence - Machine Learning<a aria-hidden="true" tabindex="-1" href="#artificial-intelligence---machine-learning"><span class="anchor-link"> #</span></a></h1>
+<p>The foundation of artificial intelligence is machine learning. As the name suggests, it lets machines process data and learn from that data so they can make decisions on their own. Put simply, machine learning lets a machine learn and improve without being explicitly programmed for the task.</p>
+<p>Machine learning falls broadly into three kinds: supervised learning, unsupervised learning, and deep learning.</p>
+<h2 id="supervised-learning">Supervised Learning<a aria-hidden="true" tabindex="-1" href="#supervised-learning"><span class="anchor-link"> #</span></a></h2>
+<p>Supervised learning is a machine learning approach that learns a model or function from labeled training data (that is, known inputs and outputs). The model or function can then be used to predict new, unseen data. During training, whenever the model's prediction differs from the actual result, the model is adjusted to reduce that difference. It is as if a "supervisor" were guiding the machine on how to learn.</p>
+<p>Supervised learning naturally depends on training algorithms. Its defining characteristic is that it needs both inputs and outputs, with feedback on the output (and the data used in supervised learning is always labeled).</p>
+<p>Common supervised learning algorithms include linear regression, logistic regression, decision trees, support vector machines (SVM), and the K-NN (nearest neighbor) algorithm.</p>
+<h3 id="linear-regression">Linear Regression<a aria-hidden="true" tabindex="-1" href="#linear-regression"><span class="anchor-link"> #</span></a></h3>
+<p>Linear regression is a common predictive analysis method, suitable when two or more variables have a linear relationship. In machine learning, the goal of linear regression is to find a best-fit line that minimizes the sum of the vertical distances (the errors) from all data points to that line. This process is also known as the least squares method.</p>
+<p>The general form of a linear regression model is Y = aX + b, where Y is the dependent variable (the target we want to predict), X is the independent variable (the input we use to predict), and a and b are model parameters that determine the slope and intercept of the line.</p>
+<p>Linear regression provides a way to quantify the relationship between independent and dependent variables, and it underpins many more complex models and techniques. It is widely used across fields including economics, biology, environmental science, and the social sciences.</p>
+<p>Here is an example:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">x</span>):
+    np.random.seed(<span class="hljs-number">42</span>)
+    y = <span class="hljs-number">0.1</span> * x + <span class="hljs-number">1.25</span> + <span class="hljs-number">0.2</span> * np.random.randn(x.shape[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">return</span> y
+
+x = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">20</span>, <span class="hljs-number">0.5</span>)
+y = f(x)
+
+plt.scatter(x, y, label=<span class="hljs-string">'Actual Data'</span>, color=<span class="hljs-string">'blue'</span>)
+plt.title(<span class="hljs-string">'Data'</span>)
+plt.legend()
+</code></pre></div>
+<p>The code above generates a set of scattered points representing a series of observed events, as shown:</p>
+<p><img src="/post/ai2-studylog-ml/08429d71f88f.png" alt="Scatter plot of the sample data"></p>
+<p>With that, the sample data is ready.</p>
+<p>Next comes model training. We use the linear regression algorithm from the machine learning library and train the model (printing the slope coefficient and intercept):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression
+
+regression_lineal = LinearRegression()
+regression_lineal.fit(x.reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), y)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">'w = '</span> + <span class="hljs-built_in">str</span>(regression_lineal.coef_) + <span class="hljs-string">', b = '</span> + <span class="hljs-built_in">str</span>(regression_lineal.intercept_))
+</code></pre></div>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">w = [<span class="hljs-number">0.09183522</span>], b = <span class="hljs-number">1.2858792525736682</span>
+</code></pre></div>
+<p>Then we make a prediction (the input here is 5, which is close to the points in the plot):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">new_x = np.array([<span class="hljs-number">5</span>])
+prediction = regression_lineal.predict(new_x.reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>))
+<span class="hljs-built_in">print</span>(prediction)
+</code></pre></div>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python">[<span class="hljs-number">1.74505534</span>]
+</code></pre></div>
+<p>We can also compute evaluation metrics for the model. Here the standard deviation and R2 are computed:</p>
+<p><img src="/post/ai2-studylog-ml/975edaa12afe.png" alt="Model evaluation metrics"></p>
+<p>The score is close to 0.9, which indicates a reasonably good fit. Finally, here is the fitted line:</p>
+<p><img src="/post/ai2-studylog-ml/16783c57471c.png" alt="Fitted regression line"></p>
+<h3 id="logistic-regression">Logistic Regression<a aria-hidden="true" tabindex="-1" href="#logistic-regression"><span class="anchor-link"> #</span></a></h3>
+<p>Logistic regression is a statistical technique for predictive analysis used to solve binary classification problems. It uses the logistic function to map the output of a linear regression into the range between 0 and 1, which makes it a good tool for classification. The main goal of logistic regression is to find the logistic function that best describes the relationship between the input variables and the output; the function's output can be interpreted as the probability that an event occurs.</p>
+<p>The general form of a logistic regression model is p = 1 / (1 + e^(-z)), where p is the predicted probability, z = aX + b, a and b are model parameters, and X is the input variable. During training we need to find the a and b that minimize the difference between the predicted probabilities and the actual class labels. This is usually done with maximum likelihood estimation or gradient descent.</p>
+<p>Logistic regression is very useful for understanding the factors that influence an outcome, predicting outcomes, and building simple classification models. It is widely used in finance, healthcare, the social sciences, and many other fields.</p>
+<h3 id="decision-trees">Decision Trees<a aria-hidden="true" tabindex="-1" href="#decision-trees"><span class="anchor-link"> #</span></a></h3>
+<p>A decision tree is a tree-structured machine learning model for classification and regression. It splits the dataset into different subsets through a series of splitting rules, eventually forming a tree: each node represents a feature, each branch represents a possible value of that feature, and each leaf represents a classification or regression result.</p>
+<p>The main advantages of decision trees are:</p>
+<ol>
+<li><strong>Easy to understand and interpret</strong>: The model's structure is intuitive, easy to explain, and well suited to visualization.</li>
+<li><strong>Little data preprocessing</strong>: Decision trees do not need much preprocessing, such as normalization or filling in missing values.</li>
+<li><strong>Handles multiple data types</strong>: Decision trees can handle both numerical and categorical data, which makes them quite flexible.</li>
+</ol>
+<p>Building a decision tree usually involves these steps:</p>
+<ol>
+<li><strong>Choose the best feature</strong>: Select the best feature to split on according to some metric (such as information gain or the Gini index).</li>
+<li><strong>Create split points</strong>: Create split points based on the chosen feature, dividing the data into several subsets.</li>
+<li><strong>Split recursively</strong>: Repeat steps 1 and 2 recursively on each subset until a stopping condition is met (such as reaching the maximum tree depth, or the number of samples in a leaf falling below a threshold).</li>
+</ol>
+<p>The disadvantages of decision trees are:</p>
+<ol>
+<li><strong>Prone to overfitting</strong>: Decision trees easily overfit the training data, especially when the tree is deep. Pruning or setting a maximum depth can mitigate this.</li>
+<li><strong>Sensitive to noise</strong>: Decision trees are fairly sensitive to noisy data, which can make the tree unstable.</li>
+</ol>
+<p>Decision trees perform well in many practical applications, such as credit scoring, medical diagnosis, and market analysis. They can also be combined with other models, as in ensemble methods like random forests and gradient boosted trees.</p>
+<p>Here is a simple decision tree classification example:</p>
+<p><img src="/post/ai2-studylog-ml/ed5c515526f0.png" alt="Decision tree example code"></p>
+<p><img src="/post/ai2-studylog-ml/058f8c213f29.png" alt="Decision tree training output"></p>
+<p><img src="/post/ai2-studylog-ml/067ad6d7e168.png" alt="Decision tree visualization"></p>
+<h3 id="k-nn-nearest-neighbor-algorithm">K-NN (Nearest Neighbor) Algorithm<a aria-hidden="true" tabindex="-1" href="#k-nn-nearest-neighbor-algorithm"><span class="anchor-link"> #</span></a></h3>
+<p>The K-NN algorithm, short for K-Nearest Neighbors, is a simple and intuitive method for classification and regression. Its basic idea is: given a sample to classify, find the K samples in the training set closest to it, then decide the sample's class from those K samples by voting or averaging.</p>
+<p>The steps of K-NN are:</p>
+<ol>
+<li><strong>Choose K</strong>: Pick a positive integer K, the number of nearest neighbors to consider.</li>
+<li><strong>Compute distances</strong>: For the sample to classify, compute its distance to every sample in the training set. Common distance metrics include Euclidean distance and Manhattan distance.</li>
+<li><strong>Select the K nearest neighbors</strong>: Based on the computed distances, pick the K closest samples from the training set.</li>
+<li><strong>Vote or average</strong>: Let the K nearest neighbors vote and assign the most frequent class to the sample; for regression, use the average of the K nearest neighbors as the prediction.</li>
+</ol>
+<p>Advantages of K-NN:</p>
+<ul>
+<li><strong>Simple to implement</strong>: K-NN has no explicit training phase; it classifies and regresses directly based on distance.</li>
+<li><strong>Non-parametric model</strong>: K-NN does not need to learn model parameters, which suits small training sets.</li>
+</ul>
+<p>Disadvantages of K-NN:</p>
+<ul>
+<li><strong>Computationally expensive</strong>: For every sample to classify, distances to all training samples must be computed, which is costly.</li>
+<li><strong>Poor on high-dimensional data</strong>: In high-dimensional spaces, distances between data points become hard to measure meaningfully, and K-NN performs poorly.</li>
+<li><strong>Sensitive to noise</strong>: K-NN is fairly sensitive to noise and outliers, which affects classification results.</li>
+</ul>
+<p>Even so, K-NN still performs well in many practical applications, especially classification problems—for example, handwritten digit recognition, image classification, and text classification.</p>
+<h2 id="unsupervised-learning">Unsupervised Learning<a aria-hidden="true" tabindex="-1" href="#unsupervised-learning"><span class="anchor-link"> #</span></a></h2>
+<p>Unsupervised learning is a machine learning approach that does not use labeled data during training. It lets the algorithm learn from the input data by itself and identify patterns and structure within it. The goal is usually to uncover patterns or relationships hidden in the data, such as through clustering or dimensionality reduction. Because there is no predefined target or output variable, unsupervised learning is often used for exploratory analysis to help researchers identify unknown patterns or relationships.</p>
+<p>Its typical characteristic is that there is input data but no output data (unsupervised learning uses unlabeled data).</p>
+<p>In unsupervised learning, the input data is unstructured. To handle this unlabeled, unstructured data, it needs to be clustered and reduced in dimension so that useful information can be extracted.</p>
+<p>Common unsupervised algorithms include clustering algorithms (K-means) and principal component analysis (PCA).</p>
+<h3 id="k-means-algorithm">K-means Algorithm<a aria-hidden="true" tabindex="-1" href="#k-means-algorithm"><span class="anchor-link"> #</span></a></h3>
+<p>K-means is a common unsupervised learning algorithm used to partition a dataset into K clusters. It works by iterative optimization, assigning data points to the nearest cluster center, so that similarity within each cluster is maximized and similarity between clusters is minimized. The steps are:</p>
+<ol>
+<li>Randomly choose K initial cluster centers.</li>
+<li>Assign each data point to the nearest cluster center.</li>
+<li>Compute the new center of each cluster, i.e., the mean of all data points in the cluster.</li>
+<li>Repeat steps 2 and 3 until the cluster centers no longer change significantly or a preset number of iterations is reached.</li>
+</ol>
+<p>K-means is simple and efficient and works for large datasets, but K must be specified in advance, and the algorithm is fairly sensitive to the choice of initial cluster centers.</p>
+<h3 id="principal-component-analysis-pca">Principal Component Analysis (PCA)<a aria-hidden="true" tabindex="-1" href="#principal-component-analysis-pca"><span class="anchor-link"> #</span></a></h3>
+<p>Principal component analysis (PCA) is a statistical method that simplifies a dataset through dimensionality reduction. Its purpose is to find the lower-dimensional space that best represents the distribution of the original data. PCA works by creating a new coordinate system and remapping the original data onto it. The basis of the new coordinate system consists of the principal components of the original data (the directions of greatest variance). In the new system, most of the information is compressed into the first principal component, the next largest share into the second, and so on. By keeping the first few principal components and discarding the rest, we reduce the data's dimensionality. PCA is widely used in image compression, data visualization, noise filtering, feature extraction, and data preprocessing.</p>
+<h2 id="deep-learning">Deep Learning<a aria-hidden="true" tabindex="-1" href="#deep-learning"><span class="anchor-link"> #</span></a></h2>
+<p>Deep learning is a machine learning approach that tries to mimic how the human brain works: by training on large amounts of data, a computer model learns to recognize patterns and make high-level decisions. At the core of deep learning are neural networks, especially deep neural networks, which contain multiple hidden layers, each performing a specific kind of data processing. Deep learning is widely used in speech recognition, image recognition, natural language processing, and other fields, where it has delivered significant results.</p>7:["$","$L15",null,{"postData":{"id":"ai2-studylog-ml","locale":"en","contentHtml":"$16","title":"AI Notes - Machine Learning","date":"$D2024-07-02T11:36:12.000Z","categories":["Notes"],"tags":["AI"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"AI Notes - Machine Learning | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Artificial Intelligence - Machine Learning The foundation of artificial intelligence is machine learning. As the name suggests, it lets machines pr..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/ai2-studylog-ml/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/ai2-studylog-ml/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/ai2-studylog-ml/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"AI Notes - Machine Learning"}],["$","meta","7",{"property":"og:description","content":"Artificial Intelligence - Machine Learning The foundation of artificial intelligence is machine learning. As the name suggests, it lets machines pr..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/ai2-studylog-ml/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"AI"}],["$","meta","13",{"name":"twitter:card","content":"summary"}],["$","meta","14",{"name":"twitter:title","content":"AI Notes - Machine Learning"}],["$","meta","15",{"name":"twitter:description","content":"Artificial Intelligence - Machine Learning The foundation of artificial intelligence is machine learning. As the name suggests, it lets machines pr..."}],["$","link","16",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

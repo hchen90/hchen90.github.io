@@ -1,0 +1,101 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","systemstartup",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","systemstartup","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","systemstartup","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","3FKmmuF7HlLt68CI3fJOH",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T232a,<h1 id="the-ancient-era">The Ancient Era<a aria-hidden="true" tabindex="-1" href="#the-ancient-era"><span class="anchor-link"> #</span></a></h1>
+<p>At this stage the computer lives in a purely electrical world, with almost no notion of software (not entirely accurate—more on that later).</p>
+<p>The computer runs a series of hardware self-tests, in particular checking that essential hardware is usable. This is the POST (Power-On Self-Test). If it passes, the machine moves on to the next step: BIOS mode or UEFI mode.</p>
+<blockquote>
+<p>When computer hardware is faulty, the boot usually fails here during the self-test and is forced to stop. This stage checks the CPU, memory, and I/O chip modules such as the 8255 (modern peripheral chips are far more capable and feature-rich, so they're not necessarily relics like the 8255).</p>
+</blockquote>
+<p>Everything above is a pure hardware self-test with almost no software involved. In the next step—BIOS or UEFI—software programs formally join in.</p>
+<blockquote>
+<p>For heterogeneous platforms such as embedded devices, the design may differ. The self-test may be transparent and nearly imperceptible, since it all happens inside a single SoC and is largely software-based. The embedded flow is out of scope here.</p>
+</blockquote>
+<h2 id="legacy-bios">Legacy BIOS<a aria-hidden="true" tabindex="-1" href="#legacy-bios"><span class="anchor-link"> #</span></a></h2>
+<p>After the self-test passes, the system starts the BIOS program stored in ROM. The BIOS runs in real mode and ranges from a few hundred KB to a few MB. It is the lowest control layer over the hardware; you can enter the BIOS setup screen at boot to configure the system, and the available settings vary widely between vendors.</p>
+<p>Once started, the BIOS performs initialization, mainly building the interrupt (IRQ) table, setting up various registers, and allocating I/O ports.</p>
+<p>When all that is done, the BIOS copies the boot partition specified in its settings into RAM (running the MBR boot code) and loads the bootloader in it (the bootloader is copied to RAM starting at address 0x00007c00).</p>
+<h2 id="modern-uefi">Modern UEFI<a aria-hidden="true" tabindex="-1" href="#modern-uefi"><span class="anchor-link"> #</span></a></h2>
+<p>UEFI is the interface used by modern computers as a replacement for BIOS. UEFI stands for <strong>Unified Extensible Firmware Interface</strong>. It has a modular design and runs on multiple architectures, including AMD64, IA32, and IA64.</p>
+<blockquote>
+<p>Why UEFI?</p>
+<p>BIOS evolved slowly. After decades it still had to drop into 16-bit real mode to initialize, and there was no unified firmware interface specification across the many vendors, so everyone kept relying on the old BIOS approach. Intel later designed UEFI, which defined a unified interface specification, improved software operability by design, and removed BIOS's limitations—these advanced extensions broke the deadlock BIOS had been stuck in.</p>
+</blockquote>
+<p>UEFI works much like BIOS, but with more advanced features, and it makes updating hardware firmware easy.</p>
+<p>After UEFI initialization, it also locates a disk from its settings—but instead of the MBR code on a boot partition, it finds the EFI partition and launches an EFI program from the corresponding directory. That EFI boot program is the system's bootloader.</p>
+<blockquote>
+<p>This loading scheme is clearly more secure. Some viruses used to modify the MBR code to embed themselves deep in the system. Under UEFI, if the boot program is loaded with a signature, UEFI verifies it, so a virus can no longer implant itself by tampering with the boot program.</p>
+</blockquote>
+<h1 id="classical-civilization">Classical Civilization<a aria-hidden="true" tabindex="-1" href="#classical-civilization"><span class="anchor-link"> #</span></a></h1>
+<p>This part covers the bootloader.</p>
+<h2 id="common-bootloaders">Common bootloaders<a aria-hidden="true" tabindex="-1" href="#common-bootloaders"><span class="anchor-link"> #</span></a></h2>
+<h3 id="grub">GRUB<a aria-hidden="true" tabindex="-1" href="#grub"><span class="anchor-link"> #</span></a></h3>
+<p>GRUB is a very popular Linux bootloader. It can boot different operating systems, such as Linux, Windows, and FreeBSD.</p>
+<p>Once GRUB starts, it loads its modules, reads its configuration file, and shows the bootable entries. Alternatively you can switch to its interactive command mode and issue commands like in a shell to specify how to boot the system.</p>
+<h3 id="lilo">LILO<a aria-hidden="true" tabindex="-1" href="#lilo"><span class="anchor-link"> #</span></a></h3>
+<p>LILO is a Linux bootloader older than GRUB, and some distributions still use it. It can also load different operating systems, but it's more minimal than GRUB in terms of features.</p>
+<h3 id="bootmgr">BOOTMGR<a aria-hidden="true" tabindex="-1" href="#bootmgr"><span class="anchor-link"> #</span></a></h3>
+<p>BOOTMGR is the bootloader that appeared around the release of Windows Vista. It is a successor to NTLDR, loads the kernel according to the BCD configuration, and was designed for better compatibility with 64-bit systems.</p>
+<h3 id="ntldr">NTLDR<a aria-hidden="true" tabindex="-1" href="#ntldr"><span class="anchor-link"> #</span></a></h3>
+<p>This is the bootloader used by Windows XP and earlier. Its job is to parse the BOOT.INI configuration file and load the kernel.</p>
+<h2 id="what-a-bootloader-does">What a bootloader does<a aria-hidden="true" tabindex="-1" href="#what-a-bootloader-does"><span class="anchor-link"> #</span></a></h2>
+<p>Taking GRUB as an example for convenience: after GRUB starts, it reads its configuration and prints a menu listing the bootable systems. When the user selects an entry, it boots the kernel with the parameters configured for that entry. These parameters passed to the OS can be edited directly, and the edited settings are passed on to the kernel.</p>
+<h3 id="how-grub-loads">How GRUB loads<a aria-hidden="true" tabindex="-1" href="#how-grub-loads"><span class="anchor-link"> #</span></a></h3>
+<p>GRUB loading here refers to booting via BIOS.</p>
+<ul>
+<li>After the GRUB code in the MBR partition is copied to RAM address 0x00007c00, GRUB starts running</li>
+<li>This small piece of GRUB code runs in real mode and sets up its own stack</li>
+<li>It reads the configuration from disk, then loads the first 512 bytes of the Linux kernel file and copies them to RAM address 0x00090000 (by convention, this part of the kernel has its entry point at relative offset 0x0200, i.e. 0x00090200)</li>
+<li>It then copies the rest of the kernel to 0x00010000 (for kernels built with make zImage) or to 0x00100000 (for kernels built with make bzImage)</li>
+<li>When copying is done, it jumps directly to 0x00090200 to execute code—the kernel entry point mentioned above</li>
+</ul>
+<blockquote>
+<p>For kernels booted by UEFI, there's no need to copy and jump manually, because UEFI loads PE files. The PE file headers tell UEFI how to load the PE kernel, such as the entry address.</p>
+</blockquote>
+<h3 id="the-role-of-the-bootloader">The role of the bootloader<a aria-hidden="true" tabindex="-1" href="#the-role-of-the-bootloader"><span class="anchor-link"> #</span></a></h3>
+<p>GRUB itself is not an operating system; it is just a tool for loading one. This makes it easy to maintain the system and roll back to a previous kernel when a faulty kernel won't boot.</p>
+<p>As the middle layer between the OS and BIOS/UEFI, the bootloader provides a bridging mechanism that avoids the awkward situation of being unable to repair the OS because the kernel itself is broken.</p>
+<blockquote>
+<p>In Windows, NTLDR and BOOTMGR boot the kernel in a similar way. If booting fails, they show a boot error screen—that's the bootloader at work.</p>
+</blockquote>
+<h1 id="the-modern-era">The Modern Era<a aria-hidden="true" tabindex="-1" href="#the-modern-era"><span class="anchor-link"> #</span></a></h1>
+<p>After all these stages, we finally reach the operating system. What happens here varies by OS, but common operations typically include:</p>
+<h2 id="operating-system-initialization">Operating system initialization<a aria-hidden="true" tabindex="-1" href="#operating-system-initialization"><span class="anchor-link"> #</span></a></h2>
+<p>Switching from real mode to protected mode, including:</p>
+<ul>
+<li>Initializing the GDT and LDT registers</li>
+<li>Setting up PTE mappings for paging</li>
+<li>Setting up the TSS task-management mechanism</li>
+<li>Setting up the IDT to manage IRQ interrupts</li>
+<li>Initializing the file system</li>
+<li>Initializing I/O devices</li>
+</ul>
+<blockquote>
+<p>The operating-system part is fairly large; I may cover it in a later post.</p>
+<p>I also have an unfinished demo on GitHub—click <a href="https://github.com/hchen90/msys_x86">here</a> to take a look.</p>
+</blockquote>
+<p>References:</p>
+<ul>
+<li><a href="https://wiki.osdev.org/">wiki.osdev.org</a></li>
+</ul>7:["$","$L15",null,{"postData":{"id":"systemstartup","locale":"en","contentHtml":"$16","title":"The Computer Boot Process","date":"$D2018-06-16T20:40:10.000Z","updated":"$D2018-06-16T20:40:10.000Z","categories":["Notes"],"tags":["GRUB","UEFI","BIOS"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"The Computer Boot Process | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"The Ancient Era At this stage the computer lives in a purely electrical world, with almost no notion of software (not entirely accurate—more on th..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/systemstartup/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/systemstartup/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/systemstartup/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"The Computer Boot Process"}],["$","meta","7",{"property":"og:description","content":"The Ancient Era At this stage the computer lives in a purely electrical world, with almost no notion of software (not entirely accurate—more on th..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/systemstartup/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"GRUB"}],["$","meta","13",{"property":"article:tag","content":"UEFI"}],["$","meta","14",{"property":"article:tag","content":"BIOS"}],["$","meta","15",{"name":"twitter:card","content":"summary"}],["$","meta","16",{"name":"twitter:title","content":"The Computer Boot Process"}],["$","meta","17",{"name":"twitter:description","content":"The Ancient Era At this stage the computer lives in a purely electrical world, with almost no notion of software (not entirely accurate—more on th..."}],["$","link","18",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

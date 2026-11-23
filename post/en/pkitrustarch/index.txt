@@ -1,0 +1,461 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","pkitrustarch",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","pkitrustarch","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","pkitrustarch","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","YJCpS6I9FB-fvq2ScMgJB",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:Tab5b,<p>When you browse the web, the padlock in the address bar, HTTPS, code signing, email encryption—all of them rely on the same mechanism: <strong>Public Key Infrastructure (PKI)</strong>.</p>
+<p>I worked in the CA industry for many years. This post is both a personal summary and a beginner-friendly explainer. It first sketches the basic structure of PKI, then shows how certificates turn "a party you don't know" into "trust you can verify".</p>
+<h2 id="the-core-problem-how-do-you-trust-a-public-key">The Core Problem: How Do You Trust a Public Key?<a aria-hidden="true" tabindex="-1" href="#the-core-problem-how-do-you-trust-a-public-key"><span class="anchor-link"> #</span></a></h2>
+<p>Asymmetric cryptography by itself only settles "whoever holds the private key can decrypt or sign". It does not answer: <strong>who does this public key actually belong to?</strong></p>
+<p>If an attacker impersonates the target with their own key pair, it doesn't matter how "correct" the public key you received is. What PKI solves is establishing trust in the ownership of public keys on an open network.</p>
+<h2 id="basic-roles-in-pki">Basic Roles in PKI<a aria-hidden="true" tabindex="-1" href="#basic-roles-in-pki"><span class="anchor-link"> #</span></a></h2>
+<p>A typical PKI can be viewed as a collaborative system of "issuing, using, and verifying" certificates. Let's break it down by role.</p>
+<h3 id="ca-certificate-authority">CA (Certificate Authority)<a aria-hidden="true" tabindex="-1" href="#ca-certificate-authority"><span class="anchor-link"> #</span></a></h3>
+<p>The CA is the trust core of the whole system. After vetting the applicant's identity, it signs the certificate contents with its own private key, thereby declaring "this public key belongs to such-and-such subject".</p>
+<p>In practice, CAs are usually layered:</p>
+<ul>
+<li><strong>Root CA</strong>: Its private key is kept offline and it rarely issues end-entity certificates directly. Its certificate is preinstalled in the operating system's or browser's <strong>Root Store</strong> and is the starting point of trust.</li>
+<li><strong>Intermediate CA</strong>: Issued by the root (or a higher intermediate), it handles day-to-day issuance of server certificates, client certificates, and so on. A leaked root private key would have an enormous blast radius, so the intermediate layer isolates that risk.</li>
+</ul>
+<p>The reason you trust a website is, fundamentally, that you trust the set of roots in your local Root Store and the entire chain they issue downward.</p>
+<h3 id="ra-registration-authority">RA (Registration Authority)<a aria-hidden="true" tabindex="-1" href="#ra-registration-authority"><span class="anchor-link"> #</span></a></h3>
+<p>The RA is not a component that must exist separately, but it is common in large-scale CAs. It handles the certificate application front end, identity verification, and document collection, then passes "approved" requests to the CA for issuance.</p>
+<p>Think of it as the CA's "front desk + reviewer": the CA focuses on keys and issuance, the RA on business intake. In small or private CAs, both steps are often done in the same system.</p>
+<h3 id="certificate-holder-subscriber">Certificate Holder (Subscriber)<a aria-hidden="true" tabindex="-1" href="#certificate-holder-subscriber"><span class="anchor-link"> #</span></a></h3>
+<p>The holder generates a key pair (or has it managed by an HSM or similar) and submits the public key to the CA/RA to apply for a certificate. After issuance, <strong>the private key always stays with the holder</strong>, while the certificate is presented to others.</p>
+<p>Common holders include:</p>
+<ul>
+<li>Web servers (TLS server certificates)</li>
+<li>Individuals / devices (client certificates, email signing and encryption)</li>
+<li>Software publishers (code signing certificates)</li>
+</ul>
+<p>A certificate only proves "the binding between a public key and an identity". What actually proves "I am the owner of this certificate" is a signature or handshake that involves the private key.</p>
+<h3 id="relying-party">Relying Party<a aria-hidden="true" tabindex="-1" href="#relying-party"><span class="anchor-link"> #</span></a></h3>
+<p>The relying party is the one who actually decides "whether to trust this certificate": browsers, operating systems, API clients, email clients, and so on.</p>
+<p>Its job is roughly: obtain the peer's certificate chain → verify signatures and the path → check validity period / usage / domain name → check revocation status → decide whether to establish trust. Relying parties don't issue certificates, but they decide whether trust takes effect. A misconfigured Root Store or lax validation logic directly weakens PKI's security.</p>
+<h3 id="revocation-and-status-services-crl--ocsp">Revocation and Status Services (CRL / OCSP)<a aria-hidden="true" tabindex="-1" href="#revocation-and-status-services-crl--ocsp"><span class="anchor-link"> #</span></a></h3>
+<p>Certificates have a validity period, but they may need to be invalidated before it ends (private key leaked, domain changed hands, employee left, and so on). A mechanism is needed to tell relying parties: "stop trusting this certificate."</p>
+<ul>
+<li><strong>CRL (Certificate Revocation List)</strong>: A revocation list published periodically by the CA; relying parties download it and check locally.</li>
+<li><strong>OCSP (Online Certificate Status Protocol)</strong>: Queries a certificate's status in real time, with finer granularity. Optimizations such as OCSP Stapling reduce dependence on the OCSP service.</li>
+</ul>
+<p>Without a reliable revocation channel, a certificate whose private key was stolen could still be abused until it expires—so revocation is an indispensable part of how PKI operates.</p>
+<h2 id="certificates-binding-identity-to-a-public-key">Certificates: Binding Identity to a Public Key<a aria-hidden="true" tabindex="-1" href="#certificates-binding-identity-to-a-public-key"><span class="anchor-link"> #</span></a></h2>
+<p>A digital certificate is essentially a document <strong>signed</strong> by a CA that binds "who the subject is" to "what the public key is". Common fields include at least:</p>
+<ul>
+<li>Subject information (domain name, organization, personal identifier, etc.)</li>
+<li>Public key and algorithm identifier</li>
+<li>Validity period</li>
+<li>Issuer</li>
+<li>Extensions (key usage, SAN, CRL distribution points, etc.)</li>
+<li>The CA's digital signature</li>
+</ul>
+<p>To verify: check the signature with the issuer's public key → confirm "this binding has not been tampered with and was asserted by that CA". If the issuer is itself trusted by a higher CA, trust can be passed up the chain.</p>
+<h3 id="certificate-format-everyone-builds-on-x509">Certificate Format: Everyone Builds on X.509<a aria-hidden="true" tabindex="-1" href="#certificate-format-everyone-builds-on-x509"><span class="anchor-link"> #</span></a></h3>
+<p>Whether international or Chinese national cryptography (SM, "ShangMi"), mainstream certificates in practice almost all sit on the <strong>X.509 v3</strong> skeleton: ASN.1 defines the structure, DER encodes it into a byte stream, and it is distributed as PEM (<code>-----BEGIN CERTIFICATE-----</code>) or DER files.</p>
+<p>In other words, <strong>the format framework is unified</strong>. What really makes the difference is the algorithms, OIDs, and key usage conventions inside, and whether the trust system and protocol stack accept those algorithms.</p>
+<p>The common "containers" are worth a quick mention:</p>
+<ul>
+<li><strong>The certificate itself</strong>: X.509 (<code>.cer</code> / <code>.crt</code> / <code>.pem</code>)</li>
+<li><strong>Private key and certificate bundles</strong>: PKCS#12 (<code>.p12</code> / <code>.pfx</code>), PKCS#8, etc.</li>
+<li><strong>Application material</strong>: PKCS#10 (CSR)</li>
+</ul>
+<p>These containers are used in both international and SM scenarios; the difference is still in the algorithm suites.</p>
+<h3 id="international-certificates-rsa--ecc">International Certificates (RSA / ECC)<a aria-hidden="true" tabindex="-1" href="#international-certificates-rsa--ecc"><span class="anchor-link"> #</span></a></h3>
+<p>"International certificates" generally means X.509 certificates that follow IETF <strong>PKIX</strong> practice (RFC 5280, etc.) and use mainstream international algorithm suites:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Common choices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public key algorithm</td>
+<td>RSA (2048/3072…), ECDSA (P-256 / P-384, etc.)</td>
+</tr>
+<tr>
+<td>Digest / signature</td>
+<td>SHA-256, SHA-384, etc.; e.g. <code>sha256WithRSAEncryption</code>, <code>ecdsa-with-SHA256</code></td>
+</tr>
+<tr>
+<td>Symmetric encryption (protocol side)</td>
+<td>AES, etc. (the certificate does not carry session keys; TLS negotiates them separately)</td>
+</tr>
+</tbody>
+</table>
+<p>Their characteristics can be summarized as:</p>
+<ul>
+<li><strong>Mature ecosystem</strong>: Supported by default in browsers, operating systems, OpenSSL, Java, Go, and so on; Root Stores are dominated by internationally trusted public CAs.</li>
+<li><strong>One certificate, many uses</strong>: For TLS server certificates, the same key often handles both handshake authentication and key-exchange-related capabilities (depending on Key Usage and protocol version). Personal certificates, code signing, and so on are split by purpose, but <strong>separating signing and encryption keys is not a mandatory rule</strong>.</li>
+<li><strong>Good interoperability</strong>: Cross-border websites, public clouds, and open-source software stacks are all built around it.</li>
+</ul>
+<h3 id="sm-certificates-chinese-national-cryptography">SM Certificates (Chinese National Cryptography)<a aria-hidden="true" tabindex="-1" href="#sm-certificates-chinese-national-cryptography"><span class="anchor-link"> #</span></a></h3>
+<p>SM certificates can also be X.509 v3, but the algorithms and specification constraints are replaced with China's commercial cryptography system; the format requirements are given in standards such as <strong>GM/T 0015</strong> (<em>Digital Certificate Format</em>). The core algorithms are usually:</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SM2</strong></td>
+<td>Elliptic curve public key algorithm (signing, key exchange, public key encryption)</td>
+</tr>
+<tr>
+<td><strong>SM3</strong></td>
+<td>Hash algorithm (a role similar to the SHA family)</td>
+</tr>
+<tr>
+<td><strong>SM4</strong></td>
+<td>Block cipher (mostly used for encryption at the protocol layer)</td>
+</tr>
+</tbody>
+</table>
+<p>The certificate marks the algorithms with SM OIDs, for example (common values, for reference):</p>
+<ul>
+<li>SM2 public key: <code>1.2.156.10197.1.301</code></li>
+<li>SM3withSM2 signature: <code>1.2.156.10197.1.501</code></li>
+</ul>
+<p>A striking feature of SM practice is <strong>dual certificates</strong> (especially in e-government, finance, and similar scenarios):</p>
+<ul>
+<li><strong>Signing certificate</strong>: Key Usage centers on <code>digitalSignature</code> (and non-repudiation, etc.); the private key should be generated locally and be non-exportable.</li>
+<li><strong>Encryption certificate</strong>: Key Usage centers on <code>keyEncipherment</code> / data encryption; the encryption private key is often generated with CA involvement or escrowed by the CA, to support requirements such as key recovery.</li>
+</ul>
+<p>Both certificates' Subjects point to the same entity, but their keys, serial numbers, and purposes are separate—unlike the habit in many international TLS scenarios of "one server certificate does everything".</p>
+<h4 id="private-key-generation-in-dual-certificates">Private Key Generation in Dual Certificates<a aria-hidden="true" tabindex="-1" href="#private-key-generation-in-dual-certificates"><span class="anchor-link"> #</span></a></h4>
+<p>Dual certificates are not just "issuing two certificates". The key point is <strong>where the two private keys come from and who can get them</strong>. This directly determines whether non-repudiation and key recovery can both hold.</p>
+<p><strong>Signing private key: generated on the user side, never touched by the CA</strong></p>
+<p>Typical flow:</p>
+<ol>
+<li>Generate the SM2 signing key pair inside a USB Key / smart card / local cryptographic module</li>
+<li>The private key never leaves the device (non-exportable)</li>
+<li>Only the public key goes into the CSR, which is submitted to the RA/CA for review and issuance of the signing certificate</li>
+</ol>
+<p>Only then does "whoever signed is responsible" make sense: the CA never held the signing private key, so it cannot forge the user's signature afterward, which satisfies the business requirement of non-repudiation.</p>
+<p><strong>Encryption private key: generated by the CA / key management center, escrowable and recoverable</strong></p>
+<p>If the encryption key also existed only on the user's device, losing it would make historical ciphertext undecryptable—bad for email archiving, official documents, and regulatory forensics. So the common practice is:</p>
+<ol>
+<li>The <strong>KMC (Key Management Center) or CA</strong> generates the encryption key pair</li>
+<li>The encryption certificate is issued for the encryption public key</li>
+<li>The encryption private key is protected and delivered to the user (commonly: wrapped in a digital envelope / SM2 encryption using the user's <strong>signing public key</strong>; the user unwraps it with the signing private key and writes it into the Key)</li>
+<li>The CA/KMC <strong>retains, or can recover,</strong> a copy of the encryption private key (key escrow / key recovery)</li>
+</ol>
+<p>This produces an asymmetric security model:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Signing key</th>
+<th>Encryption key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who generates it</td>
+<td>The user (or a user-side crypto device)</td>
+<td>CA / KMC</td>
+</tr>
+<tr>
+<td>Does the private key leave its generator</td>
+<td>Generally no</td>
+<td>Yes, securely delivered to the user, and the server side can retain recovery capability</td>
+</tr>
+<tr>
+<td>Design goal</td>
+<td>Non-repudiation, identity authentication</td>
+<td>Confidential communication, with ciphertext recovery after loss or staff departure</td>
+</tr>
+<tr>
+<td>Consequence of loss</td>
+<td>Just reapply for a signing certificate (historical signatures remain verifiable)</td>
+<td>Without escrow, historical ciphertext may be permanently undecryptable</td>
+</tr>
+</tbody>
+</table>
+<p>When applying for dual certificates, the client usually completes the signing certificate application first, then uses its signing capability to "unwrap" the protected encryption private key delivered by the CA. That is why many SM RA/client flows have <strong>signing and encryption certificates requested as a pair, in a dependent order</strong>.</p>
+<p>Note that not every SM deployment strictly follows "encryption keys must be escrowed". Device certificates and some TLS gateway scenarios may simplify things. But in businesses like electronic seals, secure email, and government documents—which need both non-repudiation and decryptable archives—the differences above are practically standard.</p>
+<h3 id="feature-comparison">Feature Comparison<a aria-hidden="true" tabindex="-1" href="#feature-comparison"><span class="anchor-link"> #</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>International certificates</th>
+<th>SM certificates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structural skeleton</td>
+<td>X.509 v3</td>
+<td>X.509 v3 (constrained by GM/T 0015)</td>
+</tr>
+<tr>
+<td>Typical algorithms</td>
+<td>RSA / ECDSA + SHA-2</td>
+<td>SM2 + SM3 (protocol side often pairs with SM4)</td>
+</tr>
+<tr>
+<td>Key organization</td>
+<td>Mostly a single certificate; split by business as needed</td>
+<td>Often mandatory signing + encryption certificates</td>
+</tr>
+<tr>
+<td>Trust source</td>
+<td>International Root Stores / public CAs</td>
+<td>SM root hierarchies, industry/government CAs</td>
+</tr>
+<tr>
+<td>Protocols and clients</td>
+<td>Standard TLS, natively supported by mainstream browsers</td>
+<td>SM TLS (e.g. GMTLS), requiring an SM stack or gateway</td>
+</tr>
+<tr>
+<td>Main driver</td>
+<td>Global interoperability</td>
+<td>Domestic compliance (the Cryptography Law, MLPS, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p>In one sentence: <strong>the formats can look very similar, but the algorithms, OIDs, dual-certificate conventions, and trust domains are not the same thing.</strong> Put an SM certificate into a browser that only knows RSA/ECDSA, or connect an international certificate to an SM gateway that only accepts SM suites, and it will fail at validation or handshake. The problem is usually not "is this a certificate" but "does the other side accept this cryptography and these OIDs".</p>
+<p>Real deployments also often use "dual stacks": the same service offers both international TLS and SM TLS, or an SSL gateway terminates the algorithm and forwards a unified protocol internally. When choosing, first clarify the compliance requirements and client capabilities, then deal with certificate applications and chain construction.</p>
+<h2 id="trust-chains-from-leaf-to-root">Trust Chains: From Leaf to Root<a aria-hidden="true" tabindex="-1" href="#trust-chains-from-leaf-to-root"><span class="anchor-link"> #</span></a></h2>
+<p>In practice, root CAs rarely sign end-entity certificates directly; instead there are layers:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">arduino</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-arduino">Root CA
+  └── Intermediate CA
+        └── <span class="hljs-built_in">Server</span>/<span class="hljs-function">user <span class="hljs-title">certificate</span> <span class="hljs-params">(Leaf)</span>
+</span></code></pre></div>
+<p>The validation process can be summarized as:</p>
+<ol>
+<li>Obtain the leaf certificate (and intermediate certificates) presented by the peer</li>
+<li>Verify signatures upward along the issuance relationship until reaching a <strong>locally trusted root</strong></li>
+<li>Check the validity period, usage (Extended Key Usage), domain name match (SAN), and so on</li>
+<li>Check whether it has been revoked (CRL / OCSP)</li>
+</ol>
+<p>If any step fails, trust is not established. This is "certificate chain validation".</p>
+<p>Ideally, a relying party trusts only its "own" tree. In reality, mergers and acquisitions, industry interconnection, dual SM/international stacks, and root key rotation all break this single-tree assumption—giving rise to two frequent problems: <strong>cross-certification</strong> and <strong>trust root rollover</strong>.</p>
+<h3 id="cross-certification">Cross-Certification<a aria-hidden="true" tabindex="-1" href="#cross-certification"><span class="anchor-link"> #</span></a></h3>
+<p>Cross-certification solves: <strong>how two independent PKIs can let each other's users verify each other's certificates.</strong></p>
+<p>Common form:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">css</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-css">Root of PKI-<span class="hljs-selector-tag">A</span> ──cross-signs──→ Root (or intermediate) of PKI-<span class="hljs-selector-tag">B</span>
+Root of PKI-<span class="hljs-selector-tag">B</span> ──cross-signs──→ Root (or intermediate) of PKI-<span class="hljs-selector-tag">A</span>   // when bidirectional
+</code></pre></div>
+<p>This means the A root signs B's CA certificate with its own private key (or vice versa), so a relying party that "only trusts the A root" can <strong>bridge</strong> a leaf certificate in the B domain to the A root and complete path building. Industries also commonly use a <strong>Bridge CA</strong> as a hub in a star topology, to avoid every pair of organizations signing a pair of cross-certificates.</p>
+<p>The practical headaches of cross-certification:</p>
+<ul>
+<li><strong>Paths are no longer unique</strong>: The same leaf certificate may yield multiple paths to different trust anchors, so the client has to do path building and policy filtering (certificate policy OIDs, name constraints, path length constraints, etc.).</li>
+<li><strong>Misaligned policies</strong>: If A's vetting standards, key usages, or algorithm suites differ from B's, cross-signing amounts to "opening a hole in the trust boundary"—the bigger the hole, the bigger the risk.</li>
+<li><strong>SM and international coexistence</strong>: When the two sides differ in algorithms, OIDs, and dual-certificate conventions, cross-certification is often more than "signing a cross-certificate"; you must also make sure the relying party's crypto stack can verify both sides. Many deployments simply avoid true cross-certification by using gateways or dual-certificate deployments.</li>
+<li><strong>Revocation and lifecycle</strong>: Cross-certificates themselves need validity management and revocation. Once a cross relationship is withdrawn, trust paths that used to "route around" through it must become invalid immediately; otherwise you get ghost trust.</li>
+</ul>
+<p>In one sentence: cross-certification is a hard requirement for inter-organizational interconnection, but it is also the part of PKI operations that is easiest to misconfigure and hardest to troubleshoot. Problems often show up as "some clients pass, others don't", and the root cause is usually path building or policy constraints rather than a broken leaf certificate.</p>
+<h3 id="trust-root-rollover">Trust Root Rollover<a aria-hidden="true" tabindex="-1" href="#trust-root-rollover"><span class="anchor-link"> #</span></a></h3>
+<p>Root CAs have lifespans too: algorithm upgrades (such as retiring weak signatures), responding to key compromise, compliance-driven replacement, and vendor/industry root migrations all trigger a <strong>trust root rollover</strong>. A root can't just be "swapped out", because relying parties' Root Store updates usually lag behind CA-side issuance.</p>
+<p>In practice, the safer approach is a <strong>rolling switch with old and new roots coexisting</strong>, rather than a hard cutover:</p>
+<ol>
+<li><strong>Generate the new root</strong>, keeping its private key offline; if needed, issue new intermediate CAs first.</li>
+<li><strong>Transition via cross-signing or chain bridging</strong>: Use the old root to sign the new root (or new intermediates), and/or the new root to sign old intermediates, so that clients that "only trust the old root" and those that "already trust the new root" can both build valid paths during the transition.</li>
+<li><strong>Parallel issuance</strong>: During the transition, leaf certificates can hang off both old and new chains, or servers can send certificate chains that can be anchored by either side.</li>
+<li><strong>Push trust anchor updates</strong>: Operating systems, browsers, industry terminals, and embedded devices gradually include the new root; on internal networks, use Group Policy / MDM / image preinstallation.</li>
+<li><strong>Retire the old root</strong>: Once relying parties broadly trust the new root and certificates on the old chain have expired or been reissued, stop issuing from the old root, revoke or let old cross relationships expire as planned, and finally remove the old anchor from Root Stores.</li>
+</ol>
+<p>Some common pitfalls:</p>
+<ul>
+<li><strong>Replacing server certificates without managing client Root Stores</strong> → Browsers on the public internet may already have the new root, while legacy internal systems, IoT, and custom apps still only trust the old one.</li>
+<li><strong>Transition period too short</strong> → Embedded and offline devices update on cycles measured in years, so root rollover windows are often measured in years, not weeks.</li>
+<li><strong>Incomplete chains</strong>: The server sends only the leaf and omits the cross/intermediate certificate needed for "old root → new intermediate", so some clients cannot complete path building.</li>
+<li><strong>SM root migration</strong> follows the same rhythm, with the additional need to confirm that the new root's algorithm and OIDs match the endpoints' SM modules.</li>
+</ul>
+<p>The essence of a trust chain is "walk until you reach some locally trusted anchor". Cross-certification joins multiple trees together <strong>in space</strong>; root rollover moves the anchor smoothly <strong>in time</strong>. Both require coordination between the CA, business systems, and relying parties; simply "reapplying for a leaf certificate" is usually not enough.</p>
+<h3 id="certificate-transparency-and-ct-logs">Certificate Transparency and CT Logs<a aria-hidden="true" tabindex="-1" href="#certificate-transparency-and-ct-logs"><span class="anchor-link"> #</span></a></h3>
+<p>Roots and public CAs are "changed with great caution" not only because Root Stores update slowly, but also because public PKI assumes by default that <strong>any CA trusted by browsers can, in theory, issue a certificate for your domain</strong>. If a CA is compromised or misissues, victims often find out only after the fact. <strong>Certificate Transparency (CT)</strong> adds a layer of "public issuance ledger" for exactly this.</p>
+<h4 id="what-ct-solves">What CT Solves<a aria-hidden="true" tabindex="-1" href="#what-ct-solves"><span class="anchor-link"> #</span></a></h4>
+<p>CT requires public CAs, after issuance (or at the precertificate stage), to submit certificates to public <strong>CT Logs</strong> in exchange for an <strong>SCT (Signed Certificate Timestamp)</strong>. Mainstream browsers check publicly trusted TLS certificates for enough SCTs from compliant logs; if not satisfied, the handshake fails or a warning is shown.</p>
+<p>The effect:</p>
+<ul>
+<li><strong>Issuance can't happen in secret</strong>: Once it's in a Log, domain owners, security researchers, and browser vendors can all see "who has issued certificates for my domain".</li>
+<li><strong>Misissuance can be held accountable</strong>: Many past incidents of CAs being distrusted or roots being downgraded were tied to publicly auditable issuance records. CT makes it very hard to keep "quietly issuing a phishing certificate" hidden for long.</li>
+<li><strong>Ties into root rollover</strong>: For a new root or new intermediate to enter the public trust ecosystem, besides passing Root Store review, its issuance pipeline must also integrate CT. When an old CA is removed from trust, people can trace back through the Logs to assess the impact.</li>
+</ul>
+<h4 id="what-a-ct-log-looks-like">What a CT Log Looks Like<a aria-hidden="true" tabindex="-1" href="#what-a-ct-log-looks-like"><span class="anchor-link"> #</span></a></h4>
+<p>A CT Log is an <strong>append-only log with cryptographic commitments</strong> (based on a Merkle Tree):</p>
+<ol>
+<li>The CA submits a precertificate / certificate</li>
+<li>The Log returns an SCT (think of it as a receipt saying "I have committed to including this")</li>
+<li>The certificate later formally enters the Log; anyone can query and monitor it</li>
+<li>The Log periodically publishes the tree head hash (STH), so outsiders can audit "whether history has been rewritten"</li>
+</ol>
+<p>The SCT can appear in a certificate extension, in OCSP, or in a TLS handshake extension. Browsers care about "whether there are compliant SCTs"; they don't require you to dig through the Logs yourself.</p>
+<p>Log operators need long-term high availability and community auditing. Common participants include Google, Cloudflare, DigiCert, Let's Encrypt, and others. TrustAsia, a public CA in China, also operates a CT log service publicly, making it one of the few non-US operators in the public CT ecosystem. A CA can be both a Log "contributor" (submitting the certificates it issues to be recorded) and a Log "bookkeeper".</p>
+<h4 id="relationship-to-operations--root-rollover">Relationship to Operations / Root Rollover<a aria-hidden="true" tabindex="-1" href="#relationship-to-operations--root-rollover"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li><strong>Applying for public certificates</strong>: CT is now almost always the default; Let's Encrypt and commercial CAs handle submission and SCT embedding for you.</li>
+<li><strong>Monitoring your own domains</strong>: Use crt.sh or major CT monitoring services to watch SAN/CN. A certificate issued by an unknown CA is often the earliest warning signal—very useful during root rollovers, CA switches, or misissuance.</li>
+<li><strong>Private CAs / SM internal networks</strong>: CT is generally <strong>not mandatory</strong>; browser CT policies target publicly trusted roots. Internal self-signed and industry SM roots usually rely on their own trust anchors and governance rather than public CT Logs.</li>
+<li><strong>During root or CA retirement</strong>: While rolling old and new chains, use CT to confirm "whether the new chain is visible publicly, and whether the old CA is still issuing abnormally". For relying parties, this is another layer of visibility beyond swapping anchors.</li>
+</ul>
+<p>Think of it this way: the certificate chain answers "can this certificate be verified cryptographically?"; CT answers "was this certificate's issuance publicly recorded?". Trust root rollover changes the anchors; CT changes the auditability of public issuance. Together, they let modern public PKI keep pressure on misissuance and malicious behavior despite "having to trust a set of roots".</p>
+<h2 id="how-trust-lands-in-https">How Trust Lands in HTTPS<a aria-hidden="true" tabindex="-1" href="#how-trust-lands-in-https"><span class="anchor-link"> #</span></a></h2>
+<p>HTTPS can be roughly understood as <strong>HTTP over TLS</strong>: the browser first completes a TLS handshake with the server, settling identity and session keys, then sends HTTP over the encrypted channel. PKI certificates appear mainly in the handshake—to answer "is the other end really the site I want to visit?"</p>
+<p>Taking a visit to <code>https://example.com</code> as an example, the certificate-related steps are usually:</p>
+<ol>
+<li>The server presents its certificate chain during the TLS handshake</li>
+<li>The browser verifies that the chain anchors to a local root CA (plus SCT / revocation and other policies)</li>
+<li>It confirms the certificate subject matches the current domain (SAN)</li>
+<li>It uses the public key in the certificate (or the identity the certificate attests) to complete authentication and key agreement</li>
+</ol>
+<p>After that, application data is transmitted encrypted. "The other side really is example.com" comes from PKI; session confidentiality comes from the symmetric keys agreed in the handshake. Without either, you don't have complete HTTPS trust.</p>
+<h3 id="what-the-tls-handshake-does">What the TLS Handshake Does<a aria-hidden="true" tabindex="-1" href="#what-the-tls-handshake-does"><span class="anchor-link"> #</span></a></h3>
+<p>The handshake has to accomplish three things at once: <strong>negotiate the version and algorithms, authenticate identity, and derive a shared key</strong>. Using the still widely deployed <strong>TLS 1.2</strong> mental model (simplified):</p>
+<ol>
+<li><strong>ClientHello</strong>: The client declares its supported protocol versions, cipher suite list, and extensions (SNI, ALPN, supported_groups, etc.)</li>
+<li><strong>ServerHello</strong>: The server picks the version and suite, sends its certificate chain (Certificate), and, if needed, key exchange parameters (ServerKeyExchange)</li>
+<li><strong>Client verifies the certificate</strong>: Chain validation, domain matching, usage checks; on failure, the connection is dropped</li>
+<li><strong>Key exchange</strong>: Both sides use ECDHE or similar to generate a pre-master secret / shared secret, then derive traffic keys</li>
+<li><strong>Finished</strong>: Integrity is confirmed with a handshake digest, after which they switch to encrypted application data</li>
+</ol>
+<p><strong>TLS 1.3</strong> flattens the flow: it removes static RSA key transport, merges many messages, and usually completes in <strong>1-RTT</strong> (there is also 0-RTT early data, but it carries replay risk and should be enabled with care). For operators, the felt difference is fewer round trips, shorter cipher suite names, and legacy algorithms removed outright.</p>
+<p>The certificate's role here is clear: it doesn't encrypt the entire HTTP exchange; it proves "the party holding the corresponding private key has an identity vouched for by a CA". The heavy bulk encryption and decryption is handed to the symmetric keys derived after the handshake (AES-GCM, ChaCha20-Poly1305, etc.).</p>
+<p>Mutual TLS (mTLS) simply adds the symmetric step: the server also requires the client to present a certificate and validates it—common for APIs, microservices, and the inner side of SM gateways.</p>
+<h3 id="a-brief-history-of-ssl--tls-versions">A Brief History of SSL / TLS Versions<a aria-hidden="true" tabindex="-1" href="#a-brief-history-of-ssl--tls-versions"><span class="anchor-link"> #</span></a></h3>
+<p>You still often hear "SSL", but modern HTTPS actually uses TLS; SSL is historical baggage.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Rough status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSL 2.0 / 3.0</td>
+<td>Disabled</td>
+<td>Design flaws and known attacks (e.g. POODLE); should never be enabled</td>
+</tr>
+<tr>
+<td>TLS 1.0 / 1.1</td>
+<td>Deprecated</td>
+<td>Deprecated by mainstream browsers and standards such as PCI</td>
+</tr>
+<tr>
+<td>TLS 1.2</td>
+<td>Still widely used</td>
+<td>Needs correct suite and extension configuration to avoid legacy algorithms</td>
+</tr>
+<tr>
+<td>TLS 1.3</td>
+<td>Currently recommended</td>
+<td>Simpler, forward secrecy by default; preferred for new public deployments</td>
+</tr>
+</tbody>
+</table>
+<p>Version negotiation happens at the start of the handshake: the client reports its supported list, and the server picks one from the intersection. A typical symptom of misconfiguration is "some old clients connect, but new browsers error out", or the reverse—usually because the server enables too narrow or too old a set of versions.</p>
+<p>In SM scenarios there are also SM TLS stacks such as <strong>GB/T 38636 and GMTLS</strong> (often bound to SM2/SM3/SM4 suites), coexisting with IETF TLS. Dual-stack sites typically serve international traffic over TLS 1.2/1.3 and SM traffic on a dedicated port or gateway, rather than "mixing two cryptographic philosophies" in the same handshake.</p>
+<h3 id="how-cipher-suites-and-protocols-work-together">How Cipher Suites and Protocols Work Together<a aria-hidden="true" tabindex="-1" href="#how-cipher-suites-and-protocols-work-together"><span class="anchor-link"> #</span></a></h3>
+<p>A <strong>cipher suite</strong> is the named combination of algorithms chosen during the handshake. TLS 1.2 names are long and roughly encode:</p>
+<ul>
+<li>Key exchange / authentication (e.g. <code>ECDHE_RSA</code>, <code>ECDHE_ECDSA</code>)</li>
+<li>Bulk encryption (e.g. <code>AES_128_GCM</code>, <code>CHACHA20_POLY1305</code>)</li>
+<li>Pseudo-random and integrity components (in AEAD suites, integrity is already built into GCM/Poly1305)</li>
+</ul>
+<p>For example, <code>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</code> reads as: exchange keys with ECDHE, authenticate the server with an RSA certificate, and protect the record layer with AES-GCM.</p>
+<p>Some practical points when choosing:</p>
+<ul>
+<li><strong>Prefer ECDHE + AEAD</strong>: Provides forward secrecy (PFS), so even if the server's long-term private key leaks, historical traffic should not be decryptable.</li>
+<li><strong>Match the certificate algorithm to the suite</strong>: RSA certificates pair with <code>_RSA_</code>, ECDSA certificates with <code>_ECDSA_</code>; for SM, SM2 certificates pair with SM suites. If you change the certificate's algorithm, change the suite list accordingly, or the handshake will fail.</li>
+<li><strong>TLS 1.3 suites are shorter</strong>: For example <code>TLS_AES_128_GCM_SHA256</code>. Key exchange and authentication are split out of the suite name and negotiated via extensions (<code>supported_groups</code>, certificate types, etc.). If you can enable 1.3, you spend less time agonizing over long 1.2 suite names.</li>
+<li><strong>Protocol and suite are two separate knobs</strong>: Upgrading to TLS 1.2 while still enabling <code>RSA</code> key transport, RC4, 3DES, and so on leaves security poor; conversely, very modern suites with the version locked to 1.0 will also be blocked by policy.</li>
+</ul>
+<h4 id="new-members-post-quantum-cryptography-pqc">New Members: Post-Quantum Cryptography (PQC)<a aria-hidden="true" tabindex="-1" href="#new-members-post-quantum-cryptography-pqc"><span class="anchor-link"> #</span></a></h4>
+<p>The security of RSA / ECDH / ECDSA in classical suites rests on integer factorization or the elliptic curve discrete logarithm. Once large-scale quantum computers are available, Shor's algorithm will "break" these hard problems—hence <strong>Harvest Now, Decrypt Later</strong>: adversaries stockpile ciphertext now and decrypt it once quantum capability matures. For HTTPS to resist this threat, both key exchange and signatures need replacing.</p>
+<p>NIST finalized the first batch of post-quantum standards (2024), with names changed from competition code names to official names:</p>
+<table>
+<thead>
+<tr>
+<th>Official name</th>
+<th>Origin / standard</th>
+<th>Role</th>
+<th>Roughly corresponds today to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ML-KEM</strong></td>
+<td>Kyber, FIPS 203</td>
+<td>Key encapsulation (KEM) for key establishment</td>
+<td>ECDHE / classical key exchange</td>
+</tr>
+<tr>
+<td><strong>ML-DSA</strong></td>
+<td>Dilithium, FIPS 204</td>
+<td>Digital signatures (primary)</td>
+<td>RSA / ECDSA signatures and certificates</td>
+</tr>
+<tr>
+<td><strong>SLH-DSA</strong></td>
+<td>SPHINCS+, FIPS 205</td>
+<td>Stateless hash-based signatures (backup route)</td>
+<td>Long-lived trust anchors, algorithm diversity</td>
+</tr>
+<tr>
+<td><strong>FN-DSA</strong> (in progress)</td>
+<td>Falcon, FIPS 206 draft</td>
+<td>More compact lattice-based signatures</td>
+<td>Constrained environments needing smaller signatures</td>
+</tr>
+</tbody>
+</table>
+<p>An intuitive mapping onto TLS / PKI:</p>
+<ul>
+<li><strong>"Key exchange" in the handshake</strong> → look at <code>supported_groups</code>: besides <code>x25519</code> and <code>secp256r1</code>, entries like <code>mlkem768</code> will gradually appear. In practice the transition relies heavily on <strong>hybrid</strong> schemes, such as X25519 + ML-KEM, where both must succeed, so that "PQC implementations are still new, and classical crypto remains the safety net".</li>
+<li><strong>"Authentication" in the handshake</strong> → look at <code>signature_algorithms</code> / certificates: the IETF is adding <strong>ML-DSA-44 / 65 / 87</strong> to TLS (e.g. <code>mldsa44</code>, <code>mldsa65</code>, <code>mldsa87</code>). Public keys and CA signature algorithms in certificates will also move toward ML-DSA (or hybrid certificate chains).</li>
+<li><strong>Record-layer symmetric encryption</strong> → AES-GCM, ChaCha20, and the like are relatively robust against quantum attacks (the main concern is Grover, countered by longer keys), so "the AES part of the suite name" often stays for now; what changes is the <strong>KEM + signature</strong> in front.</li>
+</ul>
+<p>Compared with traditional suite selection, PQC adds some practical constraints:</p>
+<ul>
+<li><strong>Larger sizes</strong>: ML-DSA public keys and signatures are roughly an order of magnitude larger than ECDSA, so certificate chains, handshake messages, and CT Log entries all get heavier; CDNs and embedded systems need to re-estimate bandwidth and MTU.</li>
+<li><strong>Ecosystem still ramping up</strong>: The post-quantum roadmaps of browsers, OpenSSL, commercial CAs, and the SM side are not aligned. The common path on the public internet is "enable hybrid KEM first, migrate signatures/certificates later".</li>
+<li><strong>Algorithm diversity</strong>: The main path is ML-KEM + ML-DSA; for critical roots or long-term signatures, consider SLH-DSA as a heterogeneous backup, to avoid "one lattice assumption collapses and everything falls".</li>
+<li><strong>Relationship to SM</strong>: SM's main battlefield is still SM2/SM3/SM4; post-quantum is a separate, parallel line of evolution. In the long run there may be "SM + PQC" alongside international hybrids. At this early stage, keep the two timelines distinct and don't assume one has replaced the other.</li>
+</ul>
+<p>In one sentence: the "member list" of cipher suites is expanding from RSA/ECDHE to post-quantum algorithms such as <strong>ML-KEM / ML-DSA</strong>; TLS 1.3's extension mechanism is well suited to accommodating them, and PKI needs to prepare in parallel for larger certificates and possibly hybrid trust chains.</p>
+<p>The relationship can be summed up as:</p>
+<ul>
+<li><strong>Protocol version</strong> determines how the handshake proceeds and which capabilities are allowed</li>
+<li><strong>Cipher suite / negotiation extensions</strong> determine which set of algorithms this particular connection uses (classical and post-quantum)</li>
+<li><strong>Certificates / PKI</strong> determine whether identity can be trusted (signature algorithms are likewise migrating toward ML-DSA and others)</li>
+</ul>
+<p>The HTTPS "padlock" is the result of all three layers lighting up together, not the work of any single layer.</p>
+<h2 id="summary">Summary<a aria-hidden="true" tabindex="-1" href="#summary"><span class="anchor-link"> #</span></a></h2>
+<p>To tie the thread together:</p>
+<ol>
+<li><strong>The problem</strong>: Asymmetric cryptography lets you use keys, but on its own cannot prove "who a public key belongs to".</li>
+<li><strong>The roles</strong>: The CA issues, the RA vets, holders safeguard private keys, relying parties validate, and CRL/OCSP handle invalidation—PKI is a collaboration, not a single certificate.</li>
+<li><strong>Certificates</strong>: X.509 binds identity to a public key. The international system uses RSA/ECDSA; SM uses SM2 dual certificates (signing keys generated locally, encryption keys often escrowable and recoverable). The format skeletons are similar, but algorithms and trust domains differ.</li>
+<li><strong>Trust chains</strong>: Validation must reach a local trust anchor. Cross-certification joins trees in space; root rollover moves anchors in time; on the public internet, <strong>CT Logs</strong> also keep a ledger of issuance, making misissuance and abuse harder to hide.</li>
+<li><strong>Landing in HTTPS</strong>: The TLS handshake handles authentication and key agreement. Version (mainly 1.2/1.3 today), cipher suites/negotiation extensions, and certificates are all indispensable. The suite list has expanded from ECDHE+AES to post-quantum members such as <strong>ML-KEM / ML-DSA</strong>, with hybrids common during the transition.</li>
+</ol>
+<p>In one sentence: <strong>encryption secures the channel, certificates and trust chains make identity trustworthy, and CT plus protocol evolution keep this trust auditable and able to upgrade along with cryptography.</strong> Behind the little padlock is a system held up by roles, formats, anchors, logs, and handshakes together.</p>7:["$","$L15",null,{"postData":{"id":"pkitrustarch","locale":"en","contentHtml":"$16","title":"PKI Architecture and Certificate Trust Chains","date":"$D2025-10-02T13:50:00.000Z","updated":"$D2025-10-02T13:50:00.000Z","categories":["Notes"],"tags":["pki","certificate","security"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"PKI Architecture and Certificate Trust Chains | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"When you browse the web, the padlock in the address bar, HTTPS, code signing, email encryption—all of..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/pkitrustarch/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/pkitrustarch/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/pkitrustarch/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"PKI Architecture and Certificate Trust Chains"}],["$","meta","7",{"property":"og:description","content":"When you browse the web, the padlock in the address bar, HTTPS, code signing, email encryption—all of..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/pkitrustarch/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"pki"}],["$","meta","13",{"property":"article:tag","content":"certificate"}],["$","meta","14",{"property":"article:tag","content":"security"}],["$","meta","15",{"name":"twitter:card","content":"summary"}],["$","meta","16",{"name":"twitter:title","content":"PKI Architecture and Certificate Trust Chains"}],["$","meta","17",{"name":"twitter:description","content":"When you browse the web, the padlock in the address bar, HTTPS, code signing, email encryption—all of..."}],["$","link","18",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

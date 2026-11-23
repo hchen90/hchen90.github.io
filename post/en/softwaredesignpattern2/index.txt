@@ -1,0 +1,295 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","softwaredesignpattern2",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","softwaredesignpattern2","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","softwaredesignpattern2","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","UWJmRYVFiVOW4iFIecXwp",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T65e4,<p>The creational patterns are: Factory Method, Abstract Factory, Builder, Prototype, and Singleton.</p>
+<h2 id="factory-method">Factory Method<a aria-hidden="true" tabindex="-1" href="#factory-method"><span class="anchor-link"> #</span></a></h2>
+<p>The Factory Method pattern is <strong>a way of declaring a method in the parent class and instantiating the object in a subclass</strong>. In C++ it is usually expressed with virtual functions; in other languages such as Java, with abstract methods.</p>
+<p>The Factory Method pattern focuses on the target "product" itself, and generally uses a common interface to instantiate an object's properties.</p>
+<p>Take a graphics-drawing application as an example. For the parent class we only care about the high-level requirement (drawing a shape); here that corresponds to a graphic. The structure is as follows:</p>
+<p><img src="/post/softwaredesignpattern2/7f1ca2472da5.png" alt="Factory Method - Graphics"></p>
+<p>The definition looks like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Graphics</span> {
+    <span class="hljs-comment">// Abstract base class</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+</code></pre></div>
+<p>The parent class (the graphics class) is an abstract high-level class. To draw different concrete shapes, we can define:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Triangle</span> : <span class="hljs-keyword">public</span> Graphics {
+    <span class="hljs-comment">// Class that draws a triangle</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw triangle</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> Graphics {
+    <span class="hljs-comment">// Class that draws a circle</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw circle</span>
+    }
+};
+</code></pre></div>
+<p>Now, to draw a circle, we just declare a <code>Circle</code> object and call the common <code>paint()</code> to draw it. Every other shape works the same way. This greatly reduces the cost of understanding: we only need to focus on the "product" (the circle, <code>Circle</code>).</p>
+<h2 id="abstract-factory">Abstract Factory<a aria-hidden="true" tabindex="-1" href="#abstract-factory"><span class="anchor-link"> #</span></a></h2>
+<p>Abstract Factory is <strong>a way to create objects without specifying the concrete class to instantiate</strong>. It focuses on the different "styles" of constructing objects, and one factory typically constructs more than one kind of "product".</p>
+<p>Continuing with the drawing example above, suppose we now want to draw shapes in special styles: some with a brush, some with a pencil, some with pastels, or with a blender. The structure is as follows:</p>
+<p><img src="/post/softwaredesignpattern2/61bbb9c0a974.png" alt="Abstract Factory - Graphics"></p>
+<p>Four drawing factories are defined here, one per style. Each factory uses a common interface to draw different shapes (it can construct three different "products").</p>
+<p>The code is defined as follows:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">GraphicsFactory</span> {
+    <span class="hljs-comment">// Base class</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">paintTriangle</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">paintCircle</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">paintSquare</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BrushFactory</span> {
+    <span class="hljs-comment">// Brush drawing factory</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintTriangle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw triangle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintCircle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw circle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintSquare</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw square</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PencilFactory</span> {
+    <span class="hljs-comment">// Pencil drawing factory</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintTriangle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw triangle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintCircle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw circle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintSquare</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw square</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PastelFactory</span> {
+    <span class="hljs-comment">// Pastel drawing factory</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintTriangle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw triangle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintCircle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw circle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintSquare</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw square</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BlendFactory</span> {
+    <span class="hljs-comment">// Blender drawing factory</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintTriangle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw triangle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintCircle</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw circle</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paintSquare</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw square</span>
+    }
+};
+</code></pre></div>
+<p>Now, to draw a triangle in pencil style, we no longer need to care about a triangle class; the same goes for the others.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">PencilFactory pFactory;
+pFactory.<span class="hljs-built_in">paintTriangle</span>(); <span class="hljs-comment">// pencil draws triangle</span>
+pFactory.<span class="hljs-built_in">paintCircle</span>(); <span class="hljs-comment">// pencil draws circle</span>
+BrushFactory bFactory;
+bFactory.<span class="hljs-built_in">paintCircle</span>(); <span class="hljs-comment">// brush draws circle</span>
+bFactory.<span class="hljs-built_in">paintSquare</span>(); <span class="hljs-comment">// brush draws square</span>
+</code></pre></div>
+<h2 id="builder">Builder<a aria-hidden="true" tabindex="-1" href="#builder"><span class="anchor-link"> #</span></a></h2>
+<p>The Builder pattern is <strong>a way to create complex objects step by step</strong>. It lets us flexibly customize how each part of an object is created.</p>
+<p>With a builder, you call various interfaces one after another to perform specific initialization and set the object's properties. Once initialization is done, you call a build function (<code>build()</code>) to produce the target object.</p>
+<p>Using drawing as the example:</p>
+<p><img src="/post/softwaredesignpattern2/cd999fa23714.png" alt="Builder - Graphics"></p>
+<p>Three drawing styles are defined here. With the builder, you only initialize the shapes in the styles you want, then call the build interface (<code>paint()</code>) to draw the target picture.</p>
+<p>The code is as follows:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Builder</span> {
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">triangleBrush</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add brush-drawn triangle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">circleBrush</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add brush-drawn circle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">squareBrush</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add brush-drawn square</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">trianglePencil</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pencil-drawn triangle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">circlePencil</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pencil-drawn circle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">squarePencil</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pencil-drawn square</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">trianglePastel</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pastel-drawn triangle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">circlePastel</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pastel-drawn circle</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function">Builder&#x26; <span class="hljs-title">squarePastel</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add pastel-drawn square</span>
+        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> build/render function</span>
+    }
+};
+</code></pre></div>
+<p>To draw a complex picture with the Builder pattern, you can do this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">Builder builder;
+builder.<span class="hljs-built_in">circlePastel</span>() <span class="hljs-comment">// initialize circle</span>
+       .<span class="hljs-built_in">squareBrush</span>() <span class="hljs-comment">// initialize square</span>
+       .<span class="hljs-built_in">trianglePencil</span>() <span class="hljs-comment">// initialize triangle</span>
+       .<span class="hljs-built_in">paint</span>() <span class="hljs-comment">// build</span>
+</code></pre></div>
+<h2 id="prototype">Prototype<a aria-hidden="true" tabindex="-1" href="#prototype"><span class="anchor-link"> #</span></a></h2>
+<p>Normally, objects are obtained from a class definition. But if we don't know the class and just want to <strong>clone a new object from an existing object</strong>, carrying over some of its properties, that approach is the Prototype pattern.</p>
+<p>Note that cloning hides the complex details of the class. A clone can copy public methods and fields as well as protected or private ones, so that it reproduces the original object's properties as fully as possible.</p>
+<p><img src="/post/softwaredesignpattern2/3716ab58195a.png" alt="Prototype - Graphics"></p>
+<p>Example code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ShapeGraphics</span> {
+    <span class="hljs-comment">// Shape</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">ShapeGraphics</span>() : <span class="hljs-built_in">mX</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">mY</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">mColor</span>(<span class="hljs-number">0</span>) {}
+    <span class="hljs-built_in">ShapeGraphics</span>(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> cr)
+        : <span class="hljs-built_in">mX</span>(x), <span class="hljs-built_in">mY</span>(y), <span class="hljs-built_in">mColor</span>(cr)
+    {}
+    <span class="hljs-built_in">ShapeGraphics</span>(<span class="hljs-type">const</span> ShapeGraphics&#x26; shape) {
+        <span class="hljs-keyword">this</span>->mX = shape.mX;
+        <span class="hljs-keyword">this</span>->mY = shape.mY;
+        <span class="hljs-keyword">this</span>->mColor = shape.mColor;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> ShapeGraphics* <span class="hljs-title">clone</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> mX, mY, mColor;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CircleGraphics</span> : <span class="hljs-keyword">public</span> ShapeGraphics {
+    <span class="hljs-comment">// Circle</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CircleGraphics</span>(<span class="hljs-type">const</span> CircleGraphics&#x26; source)
+        : <span class="hljs-built_in">ShapeGraphics</span>(source)
+    {
+        <span class="hljs-keyword">this</span>.mRadius = source.mRadius;
+    }
+    <span class="hljs-function">ShapeGraphics* <span class="hljs-title">clone</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">CircleGraphics</span>(*<span class="hljs-keyword">this</span>);
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> mRadius;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">TriangleGraphics</span> : <span class="hljs-keyword">public</span> ShapeGraphics {
+    <span class="hljs-comment">// Triangle</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">TriangleGraphics</span>(<span class="hljs-type">const</span> TriangleGraphics&#x26; source)
+        : <span class="hljs-built_in">ShapeGraphics</span>(source)
+    {
+        <span class="hljs-keyword">this</span>->mA = source.mA;
+        <span class="hljs-keyword">this</span>->mB = source.mB;
+        <span class="hljs-keyword">this</span>->mC = source.mC;
+    }
+    <span class="hljs-function">ShapeGraphics* <span class="hljs-title">clone</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TriangleGraphics</span>(*<span class="hljs-keyword">this</span>);
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> mA, mB, mC;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SquareGraphics</span> : <span class="hljs-keyword">public</span> ShapeGraphics {
+    <span class="hljs-comment">// Square</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">SquareGraphics</span>(<span class="hljs-type">const</span> SquareGraphics&#x26; source)
+        : <span class="hljs-built_in">ShapeGraphics</span>(source)
+    {
+        <span class="hljs-keyword">this</span>->mWidth = source.mWidth;
+        <span class="hljs-keyword">this</span>->mHeight = source.mHeight;
+    }
+    <span class="hljs-function">ShapeGraphics* <span class="hljs-title">clone</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">SquareGraphics</span>(*<span class="hljs-keyword">this</span>);
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> mWidth, mHeight;
+};
+</code></pre></div>
+<p>Constructing objects with the Prototype pattern looks like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomShape</span> : <span class="hljs-keyword">public</span> ShapeGraphics {
+    <span class="hljs-built_in">CustomShape</span>() : <span class="hljs-built_in">ShapeGraphics</span>(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0xff00</span>) {}
+    <span class="hljs-function">ShapeGraphics* <span class="hljs-title">clone</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">CustomShape</span>(*<span class="hljs-keyword">this</span>);
+    }
+};
+
+CustomShape shape; <span class="hljs-comment">// position (10, 10), color 0xff00</span>
+<span class="hljs-keyword">auto</span> newshape = shape.<span class="hljs-built_in">clone</span>(); <span class="hljs-comment">// clone the shape</span>
+<span class="hljs-function">SquareGraphics <span class="hljs-title">square</span><span class="hljs-params">(*newshape)</span></span>; <span class="hljs-comment">// construct an object from the cloned newshape attributes</span>
+<span class="hljs-keyword">auto</span> newsquare = square.<span class="hljs-built_in">clone</span>(); <span class="hljs-comment">// new cloned square with square attributes</span>
+</code></pre></div>
+<h2 id="singleton">Singleton<a aria-hidden="true" tabindex="-1" href="#singleton"><span class="anchor-link"> #</span></a></h2>
+<p>A singleton is a special construction pattern: the object it constructs has only one global instance at runtime.</p>
+<p>Singletons are typically used for central control and centralized configuration, ensuring consistency of information and of control.</p>
+<p>Example code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> {
+    <span class="hljs-comment">// Singleton</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">static</span> Singleton&#x26; <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// declare a function-local static instance</span>
+        <span class="hljs-type">static</span> Singleton inst;
+        <span class="hljs-keyword">return</span> inst;
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">Singleton</span>() {}
+};
+</code></pre></div>
+<p>This defines a singleton class. It cannot be instantiated through the class directly; instead, a static variable and a static function provide access to the object.</p>
+<p>Usage:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">auto</span> inst = Singleton::<span class="hljs-built_in">getInstance</span>(); <span class="hljs-comment">// get the singleton instance</span>
+</code></pre></div>7:["$","$L15",null,{"postData":{"id":"softwaredesignpattern2","locale":"en","contentHtml":"$16","title":"Software Design Patterns - Creational Patterns","date":"$D2017-06-04T19:04:11.000Z","updated":"$D2017-06-04T19:04:11.000Z","categories":["Notes"],"tags":["Design Patterns"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Software Design Patterns - Creational Patterns | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"The creational patterns are: Factory Method, Abstract Factory, Builder, Prototype, and Singleton...."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/softwaredesignpattern2/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/softwaredesignpattern2/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/softwaredesignpattern2/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Software Design Patterns - Creational Patterns"}],["$","meta","7",{"property":"og:description","content":"The creational patterns are: Factory Method, Abstract Factory, Builder, Prototype, and Singleton...."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/softwaredesignpattern2/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"Design Patterns"}],["$","meta","13",{"name":"twitter:card","content":"summary"}],["$","meta","14",{"name":"twitter:title","content":"Software Design Patterns - Creational Patterns"}],["$","meta","15",{"name":"twitter:description","content":"The creational patterns are: Factory Method, Abstract Factory, Builder, Prototype, and Singleton...."}],["$","link","16",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

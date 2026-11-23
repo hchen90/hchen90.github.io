@@ -1,0 +1,561 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","softwaredesignpattern4",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","softwaredesignpattern4","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","softwaredesignpattern4","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","jz_M3DS4KpvWsVKu4Ierg",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:Tb4ac,<p>Behavioral patterns deal with efficient communication between objects and the delegation of responsibilities.</p>
+<p>The behavioral patterns covered here are: Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, and Visitor.</p>
+<h2 id="chain-of-responsibility-cor">Chain of Responsibility (CoR)<a aria-hidden="true" tabindex="-1" href="#chain-of-responsibility-cor"><span class="anchor-link"> #</span></a></h2>
+<p>The Chain of Responsibility pattern lets you pass a request along a chain of handlers. When a handler at any node receives the request, it can either process it or pass it on to the next handler in the chain.</p>
+<p>For example:</p>
+<p><img src="/post/softwaredesignpattern4/3bd87b0f387e.png" alt="CoR"></p>
+<p>This is just a two-level chain.</p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Handler</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handle</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BasicHandler</span> : <span class="hljs-keyword">public</span> Handler {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handle</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> perform the first-level handling</span>
+        <span class="hljs-keyword">if</span> (okay &#x26;&#x26; next != <span class="hljs-literal">nullptr</span>) {
+            <span class="hljs-built_in">next</span>(); <span class="hljs-comment">// pass to the next handler in the chain</span>
+        }
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setNext</span><span class="hljs-params">(Handler&#x26; hdr)</span> </span>{
+        next = hdr
+    }
+<span class="hljs-keyword">private</span>:
+    Handler next;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SecondHandler</span> : <span class="hljs-keyword">public</span> Handler {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handle</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> perform the required handling</span>
+    }
+    <span class="hljs-comment">// the last handler does not need a next</span>
+    <span class="hljs-comment">// void setNext(Handler&#x26; hdr) {</span>
+    <span class="hljs-comment">//     next = hdr</span>
+    <span class="hljs-comment">// }</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// Handler next;</span>
+};
+</code></pre></div>
+<h2 id="command">Command<a aria-hidden="true" tabindex="-1" href="#command"><span class="anchor-link"> #</span></a></h2>
+<p>The Command pattern turns a request into a standalone object that contains all the information about that request. These objects are kept in a queue, and queued elements can be undone.</p>
+<p>Take the design of an editor application as an example:</p>
+<p><img src="/post/softwaredesignpattern4/864e9e18f296.png" alt="Command"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Command</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-comment">// Open file</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">OpenCommand</span> : <span class="hljs-keyword">public</span> Command {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Perform the file-open operation</span>
+    }
+};
+
+<span class="hljs-comment">// Save file</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SaveCommand</span> : <span class="hljs-keyword">public</span> Command {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Perform the file-save operation</span>
+    }
+};
+
+<span class="hljs-comment">// Print file</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PrintCommand</span> : <span class="hljs-keyword">public</span> Command {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">execute</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Perform the file-print operation</span>
+    }
+};
+</code></pre></div>
+<p>We also need a command queue mechanism:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// Command queue</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CommandQueue</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Command&#x26;)</span> </span>{
+        <span class="hljs-comment">// Enqueue a command</span>
+    }
+    <span class="hljs-function">Command <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Dequeue a command</span>
+    }
+};
+</code></pre></div>
+<p>The command queue stores commands, and enqueuing and dequeuing follow some scheduling algorithm:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function">CommandQueue <span class="hljs-title">cq</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>;
+
+<span class="hljs-comment">// Any scheduling strategy works; a timer is used here</span>
+<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">1</span>));
+    <span class="hljs-keyword">auto</span> cmd = cq.<span class="hljs-built_in">pop</span>();
+    cmd.<span class="hljs-built_in">execute</span>();
+}
+</code></pre></div>
+<p>To undo, simply pop the element off the queue without executing it:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">cq.<span class="hljs-built_in">pop</span>();
+</code></pre></div>
+<p>Creating an "Open" menu action only takes the following:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">auto</span> openCmd = <span class="hljs-keyword">new</span> <span class="hljs-built_in">OpenCommand</span>();
+<span class="hljs-keyword">auto</span> menuOpen = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Menu</span>(<span class="hljs-string">"Open"</span>);
+menuOpen.action = [openCmd](){
+    cq.<span class="hljs-built_in">push</span>(openCmd); <span class="hljs-comment">// push the open command onto the queue</span>
+};
+</code></pre></div>
+<h2 id="iterator">Iterator<a aria-hidden="true" tabindex="-1" href="#iterator"><span class="anchor-link"> #</span></a></h2>
+<p>The goal of the Iterator pattern is to let outside code traverse every element of a collection without exposing the collection's underlying representation.</p>
+<p>The structure looks like this:</p>
+<p><img src="/post/softwaredesignpattern4/bab81b954a9e.png" alt="Iterator"></p>
+<p>First, define a collection:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// Iterator</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Iterator</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Iterator <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Item</span> : <span class="hljs-keyword">public</span> Iterator {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Next element</span>
+    }
+};
+
+<span class="hljs-comment">// Iterable collection</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">IteratorCollection</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Iterator <span class="hljs-title">create</span><span class="hljs-params">(Iterator)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function">Iterator <span class="hljs-title">begin</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function">Iterator <span class="hljs-title">end</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Collection</span> : <span class="hljs-keyword">public</span> IteratorCollection {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Iterator <span class="hljs-title">create</span><span class="hljs-params">(Iterator)</span> </span>{
+        <span class="hljs-comment">// Create an iterator</span>
+    }
+    <span class="hljs-function">Iterator <span class="hljs-title">begin</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Return an iterator to the first element</span>
+    }
+    <span class="hljs-function">Iterator <span class="hljs-title">end</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Return an iterator to the last element</span>
+    }
+};
+</code></pre></div>
+<p>The iterator collection can be built like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">Collection collection;
+Item empty;
+first = collection.<span class="hljs-built_in">create</span>(empty);
+second = collection.<span class="hljs-built_in">create</span>(first);
+third = collection.<span class="hljs-built_in">create</span>(second);
+</code></pre></div>
+<p>There are many ways to build an iterator collection: one element at a time through a function as above, or all at once through a constructor.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function">Collection <span class="hljs-title">collection</span><span class="hljs-params">([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>])</span></span>;
+</code></pre></div>
+<p>Use the iterator collection to access the iterator elements:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = collection.<span class="hljs-built_in">begin</span>(); it != collection.<span class="hljs-built_in">end</span>(); it = it.<span class="hljs-built_in">next</span>()) {
+    <span class="hljs-comment">// Access the element via iterator it</span>
+}
+</code></pre></div>
+<h2 id="mediator">Mediator<a aria-hidden="true" tabindex="-1" href="#mediator"><span class="anchor-link"> #</span></a></h2>
+<p>The Mediator pattern reduces chaotic, tangled dependencies between objects. It restricts direct interaction between objects and has them interact through a mediator object instead.</p>
+<p>Consider a form UI where the user fills in name, date of birth, gender, and so on. Updating one field also triggers changes in other UI elements; for example, entering a date of birth updates the age in the form. If every UI control talked to the others directly to update them, the result would eventually be a mess. A mediator prevents that mess.</p>
+<p><img src="/post/softwaredesignpattern4/1decbdf92c84.png" alt="Mediator"></p>
+<p>As shown above, changing the date of birth updates the age, and routing this through the mediator avoids the chaos caused by direct calls.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Mediator</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">notify</span><span class="hljs-params">(<span class="hljs-type">int</span> type, std::string param)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">registerObject</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInformation</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">notify</span><span class="hljs-params">(<span class="hljs-type">int</span> type, std::string param)</span> </span>{
+        <span class="hljs-comment">// Notify different objects to update the UI based on type</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">registerObject</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Register a UI object</span>
+    }
+<span class="hljs-keyword">private</span>:
+    std::vector&#x3C;UIObject> objects;
+};
+</code></pre></div>
+<p>In use, the in-memory environment keeps a single user-information object, defined like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">UserInformation info;
+info.<span class="hljs-built_in">registerObject</span>(userNameLabel);
+info.<span class="hljs-built_in">registerObject</span>(birthLabel);
+info.<span class="hljs-built_in">registerObject</span>(ageLabel);
+<span class="hljs-comment">// ...</span>
+</code></pre></div>
+<p>When the user changes the value of a UI control:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">info.<span class="hljs-built_in">notify</span>(<span class="hljs-number">123</span>, <span class="hljs-string">"1975-02-12"</span>); <span class="hljs-comment">// assume 123 is the "birth date updated" event; the argument is the new date</span>
+</code></pre></div>
+<h2 id="memento">Memento<a aria-hidden="true" tabindex="-1" href="#memento"><span class="anchor-link"> #</span></a></h2>
+<p>The Memento pattern lets you save and restore an object's previous state without exposing its implementation details.</p>
+<p>Editor applications generally support undo and redo, which can be implemented like this:</p>
+<p><img src="/post/softwaredesignpattern4/adea908520cc.png" alt="Memento"></p>
+<p>In the diagram, opening a document creates an initial originator. The next snapshot is based on that originator, and so on. Snapshots are stored and managed in a snapshot list. The code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Memento</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">restore</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Originator</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Memento* <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Snapshot</span> : <span class="hljs-keyword">public</span> Memento {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">Snapshot</span>(Memento* m, <span class="hljs-type">int</span> s) {
+        originator = m;
+        state = s;
+        <span class="hljs-comment">// Save the operation state</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">restore</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Restore the operation state</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Initial</span> : <span class="hljs-keyword">public</span> Originator {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setState</span><span class="hljs-params">(<span class="hljs-type">int</span> state)</span> </span>{
+        <span class="hljs-keyword">this</span>->state = state;
+    }
+    <span class="hljs-function">Memento* <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Snapshot</span>(<span class="hljs-keyword">this</span>, state);
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> state;
+};
+</code></pre></div>
+<p>Define a caretaker that manages snapshots, creating and restoring them:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">std::vector&#x3C;Snapshot*> snapshots;
+<span class="hljs-comment">// Initialize the originator</span>
+Initial init;
+init.<span class="hljs-built_in">setState</span>(<span class="hljs-number">0</span>);
+<span class="hljs-comment">// Save a snapshot</span>
+Snapshot* s1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Snapshot</span>(init, <span class="hljs-number">1</span>);
+snapshots.<span class="hljs-built_in">push_back</span>(s1);
+<span class="hljs-comment">// Restore the snapshot</span>
+<span class="hljs-keyword">auto</span> s = snapshots.<span class="hljs-built_in">pop_back</span>();
+s-><span class="hljs-built_in">restore</span>();
+</code></pre></div>
+<h2 id="observer">Observer<a aria-hidden="true" tabindex="-1" href="#observer"><span class="anchor-link"> #</span></a></h2>
+<p>The Observer pattern is a publish-subscribe mechanism: when an object's state changes, it notifies multiple other "observing" objects.</p>
+<p>Take a code editor as an example. A code editor is not just a text editor; it also supports syntax highlighting, auto-indentation, automatic bracket matching, and other features driven by the code text.</p>
+<p><img src="/post/softwaredesignpattern4/9d980a98bd2d.png" alt="Observer"></p>
+<p>The implementation:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">EventListener</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Highlight</span> : <span class="hljs-keyword">public</span> EventListener {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Update syntax highlighting</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AutoIndent</span> : <span class="hljs-keyword">public</span> EventListener {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Update auto-indentation</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AutoBracket</span> : <span class="hljs-keyword">public</span> EventListener {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Update bracket matching</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">EventManager</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(<span class="hljs-type">int</span> type, EventListener* listener)</span> </span>{
+        <span class="hljs-keyword">auto</span> it = listeners[type];
+        <span class="hljs-keyword">if</span> (it == <span class="hljs-literal">nullptr</span>) {
+            it = <span class="hljs-built_in">initListenerList</span>(); <span class="hljs-comment">// initialize the listener list</span>
+            listeners.<span class="hljs-built_in">insert</span>(std::<span class="hljs-built_in">make_pair</span>(type, it));
+        }
+        it-><span class="hljs-built_in">push_back</span>(listener); <span class="hljs-comment">// add the listener</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">unsubscribe</span><span class="hljs-params">(<span class="hljs-type">int</span> type, EventListener* listener)</span> </span>{
+        <span class="hljs-keyword">auto</span> it = listeners[type];
+        <span class="hljs-keyword">if</span> (it == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">find_if</span>(it, listener)) { <span class="hljs-comment">// look up the listener</span>
+            it = <span class="hljs-built_in">remove_if</span>(it, listener); <span class="hljs-comment">// remove it</span>
+            listeners[type] = it;
+        }
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">notify</span><span class="hljs-params">(<span class="hljs-type">int</span> type, DataFrame* data)</span> </span>{
+        <span class="hljs-comment">// Iterate over all listeners of this event and notify them</span>
+        <span class="hljs-keyword">auto</span> it = listeners[type];
+        <span class="hljs-keyword">if</span> (it == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">for</span> (l := it-><span class="hljs-built_in">begin</span>(); l != it-><span class="hljs-built_in">end</span>(); l = l-><span class="hljs-built_in">next</span>()) {
+            l-><span class="hljs-built_in">update</span>(); <span class="hljs-comment">// notify the event</span>
+        }
+    }
+<span class="hljs-keyword">private</span>:
+    std::map&#x3C;<span class="hljs-type">int</span>, ListenerList*> listeners;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Editor</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">Editor</span>() {}
+<span class="hljs-keyword">private</span>:
+    EventManager eventMgr;
+};
+</code></pre></div>
+<h2 id="state">State<a aria-hidden="true" tabindex="-1" href="#state"><span class="anchor-link"> #</span></a></h2>
+<p>The State pattern means that when an object's state changes, its behavior changes too. The core idea comes from finite state machines.</p>
+<p>A thermostat-controlled air conditioner is one of the simplest state machines, as shown below:</p>
+<p><img src="/post/softwaredesignpattern4/7a92462341cc.png" alt="State Machine"></p>
+<p>The class definition for the state model:</p>
+<p><img src="/post/softwaredesignpattern4/daa6b086d079.png" alt="State"></p>
+<p>The code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">AirConditionerState</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">AirConditionerState</span>() {
+        <span class="hljs-comment">// Initialize the state transition table</span>
+        transits.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">compound</span>(STATE_START, SYM_RDY), STATE_ON);
+        transits.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">compound</span>(STATE_ON, SYM_BELOW), STATE_WAIT);
+        <span class="hljs-comment">// ...</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">transit</span><span class="hljs-params">(<span class="hljs-type">int</span> cur)</span> </span>{ <span class="hljs-comment">// transition function</span>
+        <span class="hljs-keyword">auto</span> sym = cur > <span class="hljs-number">26</span> ? SYM_ABOVE : SYM_BELOW;
+        <span class="hljs-keyword">auto</span> key = <span class="hljs-built_in">compound</span>(state, sym);
+        <span class="hljs-keyword">auto</span> val = transits.<span class="hljs-built_in">find</span>(key);
+        state = val;
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">int</span> state;
+    std::map&#x3C;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>> transits;
+
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">compound</span><span class="hljs-params">(<span class="hljs-type">int</span> state, <span class="hljs-type">int</span> symbol)</span> </span>{
+        <span class="hljs-keyword">return</span> state | (symbol &#x3C;&#x3C; <span class="hljs-number">16</span>);
+    }
+};
+</code></pre></div>
+<p>On each call, just pass the current temperature to <code>transit()</code>. The function switches states in the state table based on the current state and the input symbol.</p>
+<blockquote>
+<p>How state machines work</p>
+<blockquote>
+<p>A state machine consists of a symbol table, a state table, a transition function, and start and end states. In one sentence: a state machine uses symbols from the symbol table to move between states in the state table via the transition function. State machines are divided into finite and infinite state machines; an infinite state machine's state table differs in size from a finite one's and may contain infinitely many states. Finite state machines are used in compilers, both for lexical analysis and for building formal syntax analysis.</p>
+</blockquote>
+</blockquote>
+<h2 id="strategy">Strategy<a aria-hidden="true" tabindex="-1" href="#strategy"><span class="anchor-link"> #</span></a></h2>
+<p>The Strategy pattern lets an algorithm be customized. For example, suppose some software supports machine learning. To use it, we choose a model and train it, then use it for real predictions later. The model can be abstracted as a strategy, and choosing among models is choosing among strategies.</p>
+<p><img src="/post/softwaredesignpattern4/efdffe0eb9a6.png" alt="Strategy"></p>
+<p>The implementation:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Strategy</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">train</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">predict</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LinearRegression</span> : <span class="hljs-keyword">public</span> Strategy {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">train</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Linear regression training</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">predict</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Linear regression prediction</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DecisionTree</span> : <span class="hljs-keyword">public</span> Strategy {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">train</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Decision tree training</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">predict</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Decision tree prediction</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Forest</span> : <span class="hljs-keyword">public</span> Strategy {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">train</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Random forest training</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">predict</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Random forest prediction</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">NeuralNetwork</span> : <span class="hljs-keyword">public</span> Strategy {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">train</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Neural network training</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">predict</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Neural network prediction</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AIDecision</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setStrategy</span><span class="hljs-params">(Strategy* s)</span> </span>{
+        strategy = s;
+        <span class="hljs-built_in">scheduleTrain</span>();
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">decisionPredict</span><span class="hljs-params">()</span> </span>{
+        strategy-><span class="hljs-built_in">predict</span>();
+    }
+<span class="hljs-keyword">private</span>:
+    Strategy* strategy;
+};
+</code></pre></div>
+<p>A caller uses it like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">AIDecision ai;
+
+<span class="hljs-comment">// Predict using the neural network strategy</span>
+<span class="hljs-keyword">auto</span> stra = <span class="hljs-keyword">new</span> <span class="hljs-built_in">NeuralNetwork</span>();
+ai.<span class="hljs-built_in">setStrategy</span>(stra);
+ai.<span class="hljs-built_in">decisionPredict</span>();
+</code></pre></div>
+<h2 id="template-method">Template Method<a aria-hidden="true" tabindex="-1" href="#template-method"><span class="anchor-link"> #</span></a></h2>
+<p>The Template Method pattern defines the skeleton of an algorithm in a superclass. Subclasses that inherit from it can override specific steps of the algorithm without changing its structure.</p>
+<p>For example, in an editor application the basic operations can be designed into a superclass, while subclasses override methods to handle specific file types.</p>
+<p><img src="/post/softwaredesignpattern4/11d0af43cb52.png" alt="Template Method"></p>
+<p>The code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">BasicEditor</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">open</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Open file</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Load file data</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Close file</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Save file</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">find</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Search the file</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">undo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Undo</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">redo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Redo</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">goto_</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Move the cursor</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">select</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Select text</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RtfEditor</span> : <span class="hljs-keyword">public</span> BasicEditor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Load rich-text data</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DocEditor</span> : <span class="hljs-keyword">public</span> BasicEditor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Load a Doc document</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PdfEditor</span> : <span class="hljs-keyword">public</span> BasicEditor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Load PDF document data</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">save</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Saving is not supported; PDFs are view-only and cannot be modified</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">undo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Saving is not supported; PDFs are view-only and cannot be modified</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">redo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Saving is not supported; PDFs are view-only and cannot be modified</span>
+    }
+};
+</code></pre></div>
+<h2 id="visitor">Visitor<a aria-hidden="true" tabindex="-1" href="#visitor"><span class="anchor-link"> #</span></a></h2>
+<p>The Visitor pattern separates algorithms from the objects they operate on.</p>
+<p>With this approach, the visited objects need no changes, yet their properties can still be accessed.</p>
+<p><img src="/post/softwaredesignpattern4/a8db09ca9457.png" alt="Visitor"></p>
+<p>The diagram shows an example that uses the Visitor pattern to fetch icon images from an application's menus and toolbars.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CtrlItem</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Image* <span class="hljs-title">image</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ToolbarItem</span> : <span class="hljs-keyword">public</span> CtrlItem {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Image* <span class="hljs-title">image</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Return the icon image</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MenuItem</span> : <span class="hljs-keyword">public</span> CtrlItem {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Image* <span class="hljs-title">image</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Return the icon image</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Visitor</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Image* <span class="hljs-title">visit</span><span class="hljs-params">(ToolbarItem*)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function">Image* <span class="hljs-title">visit</span><span class="hljs-params">(MenuItem*)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ImageVisitor</span> : <span class="hljs-keyword">public</span> Visitor {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Image* <span class="hljs-title">visit</span><span class="hljs-params">(ToolbarItem* item)</span> </span>{
+        <span class="hljs-keyword">return</span> item-><span class="hljs-built_in">image</span>();
+    }
+    <span class="hljs-function">Image* <span class="hljs-title">visit</span><span class="hljs-params">(MenuItem* item)</span> </span>{
+        <span class="hljs-keyword">return</span> item-><span class="hljs-built_in">image</span>();
+    }
+};
+</code></pre></div>
+<p>Using the Visitor pattern:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">ToolbarItem* item1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ToolbarItem</span>(<span class="hljs-string">"a.png"</span>);
+ToolbarItem* item2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ToolbarItem</span>(<span class="hljs-string">"b.png"</span>);
+MenuItem* item3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">MenuItem</span>(<span class="hljs-string">"c.png"</span>);
+
+ImageVisitor visitor;
+<span class="hljs-keyword">auto</span> image1 = visitor.<span class="hljs-built_in">visit</span>(item1);
+<span class="hljs-keyword">auto</span> image2 = visitor.<span class="hljs-built_in">visit</span>(item2);
+<span class="hljs-keyword">auto</span> image3 = visitor.<span class="hljs-built_in">visit</span>(item3);
+</code></pre></div>7:["$","$L15",null,{"postData":{"id":"softwaredesignpattern4","locale":"en","contentHtml":"$16","title":"Software Design Patterns - Behavioral Patterns","date":"$D2017-06-08T22:01:03.000Z","updated":"$D2024-10-08T20:15:08.000Z","categories":["Notes"],"tags":["Design Patterns"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Software Design Patterns - Behavioral Patterns | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Behavioral patterns deal with efficient communication between objects and the delegation of responsi..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/softwaredesignpattern4/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/softwaredesignpattern4/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/softwaredesignpattern4/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Software Design Patterns - Behavioral Patterns"}],["$","meta","7",{"property":"og:description","content":"Behavioral patterns deal with efficient communication between objects and the delegation of responsi..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/softwaredesignpattern4/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"Design Patterns"}],["$","meta","13",{"name":"twitter:card","content":"summary"}],["$","meta","14",{"name":"twitter:title","content":"Software Design Patterns - Behavioral Patterns"}],["$","meta","15",{"name":"twitter:description","content":"Behavioral patterns deal with efficient communication between objects and the delegation of responsi..."}],["$","link","16",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

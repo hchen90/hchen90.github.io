@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fapi\u002Fposts\u002F[locale]","\u002Fapi\u002Fv1.5\u002Fposts\u002F[locale]\u002F[slug]\u002Fcontent","\u002Fen\u002Fpage\u002F[number]","\u002Fpage\u002F[number]","\u002Fpost\u002F[locale]\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

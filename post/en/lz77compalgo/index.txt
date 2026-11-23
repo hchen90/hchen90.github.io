@@ -1,0 +1,236 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","lz77compalgo",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","lz77compalgo","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","lz77compalgo","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","oURiRwCbiV1AiFRqIL5Ve",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T4316,<h1 id="introduction-to-lz77">Introduction to LZ77<a aria-hidden="true" tabindex="-1" href="#introduction-to-lz77"><span class="anchor-link"> #</span></a></h1>
+<p>LZ77 is a lossless compression algorithm first published by two Israeli researchers in 1977. It is a classic dictionary-based compression algorithm, and today almost all lossless compression algorithms are built on LZ77, optimizing and modifying it in various ways. It can fairly be called the ancestor of lossless compression algorithms.</p>
+<blockquote>
+<p>See Wikipedia: <a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">lz77</a></p>
+</blockquote>
+<h1 id="how-the-algorithm-works">How the algorithm works<a aria-hidden="true" tabindex="-1" href="#how-the-algorithm-works"><span class="anchor-link"> #</span></a></h1>
+<p>The core of LZ77 is a sliding window: it searches for repeated bytes within the window and represents each matched byte string with a shorter byte sequence.</p>
+<p>Several elements are involved:</p>
+<ul>
+<li>The sliding window buffer</li>
+<li>The look-ahead region of the window</li>
+<li>The already-encoded region of the window</li>
+</ul>
+<h2 id="encoding">Encoding<a aria-hidden="true" tabindex="-1" href="#encoding"><span class="anchor-link"> #</span></a></h2>
+<p>Encoding steps:</p>
+<ol>
+<li>First allocate a buffer to process the data</li>
+<li>The look-ahead region starts empty</li>
+<li>The encoded region also starts empty</li>
+<li>Load the byte stream into the look-ahead region; if this is the last byte, go to step 8, otherwise continue to step 5</li>
+<li>Search the encoded region for a matching byte string; if found, go to step 6, otherwise go to step 7</li>
+<li>Record the relative position of the first matched byte and the match length in the encoded region, then go back to step 4</li>
+<li>Copy the byte from the look-ahead region directly into the encoded region, then go back to step 4</li>
+<li>Encoding finished</li>
+</ol>
+<p>Encoding diagrams:</p>
+<p>Before the sliding window has processed any data:</p>
+<p><img src="/post/lz77compalgo/444d473374ac.png" alt="Before encoding"></p>
+<p>When the sliding window starts processing data:</p>
+<p><img src="/post/lz77compalgo/bbe2cf390348.png" alt="Encoding starts"></p>
+<p>While the sliding window is processing data:</p>
+<p><img src="/post/lz77compalgo/c2b4e19aa15f.png" alt="Encoding in progress"></p>
+<p>When the data is almost fully processed:</p>
+<p><img src="/post/lz77compalgo/a2b9a5ac780a.png" alt="Encoding nearly finished"></p>
+<p>The whole process looks as if the byte stream flows through the black box of the sliding window, and what comes out the other side is compressed data.</p>
+<blockquote>
+<p>Encoding involves deciding how to mark data. In this LZ77 implementation, 2–3 bytes are used: if two bytes are both '\0', it denotes a literal byte copied directly, and the byte following the two '\0' bytes is the original byte; otherwise, those two bytes encode the relative position and length of the byte string that should be filled in at the current position. (You can even define your own marking scheme for your own LZ77 encoder.)</p>
+</blockquote>
+<h2 id="decoding">Decoding<a aria-hidden="true" tabindex="-1" href="#decoding"><span class="anchor-link"> #</span></a></h2>
+<p>Decoding is the inverse of encoding.</p>
+<p>Decoding steps:</p>
+<ol>
+<li>
+<p>If the byte stream is at its last byte, go to step 5, otherwise go to step 2</p>
+</li>
+<li>
+<p>Read two bytes from the stream; if they are <code>\0x00\0x00</code>, go to step 3, otherwise go to step 4</p>
+</li>
+<li>
+<p>Copy the byte following <code>\0x00\0x00</code> into the output buffer, continue loading the stream, and go back to step 1</p>
+</li>
+<li>
+<p>Extract the relative offset within the sliding window and the content length from the two-byte code, copy the content at that offset into the current output buffer, and go back to step 1</p>
+</li>
+<li>
+<p>Decoding finished</p>
+</li>
+</ol>
+<blockquote>
+<p>The output buffer above is the buffer that holds the byte stream after it has been processed at the current byte position.</p>
+</blockquote>
+<p>Decoding diagrams:</p>
+<p>Before the sliding window has any input data:</p>
+<p><img src="/post/lz77compalgo/327cac22a173.png" alt="Before decoding"></p>
+<p>When the sliding window starts processing data:</p>
+<p><img src="/post/lz77compalgo/0f3c09c33bfb.png" alt="Decoding starts"></p>
+<p>While data is being processed in the sliding window:</p>
+<p><img src="/post/lz77compalgo/44818fe4e513.png" alt="Decoding in progress"></p>
+<p>When the data is almost fully processed:</p>
+<p><img src="/post/lz77compalgo/a0e2f344a5e9.png" alt="Decoding nearly finished"></p>
+<h1 id="source-code">Source code<a aria-hidden="true" tabindex="-1" href="#source-code"><span class="anchor-link"> #</span></a></h1>
+<p>Helper function:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search_maxlen_p</span><span class="hljs-params">( <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>**  pt, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* head, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* tail, \
+                              <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* end)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* tmp = *pt;
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> leng = <span class="hljs-number">0</span>, i;
+
+  <span class="hljs-keyword">for</span>(tmp;tmp >= head;tmp--){
+    <span class="hljs-keyword">if</span>(tmp[<span class="hljs-number">0</span>] == tail[<span class="hljs-number">0</span>]){
+      <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;(i &#x3C; ((<span class="hljs-number">1</span> &#x3C;&#x3C; LENGTHBITS) - <span class="hljs-number">1</span>)) &#x26;&#x26; (&#x26;tmp[i] > head) &#x26;&#x26; (&#x26;tmp[i] &#x3C; tail) &#x26;&#x26; (&#x26;tail[i] &#x3C; end) &#x26;&#x26; (tmp[i] == tail[i]);i++);
+      <span class="hljs-keyword">if</span>(i > leng){
+        leng = i;
+        *pt = tmp;
+      }
+    }
+  }
+  <span class="hljs-keyword">return</span> leng;
+}
+</code></pre></div>
+<p>Encoder:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">lz77_encode</span><span class="hljs-params">(FILE* in,FILE* out)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* buf = <span class="hljs-number">0</span>,* head = <span class="hljs-number">0</span>,* tail = <span class="hljs-number">0</span>;
+  <span class="hljs-type">long</span> size = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">if</span>(! in || ! out)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  get_filesize(in,size); <span class="hljs-comment">// get file size.</span>
+  <span class="hljs-keyword">if</span>(size &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  buf = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(size* <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)); <span class="hljs-comment">// allocate memory.</span>
+  <span class="hljs-keyword">if</span>(! buf)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  <span class="hljs-keyword">if</span>(fread(buf,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),size,in) == size){
+    head = tail = buf;
+    fputc((size >> <span class="hljs-number">24</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >> <span class="hljs-number">16</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >>  <span class="hljs-number">8</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+    fputc((size >>  <span class="hljs-number">0</span>) &#x26; <span class="hljs-number">0xff</span>,out);
+
+    <span class="hljs-keyword">for</span>(;;){ <span class="hljs-comment">// loop block.</span>
+      head = tail - WINDOWSIZE;
+      <span class="hljs-keyword">if</span>(buf  > head)head = buf;
+      <span class="hljs-keyword">if</span>(tail > buf + size - <span class="hljs-number">1</span>)<span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">if</span>(tail > head){
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* pt = tail - <span class="hljs-number">1</span>;
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> bytes = <span class="hljs-number">0</span>;
+        bytes = search_maxlen_p(&#x26;pt,head,tail,buf + size);
+        <span class="hljs-comment">// search maximal matched bytes and position.</span>
+        <span class="hljs-keyword">if</span>(bytes > <span class="hljs-number">0</span>){
+          <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> chars[<span class="hljs-number">2</span>] = {<span class="hljs-number">0</span>};
+          chars[<span class="hljs-number">0</span>] = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)(( (tail - pt) >> LENGTHBITS) &#x26; <span class="hljs-number">0xff</span>);
+          chars[<span class="hljs-number">1</span>] = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>)((((tail - pt) &#x3C;&#x3C; LENGTHBITS) + bytes) &#x26; <span class="hljs-number">0xff</span>);
+          fputc(chars[<span class="hljs-number">0</span>],out);
+          fputc(chars[<span class="hljs-number">1</span>],out);
+          <span class="hljs-comment">//fprintf(stderr,"{%d - %d}",tail - pt,bytes);</span>
+          tail += bytes;
+        } <span class="hljs-keyword">else</span> {
+          fputc(<span class="hljs-number">0</span>,out);
+          fputc(<span class="hljs-number">0</span>,out);
+          fputc(*tail,out);
+          tail++;
+        }
+      } <span class="hljs-keyword">else</span> {
+        fputc(<span class="hljs-number">0</span>,out);
+        fputc(<span class="hljs-number">0</span>,out);
+        fputc(*tail,out);
+        tail++;
+      }
+    }
+
+  }
+
+  <span class="hljs-built_in">free</span>(buf);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre></div>
+<p>Decoder:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">c</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">lz77_decode</span><span class="hljs-params">(FILE* in,FILE* out)</span>
+{
+  <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* nbuf = <span class="hljs-number">0</span>,* ori_buf = <span class="hljs-number">0</span>,* head = <span class="hljs-number">0</span>,* tail = <span class="hljs-number">0</span>;
+  <span class="hljs-type">long</span> ori_size = <span class="hljs-number">0</span>,nsize = <span class="hljs-number">0</span>;
+
+  <span class="hljs-keyword">if</span>(! in || ! out)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  get_filesize(in,nsize); <span class="hljs-comment">// get file size.</span>
+  <span class="hljs-keyword">if</span>(nsize &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  ori_size  = (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C; <span class="hljs-number">24</span>;
+  ori_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C; <span class="hljs-number">16</span>;
+  ori_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C;  <span class="hljs-number">8</span>;
+  ori_size += (fgetc(in) &#x26; <span class="hljs-number">0xff</span>) &#x3C;&#x3C;  <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">if</span>(ori_size &#x3C;= <span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  nbuf = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(nsize* <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>));
+  <span class="hljs-keyword">if</span>(! nbuf)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+
+  ori_buf = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(ori_size* <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>));
+  <span class="hljs-keyword">if</span>(ori_buf){
+    head = tail = ori_buf; <span class="hljs-comment">// store head and tail of slide-window.</span>
+
+    <span class="hljs-keyword">if</span>(fread(nbuf,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),nsize,in) == (nsize - <span class="hljs-number">4</span>)){
+      <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* pt  = nbuf;
+
+      <span class="hljs-keyword">for</span>(;;){
+        <span class="hljs-keyword">if</span>(pt >= (nbuf + nsize - <span class="hljs-number">4</span>))<span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">if</span>(! pt[<span class="hljs-number">0</span>] &#x26;&#x26; ! pt[<span class="hljs-number">1</span>] ){ <span class="hljs-comment">// \0\0\?</span>
+          tail[<span class="hljs-number">0</span>] = pt[<span class="hljs-number">2</span>];
+          tail++;
+          pt += <span class="hljs-number">3</span>;
+        } <span class="hljs-keyword">else</span> { <span class="hljs-comment">// \?\?</span>
+          <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> offset = <span class="hljs-number">0</span>,length = <span class="hljs-number">0</span>,i;
+          offset  =  pt[<span class="hljs-number">0</span>] &#x3C;&#x3C; LENGTHBITS;
+          offset += (pt[<span class="hljs-number">1</span>] >> LENGTHBITS) &#x26; <span class="hljs-number">0x0f</span>;
+          length  =  pt[<span class="hljs-number">1</span>] &#x26; <span class="hljs-number">0x0f</span>;
+          <span class="hljs-comment">//fprintf(stderr,"{%d - %d}",offset,length);</span>
+          <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &#x3C; length;i++){
+            tail[i] = ((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)(tail - offset))[i];
+          }
+          tail += length;
+          pt += <span class="hljs-number">2</span>;
+        }
+      }
+      fwrite(ori_buf,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>),ori_size,out);
+    }
+
+    <span class="hljs-built_in">free</span>(ori_buf);
+  }
+
+  <span class="hljs-built_in">free</span>(nbuf);
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre></div>
+<h1 id="analysis">Analysis<a aria-hidden="true" tabindex="-1" href="#analysis"><span class="anchor-link"> #</span></a></h1>
+<p>When analyzing how efficiently this algorithm compresses data, it clearly depends on the content. Content with high repetition at short distances compresses well, but content with little repetition may not reach a good ratio. In the worst case, the data has no repeats at all within a window-sized span, and the "compressed" output is not only not smaller but grows to three times the original size.</p>
+<p>In the data below, you can see that the non-repeating leading portion contains many literal copies starting with <code>"\0x00\0x00"</code>; too much of this makes compression inefficient.</p>
+<p><img src="/post/lz77compalgo/0ae608b93872.png" alt="Hex dump of compressed data"></p>
+<p>Generally, to offset this weakness, LZ77-compressed data can be encoded again with Huffman coding, which yields a higher overall compression ratio.</p>
+<p>Link: <a href="https://github.com/hchen90/lz77">Code on GitHub</a></p>7:["$","$L15",null,{"postData":{"id":"lz77compalgo","locale":"en","contentHtml":"$16","title":"The LZ77 Compression Algorithm","date":"$D2018-03-31T20:38:24.000Z","updated":"$D2018-03-31T20:38:24.000Z","categories":["Algorithms"],"tags":["lz77","algorithm"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"The LZ77 Compression Algorithm | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Introduction to LZ77 LZ77 is a lossless compression algorithm first published by two Israeli researchers in 1977. It is a classic dictionary-based..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/lz77compalgo/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/lz77compalgo/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/lz77compalgo/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"The LZ77 Compression Algorithm"}],["$","meta","7",{"property":"og:description","content":"Introduction to LZ77 LZ77 is a lossless compression algorithm first published by two Israeli researchers in 1977. It is a classic dictionary-based..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/lz77compalgo/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"lz77"}],["$","meta","13",{"property":"article:tag","content":"algorithm"}],["$","meta","14",{"name":"twitter:card","content":"summary"}],["$","meta","15",{"name":"twitter:title","content":"The LZ77 Compression Algorithm"}],["$","meta","16",{"name":"twitter:description","content":"Introduction to LZ77 LZ77 is a lossless compression algorithm first published by two Israeli researchers in 1977. It is a classic dictionary-based..."}],["$","link","17",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

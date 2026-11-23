@@ -1,0 +1,137 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","enablesbonlinux",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","enablesbonlinux","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","enablesbonlinux","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","b9FUk9Nv1o7ze7W17sgM0",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T3df9,<h2 id="overview">Overview<a aria-hidden="true" tabindex="-1" href="#overview"><span class="anchor-link"> #</span></a></h2>
+<p>Secure Boot is a UEFI option that can be turned on or off. (On a few machines Secure Boot is enabled with no option to disable it, and the motherboard ships only with Windows' public-key certificates, so it can load Windows and nothing else. The user has no choice: you can't turn it off or switch operating systems, and this post doesn't apply.) The public-key certificates that Secure Boot needs are stored in the motherboard's flash (not on the disk!). A small flash area on the motherboard holds the PK, KEK, db, and dbx certificate chain. So <strong>before you start, make sure Secure Boot can be disabled in your computer's UEFI-BIOS. Otherwise, if you make a mistake, the certificates won't match any program file, the motherboard will refuse to load anything, and you'll brick it.</strong> (It isn't really a BIOS, but many people call it UEFI-BIOS, so I'll use that name here too.)</p>
+<p>A word on how Fedora manages to boot with Secure Boot enabled: the Fedora project actually buys a signature from Microsoft, so the motherboard recognizes Fedora just like Windows. The open-source community discourages this kind of purchase, but the benefit is that Fedora can be recognized and booted on almost any machine that can boot Windows, even if the hardware can't disable Secure Boot.</p>
+<blockquote>
+<p>I have only tested this successfully on a ThinkPad and haven't tried other machines, but in theory it should work there as well.</p>
+</blockquote>
+<h2 id="tools">Tools<a aria-hidden="true" tabindex="-1" href="#tools"><span class="anchor-link"> #</span></a></h2>
+<p>The following tools are essential:</p>
+<ul>
+<li>openssl</li>
+<li>efitools</li>
+<li>sbsigntools</li>
+</ul>
+<p>If you installed prebuilt packages from a third party, you can skip this:</p>
+<p>When building efitools from source, you need a Perl module called <code>File Slurp</code>, available on <a href="http://www.cpan.org">cpan</a>.</p>
+<h2 id="preparation">Preparation<a aria-hidden="true" tabindex="-1" href="#preparation"><span class="anchor-link"> #</span></a></h2>
+<p>Boot into the UEFI-BIOS setup, find the Secure Boot option on the security page, disable Secure Boot (if it isn't already), then delete or clear all certificates. The machine should switch from <code>User Mode</code> to <code>Setup Mode</code>. If you can't do these two things, the later steps may be affected.</p>
+<h2 id="steps">Steps<a aria-hidden="true" tabindex="-1" href="#steps"><span class="anchor-link"> #</span></a></h2>
+<h3 id="concepts">Concepts<a aria-hidden="true" tabindex="-1" href="#concepts"><span class="anchor-link"> #</span></a></h3>
+<p>A brief introduction to PK, KEK, db, dbx, and <em>MOK</em>.</p>
+<ul>
+<li>
+<p>Platform Key (PK) – <strong>The PK establishes trust between the hardware platform and the platform owner.</strong> A hardware platform can be owned by only one owner, i.e. <strong>there can be only one PK</strong>. The owner's public key is stored in the PK variable in flash, and the owner's private key can sign and manage PK, KEK, db, and dbx.</p>
+</li>
+<li>
+<p>Key Exchange Key (KEK) – <strong>The KEK establishes trust between the hardware platform and the operating system.</strong> Multiple KEK public keys can be stored in the motherboard flash, i.e. <strong>there can be multiple KEKs</strong>, one for each bootable operating system. Likewise, the KEK private key can sign and manage db and dbx.</p>
+</li>
+<li>
+<p>Database (db) – db is the <strong>signature database of EFI files permitted to load</strong>. Like KEK, <strong>db can hold many public keys</strong>. (On a UEFI platform, the OS loader is an EFI file.)</p>
+</li>
+<li>
+<p>Database Excluded (dbx) – dbx is a <strong>blacklist signature database</strong>: any EFI file whose signature is in it gets blocked. <strong>dbx can also hold many public keys</strong>.</p>
+</li>
+<li>
+<p>Machine Owner Key (MOK) – MOK serves the same role as db, but it isn't part of standard Secure Boot; <code>PreLoader</code> and <code>Shim</code> use MOK.</p>
+</li>
+</ul>
+<h3 id="create-the-pk-kek-and-db-key-pairs">Create the PK, KEK, and db key pairs<a aria-hidden="true" tabindex="-1" href="#create-the-pk-kek-and-db-key-pairs"><span class="anchor-link"> #</span></a></h3>
+<p>This requires <code>uuidgen</code> on your Linux system:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span> $(uuidgen) >guid
+</code></pre></div>
+<blockquote>
+<p><em>If you don't plan to boot Windows, ignore everything in this post related to Windows.</em></p>
+</blockquote>
+<p>If your system doesn't have <code>uuidgen</code>, write any GUID into that guid file. Then write Microsoft's Owner GUID into another file:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash"><span class="hljs-built_in">echo</span>  77fa9abd-0359-4d32-bd60-28f4e78f784b >ms-guid
+</code></pre></div>
+<p>Create the key pair:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">openssl req -new -x509 -newkey rsa:2048 -subj <span class="hljs-string">"/CN=Platform Key/"</span> -keyout PK.key -out PK.crt -days 3650 -nodes -sha256
+</code></pre></div>
+<p>You can set the <code>-subj</code> argument yourself. <code>-days</code> is the key's validity period—10 years here, but you can choose another value. This produces the private key <code>PK.key</code> and the public key <code>PK.crt</code>.</p>
+<p>KEK and db are created the same way:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">openssl req -new -x509 -newkey rsa:2048 -subj <span class="hljs-string">"/CN=Key Exchange Key/"</span> -keyout KEK.key -out KEK.crt -days 3650 -nodes -sha256
+openssl req -new -x509 -newkey rsa:2048 -subj <span class="hljs-string">"/CN=Database/"</span> -keyout db.key -out db.crt -days 3650 -nodes -sha256
+</code></pre></div>
+<p><em>No dbx blacklist is created here, since we don't need it for now and have no blacklist signature files. MOK isn't universal, so it isn't covered either.</em></p>
+<h3 id="create-efi-signature-list-files">Create EFI signature list files<a aria-hidden="true" tabindex="-1" href="#create-efi-signature-list-files"><span class="anchor-link"> #</span></a></h3>
+<p>An EFI signature list file is simply a public key paired with the platform owner's GUID:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> guid) PK.crt PK.esl
+cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> guid) KEK.crt KEK.esl
+cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> guid) db.crt db.esl
+</code></pre></div>
+<p>Now all three public keys are list files.</p>
+<p>To also boot the Windows installation on disk, download three Microsoft public keys—one KEK and two db:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">curl -L http://go.microsoft.com/fwlink/?LinkID=321185 -o MSKEK.der
+curl -L http://go.microsoft.com/fwlink/?LinkID=321192 -o MSdbWPCA.der
+curl -L http://go.microsoft.com/fwlink/?LinkID=321194 -o MSdbUDSCA.der
+</code></pre></div>
+<p>These three Microsoft keys are in a different format from the ones used here, so convert them:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">openssl x509 -<span class="hljs-keyword">in</span> MSKEK.der -inform DER -out MSKEK.crt
+openssl x509 -<span class="hljs-keyword">in</span> MSdbWPCA.der -inform DER -out MSdbWPCA.crt
+openssl x509 -<span class="hljs-keyword">in</span> MSdbUDSCA.der -inform DER -out MSdbUDSCA.crt
+</code></pre></div>
+<p>They also need to be converted into list files, but here it's best to use Microsoft's Owner GUID:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> ms-guid) MSKEK.crt MSKEK.esl
+cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> ms-guid) MSdbWPCA.crt MSdbWPCA.esl
+cert-to-efi-sig-list -g $(<span class="hljs-built_in">cat</span> ms-guid) MSdbUDSCA.crt MSdbUDSCA.esl
+</code></pre></div>
+<p>Note: on a ThinkPad, adding a KEK a second time (with the <code>-a</code> flag) fails. My workaround was to merge the lists into a single list file:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash"><span class="hljs-built_in">cat</span> KEK.esl MSKEK.esl >realKEK.esl
+<span class="hljs-built_in">cat</span> db.esl MSdbWPCA.esl MSdbUDSCA.esl >realDB.esl
+</code></pre></div>
+<p>According to the efitools documentation, concatenating with cat is a valid way to merge them.</p>
+<h3 id="sign-the-list-files">Sign the list files<a aria-hidden="true" tabindex="-1" href="#sign-the-list-files"><span class="anchor-link"> #</span></a></h3>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">sign-efi-sig-list -k PK.key -c PK.crt PK PK.esl PK.esl.signed
+sign-efi-sig-list -k PK.key -c PK.crt KEK realKEK.esl realKEK.esl.signed
+sign-efi-sig-list -k KEK.key -c KEK.crt db realDB.esl realDB.esl.signed
+</code></pre></div>
+<p>Here the platform owner's key has the highest authority and can sign both the PK itself and the KEK. The KEK establishes trust between the OS and the hardware platform and is used only to sign db.</p>
+<h3 id="sign-the-efi-binary">Sign the EFI binary<a aria-hidden="true" tabindex="-1" href="#sign-the-efi-binary"><span class="anchor-link"> #</span></a></h3>
+<p>This is the final step of key management and signing. I use grub; others such as elilo work the same way. Sign grub's EFI file:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">sbsign --key db.key --cert db.crt --output grubx64.efi.signed /boot/efi/EFI/slackware64/grub64.efi
+</code></pre></div>
+<p>You don't need to sign the kernel <code>vmlinuz</code>, since it isn't the platform's boot EFI file, though signing it does no harm. If you want to sign the kernel, do it the same way as grub, using the private key <code>db.key</code> and its public key <code>db.crt</code>. The db here is the one you created yourself—not the one merged with Microsoft's db, which is <strong>realDB</strong>.</p>
+<h3 id="write-to-efivars">Write to efivars<a aria-hidden="true" tabindex="-1" href="#write-to-efivars"><span class="anchor-link"> #</span></a></h3>
+<p>This is the last step of the whole process. First make sure <em>efivarfs</em> is mounted correctly: <code>ls</code> <code>/sys/firmware/efi/efivars/</code> to see whether files exist. Some systems mount <em>efivarfs</em> by default and some don't (the following steps require root):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
+</code></pre></div>
+<p>Then write the three signed list files to the motherboard:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">efi-updatevar -f PK.esl.signed PK
+efi-updatevar -f realKEK.esl.signed KEK
+efi-updatevar -f realDB.esl.signed db
+</code></pre></div>
+<blockquote>
+<p>A solution on <a href="http://www.linuxquestions.org">LinuxQuestions</a> adds the <code>-a</code> flag to <code>efi-updatevar</code> to append entries, but on the ThinkPad every second attempt was aborted with <code>Operation not permitted</code>. By merging the EFI list files, you only need to add once and everything is included, with no need for <code>-a</code>. It's hard to tell whether the issue is a key-chain logic problem or a hardware protection mechanism, but with the merge approach both Windows and Linux boot normally under Secure Boot, so it seems fine.</p>
+</blockquote>
+<p>When everything is done, run <code>efi-readvar</code> to check the result. As long as <em>efivarfs</em> is still mounted, you can view it even as a non-root user.</p>
+<h2 id="related-links">Related links<a aria-hidden="true" tabindex="-1" href="#related-links"><span class="anchor-link"> #</span></a></h2>
+<p><a href="https://docs.slackware.com/howtos:security:enabling_secure_boot">docs.slackware.com</a></p>
+<p><a href="http://www.linuxquestions.org/questions/slackware-14/slackware64-14-1-uefi-booting-with-secure-boot-enabled-4175532990">linuxquesions.org</a></p>
+<p><a href="https://www.howtogeek.com/175641/how-to-boot-and-install-linux-on-a-uefi-pc-with-secure-boot">howtogeek.com</a></p>
+<p><a href="http://wiki.archlinux.org/index.php/Secure_Boot">archlinux.org</a></p>
+<p>[pcworld.com](<a href="http://www.pcworld">http://www.pcworld</a>.</p>7:["$","$L15",null,{"postData":{"id":"enablesbonlinux","locale":"en","contentHtml":"$16","title":"How to Enable UEFI Secure Boot on Linux","date":"$D2017-09-02T00:17:02.000Z","updated":"$D2017-09-02T00:17:02.000Z","categories":["Essays"],"tags":["linux","UEFI","openssl"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"How to Enable UEFI Secure Boot on Linux | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Overview Secure Boot is a UEFI option that can be turned on or off. (On a few machines Secure Boot is enabled with no option to disable it, and the..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/enablesbonlinux/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/enablesbonlinux/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/enablesbonlinux/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"How to Enable UEFI Secure Boot on Linux"}],["$","meta","7",{"property":"og:description","content":"Overview Secure Boot is a UEFI option that can be turned on or off. (On a few machines Secure Boot is enabled with no option to disable it, and the..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/enablesbonlinux/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"linux"}],["$","meta","13",{"property":"article:tag","content":"UEFI"}],["$","meta","14",{"property":"article:tag","content":"openssl"}],["$","meta","15",{"name":"twitter:card","content":"summary"}],["$","meta","16",{"name":"twitter:title","content":"How to Enable UEFI Secure Boot on Linux"}],["$","meta","17",{"name":"twitter:description","content":"Overview Secure Boot is a UEFI option that can be turned on or off. (On a few machines Secure Boot is enabled with no option to disable it, and the..."}],["$","link","18",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

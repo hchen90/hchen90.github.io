@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/css/348216834fe130c0.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/2f46e0db0d4a3aed.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/css/e6f18eb9cf95a5e4.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-83f4c4d2d760af0c.js"/><script src="/_next/static/chunks/4bd1b696-6ad781fd182b7938.js" async=""></script><script src="/_next/static/chunks/1684-d4688a6a7cde2300.js" async=""></script><script src="/_next/static/chunks/main-app-39b1f2017ebd1c09.js" async=""></script><script src="/_next/static/chunks/6874-a930f608622f31bb.js" async=""></script><script src="/_next/static/chunks/app/layout-2722a589cd4d3a51.js" async=""></script><script src="/_next/static/chunks/7353-37e5304c906c35f0.js" async=""></script><script src="/_next/static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js" async=""></script><link rel="preload" href="/copy-code.js" as="script"/><title>Designing High-Concurrency, High-Availability Cloud Services (Go Edition) | HCHEN90 博客</title><meta name="description" content="Using a Go cloud service as the example, this post systematically covers..."/><link rel="canonical" href="https://hchen90.github.io/post/en/highconcuravabackendingo/"/><link rel="alternate" hrefLang="zh-CN" href="https://hchen90.github.io/post/zh/highconcuravabackendingo/"/><link rel="alternate" hrefLang="en" href="https://hchen90.github.io/post/en/highconcuravabackendingo/"/><link rel="alternate" type="application/atom+xml" href="https://hchen90.github.io/atom-en.xml"/><meta property="og:title" content="Designing High-Concurrency, High-Availability Cloud Services (Go Edition)"/><meta property="og:description" content="Using a Go cloud service as the example, this post systematically covers..."/><meta property="og:url" content="https://hchen90.github.io/post/en/highconcuravabackendingo/"/><meta property="og:site_name" content="HCHEN90 博客"/><meta property="og:locale" content="en_US"/><meta property="og:type" content="article"/><meta property="article:tag" content="High Concurrency"/><meta property="article:tag" content="High Availability"/><meta property="article:tag" content="Architecture Design"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Designing High-Concurrency, High-Availability Cloud Services (Go Edition)"/><meta name="twitter:description" content="Using a Go cloud service as the example, this post systematically covers..."/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el))</script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="antialiased relative"><div class="site-locale-switcher fixed top-4 left-4 z-50 transition-all duration-300 ease-in-out"><div class="inline-flex items-center rounded-full bg-white p-0.5 shadow-md text-xs font-medium" role="group" aria-label="Language"><a hrefLang="zh-CN" class="min-w-8 px-2.5 py-1 rounded-full text-gray-600 hover:text-gray-900 transition-colors" href="/post/zh/highconcuravabackendingo/">中</a><a hrefLang="en" aria-current="true" class="min-w-8 px-2.5 py-1 rounded-full bg-gray-900 text-white" href="/post/en/highconcuravabackendingo/">EN</a></div></div><div class="site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out"><a href="https://github.com/hchen90" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" title="Visit my GitHub profile"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a></div><div class="min-h-screen relative flex flex-col"><div class="fixed top-0 left-0 h-1 bg-blue-500 z-50 transition-all duration-300" style="width:0%"></div><button class="back-to-top-btn fixed right-8 p-3 rounded-full bg-white hover:shadow-lg text-blue-500 shadow-md transition-all duration-300 z-40 opacity-0 pointer-events-none" aria-label="Back to top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button><div class="main-content transition-all duration-300 flex-1"><div class="content-column pt-16 pb-8"><div class="mb-8"><a class="text-blue-500 hover:underline inline-block" href="/en/">← Back to home</a></div><article><header class="mb-8"><h1 class="text-4xl font-bold leading-snug text-balance mb-4">Designing High-Concurrency, High-Availability Cloud Services (Go Edition)</h1><div class="text-gray-500 mb-4">October 25, 2025</div><div class="flex flex-wrap gap-2"><a class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full hover:bg-gray-200 transition-colors" href="/tags/#High%20Concurrency">High Concurrency</a><a class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full hover:bg-gray-200 transition-colors" href="/tags/#High%20Availability">High Availability</a><a class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full hover:bg-gray-200 transition-colors" href="/tags/#Architecture%20Design">Architecture Design</a></div></header><div class="markdown-content"><p>Using a Go cloud service as the example, this post systematically covers how to design, implement, and test a production-grade backend that handles high concurrency with high availability. Beyond architectural ideas, it also gives practical engineering advice around common middleware (Kafka / Redis / Postgres / etcd / Kubernetes, etc.).</p>
+<h2 id="1-what-is-high-concurrency">1. What is high concurrency<a aria-hidden="true" tabindex="-1" href="#1-what-is-high-concurrency"><span class="anchor-link"> #</span></a></h2>
+<p><strong>High concurrency</strong> is a system's ability to handle a large number of requests at the same time within a unit of time.</p>
+<p>Common metrics:</p>
+<ul>
+<li><strong>QPS / TPS</strong>: requests / transactions per second</li>
+<li><strong>Concurrent connections</strong>: requests in flight at the same time</li>
+<li><strong>Latency</strong>: P95 / P99</li>
+<li><strong>Throughput</strong></li>
+</ul>
+<p>The essence of high concurrency is not "being fast" but:</p>
+<blockquote>
+<p><strong>How to schedule CPU, memory, I/O, and network efficiently with limited resources.</strong></p>
+</blockquote>
+<h3 id="go-is-a-natural-fit-for-high-concurrency">Go is a natural fit for high concurrency<a aria-hidden="true" tabindex="-1" href="#go-is-a-natural-fit-for-high-concurrency"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>goroutines: an extremely low-cost concurrency model</li>
+<li>channels: safe concurrent communication</li>
+<li>the scheduler (GMP model): avoids thread explosion</li>
+<li>rich networking libraries (net/http, grpc)</li>
+</ul>
+<h2 id="2-what-is-high-availability">2. What is high availability<a aria-hidden="true" tabindex="-1" href="#2-what-is-high-availability"><span class="anchor-link"> #</span></a></h2>
+<p><strong>High availability</strong> is about:</p>
+<blockquote>
+<p><strong>Whether the system can keep serving when failures occur.</strong></p>
+</blockquote>
+<p>Common metrics:</p>
+<ul>
+<li><strong>Availability SLA</strong>: 99.9% / 99.99%</li>
+<li><strong>MTBF / MTTR</strong>: mean time between failures / mean time to recovery</li>
+</ul>
+<p>High availability focuses on:</p>
+<ul>
+<li>Fault isolation</li>
+<li>Automatic recovery</li>
+<li>Degradation and fallbacks</li>
+</ul>
+<p>In one sentence:</p>
+<blockquote>
+<p><strong>High concurrency is about "how busy it is"; high availability is about "whether it goes down".</strong></p>
+</blockquote>
+<h2 id="3-achieving-high-concurrency">3. Achieving high concurrency<a aria-hidden="true" tabindex="-1" href="#3-achieving-high-concurrency"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-asynchronous-design-the-core-idea">1. Asynchronous design (the core idea)<a aria-hidden="true" tabindex="-1" href="#1-asynchronous-design-the-core-idea"><span class="anchor-link"> #</span></a></h3>
+<p>Synchronous calls:</p>
+<p><img src="/post/highconcuravabackendingo/2099ac4a68ef.png" alt="Synchronous call"></p>
+<p>Asynchronous:</p>
+<p><img src="/post/highconcuravabackendingo/0c96b15de337.png" alt="Asynchronous call"></p>
+<p>Good candidates for async:</p>
+<ul>
+<li>Sending notifications after an order is placed</li>
+<li>Writing logs / behavioral tracking events</li>
+<li>Financial reconciliation</li>
+<li>Data synchronization</li>
+</ul>
+<h3 id="2-message-queues-kafka--rocketmq">2. Message queues: Kafka / RocketMQ<a aria-hidden="true" tabindex="-1" href="#2-message-queues-kafka--rocketmq"><span class="anchor-link"> #</span></a></h3>
+<p><strong>Purpose</strong>:</p>
+<ul>
+<li>Smoothing traffic peaks</li>
+<li>Decoupling services</li>
+<li>Asynchronous processing</li>
+</ul>
+<p>Comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Kafka</th>
+<th>RocketMQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Throughput</td>
+<td>Extremely high</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>Ordered per partition</td>
+<td>Strict ordering</td>
+</tr>
+<tr>
+<td>Transactions</td>
+<td>Weak</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>Fairly complex</td>
+<td>Relatively friendly</td>
+</tr>
+</tbody>
+</table>
+<p>Common Go clients:</p>
+<ul>
+<li>sarama (Kafka)</li>
+<li>rocketmq-client-go</li>
+</ul>
+<h3 id="3-redis-the-core-of-high-concurrency-caching">3. Redis: the core of high-concurrency caching<a aria-hidden="true" tabindex="-1" href="#3-redis-the-core-of-high-concurrency-caching"><span class="anchor-link"> #</span></a></h3>
+<h4 id="31-expiration-strategies">3.1 Expiration strategies<a aria-hidden="true" tabindex="-1" href="#31-expiration-strategies"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>Periodic deletion</li>
+<li>Lazy deletion</li>
+</ul>
+<h4 id="32-eviction-policies">3.2 Eviction policies<a aria-hidden="true" tabindex="-1" href="#32-eviction-policies"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>volatile-lru</li>
+<li>allkeys-lru (recommended)</li>
+<li>volatile-ttl</li>
+</ul>
+<h4 id="33-sentinel-vs-cluster">3.3 Sentinel vs Cluster<a aria-hidden="true" tabindex="-1" href="#33-sentinel-vs-cluster"><span class="anchor-link"> #</span></a></h4>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Use case</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sentinel</td>
+<td>High availability</td>
+<td>Automatic primary/replica failover</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>High concurrency + large data</td>
+<td>Sharding, strong scalability</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>For read-heavy, high-concurrency workloads, Redis Cluster is the standard choice.</strong></p>
+</blockquote>
+<h3 id="4-database-postgres-design-for-high-concurrency">4. Database: Postgres design for high concurrency<a aria-hidden="true" tabindex="-1" href="#4-database-postgres-design-for-high-concurrency"><span class="anchor-link"> #</span></a></h3>
+<h4 id="41-index-design">4.1 Index design<a aria-hidden="true" tabindex="-1" href="#41-index-design"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>B-Tree (default)</li>
+<li>Covering indexes</li>
+<li>Avoid implicit type conversions</li>
+</ul>
+<h4 id="42-sharding--partitioning">4.2 Sharding / partitioning<a aria-hidden="true" tabindex="-1" href="#42-sharding--partitioning"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>Partition by time (logs, orders)</li>
+<li>Split tables by business dimension</li>
+</ul>
+<p>Postgres natively supports <strong>partitioned tables</strong>, which beat manual table splitting.</p>
+<h4 id="43-gorm-usage-tips">4.3 GORM usage tips<a aria-hidden="true" tabindex="-1" href="#43-gorm-usage-tips"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>Forbid full table scans</li>
+<li>Select columns explicitly</li>
+<li>Use prepared statements</li>
+<li>Control the connection pool</li>
+</ul>
+<h3 id="5-monolith-vs-microservices-from-a-concurrency-perspective">5. Monolith vs microservices (from a concurrency perspective)<a aria-hidden="true" tabindex="-1" href="#5-monolith-vs-microservices-from-a-concurrency-perspective"><span class="anchor-link"> #</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monolith</td>
+<td>Simple, good performance</td>
+<td>Hard to scale</td>
+</tr>
+<tr>
+<td>Microservices</td>
+<td>Easy to scale, isolation</td>
+<td>Network overhead, complexity</td>
+</tr>
+</tbody>
+</table>
+<p>A high-concurrency system <strong>doesn't necessarily need microservices</strong>, but it must have:</p>
+<ul>
+<li>Decoupled modules</li>
+<li>Clear interfaces</li>
+</ul>
+<h2 id="4-achieving-high-availability">4. Achieving high availability<a aria-hidden="true" tabindex="-1" href="#4-achieving-high-availability"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-multiple-replicas-and-load-balancing">1. Multiple replicas and load balancing<a aria-hidden="true" tabindex="-1" href="#1-multiple-replicas-and-load-balancing"><span class="anchor-link"> #</span></a></h3>
+<h4 id="load-balancing-options">Load balancing options<a aria-hidden="true" tabindex="-1" href="#load-balancing-options"><span class="anchor-link"> #</span></a></h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NGINX</td>
+<td>Mature, flexible</td>
+</tr>
+<tr>
+<td>AWS ALB/NLB</td>
+<td>Managed, stable</td>
+</tr>
+<tr>
+<td>K8s Service</td>
+<td>Native, automatic</td>
+</tr>
+<tr>
+<td>Docker Replica</td>
+<td>Basic scaling</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-etcd-configuration-and-service-discovery">2. etcd: configuration and service discovery<a aria-hidden="true" tabindex="-1" href="#2-etcd-configuration-and-service-discovery"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Strong consistency (Raft)</li>
+<li>Configuration center</li>
+<li>Service registration and discovery</li>
+</ul>
+<p>Common uses:</p>
+<ul>
+<li>Dynamic configuration</li>
+<li>Distributed locks</li>
+<li>Leader election</li>
+</ul>
+<h3 id="3-microservice-design-ddd--grpc">3. Microservice design (DDD + gRPC)<a aria-hidden="true" tabindex="-1" href="#3-microservice-design-ddd--grpc"><span class="anchor-link"> #</span></a></h3>
+<h4 id="core-ideas-of-ddd">Core ideas of DDD<a aria-hidden="true" tabindex="-1" href="#core-ideas-of-ddd"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>Bounded Context</li>
+<li>Aggregate root</li>
+<li>Domain events</li>
+</ul>
+<h4 id="advantages-of-grpc--go-micro">Advantages of gRPC + go-micro<a aria-hidden="true" tabindex="-1" href="#advantages-of-grpc--go-micro"><span class="anchor-link"> #</span></a></h4>
+<ul>
+<li>High performance</li>
+<li>Built-in service discovery</li>
+<li>A mature middleware ecosystem</li>
+</ul>
+<h2 id="5-observability-an-opaque-system-is-an-unavailable-system">5. Observability: an opaque system is an unavailable system<a aria-hidden="true" tabindex="-1" href="#5-observability-an-opaque-system-is-an-unavailable-system"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-log-collection">1. Log collection<a aria-hidden="true" tabindex="-1" href="#1-log-collection"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Grafana Loki (lightweight)</li>
+<li>Graylog (full-text search)</li>
+</ul>
+<h3 id="2-tracing">2. Tracing<a aria-hidden="true" tabindex="-1" href="#2-tracing"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Jaeger</li>
+<li>OpenTelemetry</li>
+</ul>
+<h3 id="3-metrics-monitoring">3. Metrics monitoring<a aria-hidden="true" tabindex="-1" href="#3-metrics-monitoring"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Prometheus</li>
+<li>Grafana Dashboard</li>
+</ul>
+<p>Key metrics:</p>
+<ul>
+<li>QPS</li>
+<li>Error Rate</li>
+<li>P99 Latency</li>
+<li>CPU / Memory</li>
+</ul>
+<h3 id="4-alerting-and-health-checks">4. Alerting and health checks<a aria-hidden="true" tabindex="-1" href="#4-alerting-and-health-checks"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Grafana AlertManager</li>
+<li>UptimeRobot</li>
+<li>Kubernetes Liveness / Readiness Probe</li>
+</ul>
+<h2 id="6-testing-high-concurrency">6. Testing high concurrency<a aria-hidden="true" tabindex="-1" href="#6-testing-high-concurrency"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-load-testing-tools">1. Load testing tools<a aria-hidden="true" tabindex="-1" href="#1-load-testing-tools"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>wrk</li>
+<li>hey</li>
+<li>k6</li>
+</ul>
+<h3 id="2-load-testing-principles">2. Load testing principles<a aria-hidden="true" tabindex="-1" href="#2-load-testing-principles"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Ramp up load gradually</li>
+<li>Find the bottleneck</li>
+<li>Verify the cache hit rate</li>
+</ul>
+<h3 id="3-common-bottlenecks">3. Common bottlenecks<a aria-hidden="true" tabindex="-1" href="#3-common-bottlenecks"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Database connection pool</li>
+<li>Lock contention</li>
+<li>GC</li>
+<li>Network I/O</li>
+</ul>
+<h2 id="7-testing-high-availability">7. Testing high availability<a aria-hidden="true" tabindex="-1" href="#7-testing-high-availability"><span class="anchor-link"> #</span></a></h2>
+<h3 id="failure-drills-chaos-engineering">Failure drills (Chaos Engineering)<a aria-hidden="true" tabindex="-1" href="#failure-drills-chaos-engineering"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Kill Pods</li>
+<li>Inject network latency</li>
+<li>Take Redis / the DB down</li>
+</ul>
+<p>Tools:</p>
+<ul>
+<li>Chaos Mesh</li>
+<li>Manual drills</li>
+</ul>
+<h2 id="8-fallbacks-what-if-the-service-goes-down">8. Fallbacks: what if the service goes down?<a aria-hidden="true" tabindex="-1" href="#8-fallbacks-what-if-the-service-goes-down"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1-degradation">1. Degradation<a aria-hidden="true" tabindex="-1" href="#1-degradation"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Turn off non-core features</li>
+<li>Return fallback data</li>
+</ul>
+<h3 id="2-rate-limiting">2. Rate limiting<a aria-hidden="true" tabindex="-1" href="#2-rate-limiting"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Token Bucket</li>
+<li>Leaky Bucket</li>
+<li>Redis / Envoy / NGINX</li>
+</ul>
+<h3 id="3-circuit-breaking">3. Circuit breaking<a aria-hidden="true" tabindex="-1" href="#3-circuit-breaking"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Triggered by error rate</li>
+<li>Automatic recovery</li>
+</ul>
+<h3 id="4-disaster-recovery">4. Disaster recovery<a aria-hidden="true" tabindex="-1" href="#4-disaster-recovery"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Multi-AZ deployment</li>
+<li>Data backups</li>
+<li>Hot/cold failover</li>
+</ul>
+<h2 id="9-summary">9. Summary<a aria-hidden="true" tabindex="-1" href="#9-summary"><span class="anchor-link"> #</span></a></h2>
+<p>A truly <strong>high-concurrency, high-availability Go cloud service</strong> isn't built by piling up any single piece of middleware; it is:</p>
+<blockquote>
+<p>The combined result of <strong>architecture design + engineering standards + automated operations + failure awareness</strong>.</p>
+</blockquote>
+<p>If you remember only one thing:</p>
+<blockquote>
+<p><strong>First make sure it doesn't go down, then make it faster.</strong></p>
+</blockquote></div></article></div></div><footer class="mt-auto w-full"><div class="content-column flex flex-col items-center gap-4 py-8"><a class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 hover:underline hover:underline-offset-4" href="/en/"><i class="bi bi-house" aria-hidden="true"></i>Back to home</a><div class="flex w-full flex-wrap items-center justify-center gap-x-2 border-t border-gray-200 pt-4 text-center text-sm text-gray-500"><span>© 2013 – <!-- -->2026<!-- --> <!-- -->Hsiang Chen</span><span aria-hidden="true" class="text-gray-300">·</span><a href="/atom-en.xml" type="application/atom+xml" class="inline-flex items-center gap-1 hover:text-gray-900 hover:underline hover:underline-offset-4" title="Subscribe via Atom"><i class="bi bi-rss" aria-hidden="true"></i>Subscribe</a></div></div></footer><div class="toc-container fixed top-0 left-0 bottom-0 z-50 transition-transform duration-300 ease-in-out
+          -translate-x-full"><div class="bg-white border-r border-gray-200 h-full overflow-hidden flex flex-col shadow-lg w-72"><div class="flex justify-between items-center px-4 py-3.5 border-b border-gray-200 shrink-0"><h2 class="text-sm font-semibold text-gray-800 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>目录</h2><button type="button" class="p-1.5 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors" title="关闭"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div><nav class="flex-1 overflow-y-auto px-3 py-3 scrollbar-hide hover:scrollbar-default focus-within:scrollbar-default"><ul class="space-y-1"><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. What is high concurrency</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">Go is a natural fit for high concurrency</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. What is high availability</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Achieving high concurrency</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. Asynchronous design (the core idea)</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. Message queues: Kafka / RocketMQ</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Redis: the core of high-concurrency caching</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3.1 Expiration strategies</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3.2 Eviction policies</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3.3 Sentinel vs Cluster</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4. Database: Postgres design for high concurrency</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4.1 Index design</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4.2 Sharding / partitioning</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4.3 GORM usage tips</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">5. Monolith vs microservices (from a concurrency perspective)</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4. Achieving high availability</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. Multiple replicas and load balancing</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">Load balancing options</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. etcd: configuration and service discovery</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Microservice design (DDD + gRPC)</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">Core ideas of DDD</button></li><li class="pl-6 text-[12px] text-gray-500 relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">Advantages of gRPC + go-micro</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">5. Observability: an opaque system is an unavailable system</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. Log collection</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. Tracing</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Metrics monitoring</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4. Alerting and health checks</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">6. Testing high concurrency</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. Load testing tools</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. Load testing principles</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Common bottlenecks</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">7. Testing high availability</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">Failure drills (Chaos Engineering)</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">8. Fallbacks: what if the service goes down?</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">1. Degradation</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">2. Rate limiting</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">3. Circuit breaking</button></li><li class="pl-3 text-[13px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">4. Disaster recovery</button></li><li class="pl-0 font-medium text-[14px] relative"><button type="button" class="
+                        py-1.5 hover:text-blue-600 focus:outline-none text-left w-full truncate
+                        transition-colors duration-150 rounded px-2
+                        text-gray-700 hover:bg-gray-50
+                      ">9. Summary</button></li></ul></nav></div></div><button type="button" class="toc-toggle-button fixed bottom-8 left-8 z-50 p-3 rounded-full bg-white hover:shadow-lg text-blue-500 shadow-md transition-all duration-300" aria-label="显示目录"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button></div><!--$--><!--/$--><!--$--><!--/$--><!--$!--><template data-dgst="BAILOUT_TO_CLIENT_SIDE_RENDERING"></template><!--/$--><script src="/_next/static/chunks/webpack-83f4c4d2d760af0c.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[46731,[\"6874\",\"static/chunks/6874-a930f608622f31bb.js\",\"7177\",\"static/chunks/app/layout-2722a589cd4d3a51.js\"],\"default\"]\n3:I[87555,[],\"\"]\n4:I[31295,[],\"\"]\n5:I[4336,[\"6874\",\"static/chunks/6874-a930f608622f31bb.js\",\"7177\",\"static/chunks/app/layout-2722a589cd4d3a51.js\"],\"default\"]\n6:I[69243,[\"6874\",\"static/chunks/6874-a930f608622f31bb.js\",\"7177\",\"static/chunks/app/layout-2722a589cd4d3a51.js\"],\"\"]\n8:I[59665,[],\"MetadataBoundary\"]\na:I[59665,[],\"OutletBoundary\"]\nd:I[74911,[],\"AsyncMetadataOutlet\"]\nf:I[59665,[],\"ViewportBoundary\"]\n11:I[26614,[],\"\"]\n:HL[\"/_next/static/css/348216834fe130c0.css\",\"style\"]\n:HL[\"/_next/static/css/2f46e0db0d4a3aed.css\",\"style\"]\n:HL[\"/_next/static/css/e6f18eb9cf95a5e4.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"KRplwPqhFhPQbrtBwtyzZ\",\"p\":\"\",\"c\":[\"\",\"post\",\"en\",\"highconcuravabackendingo\",\"\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"post\",{\"children\":[[\"locale\",\"en\",\"d\"],{\"children\":[[\"slug\",\"highconcuravabackendingo\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/348216834fe130c0.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/2f46e0db0d4a3aed.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"children\":[\"$\",\"body\",null,{\"className\":\"antialiased relative\",\"children\":[[\"$\",\"$L2\",null,{\"fixed\":true}],[\"$\",\"div\",null,{\"className\":\"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out\",\"children\":[\"$\",\"a\",null,{\"href\":\"https://github.com/hchen90\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"className\":\"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300\",\"title\":\"Visit my GitHub profile\",\"children\":[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":\"24\",\"height\":\"24\",\"viewBox\":\"0 0 24 24\",\"fill\":\"currentColor\",\"children\":[\"$\",\"path\",null,{\"d\":\"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z\"}]}]}]}],[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}],[\"$\",\"$L5\",null,{}],[\"$\",\"$L6\",null,{\"src\":\"/copy-code.js\",\"strategy\":\"afterInteractive\"}]]}]}]]}],{\"children\":[\"post\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"locale\",\"en\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"slug\",\"highconcuravabackendingo\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L7\",[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/e6f18eb9cf95a5e4.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$Lb\",\"$Lc\",[\"$\",\"$Ld\",null,{\"promise\":\"$@e\"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"7cF29-BQ54HUgJx1Hp3nT\",{\"children\":[[\"$\",\"$Lf\",null,{\"children\":\"$L10\"}],null]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"12:\"$Sreact.suspense\"\n13:I[74911,[],\"AsyncMetadata\"]\n9:[\"$\",\"$12\",null,{\"fallback\":null,\"children\":[\"$\",\"$L13\",null,{\"promise\":\"$@14\"}]}]\n"])</script><script>self.__next_f.push([1,"c:null\n"])</script><script>self.__next_f.push([1,"15:I[38046,[\"6874\",\"static/chunks/6874-a930f608622f31bb.js\",\"7353\",\"static/chunks/7353-37e5304c906c35f0.js\",\"460\",\"static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js\"],\"default\"]\n16:T369f,"])</script><script>self.__next_f.push([1,"\u003cp\u003eUsing a Go cloud service as the example, this post systematically covers how to design, implement, and test a production-grade backend that handles high concurrency with high availability. Beyond architectural ideas, it also gives practical engineering advice around common middleware (Kafka / Redis / Postgres / etcd / Kubernetes, etc.).\u003c/p\u003e\n\u003ch2 id=\"1-what-is-high-concurrency\"\u003e1. What is high concurrency\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-what-is-high-concurrency\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003eHigh concurrency\u003c/strong\u003e is a system's ability to handle a large number of requests at the same time within a unit of time.\u003c/p\u003e\n\u003cp\u003eCommon metrics:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003eQPS / TPS\u003c/strong\u003e: requests / transactions per second\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eConcurrent connections\u003c/strong\u003e: requests in flight at the same time\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eLatency\u003c/strong\u003e: P95 / P99\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eThroughput\u003c/strong\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe essence of high concurrency is not \"being fast\" but:\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eHow to schedule CPU, memory, I/O, and network efficiently with limited resources.\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3 id=\"go-is-a-natural-fit-for-high-concurrency\"\u003eGo is a natural fit for high concurrency\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#go-is-a-natural-fit-for-high-concurrency\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003egoroutines: an extremely low-cost concurrency model\u003c/li\u003e\n\u003cli\u003echannels: safe concurrent communication\u003c/li\u003e\n\u003cli\u003ethe scheduler (GMP model): avoids thread explosion\u003c/li\u003e\n\u003cli\u003erich networking libraries (net/http, grpc)\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"2-what-is-high-availability\"\u003e2. What is high availability\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-what-is-high-availability\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003eHigh availability\u003c/strong\u003e is about:\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eWhether the system can keep serving when failures occur.\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eCommon metrics:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003eAvailability SLA\u003c/strong\u003e: 99.9% / 99.99%\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eMTBF / MTTR\u003c/strong\u003e: mean time between failures / mean time to recovery\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eHigh availability focuses on:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eFault isolation\u003c/li\u003e\n\u003cli\u003eAutomatic recovery\u003c/li\u003e\n\u003cli\u003eDegradation and fallbacks\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn one sentence:\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eHigh concurrency is about \"how busy it is\"; high availability is about \"whether it goes down\".\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2 id=\"3-achieving-high-concurrency\"\u003e3. Achieving high concurrency\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-achieving-high-concurrency\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-asynchronous-design-the-core-idea\"\u003e1. Asynchronous design (the core idea)\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-asynchronous-design-the-core-idea\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eSynchronous calls:\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/highconcuravabackendingo/2099ac4a68ef.png\" alt=\"Synchronous call\"\u003e\u003c/p\u003e\n\u003cp\u003eAsynchronous:\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/post/highconcuravabackendingo/0c96b15de337.png\" alt=\"Asynchronous call\"\u003e\u003c/p\u003e\n\u003cp\u003eGood candidates for async:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eSending notifications after an order is placed\u003c/li\u003e\n\u003cli\u003eWriting logs / behavioral tracking events\u003c/li\u003e\n\u003cli\u003eFinancial reconciliation\u003c/li\u003e\n\u003cli\u003eData synchronization\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"2-message-queues-kafka--rocketmq\"\u003e2. Message queues: Kafka / RocketMQ\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-message-queues-kafka--rocketmq\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003e\u003cstrong\u003ePurpose\u003c/strong\u003e:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eSmoothing traffic peaks\u003c/li\u003e\n\u003cli\u003eDecoupling services\u003c/li\u003e\n\u003cli\u003eAsynchronous processing\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eComparison:\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eAspect\u003c/th\u003e\n\u003cth\u003eKafka\u003c/th\u003e\n\u003cth\u003eRocketMQ\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eThroughput\u003c/td\u003e\n\u003ctd\u003eExtremely high\u003c/td\u003e\n\u003ctd\u003eHigh\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eOrdering\u003c/td\u003e\n\u003ctd\u003eOrdered per partition\u003c/td\u003e\n\u003ctd\u003eStrict ordering\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eTransactions\u003c/td\u003e\n\u003ctd\u003eWeak\u003c/td\u003e\n\u003ctd\u003eStrong\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eOperations\u003c/td\u003e\n\u003ctd\u003eFairly complex\u003c/td\u003e\n\u003ctd\u003eRelatively friendly\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eCommon Go clients:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003esarama (Kafka)\u003c/li\u003e\n\u003cli\u003erocketmq-client-go\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"3-redis-the-core-of-high-concurrency-caching\"\u003e3. Redis: the core of high-concurrency caching\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-redis-the-core-of-high-concurrency-caching\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003ch4 id=\"31-expiration-strategies\"\u003e3.1 Expiration strategies\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#31-expiration-strategies\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003ePeriodic deletion\u003c/li\u003e\n\u003cli\u003eLazy deletion\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"32-eviction-policies\"\u003e3.2 Eviction policies\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#32-eviction-policies\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003evolatile-lru\u003c/li\u003e\n\u003cli\u003eallkeys-lru (recommended)\u003c/li\u003e\n\u003cli\u003evolatile-ttl\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"33-sentinel-vs-cluster\"\u003e3.3 Sentinel vs Cluster\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#33-sentinel-vs-cluster\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eMode\u003c/th\u003e\n\u003cth\u003eUse case\u003c/th\u003e\n\u003cth\u003eCharacteristics\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eSentinel\u003c/td\u003e\n\u003ctd\u003eHigh availability\u003c/td\u003e\n\u003ctd\u003eAutomatic primary/replica failover\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eCluster\u003c/td\u003e\n\u003ctd\u003eHigh concurrency + large data\u003c/td\u003e\n\u003ctd\u003eSharding, strong scalability\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eFor read-heavy, high-concurrency workloads, Redis Cluster is the standard choice.\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3 id=\"4-database-postgres-design-for-high-concurrency\"\u003e4. Database: Postgres design for high concurrency\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-database-postgres-design-for-high-concurrency\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003ch4 id=\"41-index-design\"\u003e4.1 Index design\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#41-index-design\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eB-Tree (default)\u003c/li\u003e\n\u003cli\u003eCovering indexes\u003c/li\u003e\n\u003cli\u003eAvoid implicit type conversions\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"42-sharding--partitioning\"\u003e4.2 Sharding / partitioning\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#42-sharding--partitioning\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003ePartition by time (logs, orders)\u003c/li\u003e\n\u003cli\u003eSplit tables by business dimension\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003ePostgres natively supports \u003cstrong\u003epartitioned tables\u003c/strong\u003e, which beat manual table splitting.\u003c/p\u003e\n\u003ch4 id=\"43-gorm-usage-tips\"\u003e4.3 GORM usage tips\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#43-gorm-usage-tips\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eForbid full table scans\u003c/li\u003e\n\u003cli\u003eSelect columns explicitly\u003c/li\u003e\n\u003cli\u003eUse prepared statements\u003c/li\u003e\n\u003cli\u003eControl the connection pool\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"5-monolith-vs-microservices-from-a-concurrency-perspective\"\u003e5. Monolith vs microservices (from a concurrency perspective)\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#5-monolith-vs-microservices-from-a-concurrency-perspective\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eArchitecture\u003c/th\u003e\n\u003cth\u003ePros\u003c/th\u003e\n\u003cth\u003eCons\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eMonolith\u003c/td\u003e\n\u003ctd\u003eSimple, good performance\u003c/td\u003e\n\u003ctd\u003eHard to scale\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eMicroservices\u003c/td\u003e\n\u003ctd\u003eEasy to scale, isolation\u003c/td\u003e\n\u003ctd\u003eNetwork overhead, complexity\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eA high-concurrency system \u003cstrong\u003edoesn't necessarily need microservices\u003c/strong\u003e, but it must have:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eDecoupled modules\u003c/li\u003e\n\u003cli\u003eClear interfaces\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"4-achieving-high-availability\"\u003e4. Achieving high availability\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-achieving-high-availability\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-multiple-replicas-and-load-balancing\"\u003e1. Multiple replicas and load balancing\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-multiple-replicas-and-load-balancing\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003ch4 id=\"load-balancing-options\"\u003eLoad balancing options\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#load-balancing-options\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eOption\u003c/th\u003e\n\u003cth\u003eNotes\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eNGINX\u003c/td\u003e\n\u003ctd\u003eMature, flexible\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eAWS ALB/NLB\u003c/td\u003e\n\u003ctd\u003eManaged, stable\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eK8s Service\u003c/td\u003e\n\u003ctd\u003eNative, automatic\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eDocker Replica\u003c/td\u003e\n\u003ctd\u003eBasic scaling\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3 id=\"2-etcd-configuration-and-service-discovery\"\u003e2. etcd: configuration and service discovery\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-etcd-configuration-and-service-discovery\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eStrong consistency (Raft)\u003c/li\u003e\n\u003cli\u003eConfiguration center\u003c/li\u003e\n\u003cli\u003eService registration and discovery\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eCommon uses:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eDynamic configuration\u003c/li\u003e\n\u003cli\u003eDistributed locks\u003c/li\u003e\n\u003cli\u003eLeader election\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"3-microservice-design-ddd--grpc\"\u003e3. Microservice design (DDD + gRPC)\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-microservice-design-ddd--grpc\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003ch4 id=\"core-ideas-of-ddd\"\u003eCore ideas of DDD\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#core-ideas-of-ddd\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eBounded Context\u003c/li\u003e\n\u003cli\u003eAggregate root\u003c/li\u003e\n\u003cli\u003eDomain events\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4 id=\"advantages-of-grpc--go-micro\"\u003eAdvantages of gRPC + go-micro\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#advantages-of-grpc--go-micro\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h4\u003e\n\u003cul\u003e\n\u003cli\u003eHigh performance\u003c/li\u003e\n\u003cli\u003eBuilt-in service discovery\u003c/li\u003e\n\u003cli\u003eA mature middleware ecosystem\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"5-observability-an-opaque-system-is-an-unavailable-system\"\u003e5. Observability: an opaque system is an unavailable system\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#5-observability-an-opaque-system-is-an-unavailable-system\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-log-collection\"\u003e1. Log collection\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-log-collection\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eGrafana Loki (lightweight)\u003c/li\u003e\n\u003cli\u003eGraylog (full-text search)\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"2-tracing\"\u003e2. Tracing\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-tracing\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eJaeger\u003c/li\u003e\n\u003cli\u003eOpenTelemetry\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"3-metrics-monitoring\"\u003e3. Metrics monitoring\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-metrics-monitoring\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003ePrometheus\u003c/li\u003e\n\u003cli\u003eGrafana Dashboard\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eKey metrics:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eQPS\u003c/li\u003e\n\u003cli\u003eError Rate\u003c/li\u003e\n\u003cli\u003eP99 Latency\u003c/li\u003e\n\u003cli\u003eCPU / Memory\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"4-alerting-and-health-checks\"\u003e4. Alerting and health checks\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-alerting-and-health-checks\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eGrafana AlertManager\u003c/li\u003e\n\u003cli\u003eUptimeRobot\u003c/li\u003e\n\u003cli\u003eKubernetes Liveness / Readiness Probe\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"6-testing-high-concurrency\"\u003e6. Testing high concurrency\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#6-testing-high-concurrency\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-load-testing-tools\"\u003e1. Load testing tools\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-load-testing-tools\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003ewrk\u003c/li\u003e\n\u003cli\u003ehey\u003c/li\u003e\n\u003cli\u003ek6\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"2-load-testing-principles\"\u003e2. Load testing principles\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-load-testing-principles\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eRamp up load gradually\u003c/li\u003e\n\u003cli\u003eFind the bottleneck\u003c/li\u003e\n\u003cli\u003eVerify the cache hit rate\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"3-common-bottlenecks\"\u003e3. Common bottlenecks\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-common-bottlenecks\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eDatabase connection pool\u003c/li\u003e\n\u003cli\u003eLock contention\u003c/li\u003e\n\u003cli\u003eGC\u003c/li\u003e\n\u003cli\u003eNetwork I/O\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"7-testing-high-availability\"\u003e7. Testing high availability\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#7-testing-high-availability\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"failure-drills-chaos-engineering\"\u003eFailure drills (Chaos Engineering)\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#failure-drills-chaos-engineering\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eKill Pods\u003c/li\u003e\n\u003cli\u003eInject network latency\u003c/li\u003e\n\u003cli\u003eTake Redis / the DB down\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTools:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eChaos Mesh\u003c/li\u003e\n\u003cli\u003eManual drills\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"8-fallbacks-what-if-the-service-goes-down\"\u003e8. Fallbacks: what if the service goes down?\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#8-fallbacks-what-if-the-service-goes-down\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003ch3 id=\"1-degradation\"\u003e1. Degradation\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#1-degradation\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTurn off non-core features\u003c/li\u003e\n\u003cli\u003eReturn fallback data\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"2-rate-limiting\"\u003e2. Rate limiting\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#2-rate-limiting\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eToken Bucket\u003c/li\u003e\n\u003cli\u003eLeaky Bucket\u003c/li\u003e\n\u003cli\u003eRedis / Envoy / NGINX\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"3-circuit-breaking\"\u003e3. Circuit breaking\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#3-circuit-breaking\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eTriggered by error rate\u003c/li\u003e\n\u003cli\u003eAutomatic recovery\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3 id=\"4-disaster-recovery\"\u003e4. Disaster recovery\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#4-disaster-recovery\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eMulti-AZ deployment\u003c/li\u003e\n\u003cli\u003eData backups\u003c/li\u003e\n\u003cli\u003eHot/cold failover\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2 id=\"9-summary\"\u003e9. Summary\u003ca aria-hidden=\"true\" tabindex=\"-1\" href=\"#9-summary\"\u003e\u003cspan class=\"anchor-link\"\u003e #\u003c/span\u003e\u003c/a\u003e\u003c/h2\u003e\n\u003cp\u003eA truly \u003cstrong\u003ehigh-concurrency, high-availability Go cloud service\u003c/strong\u003e isn't built by piling up any single piece of middleware; it is:\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eThe combined result of \u003cstrong\u003earchitecture design + engineering standards + automated operations + failure awareness\u003c/strong\u003e.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eIf you remember only one thing:\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cstrong\u003eFirst make sure it doesn't go down, then make it faster.\u003c/strong\u003e\u003c/p\u003e\n\u003c/blockquote\u003e"])</script><script>self.__next_f.push([1,"7:[\"$\",\"$L15\",null,{\"postData\":{\"id\":\"highconcuravabackendingo\",\"locale\":\"en\",\"contentHtml\":\"$16\",\"title\":\"Designing High-Concurrency, High-Availability Cloud Services (Go Edition)\",\"date\":\"$D2025-10-25T16:31:07.000Z\",\"categories\":[\"Notes\"],\"tags\":[\"High Concurrency\",\"High Availability\",\"Architecture Design\"]}}]\n"])</script><script>self.__next_f.push([1,"10:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\nb:null\n"])</script><script>self.__next_f.push([1,"14:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"Designing High-Concurrency, High-Availability Cloud Services (Go Edition) | HCHEN90 博客\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Using a Go cloud service as the example, this post systematically covers...\"}],[\"$\",\"link\",\"2\",{\"rel\":\"canonical\",\"href\":\"https://hchen90.github.io/post/en/highconcuravabackendingo/\"}],[\"$\",\"link\",\"3\",{\"rel\":\"alternate\",\"hrefLang\":\"zh-CN\",\"href\":\"https://hchen90.github.io/post/zh/highconcuravabackendingo/\"}],[\"$\",\"link\",\"4\",{\"rel\":\"alternate\",\"hrefLang\":\"en\",\"href\":\"https://hchen90.github.io/post/en/highconcuravabackendingo/\"}],[\"$\",\"link\",\"5\",{\"rel\":\"alternate\",\"type\":\"application/atom+xml\",\"href\":\"https://hchen90.github.io/atom-en.xml\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:title\",\"content\":\"Designing High-Concurrency, High-Availability Cloud Services (Go Edition)\"}],[\"$\",\"meta\",\"7\",{\"property\":\"og:description\",\"content\":\"Using a Go cloud service as the example, this post systematically covers...\"}],[\"$\",\"meta\",\"8\",{\"property\":\"og:url\",\"content\":\"https://hchen90.github.io/post/en/highconcuravabackendingo/\"}],[\"$\",\"meta\",\"9\",{\"property\":\"og:site_name\",\"content\":\"HCHEN90 博客\"}],[\"$\",\"meta\",\"10\",{\"property\":\"og:locale\",\"content\":\"en_US\"}],[\"$\",\"meta\",\"11\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"12\",{\"property\":\"article:tag\",\"content\":\"High Concurrency\"}],[\"$\",\"meta\",\"13\",{\"property\":\"article:tag\",\"content\":\"High Availability\"}],[\"$\",\"meta\",\"14\",{\"property\":\"article:tag\",\"content\":\"Architecture Design\"}],[\"$\",\"meta\",\"15\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"16\",{\"name\":\"twitter:title\",\"content\":\"Designing High-Concurrency, High-Availability Cloud Services (Go Edition)\"}],[\"$\",\"meta\",\"17\",{\"name\":\"twitter:description\",\"content\":\"Using a Go cloud service as the example, this post systematically covers...\"}],[\"$\",\"link\",\"18\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]],\"error\":null,\"digest\":\"$undefined\"}\ne:{\"metadata\":\"$14:metadata\",\"error\":null,\"digest\":\"$undefined"])</script><script>self.__next_f.push([1,"\"}\n"])</script></body></html>

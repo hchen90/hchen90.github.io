@@ -1,0 +1,162 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"KRplwPqhFhPQbrtBwtyzZ","p":"","c":["","post","en","deploygitlabcerunner",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","deploygitlabcerunner","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","deploygitlabcerunner","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","axIYz_nXYtHbuFPUiQDAi",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-f89c52b59d36d712.js"],"default"]
+16:T30fe,<p>This self-hosted setup uses Docker containers for both <code>gitlab-ce</code> and <code>gitlab-runner</code>.</p>
+<h2 id="what-is-gitlab">What is GitLab?<a aria-hidden="true" tabindex="-1" href="#what-is-gitlab"><span class="anchor-link"> #</span></a></h2>
+<p><strong>GitLab</strong> is a source-code repository management system (an open-source project). It uses Git for version control and ships a web UI. Many teams with relatively simple org structures prefer it as their Git platform.</p>
+<h2 id="what-can-it-do">What can it do?<a aria-hidden="true" tabindex="-1" href="#what-can-it-do"><span class="anchor-link"> #</span></a></h2>
+<p>As a repository manager, GitLab gives a friendlier UI for managing project code. It can also integrate CI/CD: deploy <strong>GitLab Runner</strong> for continuous integration and delivery.</p>
+<p>That is enough for everyday project work.</p>
+<blockquote>
+<p>Large, complex programs often separate the repository system from CI/CD. Repo tooling varies (homegrown or based on other OSS); CI/CD is often Jenkins, with a richer mature plugin and pipeline ecosystem. GitLab may not fit every such case.</p>
+</blockquote>
+<h2 id="setup-steps">Setup steps<a aria-hidden="true" tabindex="-1" href="#setup-steps"><span class="anchor-link"> #</span></a></h2>
+<p>Here is how I stood up a test instance.</p>
+<h3 id="stand-up-the-gitlab-core">Stand up the GitLab core<a aria-hidden="true" tabindex="-1" href="#stand-up-the-gitlab-core"><span class="anchor-link"> #</span></a></h3>
+<p>Docker Hub already publishes <strong>GitLab</strong> images, so deploying with Docker is straightforward.</p>
+<p><img src="/post/deploygitlabcerunner/530bd021d4e1.png" alt="docker-gitlab-ce"></p>
+<p>The image has many tags — pin a version or take the latest.</p>
+<p>I deploy the management UI with a <code>docker-compose.yml</code>. When adding the service, set <code>GITLAB_OMNIBUS_CONFIG</code> so startup options are passed into the container.</p>
+<p>Once the service is up, open a browser to your self-hosted GitLab:</p>
+<p><img src="/post/deploygitlabcerunner/e2e1519d6a0e.png" alt="login"></p>
+<h3 id="sign-in-as-admin">Sign in as admin<a aria-hidden="true" tabindex="-1" href="#sign-in-as-admin"><span class="anchor-link"> #</span></a></h3>
+<p>Next, sign in as admin to finish configuration. The username is <code>root</code>; the password comes from inside the container. You can also grab the container IP for later settings:</p>
+<p><img src="/post/deploygitlabcerunner/9442444b2afa.png" alt="gitlab-ce-info"></p>
+<p>Use that password to log in.</p>
+<p><img src="/post/deploygitlabcerunner/1c87025556eb.png" alt="admin-dashboard"></p>
+<p>After login you land in admin settings, where you can configure the whole repository system.</p>
+<blockquote>
+<p>We are not building GitLab only as a code host. If you only need a repo, consider something like <code>gogs</code> — fast, simple, and GitHub-like. We want CI/CD as well.</p>
+</blockquote>
+<h4 id="cicd-environment">CI/CD environment<a aria-hidden="true" tabindex="-1" href="#cicd-environment"><span class="anchor-link"> #</span></a></h4>
+<p>This is the main part.</p>
+<p>With the above in place, deploy <strong>GitLab Runner</strong> — the CI/CD agent. Under admin, open <strong>Runners</strong> to see the available list:</p>
+<p><img src="/post/deploygitlabcerunner/f6e0f2e2f440.png" alt="runners"></p>
+<p>It is empty. Normally you install GitLab Runner on a worker machine.</p>
+<p>I only wanted to poke at GitLab features, so I kept it simple: run <strong>GitLab Runner</strong> in Docker and register it locally. For IP resolution across containers, I added a hosts entry:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">vbnet</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-vbnet"><span class="hljs-number">192.168</span>.<span class="hljs-number">176.2</span> gitlab.<span class="hljs-keyword">me</span>
+</code></pre></div>
+<p><code>192.168.176.2</code> may differ on your machine — use the GitLab container’s IP so other containers resolve correctly.</p>
+<p>Register the runner (copy the <code>token</code> from <strong>Registration token</strong> in the screenshot above):</p>
+<p><img src="/post/deploygitlabcerunner/53a51f2560c9.png" alt="runner-register"></p>
+<p>After registration, the runner appears in the Runners list.</p>
+<blockquote>
+<p>I chose the <code>docker</code> executor so I can build with a Docker image (gcc). That fits a Docker-based deploy. If Runner is installed on a bare machine that already has a toolchain, use the <code>shell</code> executor. If the worker must SSH to another host to build, use <code>ssh</code>. Pick based on your environment.</p>
+</blockquote>
+<p>After registration, the new runner shows up:</p>
+<p><img src="/post/deploygitlabcerunner/d954e9363c1c.png" alt="runner-list"></p>
+<p>Click the left-hand link for details:</p>
+<p><img src="/post/deploygitlabcerunner/1e90dd45eba5.png" alt="runner-details"></p>
+<p>Click the pencil on the right to edit settings:</p>
+<p><img src="/post/deploygitlabcerunner/5329eafbdd66.png" alt="runner-enable-untag"></p>
+<p>I checked <strong>Run untagged jobs</strong> and saved.</p>
+<p>That finishes the basic Runner setup.</p>
+<blockquote>
+<p>Runners have more options — see the official docs.</p>
+</blockquote>
+<h3 id="create-a-regular-user">Create a regular user<a aria-hidden="true" tabindex="-1" href="#create-a-regular-user"><span class="anchor-link"> #</span></a></h3>
+<p>Open a private window, go to login, click <strong>Register now</strong>, fill in the form, then have an admin approve the user. Once approved, the new user can sign in (the screenshot shows a user who already created a project):</p>
+<p><img src="/post/deploygitlabcerunner/279ae5d2774b.png" alt="user-projects"></p>
+<p>This account is the developer used for the CI/CD test below.</p>
+<h4 id="create-a-project">Create a project<a aria-hidden="true" tabindex="-1" href="#create-a-project"><span class="anchor-link"> #</span></a></h4>
+<p>Click <strong>New project</strong> and fill in the basics:</p>
+<p><img src="/post/deploygitlabcerunner/e89af7df63df.png" alt="new-project"></p>
+<h4 id="set-up-gitlab-ciyml">Set up <code>.gitlab-ci.yml</code><a aria-hidden="true" tabindex="-1" href="#set-up-gitlab-ciyml"><span class="anchor-link"> #</span></a></h4>
+<p>Add a <code>.gitlab-ci.yml</code> at the repo root with pipeline jobs.</p>
+<p>Mine is minimal: <code>script</code> for the build command, <code>only</code> for the branch (<code>main</code>), and <code>tags</code> matching the runner’s tags.</p>
+<blockquote>
+<p>More <code>.gitlab-ci.yml</code> detail: <a href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">official docs</a>.</p>
+</blockquote>
+<h4 id="push-code-and-run-ci">Push code and run CI<a aria-hidden="true" tabindex="-1" href="#push-code-and-run-ci"><span class="anchor-link"> #</span></a></h4>
+<p>With everything ready, write code and push to <code>main</code>:</p>
+<p><img src="/post/deploygitlabcerunner/fc979b40e6df.png" alt="git-push"></p>
+<p>Right after the push, the pipeline updates:</p>
+<p><img src="/post/deploygitlabcerunner/94be700a77c7.png" alt="pipelines"></p>
+<p>Open the running pipeline for job details:</p>
+<p><img src="/post/deploygitlabcerunner/121b5fa098bf.png" alt="pipeline-success"></p>
+<p>That completes a basic GitLab setup with CI/CD. Overall it is a practical code-management stack.</p>
+<h2 id="concrete-configs">Concrete configs<a aria-hidden="true" tabindex="-1" href="#concrete-configs"><span class="anchor-link"> #</span></a></h2>
+<p>Two test configs for reference.</p>
+<h3 id="my-test-configs">My test configs<a aria-hidden="true" tabindex="-1" href="#my-test-configs"><span class="anchor-link"> #</span></a></h3>
+<p><code>.gitlab-ci.yml</code>:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">yaml</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-yaml"><span class="hljs-attr">stages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+
+<span class="hljs-attr">build source:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">build</span>
+  <span class="hljs-attr">tags:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">linux</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">gcc</span> <span class="hljs-string">-o</span> <span class="hljs-string">main</span> <span class="hljs-string">main.c</span>
+  <span class="hljs-attr">only:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">main</span>
+  <span class="hljs-attr">interruptible:</span> <span class="hljs-literal">true</span>
+</code></pre></div>
+<p><code>docker-compose.yml</code>:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">yaml</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">"3.0"</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">gitlab-web:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">gitlab/gitlab-ce</span>
+    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attr">hostname:</span> <span class="hljs-string">'gitlab.me'</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">GITLAB_OMNIBUS_CONFIG:</span> <span class="hljs-string">|
+        external_url 'http://gitlab.me:2080/'
+</span>    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'2080:2080'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">'2443:443'</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/config:/etc/gitlab</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/logs:/var/log/gitlab</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/data:/var/opt/gitlab</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab</span>
+
+  <span class="hljs-attr">gitlab-runner:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">gitlab/gitlab-runner:alpine</span>
+    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab-web</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">/var/run/docker.sock:/var/run/docker.sock</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./gitlab/gitlab-runner:/etc/gitlab-runner</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">gitlab</span>
+
+<span class="hljs-attr">networks:</span>
+  <span class="hljs-attr">gitlab:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">gitlab-network</span>
+
+</code></pre></div>
+<h3 id="pitfalls-i-hit">Pitfalls I hit<a aria-hidden="true" tabindex="-1" href="#pitfalls-i-hit"><span class="anchor-link"> #</span></a></h3>
+<blockquote>
+<p>Likely gotchas:</p>
+<ol>
+<li>If <code>external_url</code> in <code>GITLAB_OMNIBUS_CONFIG</code> includes a port, Docker’s service listen binds to that port.</li>
+<li>In the runner <code>config.toml</code>, under <code>runner.docker</code>, set <code>network_mode</code> to <code>gitlab-network</code> to match <code>docker-compose.yml</code>.</li>
+</ol>
+</blockquote>
+<h2 id="links">Links<a aria-hidden="true" tabindex="-1" href="#links"><span class="anchor-link"> #</span></a></h2>
+<p><a href="https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/">how-to-install-gitlab-using-docker-compose</a></p>7:["$","$L15",null,{"postData":{"id":"deploygitlabcerunner","locale":"en","contentHtml":"$16","title":"Playing with a Self-Hosted GitLab Community Edition","date":"$D2022-07-02T10:03:12.000Z","updated":"$D2022-07-02T10:03:12.000Z","categories":["Essays"],"tags":["git","linux"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Playing with a Self-Hosted GitLab Community Edition | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"This self-hosted setup uses Docker containers for both gitlab-ce and gitlab-runner. What is G..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.github.io/post/en/deploygitlabcerunner/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.github.io/post/zh/deploygitlabcerunner/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.github.io/post/en/deploygitlabcerunner/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.github.io/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Playing with a Self-Hosted GitLab Community Edition"}],["$","meta","7",{"property":"og:description","content":"This self-hosted setup uses Docker containers for both gitlab-ce and gitlab-runner. What is G..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.github.io/post/en/deploygitlabcerunner/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"git"}],["$","meta","13",{"property":"article:tag","content":"linux"}],["$","meta","14",{"name":"twitter:card","content":"summary"}],["$","meta","15",{"name":"twitter:title","content":"Playing with a Self-Hosted GitLab Community Edition"}],["$","meta","16",{"name":"twitter:description","content":"This self-hosted setup uses Docker containers for both gitlab-ce and gitlab-runner. What is G..."}],["$","link","17",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
