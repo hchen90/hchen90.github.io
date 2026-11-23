@@ -1,0 +1,266 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","langfuseintro",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","langfuseintro","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","langfuseintro","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","0np1tU4M2xdXWPZvRCcAh",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T4f6e,<p>After an LLM app ships, developers quickly learn that a single user request often passes through prompt assembly, multiple model calls, RAG retrieval, tool use, and Agent decisions. When something goes wrong, you only see a bad final answer and struggle to tell which step drifted. Langfuse is an open-source observability platform built for that kind of black-box problem.</p>
+<h2 id="what-is-langfuse">What is Langfuse<a aria-hidden="true" tabindex="-1" href="#what-is-langfuse"><span class="anchor-link"> #</span></a></h2>
+<p><strong>Langfuse</strong> is an open-source LLM engineering / LLMOps observability platform for building, monitoring, debugging, and improving large-language-model apps and AI agents. It centers on <strong>Tracing</strong>: every model call, tool run, retrieval result, and state change inside a request is recorded as a structured Trace so teams can debug LLM pipelines the way they debug traditional microservices.</p>
+<p>Compared with <strong>LangSmith</strong>, which also targets LLM observability, Langfuse’s biggest difference is <strong>open source and self-hosting</strong>. LangSmith is a closed-source SaaS product from the LangChain team—capable, but usage-based past the free tier, and not fully deployable in a private environment. Langfuse is fully open under the <strong>MIT license</strong>, auditable in the open; you can use hosted <strong>Langfuse Cloud</strong> or self-host for free on your own infrastructure, with full control over data and cost.</p>
+<p>You can use the project in two ways:</p>
+<ul>
+<li><strong>Langfuse Cloud</strong>: Official hosted SaaS, good for a quick start or small teams.</li>
+<li><strong>Self-Hosted</strong>: Private deploy with Docker Compose or Kubernetes, no Langfuse license fee, data stays on your infrastructure.</li>
+</ul>
+<p>Whether you call OpenAI / Anthropic / local models directly or go through LangChain, LlamaIndex, OpenTelemetry, and similar stacks, Langfuse can capture the important telemetry with relatively low instrumentation cost.</p>
+<h2 id="core-features">Core features<a aria-hidden="true" tabindex="-1" href="#core-features"><span class="anchor-link"> #</span></a></h2>
+<p>Langfuse’s capabilities follow three themes—observe, evaluate, iterate. The main modules are below.</p>
+<h3 id="tracing">Tracing<a aria-hidden="true" tabindex="-1" href="#tracing"><span class="anchor-link"> #</span></a></h3>
+<p>Tracing is the foundation. Each user request maps to one <strong>Trace</strong>, broken along a timeline into <strong>Spans</strong> and <strong>Generations</strong>:</p>
+<ul>
+<li><strong>Generation</strong>: One LLM call—prompt input, model parameters, output, token usage, and latency.</li>
+<li><strong>Span</strong>: Any business step, such as RAG retrieval, tool calls, or knowledge-base queries.</li>
+<li><strong>Event</strong>: Notable events such as user feedback or errors.</li>
+</ul>
+<p>Nested structure makes latency, cost, and intermediate state visible at each stage, so you can find hallucinations, timeouts, or retrieval failures faster.</p>
+<p><img src="/post/langfuseintro/ce00805a6ef8.png" alt="tracing"></p>
+<h3 id="metrics">Metrics<a aria-hidden="true" tabindex="-1" href="#metrics"><span class="anchor-link"> #</span></a></h3>
+<p>The platform aggregates Trace data into observability metrics:</p>
+<ul>
+<li>Token usage and estimated cost</li>
+<li>Latency distributions (P50 / P95 / P99)</li>
+<li>Error rate and success rate</li>
+<li>Model usage distribution</li>
+</ul>
+<p>You can view them in the Dashboard or export via API into Prometheus / Grafana or your BI stack.</p>
+<p><img src="/post/langfuseintro/4f687f15edd8.png" alt="metrics"></p>
+<p><img src="/post/langfuseintro/60d120180cea.png" alt="metrics_p"></p>
+<h3 id="evals">Evals<a aria-hidden="true" tabindex="-1" href="#evals"><span class="anchor-link"> #</span></a></h3>
+<p>Langfuse splits evaluation into two modes:</p>
+<ul>
+<li><strong>Online</strong>: After production traffic arrives, score automatically with rules, LLM-as-a-judge, or custom functions, and attach scores to concrete Traces.</li>
+<li><strong>Offline</strong>: Run batch evaluations on datasets for regression tests, A/B comparisons, and prompt-version comparisons.</li>
+</ul>
+<p>Results land as <strong>Scores</strong> on Traces or Generations so teams can quantify model quality and track trends.</p>
+<p><img src="/post/langfuseintro/09e328649a1f.png" alt="evals_1"></p>
+<p><img src="/post/langfuseintro/a458f23e4ff4.png" alt="evals_2"></p>
+<p><img src="/post/langfuseintro/e0de38f9497f.png" alt="evals_3"></p>
+<h3 id="prompt-management">Prompt Management<a aria-hidden="true" tabindex="-1" href="#prompt-management"><span class="anchor-link"> #</span></a></h3>
+<p>Langfuse provides versioned prompt management:</p>
+<ul>
+<li>Create, edit, and version prompt templates in the UI.</li>
+<li>Call them in code by <code>prompt_name</code> and <code>version</code> so prompts are not scattered across the codebase.</li>
+<li>Prompt changes can link directly to Traces, so you can see how version changes affect outputs.</li>
+</ul>
+<h3 id="datasets">Datasets<a aria-hidden="true" tabindex="-1" href="#datasets"><span class="anchor-link"> #</span></a></h3>
+<p>Datasets are for test sets and benchmarks:</p>
+<ul>
+<li>Promote bad cases from production Traces into a dataset in one click.</li>
+<li>Replay the same inputs to compare models or prompt versions.</li>
+<li>Wire into CI for automatic regression before prompt or model changes ship.</li>
+</ul>
+<p><img src="/post/langfuseintro/3a920a4b821c.png" alt="datasets"></p>
+<h2 id="install-and-deploy">Install and deploy<a aria-hidden="true" tabindex="-1" href="#install-and-deploy"><span class="anchor-link"> #</span></a></h2>
+<p>Self-hosting Langfuse is Docker-first. Below is the core idea for a local trial and production; for exact image tags and the full variable list, prefer the <a href="https://langfuse.com/docs/deployment/self-host">official self-host docs</a>.</p>
+<h3 id="local-quick-start">Local quick start<a aria-hidden="true" tabindex="-1" href="#local-quick-start"><span class="anchor-link"> #</span></a></h3>
+<p>The official recommendation is Docker Compose. A minimal local stack usually includes:</p>
+<ul>
+<li><code>langfuse-web</code>: Web UI and API entrypoint.</li>
+<li><code>langfuse-worker</code>: Background jobs (batch writes, evaluation tasks, and so on).</li>
+<li><code>postgres</code>: Metadata and project data.</li>
+<li><code>clickhouse</code>: Trace and event storage.</li>
+<li><code>redis</code>: Job queue and cache.</li>
+<li><code>minio</code>: S3-compatible object storage (uploads, images, and similar).</li>
+</ul>
+<p>Prepare a <code>.env</code> file:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash"><span class="hljs-comment"># Database</span>
+DATABASE_URL=postgresql://postgres:postgres@postgres:5432/langfuse
+
+<span class="hljs-comment"># Distributed storage and queues</span>
+CLICKHOUSE_URL=http://clickhouse:8123
+REDIS_URL=redis://redis:6379
+
+<span class="hljs-comment"># S3-compatible object storage</span>
+S3_ENDPOINT=http://minio:9000
+S3_BUCKET=langfuse
+S3_ACCESS_KEY_ID=minio
+S3_SECRET_ACCESS_KEY=miniosecret
+
+<span class="hljs-comment"># Security and encryption (use strong random strings in production)</span>
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-nextauth-secret
+SALT=your-salt
+ENCRYPTION_KEY=your-encryption-key
+</code></pre></div>
+<p>Then start in the same directory:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">docker compose up -d
+</code></pre></div>
+<p>After the services are up, open <code>http://localhost:3000</code> to finish setup and create the first project.</p>
+<h3 id="important-environment-variables">Important environment variables<a aria-hidden="true" tabindex="-1" href="#important-environment-variables"><span class="anchor-link"> #</span></a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>PostgreSQL connection string for users, projects, prompts, and other metadata.</td>
+</tr>
+<tr>
+<td><code>CLICKHOUSE_URL</code></td>
+<td>ClickHouse connection string for large-scale Traces and events.</td>
+</tr>
+<tr>
+<td><code>REDIS_URL</code></td>
+<td>Redis connection string for queues and cache.</td>
+</tr>
+<tr>
+<td><code>S3_*</code></td>
+<td>Object-storage config; Trace attachments and dataset files depend on it.</td>
+</tr>
+<tr>
+<td><code>NEXTAUTH_SECRET</code> / <code>SALT</code> / <code>ENCRYPTION_KEY</code></td>
+<td>Secrets for sessions, password hashing, and encryption—use strong random values in production.</td>
+</tr>
+<tr>
+<td><code>NEXTAUTH_URL</code></td>
+<td>Auth callback URL; must match the public access URL.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="production-notes">Production notes<a aria-hidden="true" tabindex="-1" href="#production-notes"><span class="anchor-link"> #</span></a></h3>
+<p>When moving from a local trial to production, pay attention to:</p>
+<ul>
+<li><strong>External DB and object storage</strong>: Use managed PostgreSQL, Redis, and S3; avoid keeping state only inside containers.</li>
+<li><strong>Persistence and backups</strong>: ClickHouse and PostgreSQL need regular backups—Trace volume grows quickly.</li>
+<li><strong>High availability</strong>: Scale <code>langfuse-web</code> and <code>langfuse-worker</code> horizontally; HA for DB and object storage is separate.</li>
+<li><strong>Security</strong>:
+<ul>
+<li>Manage encryption secrets (<code>NEXTAUTH_SECRET</code>, <code>SALT</code>, <code>ENCRYPTION_KEY</code>) via a secrets store; do not commit them to Git.</li>
+<li>Put HTTPS and appropriate access control in front of the web service.</li>
+</ul>
+</li>
+<li><strong>Capacity planning</strong>: Trace volume scales with traffic; size ClickHouse and object storage against your retention policy.</li>
+</ul>
+<p>If the team is not ready to operate Kubernetes, Langfuse Cloud is the lower-ops option: same product surface, infrastructure hosted by the vendor.</p>
+<h2 id="basic-usage">Basic usage<a aria-hidden="true" tabindex="-1" href="#basic-usage"><span class="anchor-link"> #</span></a></h2>
+<p>Langfuse ships Python and TypeScript/JavaScript SDKs, and also integrates through OpenTelemetry, LangChain, LlamaIndex, and similar frameworks. The examples below use the Python SDK for a minimal working path.</p>
+<h3 id="get-an-api-key">Get an API key<a aria-hidden="true" tabindex="-1" href="#get-an-api-key"><span class="anchor-link"> #</span></a></h3>
+<p>In the Langfuse web UI, open project settings and create a <strong>Public Key / Secret Key</strong> pair. For a local deploy the host is <code>http://localhost:3000</code>; for Cloud it is <code>https://cloud.langfuse.com</code>.</p>
+<h3 id="install-the-sdk">Install the SDK<a aria-hidden="true" tabindex="-1" href="#install-the-sdk"><span class="anchor-link"> #</span></a></h3>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">pip install langfuse
+</code></pre></div>
+<h3 id="option-1-call-the-sdk-directly">Option 1: Call the SDK directly<a aria-hidden="true" tabindex="-1" href="#option-1-call-the-sdk-directly"><span class="anchor-link"> #</span></a></h3>
+<p>Use this when you want precise control over Trace structure:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> langfuse <span class="hljs-keyword">import</span> Langfuse
+
+langfuse = Langfuse(
+    public_key=os.getenv(<span class="hljs-string">"LANGFUSE_PUBLIC_KEY"</span>),
+    secret_key=os.getenv(<span class="hljs-string">"LANGFUSE_SECRET_KEY"</span>),
+    host=os.getenv(<span class="hljs-string">"LANGFUSE_HOST"</span>, <span class="hljs-string">"http://localhost:3000"</span>),
+)
+
+<span class="hljs-comment"># Create a Trace</span>
+trace = langfuse.trace(
+    name=<span class="hljs-string">"qa-session"</span>,
+    user_id=<span class="hljs-string">"user-123"</span>,
+    metadata={<span class="hljs-string">"source"</span>: <span class="hljs-string">"web"</span>},
+)
+
+<span class="hljs-comment"># Record an LLM call (Generation)</span>
+trace.generation(
+    name=<span class="hljs-string">"openai-answer"</span>,
+    model=<span class="hljs-string">"gpt-4o-mini"</span>,
+    <span class="hljs-built_in">input</span>=[{<span class="hljs-string">"role"</span>: <span class="hljs-string">"user"</span>, <span class="hljs-string">"content"</span>: <span class="hljs-string">"What is Langfuse?"</span>}],
+    output={<span class="hljs-string">"role"</span>: <span class="hljs-string">"assistant"</span>, <span class="hljs-string">"content"</span>: <span class="hljs-string">"Langfuse is an open-source LLM observability platform."</span>},
+    usage={<span class="hljs-string">"input"</span>: <span class="hljs-number">12</span>, <span class="hljs-string">"output"</span>: <span class="hljs-number">18</span>, <span class="hljs-string">"unit"</span>: <span class="hljs-string">"TOKENS"</span>},
+)
+
+<span class="hljs-comment"># Record a business step (Span)</span>
+<span class="hljs-keyword">with</span> trace.span(name=<span class="hljs-string">"retrieve-docs"</span>) <span class="hljs-keyword">as</span> span:
+    docs = [<span class="hljs-string">"doc-1"</span>, <span class="hljs-string">"doc-2"</span>]
+    span.update(output={<span class="hljs-string">"retrieved"</span>: docs})
+
+<span class="hljs-comment"># Flush events before the process exits</span>
+langfuse.flush()
+</code></pre></div>
+<h3 id="option-2-auto-trace-with-a-decorator">Option 2: Auto-trace with a decorator<a aria-hidden="true" tabindex="-1" href="#option-2-auto-trace-with-a-decorator"><span class="anchor-link"> #</span></a></h3>
+<p>If you already call OpenAI directly, <code>@observe()</code> can instrument with almost no changes:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">python</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> langfuse.decorators <span class="hljs-keyword">import</span> observe
+<span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI
+
+client = OpenAI(api_key=os.getenv(<span class="hljs-string">"OPENAI_API_KEY"</span>))
+
+<span class="hljs-meta">@observe()</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">answer</span>(<span class="hljs-params">question: <span class="hljs-built_in">str</span></span>) -> <span class="hljs-built_in">str</span>:
+    response = client.chat.completions.create(
+        model=<span class="hljs-string">"gpt-4o-mini"</span>,
+        messages=[{<span class="hljs-string">"role"</span>: <span class="hljs-string">"user"</span>, <span class="hljs-string">"content"</span>: question}],
+    )
+    <span class="hljs-keyword">return</span> response.choices[<span class="hljs-number">0</span>].message.content
+
+answer(<span class="hljs-string">"What is Langfuse?"</span>)
+</code></pre></div>
+<p>The decorator creates a Trace for <code>answer</code>, turns inner LLM calls into Generations, and records output, latency, and token usage.</p>
+<h3 id="view-in-the-dashboard">View in the Dashboard<a aria-hidden="true" tabindex="-1" href="#view-in-the-dashboard"><span class="anchor-link"> #</span></a></h3>
+<p>After running the code, open the Langfuse web UI for that project. You should see:</p>
+<ul>
+<li><strong>Traces</strong>: Requests on a timeline; open one for the full call chain.</li>
+<li><strong>Generations</strong>: All LLM calls, filterable by model, latency, and cost.</li>
+<li><strong>Scores</strong>: Manual or automatic scores on Traces to track quality trends.</li>
+<li><strong>Dashboards</strong>: Aggregated token use, latency, error rate, and more.</li>
+</ul>
+<p>From a Trace you can drill into a Generation and inspect the prompt, model parameters, and raw output to find the root cause faster.</p>
+<h2 id="summary">Summary<a aria-hidden="true" tabindex="-1" href="#summary"><span class="anchor-link"> #</span></a></h2>
+<h3 id="good-fit-for">Good fit for<a aria-hidden="true" tabindex="-1" href="#good-fit-for"><span class="anchor-link"> #</span></a></h3>
+<p>Langfuse works especially well for:</p>
+<ul>
+<li><strong>RAG apps</strong>: You need to connect retrieval, re-ranking, context assembly, and final generation.</li>
+<li><strong>Agent systems</strong>: Agents call models, tools, and external APIs many times; Traces show each decision and state change.</li>
+<li><strong>Multi-model strategies</strong>: When you call several models or fall back between them, you need latency, cost, and quality side by side.</li>
+<li><strong>Cost-sensitive products</strong>: Track tokens per user or session and spot abnormal or expensive traffic.</li>
+<li><strong>Teams that iterate continuously</strong>: Tie prompt versions, eval scores, and production feedback into one loop.</li>
+</ul>
+<h3 id="how-it-differs-from-similar-tools">How it differs from similar tools<a aria-hidden="true" tabindex="-1" href="#how-it-differs-from-similar-tools"><span class="anchor-link"> #</span></a></h3>
+<p>There are many LLM observability tools—LangSmith, Phoenix (Arize), Weights &#x26; Biases, and others. Langfuse stands out mainly because:</p>
+<ul>
+<li><strong>Open source and self-hostable</strong>: MIT license, Docker and Kubernetes self-hosting, full data ownership.</li>
+<li><strong>Tracing-first</strong>: Clear Trace structure with Generation / Span / Event layers for drill-down debugging.</li>
+<li><strong>One platform</strong>: Observability (Tracing/Metrics), evaluation (Evals), prompt management, and datasets in one place, less tool sprawl.</li>
+<li><strong>Framework-agnostic</strong>: Official SDKs plus OpenTelemetry, LangChain, LlamaIndex, Vercel AI SDK, and more.</li>
+</ul>
+<h3 id="getting-started">Getting started<a aria-hidden="true" tabindex="-1" href="#getting-started"><span class="anchor-link"> #</span></a></h3>
+<p>For teams new to Langfuse, a practical order is:</p>
+<ol>
+<li><strong>Validate on Cloud first</strong>: Sign up for Langfuse Cloud, spend ~30 minutes wiring a real endpoint, and confirm Traces look right.</li>
+<li><strong>Cover critical paths</strong>: Add the SDK or decorator on core production calls so you can see what matters first.</li>
+<li><strong>Add metadata</strong>: Put <code>user_id</code>, <code>session_id</code>, and <code>metadata</code> on Traces for later aggregation by user or session.</li>
+<li><strong>Introduce evals</strong>: Start with simple rule scores or LLM-as-a-judge and build a quality baseline.</li>
+<li><strong>Version prompts</strong>: Move critical prompts into Langfuse Prompt Management and link them to Traces.</li>
+<li><strong>Self-host when needed</strong>: Move to Self-Hosted when compliance, cost, or customization requirements are clear.</li>
+</ol>
+<p>Langfuse is not a “install it and problems disappear” product. It gives you a structured observability vocabulary. The value shows up when the team folds Trace, Eval, and Prompt management into everyday development and iteration.</p>7:["$","$L15",null,{"postData":{"id":"langfuseintro","locale":"en","contentHtml":"$16","title":"Langfuse: Observability for LLM Applications","date":"$D2026-09-12T14:00:00.000Z","updated":"$D2026-09-12T14:00:00.000Z","categories":["Essays"],"tags":["Langfuse","LLM","Observability","Evals"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Langfuse: Observability for LLM Applications | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"After an LLM app ships, developers quickly learn that a single user request often passes through promp..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/langfuseintro/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/langfuseintro/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/langfuseintro/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Langfuse: Observability for LLM Applications"}],["$","meta","7",{"property":"og:description","content":"After an LLM app ships, developers quickly learn that a single user request often passes through promp..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/langfuseintro/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"Langfuse"}],["$","meta","13",{"property":"article:tag","content":"LLM"}],["$","meta","14",{"property":"article:tag","content":"Observability"}],["$","meta","15",{"property":"article:tag","content":"Evals"}],["$","meta","16",{"name":"twitter:card","content":"summary"}],["$","meta","17",{"name":"twitter:title","content":"Langfuse: Observability for LLM Applications"}],["$","meta","18",{"name":"twitter:description","content":"After an LLM app ships, developers quickly learn that a single user request often passes through promp..."}],["$","link","19",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

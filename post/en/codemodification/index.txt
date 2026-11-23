@@ -1,0 +1,297 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","codemodification",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","codemodification","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","codemodification","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","FlD0EAeJI5lQDSSUC9cR0",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T78c3,<h1 id="what-is-a-code-change">What Is a Code Change<a aria-hidden="true" tabindex="-1" href="#what-is-a-code-change"><span class="anchor-link"> #</span></a></h1>
+<p>Every software project has a lifecycle, and however long or short it is, it involves code changes. Whether you are fixing earlier defects or iterating on each story in agile development, code modifications happen to some degree.</p>
+<h1 id="why-code-changes-happen">Why Code Changes Happen<a aria-hidden="true" tabindex="-1" href="#why-code-changes-happen"><span class="anchor-link"> #</span></a></h1>
+<p>Code changes are very common, yet they are something we should try to avoid. Think in extremes. At one end is code so universally compatible that it meets business needs without any modification. Such code does exist in practice: if you treat business code not as real code but as business logic flow, then in a script-driven service framework the foundation is written in an efficient native language (for example C++) using general design models and abstractions. That foundation rarely changes, and the business scripts on top are driven by it, so this code almost never needs modification—only the business scripts do (no-code solutions are another form of this extreme thinking). At the other end is the opposite: business logic is scattered into every corner of the code with hardly any abstraction layer. If you are not familiar with the business, such code is hard to read; every business change directly triggers a code change, and both maintainability and reusability are low.</p>
+<blockquote>
+<p>None of us want to modify code, because changes cost money, time, and effort—and we do it merely to make up for earlier shortcomings? So why not think ahead for the later stages from the start and do preventive work? It is better for the project's health and lowers maintenance costs down the line.</p>
+</blockquote>
+<h1 id="how-to-make-code-changes">How to Make Code Changes<a aria-hidden="true" tabindex="-1" href="#how-to-make-code-changes"><span class="anchor-link"> #</span></a></h1>
+<p>We can try to avoid changing code, but sometimes we have to. So making changes well and reducing their shortcomings also improves the quality of the project's code.</p>
+<p>How to write elegant code has always been well documented; the computing industry has a wealth of material on it.</p>
+<h2 id="common-sense-rules-for-code">Common-Sense Rules for Code<a aria-hidden="true" tabindex="-1" href="#common-sense-rules-for-code"><span class="anchor-link"> #</span></a></h2>
+<p>Most people know the common-sense rules. They don't matter to the code's logic, since they have nothing to do with the code itself, but following them reduces mistakes.</p>
+<h3 id="code-alignment">Code Alignment<a aria-hidden="true" tabindex="-1" href="#code-alignment"><span class="anchor-link"> #</span></a></h3>
+<p>Generally, using spaces instead of tabs noticeably improves this, especially in team development (with advanced editors that format code automatically, alignment is hardly something you need to worry about).</p>
+<h3 id="code-comments">Code Comments<a aria-hidden="true" tabindex="-1" href="#code-comments"><span class="anchor-link"> #</span></a></h3>
+<p>Comments are also part of code formatting. Sensible comments help developers understand the code and work more efficiently. Today there are all kinds of comment formats, some of which generate rich API documentation, and so on—all to make the code easier to read and understand later.</p>
+<h2 id="what-to-watch-for-in-code-logic">What to Watch for in Code Logic<a aria-hidden="true" tabindex="-1" href="#what-to-watch-for-in-code-logic"><span class="anchor-link"> #</span></a></h2>
+<p>When it comes to logic flow, code written by different people with different habits can differ enormously, but plenty of good logic patterns are worth learning from. Unlike the formatting rules above, logic flow directly affects how well the compiled code runs.</p>
+<h3 id="conditional-statements">Conditional Statements<a aria-hidden="true" tabindex="-1" href="#conditional-statements"><span class="anchor-link"> #</span></a></h3>
+<p>Often the conditions checked in code are simple, and the program may only care about one case, so the ELSE case gets ignored. This is a bad habit, and the resulting code quality is not high.</p>
+<p>Consider this code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">make_node</span><span class="hljs-params">(<span class="hljs-type">const</span> std::unordered_map&#x3C;std::string>&#x26; poll, std::unordered_map&#x3C;std::string>&#x26; result)</span>
+</span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">0</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">0</span>));
+  }
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">1</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">1</span>));
+  }
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">2</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">2</span>));
+  }
+}
+</code></pre></div>
+<p>This is a typical case of a missing ELSE. It leads to redundant execution and lowers runtime quality.</p>
+<p>We can modify it appropriately:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">make_node</span><span class="hljs-params">(<span class="hljs-type">const</span> std::unordered_map&#x3C;std::string>&#x26; poll, std::unordered_map&#x3C;std::string>&#x26; result)</span>
+</span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">0</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">1</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">1</span>));
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">is_wanted</span>(poll, <span class="hljs-number">2</span>)) {
+    <span class="hljs-built_in">store_result</span>(result, <span class="hljs-built_in">load_item</span>(poll, <span class="hljs-number">2</span>));
+    <span class="hljs-keyword">return</span>;
+  }
+}
+</code></pre></div>
+<p>The redundant execution is gone. The idea is to let every ELSE fall through by default. This style is very common when checking whether a function's conditions are met before executing:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check_condition</span><span class="hljs-params">(<span class="hljs-type">int</span> flags, std::vector&#x3C;<span class="hljs-type">int</span>>&#x26; result)</span>
+</span>{
+  <span class="hljs-keyword">if</span> (flags == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+  <span class="hljs-keyword">if</span> (flags &#x26; <span class="hljs-number">0xa0</span> &#x26;&#x26; flags &#x26; <span class="hljs-number">0x0c</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+  <span class="hljs-keyword">if</span> (flags &#x26; <span class="hljs-number">0x80</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">update_result_v1</span>(result);
+
+  <span class="hljs-keyword">if</span> (flags &#x26; <span class="hljs-number">0x02</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">update_result_v2</span>(result);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">update_result</span>(result);
+}
+</code></pre></div>
+<h3 id="loop-statements">Loop Statements<a aria-hidden="true" tabindex="-1" href="#loop-statements"><span class="anchor-link"> #</span></a></h3>
+<p>Loops are for iterative execution, but a program needs a deterministic result in finite time, so misusing loops also produces low-quality code, as below:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">maybe_infinite_loop</span><span class="hljs-params">(<span class="hljs-type">int</span> flags, std::vector&#x3C;<span class="hljs-type">int</span>>&#x26; result)</span>
+</span>{
+  <span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags</span>(&#x26;flags)) <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v1</span>(&#x26;flags)) <span class="hljs-keyword">continue</span>;
+    <span class="hljs-built_in">store_result</span>(flags, result);
+  }
+}
+</code></pre></div>
+<p>These few lines may well be defective. Assuming <code>check_flags</code> and <code>check_flags_v1</code> are not based on the State pattern, the code can loop forever.</p>
+<h4 id="finite-loops">Finite Loops<a aria-hidden="true" tabindex="-1" href="#finite-loops"><span class="anchor-link"> #</span></a></h4>
+<p>For the code above, you can design a simple state transition table so that every transition path goes from a <strong>start state</strong> to a <strong>terminal state</strong>. Introducing the State pattern gives:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">finite_loop</span><span class="hljs-params">(<span class="hljs-type">int</span> flags, std::vector&#x3C;<span class="hljs-type">int</span>>&#x26; result)</span>
+</span>{
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">state_start</span>(&#x26;flags); it != <span class="hljs-built_in">state_end</span>(&#x26;flags); it++) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags</span>(&#x26;flags)) <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v1</span>(&#x26;flags)) <span class="hljs-keyword">continue</span>;
+    <span class="hljs-built_in">store_result</span>(flags, result);
+  }
+}
+</code></pre></div>
+<p>This logic has a deterministic end point.</p>
+<h4 id="try-not-to-break-loop-levels">Try Not to Break Loop Levels<a aria-hidden="true" tabindex="-1" href="#try-not-to-break-loop-levels"><span class="anchor-link"> #</span></a></h4>
+<p>First, look at a headache-inducing snippet:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bad_loop</span><span class="hljs-params">(<span class="hljs-type">int</span> flags)</span>
+</span>{
+  <span class="hljs-keyword">for</span> (;;) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v1</span>(&#x26;flags)) <span class="hljs-keyword">break</span>;
+___end1:
+    <span class="hljs-built_in">func_v1</span>();
+    <span class="hljs-keyword">for</span> (;;) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v2</span>(&#x26;flags)) <span class="hljs-keyword">goto</span> ___end1;
+___end2:
+      <span class="hljs-built_in">func_v2</span>();
+      <span class="hljs-keyword">for</span> (;;) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v3</span>(&#x26;flags)) <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v4</span>(&#x26;flags)) <span class="hljs-keyword">goto</span> ___end1;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v5</span>(&#x26;flags)) <span class="hljs-keyword">goto</span> ___end2;
+      }
+    }
+  }
+}
+</code></pre></div>
+<p>Code like this is extremely hard to maintain; untangling its logic takes a lot of time and effort. So, the same rule applies: avoid <code>goto</code> statements wherever possible, and avoid complex, chaotic control flow.</p>
+<p>The improved code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bad_loop</span><span class="hljs-params">(<span class="hljs-type">int</span> flags)</span>
+</span>{
+  <span class="hljs-type">int</span> state = <span class="hljs-number">0</span>; <span class="hljs-comment">// initial state</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">state_start</span>(&#x26;state); it != <span class="hljs-built_in">state_end</span>(&#x26;state); it++) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags</span>(&#x26;state)) <span class="hljs-keyword">break</span>;
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v1</span>(&#x26;flags)) <span class="hljs-keyword">break</span>;
+
+    <span class="hljs-built_in">func_v1</span>();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v2</span>(&#x26;flags)) <span class="hljs-built_in">state_move</span>(&#x26;flags, <span class="hljs-number">5</span>); <span class="hljs-comment">// 5 - __end1</span>
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v2</span>(&#x26;flags)) <span class="hljs-built_in">state_move</span>(&#x26;flags, <span class="hljs-number">6</span>); <span class="hljs-comment">// 6 - __end2</span>
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v3</span>(&#x26;flags)) <span class="hljs-built_in">state_move</span>(&#x26;flags, <span class="hljs-number">4</span>);
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v4</span>(&#x26;flags)) <span class="hljs-built_in">state_move</span>(&#x26;flags, <span class="hljs-number">3</span>);
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">check_flags_v5</span>(&#x26;flags)) <span class="hljs-built_in">state_move</span>(&#x26;flags, <span class="hljs-number">2</span>);
+  }
+}
+</code></pre></div>
+<p>The improved code is not only easier to understand, but its complexity is clearly reduced and it runs more efficiently.</p>
+<blockquote>
+<p>In deeply nested loops, don't jump across levels. Again, avoid <code>goto</code>; otherwise it is easy to break the logical structure and make the code a mess.</p>
+</blockquote>
+<h3 id="duplicate-code-blocks">Duplicate Code Blocks<a aria-hidden="true" tabindex="-1" href="#duplicate-code-blocks"><span class="anchor-link"> #</span></a></h3>
+<p>Sometimes code contains several small snippets that do nearly the same thing (quite possibly left behind by someone's Ctrl+C / Ctrl+V and tweaks) and are used frequently. Such code can be further refactored into a single reusable function.</p>
+<h3 id="tracking-execution-with-state-flags">Tracking Execution with State Flags<a aria-hidden="true" tabindex="-1" href="#tracking-execution-with-state-flags"><span class="anchor-link"> #</span></a></h3>
+<p>State flags are really the State pattern design described above (used for deterministic for loops). In fact, the State pattern is not just for loops—it can be used anywhere. For complex execution flows, though, the State pattern makes the flow easier to abstract and easier to debug and troubleshoot. Its benefits are obvious, which is why many well-designed architectures choose it for handling complex flows.</p>
+<h1 id="code-philosophy">Code Philosophy<a aria-hidden="true" tabindex="-1" href="#code-philosophy"><span class="anchor-link"> #</span></a></h1>
+<p>As far as code goes, if it satisfies the following, it can be called excellent code:</p>
+<ul>
+<li>Passes all tests</li>
+<li>Contains no duplicate code</li>
+<li>Expresses all of the system's design ideas</li>
+<li>Contains as few entities as possible (for example, types and functions)</li>
+</ul>
+<h2 id="naming-conventions">Naming Conventions<a aria-hidden="true" tabindex="-1" href="#naming-conventions"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>snake_case</li>
+<li>UpperCamelCase (PascalCase)</li>
+<li>lowerCamelCase</li>
+</ul>
+<p>A consistent variable naming convention makes code easier to discuss and understand, which improves team productivity.</p>
+<h2 id="code-formatting">Code Formatting<a aria-hidden="true" tabindex="-1" href="#code-formatting"><span class="anchor-link"> #</span></a></h2>
+<p>Code formatting is mainly about the conventions or defaults for whitespace, line breaks, and the like. Editors can usually be customized for these, and the team can share one coding standard so that the same project does not end up with different display styles due to inconsistent formatting.</p>
+<h2 id="code-abstraction">Code Abstraction<a aria-hidden="true" tabindex="-1" href="#code-abstraction"><span class="anchor-link"> #</span></a></h2>
+<p>Code abstraction deserves some discussion. In software engineering you must understand design patterns—not by memorizing every pattern, but by understanding the common ones and knowing when to use them and what problems they solve.</p>
+<h3 id="why-use-design-patterns">Why Use Design Patterns?<a aria-hidden="true" tabindex="-1" href="#why-use-design-patterns"><span class="anchor-link"> #</span></a></h3>
+<p>When solving the same problem, different people may express it in different ways, and the differences become even more visible at the code level. In a team project, such code may be maintained by dozens of people at once, and having each of them untangle its specific logic costs a lot of time and effort. So why not let the team communicate in a common language? That is why design patterns exist at the logical level. If Zhang San writes logic that expresses the <strong>Facade pattern</strong>, Li Si only needs to know the <strong>Facade pattern</strong> to understand the logic at a glance after reading the code. The team saves a great deal of time and effort and can put that energy into more meaningful work.</p>
+<p>Design patterns are the common underlying logic of application software development, so the first thing a developer needs to do is abstract functional logic into design patterns (if you can't, it generally means you haven't mastered design patterns).</p>
+<blockquote>
+<p>The Law of Demeter:
+A module's users should not know the internal details of the objects it uses.</p>
+</blockquote>
+<h2 id="unit-testing">Unit Testing<a aria-hidden="true" tabindex="-1" href="#unit-testing"><span class="anchor-link"> #</span></a></h2>
+<p>Unit testing is a tool for verifying the correctness of functional modules in code. If all of the software's modules are correct, the integrated code is easy to debug and very likely correct too. Functional modules are a local problem, while integrated software is a global one. If the global behavior is wrong, it means there are errors in the order or interdependencies of the parts, so we don't need to look inside the modules again—we only need to adjust the order or dependencies between modules to fix the problem.</p>
+<h2 id="rules-of-emergent-design">Rules of Emergent Design<a aria-hidden="true" tabindex="-1" href="#rules-of-emergent-design"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>Pass all tests</li>
+<li>Refactor the code</li>
+<li>No duplicate code</li>
+<li>Express the programmer's intent</li>
+<li>Minimize the number of classes and methods</li>
+</ul>
+<h2 id="concurrency">Concurrency<a aria-hidden="true" tabindex="-1" href="#concurrency"><span class="anchor-link"> #</span></a></h2>
+<p>In multithreaded systems, concurrency problems arise. Concurrency means that the timing of multiple execution nodes' use of a resource is nondeterministic.</p>
+<blockquote>
+<p>Concurrency vs. parallelism:
+Concurrency means the timing of multiple execution nodes' use of a single resource is nondeterministic—you cannot tell who goes first. Parallelism means multiple execution nodes may use a single resource at the same time.
+In practice, solving concurrency problems well also solves parallelism problems.</p>
+</blockquote>
+<h3 id="mutual-exclusion-and-synchronization">Mutual Exclusion and Synchronization<a aria-hidden="true" tabindex="-1" href="#mutual-exclusion-and-synchronization"><span class="anchor-link"> #</span></a></h3>
+<p>Precisely because the timing of multiple execution nodes' use of a single resource is nondeterministic, we need a mechanism for mutually exclusive, synchronized use.</p>
+<p>First, there is mutual exclusion. It is an exclusive operation: while a resource is in use, it is locked, and other users cannot acquire it.</p>
+<p>Operating systems express this with P and V operations:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">scss</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-scss">  <span class="hljs-selector-tag">P</span>()
+  <span class="hljs-built_in">do_resource</span>()
+  <span class="hljs-built_in">V</span>()
+</code></pre></div>
+<p>P and V are both atomic. After P is executed, if the resource is already in use, P blocks until the resource is free. Once V executes, the resource is released, and one user blocked on P immediately gains access and continues the acquire/use/release cycle.</p>
+<p>C++ uses the same mechanism:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-type">static</span> std::unordered_map&#x3C;std::string> resource;
+<span class="hljs-type">static</span> std::mutex mut;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">cosume_resource</span><span class="hljs-params">()</span> <span class="hljs-comment">// called by multiple threads</span>
+</span>{
+  mut.<span class="hljs-built_in">lock</span>();
+  <span class="hljs-built_in">consume</span>(&#x26;resource);
+  mut.<span class="hljs-built_in">unlock</span>();  
+}
+</code></pre></div>
+<p>C++ also allows a kind of atomic lock (spin lock), suitable when the resource is held for a bounded time. It works by making threads wait so that only one thread consumes the resource at a time. It fits logic where resource consumption is brief, and because of its simple structure it is often more efficient than a mutex.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-type">static</span> <span class="hljs-type">int</span> lck = <span class="hljs-number">0</span>;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">atomic_lock</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-keyword">while</span> (lck &#x3C; <span class="hljs-number">0</span>) {}
+  lck--;
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">consume_resource</span><span class="hljs-params">()</span> <span class="hljs-comment">// called by multiple threads</span>
+</span>{
+  <span class="hljs-built_in">atomic_lock</span>();
+  <span class="hljs-built_in">consume_resource</span>(&#x26;resource);
+}
+</code></pre></div>
+<p>Synchronization is derived from mutual exclusion: it is the problem of synchronizing two mutually exclusive operations. Again, it is expressed with P and V.</p>
+<p>For the producer:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">scss</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-scss"><span class="hljs-selector-tag">P</span>(S1)
+<span class="hljs-selector-tag">P</span>(N1)
+<span class="hljs-built_in">do_produce</span>()
+<span class="hljs-built_in">V</span>(N1)
+<span class="hljs-built_in">V</span>(S2)
+</code></pre></div>
+<p>Here the mutex M is used to lock the container pool (the pool must be locked whenever it changes). Each time one item is produced, the counting lock corresponding to N is incremented.</p>
+<p>The corresponding consumer is:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">scss</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-scss"><span class="hljs-selector-tag">P</span>(S2)
+<span class="hljs-selector-tag">P</span>(N2)
+resource = <span class="hljs-built_in">get</span>()
+<span class="hljs-built_in">V</span>(N2)
+<span class="hljs-built_in">V</span>(S1)
+<span class="hljs-built_in">do_consume</span>(resource)
+</code></pre></div>
+<h3 id="the-producerconsumer-concept">The Producer–Consumer Concept<a aria-hidden="true" tabindex="-1" href="#the-producerconsumer-concept"><span class="anchor-link"> #</span></a></h3>
+<p>Producer and consumer are an abstraction of the mutual exclusion and synchronization problem, with a more general way of taking and using resources—usually a resource container pool. As long as producers have not filled the pool, they can keep storing resources; consumers can keep consuming until the pool is empty. This makes mutual exclusion and synchronization more efficient.</p>
+<p>In C++, the producer and consumer can be expressed like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-type">static</span> std::mutex producer_lock;
+<span class="hljs-type">static</span> std::mutex consumer_lock;
+<span class="hljs-type">static</span> std::mutex poll_lock;
+
+<span class="hljs-type">static</span> std::unordered_map&#x3C;std::string> poll;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">produce</span><span class="hljs-params">()</span> <span class="hljs-comment">// multi-threaded producer</span>
+</span>{
+  producer_lock.<span class="hljs-built_in">lock</span>();
+  poll_lock.<span class="hljs-built_in">lock</span>();
+  <span class="hljs-built_in">do_produce</span>(&#x26;poll);
+  poll_lock.<span class="hljs-built_in">unlock</span>();
+  consumer_lock.<span class="hljs-built_in">unlock</span>();
+}
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">consume</span><span class="hljs-params">()</span> <span class="hljs-comment">// multi-threaded consumer</span>
+</span>{
+  consumer_lock.<span class="hljs-built_in">lock</span>();
+  poll_lock.<span class="hljs-built_in">lock</span>();
+  <span class="hljs-keyword">auto</span> resource = <span class="hljs-built_in">get</span>(&#x26;poll);
+  poll_lock.<span class="hljs-built_in">unlock</span>();
+  producer_lock.<span class="hljs-built_in">unlock</span>();
+  <span class="hljs-built_in">do_consume</span>(resource);
+}
+</code></pre></div>
+<h1 id="links">Links<a aria-hidden="true" tabindex="-1" href="#links"><span class="anchor-link"> #</span></a></h1>
+<p><a href="https://dl.acm.org/doi/pdf/10.1145/358589.358596">Improving Computer Program Readability to Aid Modification</a></p>
+<p><a href="https://www.amazon.cn/dp/B00CBBJWJQ/ref=sr_1_1?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&#x26;crid=28DGF820DETG3&#x26;keywords=clean+code&#x26;qid=1654883200&#x26;sprefix=clean+code%2Caps%2C74&#x26;sr=8-1">Clean Code</a></p>7:["$","$L15",null,{"postData":{"id":"codemodification","locale":"en","contentHtml":"$16","title":"On Modifying Program Code","date":"$D2022-06-11T08:53:02.000Z","updated":"$D2022-06-11T08:53:02.000Z","categories":["Essays"],"tags":["expr"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"On Modifying Program Code | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"What Is a Code Change Every software project has a lifecycle, and however long or short it is, it involves code changes. Whether you are fixing ear..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/codemodification/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/codemodification/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/codemodification/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"On Modifying Program Code"}],["$","meta","7",{"property":"og:description","content":"What Is a Code Change Every software project has a lifecycle, and however long or short it is, it involves code changes. Whether you are fixing ear..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/codemodification/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"expr"}],["$","meta","13",{"name":"twitter:card","content":"summary"}],["$","meta","14",{"name":"twitter:title","content":"On Modifying Program Code"}],["$","meta","15",{"name":"twitter:description","content":"What Is a Code Change Every software project has a lifecycle, and however long or short it is, it involves code changes. Whether you are fixing ear..."}],["$","link","16",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

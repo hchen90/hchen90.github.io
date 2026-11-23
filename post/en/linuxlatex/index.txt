@@ -1,0 +1,90 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","linuxlatex",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","linuxlatex","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","linuxlatex","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","BypT9_15e-QPaUXcNZ2uH",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T225a,<h2 id="about-tex">About TeX<a aria-hidden="true" tabindex="-1" href="#about-tex"><span class="anchor-link"> #</span></a></h2>
+<p><strong>TeX</strong> is a computer typesetting system originally created by Donald E. Knuth, professor at Stanford University. Most of you will know him from <em>The Art of Computer Programming</em>.</p>
+<p>In fact, TeX was born because Knuth was unhappy with the proofs of that very book, which pushed him to build his own typesetting system. As the saying goes, one concrete need sets the direction better than ten universities.</p>
+<p>You probably do everyday typesetting with WYSIWYG tools such as MS Word, or LibreOffice Writer on Linux. But for papers and books, those tools are child's play compared with TeX.</p>
+<p>Enough background—today's topic is setting up TeX on Linux, so I'll get straight to it. If anything is unclear, search it yourself.</p>
+<p>First, prepare the following packages or archives:</p>
+<ul>
+<li>texlive or tetex</li>
+<li>CJK</li>
+<li>Fonts, for example nsung-tl and nkai-tl <em>(the trailing "tl" presumably stands for texlive)</em></li>
+</ul>
+<p>Below is a brief introduction to what each one does.</p>
+<h3 id="1-texlive-or-tetex">1. texlive or tetex<a aria-hidden="true" tabindex="-1" href="#1-texlive-or-tetex"><span class="anchor-link"> #</span></a></h3>
+<p>This package is the main part of the whole typesetting system—its core. texlive and tetex are two distributions with essentially the same functionality; you only need one of them. The rest of this post uses texlive as the example, though many other software packages also implement a TeX system.</p>
+<p>With texlive alone, TeX can in theory already typeset documents, but it only provides primitive commands. Using it directly is tedious and requires a lot more code. It is similar to writing a GUI program in plain C versus with MFC on Windows, or on Linux, writing a GUI in plain C against the Xlib X Window API versus using gtk+ or Qt (in C++).</p>
+<p>Like TeX, LaTeX is a component of texlive. LaTeX's signature feature is automatic numbering—of chapters, sections, paragraphs, equations, figures, and tables—which makes typesetting far more convenient.</p>
+<h3 id="2-cjk">2. CJK<a aria-hidden="true" tabindex="-1" href="#2-cjk"><span class="anchor-link"> #</span></a></h3>
+<p>The original LaTeX does not support Chinese; it only supports English, i.e. ASCII characters below 0x80. To make LaTeX handle Chinese, you need to add macros to the LaTeX system. CJK handles not only Chinese but also Japanese and Korean—CJK stands for Chinese, Japanese, Korean.</p>
+<h3 id="3-fonts">3. Fonts<a aria-hidden="true" tabindex="-1" href="#3-fonts"><span class="anchor-link"> #</span></a></h3>
+<p>Installing the CJK macro package alone still won't let you output Chinese (compiling a .tex file will fail with a missing-font error). Punctuation in these fonts is treated as part of the Chinese font, so it does not affect how Chinese punctuation is rendered. Like the macro package, the fonts come as archives.</p>
+<h2 id="step-by-step-installation">Step-by-step installation<a aria-hidden="true" tabindex="-1" href="#step-by-step-installation"><span class="anchor-link"> #</span></a></h2>
+<p>Once everything above is downloaded, first install texlive so the system has a basic TeX environment. If this is your first texlive install, you need to install the install-tl-unx package beforehand; it contains Perl scripts that set up the prerequisites for installing texlive.</p>
+<p>With the base TeX environment in place, LaTeX—which we definitely need—comes with it. You can think of LaTeX as an extension of TeX that makes the system much simpler and more convenient to use.</p>
+<p>After texlive is installed, install the CJK macro package. It is an archive: extract it, then follow its texmf-relative directory layout and copy each file into the corresponding location under your system's texmf directory. This texmf directory may differ between Linux distributions: mine is <code>/usr/share/texmf</code>, some systems use <code>/opt/texlive/texmf</code>, and others even <code>/usr/local/share/texmf</code>.</p>
+<p>After copying the CJK macros, run texhash to refresh the index so the TeX system can find the newly copied packages. <em>(When you run texhash, the CJK directories and files are added to the ls-R index file.)</em></p>
+<p>You're almost done at this point. But without fonts you still can't output Chinese. Font installation differs from the packages above: fonts are installed directly into the user's home directory, e.g. <code>/home/xxx</code>. Afterwards a texmf folder appears in your home directory containing the font data—don't delete it, or the fonts will be gone again.</p>
+<p>Here is the font installation in more detail. Extract the font archive, <code>cd</code> into the extracted directory in a terminal, and <code>ls</code> will show an <code>install.sh</code> and an <code>uninstall.sh</code>.</p>
+<p>To install the font, just run:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">./install.sh
+</code></pre></div>
+<p>When you no longer want the font, just run:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">./uninstall.sh
+</code></pre></div>
+<p>These fonts are installed into the user's <code>texmf</code> directory, so there's no need to switch to root, and the installed fonts only apply to that user.</p>
+<blockquote>
+<p>I didn't go into detail about installing the software above; those are routine steps and are skipped here. For example, install rpm packages with rpm and resolve dependencies; for source builds, run <code>./configure</code> to generate a Makefile, then <code>make</code>, then <code>make install</code>. Some have many options—check <code>./configure --help</code>. Those two make commands are the most basic; others such as <code>make dist/test/pdf/...</code> <em>(you can actually look them up in the Makefile)</em> are things non-specialists can safely ignore.</p>
+</blockquote>
+<h2 id="download-links">Download links<a aria-hidden="true" tabindex="-1" href="#download-links"><span class="anchor-link"> #</span></a></h2>
+<p><a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx</a>
+<a href="ftp://tug.org/texlive/historic/2014/texlive-20140525-source.tar.xz">texlive</a>
+<a href="http://ftp.gnu.org/pub/gnu/clisp/latest/clisp-2.49.tar.bz2">clisp</a>
+<a href="http://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/1.8/biblatex-biber.tar.gz">biblatex</a>
+<a href="http://cjk.ffii.org/">CJK</a>
+<a href="ftp://cle.linux.org.tw/pub2/tex/cjk/fonts/">Font files</a></p>
+<p><em>Note: the tug.org site (TeX User Group) has plenty of other useful material—have a look around.</em></p>
+<h2 id="example">Example<a aria-hidden="true" tabindex="-1" href="#example"><span class="anchor-link"> #</span></a></h2>
+<p>Here is a small test document I wrote:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">ruby</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-ruby">\documentclass[10pt]{article}
+\usepackage{<span class="hljs-variable constant_">CJK</span>}
+\<span class="hljs-keyword">begin</span>{document}
+\<span class="hljs-keyword">begin</span>{<span class="hljs-variable constant_">CJK</span>}{<span class="hljs-variable constant_">UTF8</span>}{nsung}
+这是一个测试 
+\section{章标题}
+这是章的介绍
+\subsection{节的标题}
+这是节的介绍
+\subsubsection{子节的标题}
+这是子节的介绍 \\
+数学公式的测试：\\
+\<span class="hljs-title class_">Huge</span>{<span class="hljs-variable">$y</span>=<span class="hljs-number">2</span>^x+\frac{<span class="hljs-number">4</span>}{<span class="hljs-number">6</span>^z}<span class="hljs-variable">$}</span>
+\footnote{这仍然是个测试，一个脚注}
+\<span class="hljs-keyword">end</span>{<span class="hljs-variable constant_">CJK</span>}
+\<span class="hljs-keyword">end</span>{document}
+</code></pre></div>
+<p>The resulting .dvi output:</p>
+<p><img src="/post/linuxlatex/1ee5ee5e92bb.png" alt="dvi"></p>7:["$","$L15",null,{"postData":{"id":"linuxlatex","locale":"en","contentHtml":"$16","title":"Setting Up a Chinese LaTeX Typesetting System on Linux","date":"$D2016-05-03T04:12:20.000Z","updated":"$D2016-05-03T04:12:20.000Z","categories":["Essays"],"tags":["linux","latex"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Setting Up a Chinese LaTeX Typesetting System on Linux | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"About TeX TeX is a computer typesetting system originally created by Donald E. Knuth, professor at Stanford University. Most of you will know him f..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/linuxlatex/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/linuxlatex/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/linuxlatex/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Setting Up a Chinese LaTeX Typesetting System on Linux"}],["$","meta","7",{"property":"og:description","content":"About TeX TeX is a computer typesetting system originally created by Donald E. Knuth, professor at Stanford University. Most of you will know him f..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/linuxlatex/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"linux"}],["$","meta","13",{"property":"article:tag","content":"latex"}],["$","meta","14",{"name":"twitter:card","content":"summary"}],["$","meta","15",{"name":"twitter:title","content":"Setting Up a Chinese LaTeX Typesetting System on Linux"}],["$","meta","16",{"name":"twitter:description","content":"About TeX TeX is a computer typesetting system originally created by Donald E. Knuth, professor at Stanford University. Most of you will know him f..."}],["$","link","17",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

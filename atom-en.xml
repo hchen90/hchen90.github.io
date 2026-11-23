@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://hchen90.net/en</id>
+    <title>HCHEN90 Blog</title>
+    <updated>2026-09-26T13:40:00.000Z</updated>
+    <generator>Feed for Node.js</generator>
+    <author>
+        <name>Hsiang Chen</name>
+        <email>master@hchen90.net</email>
+        <uri>https://hchen90.net</uri>
+    </author>
+    <link rel="alternate" href="https://hchen90.net/en/"/>
+    <link rel="self" href="https://hchen90.net/atom-en.xml"/>
+    <subtitle>HCHEN90 Blog — English posts</subtitle>
+    <logo>https://hchen90.net/favicon.ico</logo>
+    <icon>https://hchen90.net/favicon.ico</icon>
+    <rights>All rights reserved 2026, Hsiang Chen</rights>
+    <entry>
+        <title type="html"><![CDATA[Agent Harness: Wiring AI Agents into Engineering Workflows]]></title>
+        <id>https://hchen90.net/post/en/aiagentharness</id>
+        <link href="https://hchen90.net/post/en/aiagentharness/"/>
+        <updated>2026-09-26T13:40:00.000Z</updated>
+        <summary type="html"><![CDATA[
+# Agent Harness: Wiring AI Agents into Engineering Workflows
+
+When ChatGPT first took off, my workflow was: open a browser, paste a code snippet, wait for suggestions, then copy them back into the IDE by hand. That pattern is “chat-style assistance” — the AI talks, it does not act. What actually be...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Langfuse: Observability for LLM Applications]]></title>
+        <id>https://hchen90.net/post/en/langfuseintro</id>
+        <link href="https://hchen90.net/post/en/langfuseintro/"/>
+        <updated>2026-09-12T14:00:00.000Z</updated>
+        <summary type="html"><![CDATA[
+# Langfuse: Observability for LLM Applications
+
+After an LLM app ships, developers quickly learn that a single user request often passes through prompt assembly, multiple model calls, RAG retrieval, tool use, and Agent decisions. When something goes wrong, you only see a bad final answer and strugg...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How Agents Use E2B Code Interpreter to Isolate Untrusted Code Execution]]></title>
+        <id>https://hchen90.net/post/en/agente2bcodeinterp</id>
+        <link href="https://hchen90.net/post/en/agente2bcodeinterp/"/>
+        <updated>2026-08-08T00:16:00.000Z</updated>
+        <summary type="html"><![CDATA[
+# How Agents Use E2B Code Interpreter to Isolate Untrusted Code Execution
+
+When building agents, one of the most tempting capabilities is letting the model write code and run it itself: cleaning data, testing formulas, plotting to verify results. That is also where the trouble lies. Once "generatio...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building Agents with LangChain in Practice]]></title>
+        <id>https://hchen90.net/post/en/introtolangchainapp</id>
+        <link href="https://hchen90.net/post/en/introtolangchainapp/"/>
+        <updated>2025-12-21T14:02:32.000Z</updated>
+        <summary type="html"><![CDATA[
+# Building Agents with LangChain in Practice
+
+This article starts from the LangChain basics, beginning with a simple agent and working up to the concepts you need to build a production-grade agent system.
+
+A traditional chatbot can only **chat**: its intelligence shows up as knowledge output, but i...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Designing High-Concurrency, High-Availability Cloud Services (Go Edition)]]></title>
+        <id>https://hchen90.net/post/en/highconcuravabackendingo</id>
+        <link href="https://hchen90.net/post/en/highconcuravabackendingo/"/>
+        <updated>2025-10-25T16:31:07.000Z</updated>
+        <summary type="html"><![CDATA[
+# Designing High-Concurrency, High-Availability Cloud Services (Go Edition)
+
+Using a Go cloud service as the example, this post systematically covers how to design, implement, and test a production-grade backend that handles high concurrency with high availability. Beyond architectural ideas, it al...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PKI Architecture and Certificate Trust Chains]]></title>
+        <id>https://hchen90.net/post/en/pkitrustarch</id>
+        <link href="https://hchen90.net/post/en/pkitrustarch/"/>
+        <updated>2025-10-02T13:50:00.000Z</updated>
+        <summary type="html"><![CDATA[
+# PKI Architecture and Certificate Trust Chains
+
+When you browse the web, the padlock in the address bar, HTTPS, code signing, email encryption—all of them rely on the same mechanism: **Public Key Infrastructure (PKI)**.
+
+I worked in the CA industry for many years. This post is both a personal summ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Encryption, Hashing, and Threshold Schemes: Types and Applications]]></title>
+        <id>https://hchen90.net/post/en/cryptoandhashintro</id>
+        <link href="https://hchen90.net/post/en/cryptoandhashintro/"/>
+        <updated>2025-10-01T00:32:00.000Z</updated>
+        <summary type="html"><![CDATA[
+# Encryption, Hashing, and Threshold Schemes: Types and Applications
+
+In day-to-day development, "encryption" tends to be used as a catch-all: HTTPS, password storage, file checksums, API signing… In reality there are at least several distinct capabilities behind it: **confidentiality (encryption/d...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hands-On Linear Regression Training with PyTorch]]></title>
+        <id>https://hchen90.net/post/en/introtopytorchlinearregr</id>
+        <link href="https://hchen90.net/post/en/introtopytorchlinearregr/"/>
+        <updated>2025-09-12T21:11:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Hands-On Linear Regression Training with PyTorch
+
+Based on Jupyter Notebook examples from my own experiments, this post uses **PyTorch** to **build, train, and understand a linear regression model** from scratch. It is aimed at beginners, and also helps you form an accurate mental model of PyTorc...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Function Calling in LLM Applications]]></title>
+        <id>https://hchen90.net/post/en/llmappfunctioncallingmech</id>
+        <link href="https://hchen90.net/post/en/llmappfunctioncallingmech/"/>
+        <updated>2025-04-20T02:12:08.000Z</updated>
+        <summary type="html"><![CDATA[
+# Function Calling in LLM Applications
+
+LLMs are used very widely today, from the most common chat Q&A (e.g. ChatGPT, DeepSeek chat) to retrieval-based question answering systems; you see them everywhere.
+
+In LLM (large language model) application development, **Function Calling** is a powerful mec...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fitting Problems in Machine Learning Model Training]]></title>
+        <id>https://hchen90.net/post/en/mltraningfittingissues</id>
+        <link href="https://hchen90.net/post/en/mltraningfittingissues/"/>
+        <updated>2024-09-15T20:03:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Fitting Problems in Machine Learning Model Training
+
+## What Are Fitting Problems
+
+Fitting problems boil down to how well a model learns the patterns in the data. A model that learns well is said to have a good fit; one that learns poorly falls into one of two categories: overfitting or underfitt...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AI Notes - Machine Learning]]></title>
+        <id>https://hchen90.net/post/en/ai2-studylog-ml</id>
+        <link href="https://hchen90.net/post/en/ai2-studylog-ml/"/>
+        <updated>2024-07-02T11:36:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Artificial Intelligence - Machine Learning
+
+The foundation of artificial intelligence is machine learning. As the name suggests, it lets machines process data and learn from that data so they can make decisions on their own. Put simply, machine learning lets a machine learn and improve without be...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AI Notes - Data Analysis and Decision-Making]]></title>
+        <id>https://hchen90.net/post/en/ai1-studylog-dataanalysis</id>
+        <link href="https://hchen90.net/post/en/ai1-studylog-dataanalysis/"/>
+        <updated>2024-06-12T21:36:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Artificial Intelligence - Data Analysis and Decision-Making
+
+This part is divided into four layers:
+
+- Data collection
+- Data cleaning
+- Data analysis
+- Decision-making
+
+
+
+## Data Collection
+
+Data collection is a critical step in AI: it is the source of input used to train models.
+
+As a refresher...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Memory Management in High-Level Languages: C++ vs. Go vs. Rust]]></title>
+        <id>https://hchen90.net/post/en/advlangmemmanagement</id>
+        <link href="https://hchen90.net/post/en/advlangmemmanagement/"/>
+        <updated>2024-04-20T20:14:02.000Z</updated>
+        <summary type="html"><![CDATA[
+# Memory Management in High-Level Languages: C++ vs. Go vs. Rust
+
+C++, Go, and Rust are three high-level languages with three distinctly different styles of memory management. Their styles also indirectly trace the evolution of high-level languages, and one of the most important threads in that evo...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A First Look at the OpenAI API]]></title>
+        <id>https://hchen90.net/post/en/openaiapirsh</id>
+        <link href="https://hchen90.net/post/en/openaiapirsh/"/>
+        <updated>2023-03-28T22:11:08.000Z</updated>
+        <summary type="html"><![CDATA[
+# Introduction
+
+Artificial intelligence is nothing new; it has been developing for many years, and along with it came the numerical, matrix, graphics, and algorithm libraries that form the ecosystem AI needs.
+
+AI has in fact matured over many years of development, but its presence in everyday life ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Playing with a Self-Hosted GitLab Community Edition]]></title>
+        <id>https://hchen90.net/post/en/deploygitlabcerunner</id>
+        <link href="https://hchen90.net/post/en/deploygitlabcerunner/"/>
+        <updated>2022-07-02T10:03:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Playing with a Self-Hosted GitLab Community Edition
+
+This self-hosted setup uses Docker containers for both `gitlab-ce` and `gitlab-runner`.
+
+## What is GitLab?
+
+**GitLab** is a source-code repository management system (an open-source project). It uses Git for version control and ships a web UI. ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[On Modifying Program Code]]></title>
+        <id>https://hchen90.net/post/en/codemodification</id>
+        <link href="https://hchen90.net/post/en/codemodification/"/>
+        <updated>2022-06-11T08:53:02.000Z</updated>
+        <summary type="html"><![CDATA[
+# What Is a Code Change
+
+Every software project has a lifecycle, and however long or short it is, it involves code changes. Whether you are fixing earlier defects or iterating on each story in agile development, code modifications happen to some degree.
+
+
+
+# Why Code Changes Happen
+
+Code changes ar...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Quick Introduction to the MongoDB Cloud Platform]]></title>
+        <id>https://hchen90.net/post/en/mongodbcloudcluster</id>
+        <link href="https://hchen90.net/post/en/mongodbcloudcluster/"/>
+        <updated>2022-04-03T14:22:06.000Z</updated>
+        <summary type="html"><![CDATA[
+# What Is MongoDB Cloud
+
+At the core of MongoDB Cloud is [MongoDB Atlas](https://www.mongodb.com/zh-cn/cloud/atlas), a fully managed cloud database for modern applications. Atlas is the best way to run MongoDB, the leading modern database. [MongoDB](https://www.mongodb.com/zh-cn/what-is-mongodb)'s ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Thread Safety in JNI Function Calls]]></title>
+        <id>https://hchen90.net/post/en/jnithreadsafe</id>
+        <link href="https://hchen90.net/post/en/jnithreadsafe/"/>
+        <updated>2021-11-29T23:03:02.000Z</updated>
+        <summary type="html"><![CDATA[
+# What is JNI development?
+
+I used to do this kind of work, and after a former colleague raised some questions, I set aside time to dig into JNI development issues and one specific detail — thread safety of calls. JNI-layer calls are not that different from other languages calling into C/C++ — for ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[An Overview of Distributed Service System Design]]></title>
+        <id>https://hchen90.net/post/en/redistributedservicesystem</id>
+        <link href="https://hchen90.net/post/en/redistributedservicesystem/"/>
+        <updated>2020-12-20T10:05:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Overview and definition
+
+A distributed system is a system made up of a group of independent computers (nodes) working together over a network. Together they accomplish a business goal and present themselves to users as a "single system". From the user's point of view, a distributed system should ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Using GitHub OAuth Apps]]></title>
+        <id>https://hchen90.net/post/en/githuboauthappintro</id>
+        <link href="https://hchen90.net/post/en/githuboauthappintro/"/>
+        <updated>2020-04-15T14:23:07.000Z</updated>
+        <summary type="html"><![CDATA[
+GitHub offers two kinds of apps: regular Apps (often used for automation bots) and OAuth Apps that act on behalf of a signed-in user. With an OAuth App you can call GitHub APIs that the user authorized—profile data, repository changes, account settings, and more.
+
+# What is OAuth 2
+
+OAuth (Open Aut...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Using Linux Core Dumps to Quickly Locate Program Bugs]]></title>
+        <id>https://hchen90.net/post/en/linuxcoredumptofindbug</id>
+        <link href="https://hchen90.net/post/en/linuxcoredumptofindbug/"/>
+        <updated>2019-11-12T09:12:29.000Z</updated>
+        <summary type="html"><![CDATA[
+# What Is a Core Dump?
+
+A **core dump** is a mechanism inherited from UNIX. When a program crashes due to an error, it saves a snapshot of the stack, memory, PID, UID, GID, timestamp, and other information, typically used for diagnosis and debugging. **Core dump** data is usually kept on the machin...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Linux Boot Process]]></title>
+        <id>https://hchen90.net/post/en/linuxstartup</id>
+        <link href="https://hchen90.net/post/en/linuxstartup/"/>
+        <updated>2018-06-24T11:50:03.000Z</updated>
+        <summary type="html"><![CDATA[
+# Loading the kernel
+
+In the [previous post](/post/en/systemstartup) I explained how computers boot, from early machines to modern ones, but I did not go deeper once we reached the operating system layer. In this post I use Linux as an example to describe how an operating system boots.
+
+Kernel file...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Computer Boot Process]]></title>
+        <id>https://hchen90.net/post/en/systemstartup</id>
+        <link href="https://hchen90.net/post/en/systemstartup/"/>
+        <updated>2018-06-16T20:40:10.000Z</updated>
+        <summary type="html"><![CDATA[
+# The Ancient Era
+
+ At this stage the computer lives in a purely electrical world, with almost no notion of software (not entirely accurate—more on that later).
+
+The computer runs a series of hardware self-tests, in particular checking that essential hardware is usable. This is the POST (Power-On S...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The LZSS Compression Algorithm]]></title>
+        <id>https://hchen90.net/post/en/lzsscompalgo</id>
+        <link href="https://hchen90.net/post/en/lzsscompalgo/"/>
+        <updated>2018-04-01T21:12:32.000Z</updated>
+        <summary type="html"><![CDATA[
+# Introduction to LZSS
+
+LZSS is an improved version of LZ77, published by James A. Storer and Thomas Szymanski in the Journal of the ACM in 1982. LZSS makes full use of bit flags, which significantly improves compression efficiency compared with LZ77.
+
+
+
+> See Wikipedia: [lzss](https://en.wikipedia...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The LZ77 Compression Algorithm]]></title>
+        <id>https://hchen90.net/post/en/lz77compalgo</id>
+        <link href="https://hchen90.net/post/en/lz77compalgo/"/>
+        <updated>2018-03-31T20:38:24.000Z</updated>
+        <summary type="html"><![CDATA[
+# Introduction to LZ77
+
+LZ77 is a lossless compression algorithm first published by two Israeli researchers in 1977. It is a classic dictionary-based compression algorithm, and today almost all lossless compression algorithms are built on LZ77, optimizing and modifying it in various ways. It can fa...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How to Enable UEFI Secure Boot on Linux]]></title>
+        <id>https://hchen90.net/post/en/enablesbonlinux</id>
+        <link href="https://hchen90.net/post/en/enablesbonlinux/"/>
+        <updated>2017-09-02T00:17:02.000Z</updated>
+        <summary type="html"><![CDATA[
+## Overview
+
+Secure Boot is a UEFI option that can be turned on or off. (On a few machines Secure Boot is enabled with no option to disable it, and the motherboard ships only with Windows' public-key certificates, so it can load Windows and nothing else. The user has no choice: you can't turn it of...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Asynchronous I/O on Linux]]></title>
+        <id>https://hchen90.net/post/en/linuxsystemasyncio</id>
+        <link href="https://hchen90.net/post/en/linuxsystemasyncio/"/>
+        <updated>2017-07-08T00:02:11.000Z</updated>
+        <summary type="html"><![CDATA[
+# Asynchronous I/O on Linux
+
+In systems programming, the I/O (input/output) model determines how you interact with data, and it has a critical impact on overall system performance. The I/O model directly affects several major areas:
+
+* Throughput
+* Machine resource utilization, e.g. CPU usage
+* Sys...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Software Design Patterns - Behavioral Patterns]]></title>
+        <id>https://hchen90.net/post/en/softwaredesignpattern4</id>
+        <link href="https://hchen90.net/post/en/softwaredesignpattern4/"/>
+        <updated>2017-06-08T22:01:03.000Z</updated>
+        <summary type="html"><![CDATA[
+# Software Design Patterns - Behavioral Patterns
+
+Behavioral patterns deal with efficient communication between objects and the delegation of responsibilities.
+
+The behavioral patterns covered here are: Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Templa...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Software Design Patterns - Structural Patterns]]></title>
+        <id>https://hchen90.net/post/en/softwaredesignpattern3</id>
+        <link href="https://hchen90.net/post/en/softwaredesignpattern3/"/>
+        <updated>2017-06-05T21:11:12.000Z</updated>
+        <summary type="html"><![CDATA[
+# Software Design Patterns - Structural Patterns
+
+Structural patterns describe how classes and objects are assembled into larger structures while keeping those structures flexible and efficient.
+
+The structural patterns covered here are: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, and...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Software Design Patterns - Creational Patterns]]></title>
+        <id>https://hchen90.net/post/en/softwaredesignpattern2</id>
+        <link href="https://hchen90.net/post/en/softwaredesignpattern2/"/>
+        <updated>2017-06-04T19:04:11.000Z</updated>
+        <summary type="html"><![CDATA[
+# Software Design Patterns - Creational Patterns
+
+The creational patterns are: Factory Method, Abstract Factory, Builder, Prototype, and Singleton.
+
+
+
+## Factory Method
+
+The Factory Method pattern is **a way of declaring a method in the parent class and instantiating the object in a subclass**. In ...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[An Introduction to Software Design Patterns]]></title>
+        <id>https://hchen90.net/post/en/softwaredesignpattern1</id>
+        <link href="https://hchen90.net/post/en/softwaredesignpattern1/"/>
+        <updated>2017-06-02T20:12:01.000Z</updated>
+        <summary type="html"><![CDATA[
+# An Introduction to Software Design Patterns
+
+Software design patterns are a basic problem-solving method in software engineering: they provide a reasonable sequence of steps for reaching a goal. This post briefly covers why we need them, what they do, and their main building blocks.
+
+
+
+## What Is...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How to Copy Files from MINIX in a Virtual Machine to the Host Linux System]]></title>
+        <id>https://hchen90.net/post/en/minix</id>
+        <link href="https://hchen90.net/post/en/minix/"/>
+        <updated>2016-10-03T00:16:13.000Z</updated>
+        <summary type="html"><![CDATA[
+## Background
+
+Reading MINIX source code directly inside the virtual machine is very inconvenient, and modifying, debugging, or porting it there is even harder. If you copy part of the MINIX source to the host Linux machine, editing and debugging become much easier.
+
+However, MINIX is a fairly bare...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Setting Up a Chinese LaTeX Typesetting System on Linux]]></title>
+        <id>https://hchen90.net/post/en/linuxlatex</id>
+        <link href="https://hchen90.net/post/en/linuxlatex/"/>
+        <updated>2016-05-03T04:12:20.000Z</updated>
+        <summary type="html"><![CDATA[
+## About TeX
+
+**TeX** is a computer typesetting system originally created by Donald E. Knuth, professor at Stanford University. Most of you will know him from *The Art of Computer Programming*.
+
+In fact, TeX was born because Knuth was unhappy with the proofs of that very book, which pushed him to b...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How to Use SQL Server 2008 in Visual Studio 2010]]></title>
+        <id>https://hchen90.net/post/en/vssqlserver2008</id>
+        <link href="https://hchen90.net/post/en/vssqlserver2008/"/>
+        <updated>2014-08-02T12:54:52.000Z</updated>
+        <summary type="html"><![CDATA[
+SQL Server is Microsoft's database product and a fairly well-known one. SQL Server 2000 was especially popular with users and widely recognized, and SQL Server 2008 is one of its successors. Let's get straight to it (this post does not cover installing VS or SQL Server; it assumes the environment i...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Designing a PE File Packer]]></title>
+        <id>https://hchen90.net/post/en/mspeshell</id>
+        <link href="https://hchen90.net/post/en/mspeshell/"/>
+        <updated>2013-10-26T23:44:15.000Z</updated>
+        <summary type="html"><![CDATA[
+# Introduction
+
+Today let's discuss packers for PE files. A packer is mainly used for commercially protecting a PE file so that the software is less likely to be cracked. As cracking knowledge becomes widespread, packers have grown increasingly complex just to barely hold out against being broken.
+...]]></summary>
+        <author>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </author>
+        <contributor>
+            <name>Hsiang Chen</name>
+            <email>master@hchen90.net</email>
+            <uri>https://hchen90.net</uri>
+        </contributor>
+    </entry>
+</feed>

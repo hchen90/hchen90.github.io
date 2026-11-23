@@ -1,0 +1,82 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","linuxcoredumptofindbug",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","linuxcoredumptofindbug","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","linuxcoredumptofindbug","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","WaZrrI17HvgWhnVAz9lzD",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T1d40,<h1 id="what-is-a-core-dump">What Is a Core Dump?<a aria-hidden="true" tabindex="-1" href="#what-is-a-core-dump"><span class="anchor-link"> #</span></a></h1>
+<p>A <strong>core dump</strong> is a mechanism inherited from UNIX. When a program crashes due to an error, it saves a snapshot of the stack, memory, PID, UID, GID, timestamp, and other information, typically used for diagnosis and debugging. <strong>Core dump</strong> data is usually kept on the machine for about three days (depending on system settings); if you don't track down the bug in time, the system deletes these <strong>core dumps</strong> after that.</p>
+<h1 id="what-tools-do-you-need">What Tools Do You Need?<a aria-hidden="true" tabindex="-1" href="#what-tools-do-you-need"><span class="anchor-link"> #</span></a></h1>
+<p>Generally, objdump and gdb are all you need. For diagnosis, the original source code is best (the unmodified code from when the core was dumped).</p>
+<h1 id="case-study">Case Study<a aria-hidden="true" tabindex="-1" href="#case-study"><span class="anchor-link"> #</span></a></h1>
+<p>Below is a failure case I'm sharing for reference.</p>
+<h2 id="the-program-crashed">The Program Crashed<a aria-hidden="true" tabindex="-1" href="#the-program-crashed"><span class="anchor-link"> #</span></a></h2>
+<p>This program runs without any problems; it just occasionally crashes on exit. That's the most frustrating kind. Hidden bugs like this don't trigger in most situations, then suddenly happen under some special condition. The dilemma comes down to two things:</p>
+<ul>
+<li>Hard to confirm (whether it happens)</li>
+<li>Hard to locate</li>
+</ul>
+<p>See the screenshot below:</p>
+<p><img src="/post/linuxcoredumptofindbug/362a65b8f108.png" alt="Program crash output"></p>
+<h2 id="trying-to-debug-directly-with-coredumpctl">Trying to Debug Directly with coredumpctl<a aria-hidden="true" tabindex="-1" href="#trying-to-debug-directly-with-coredumpctl"><span class="anchor-link"> #</span></a></h2>
+<p><em>coredumpctl</em> is one of the systemd tools; any system using systemd should have it. It is very easy to use. For help, run:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">coredumpctl --<span class="hljs-built_in">help</span>
+</code></pre></div>
+<p>Or read its man page.</p>
+<p>Back to the point. Try debugging with:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">coredumpctl debug xxxx
+</code></pre></div>
+<blockquote>
+<p>xxxx above is the program file name; you can find it with <code>coredumpctl list</code>.</p>
+</blockquote>
+<p>The result looks like this:</p>
+<p><img src="/post/linuxcoredumptofindbug/6c64330d950e.png" alt="coredumpctl debug output"></p>
+<p>This case is more complicated. Notice the line <code>0x00007f77be94cf25 in ?? ()</code>: the <strong>core dump</strong> can't pinpoint the faulting location in the source. For comparison, here is another example:</p>
+<p><img src="/post/linuxcoredumptofindbug/71ba8acd8596.png" alt="coredumpctl debug output for a simple fault"></p>
+<p>In this example, the <strong>core dump</strong> immediately identifies the faulting code: the crash clearly happened when executing this line:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">*a = <span class="hljs-number">0</span>;
+</code></pre></div>
+<p>I deliberately broke this for comparison; the source looks like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">	<span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">input</span><span class="hljs-params">(string&#x26; filename, ...)</span> </span>{
+	  cout &#x3C;&#x3C; filename &#x3C;&#x3C; endl;
+	  <span class="hljs-type">int</span>* a = <span class="hljs-number">0</span>;
+	  *a = <span class="hljs-number">0</span>;
+	  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+	}
+</code></pre></div>
+<p>Now back to the earlier <code>0x00007f77be94cf25 in ?? ()</code>. We can't pinpoint it right away as in the second example, so what now?</p>
+<h2 id="viewing-the-stack-with-coredumpctl-info">Viewing the Stack with <code>coredumpctl info</code><a aria-hidden="true" tabindex="-1" href="#viewing-the-stack-with-coredumpctl-info"><span class="anchor-link"> #</span></a></h2>
+<p>The two screenshots below show the crashed program's stack.</p>
+<p>Figure 1:</p>
+<p><img src="/post/linuxcoredumptofindbug/150a7f25d236.png" alt="Stack information, part 1"></p>
+<p>Figure 2:
+<img src="/post/linuxcoredumptofindbug/a6ba03170bef.png" alt="Stack information, part 2"></p>
+<p>Because the output is wide, I split it into two images. Note the stack call list in Figure 2. Next, we disassemble the original program file.</p>
+<h2 id="disassembling-the-program">Disassembling the Program<a aria-hidden="true" tabindex="-1" href="#disassembling-the-program"><span class="anchor-link"> #</span></a></h2>
+<p>When disassembling the original crashed binary, don't forget the <code>--source</code> flag; otherwise you get pure assembly and searching is much less efficient. Run:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">bash</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-bash">objdump --<span class="hljs-built_in">source</span> -d xxxx | less
+</code></pre></div>
+<p>Screenshot:</p>
+<p><img src="/post/linuxcoredumptofindbug/9202c3c3e25b.png" alt="objdump disassembly with source"></p>
+<blockquote>
+<p>Again, xxxx is the program file name.</p>
+</blockquote>
+<p>Now, in <code>less</code>, search for each stack address in turn (see Figure 2) and go to the first faulting location in the program right after returning from <code>libc</code>, i.e. file offset <code>0x42ce8</code>. The error is immediately pinned down (following the addresses up the stack, you can tell it's a <code>clear</code> on a <code>list</code>). It turned out to be a C++ class destructor failing while destroying a <code>list</code>. This in turn showed the bug was actually caused by multithreading: a worker thread in the program was also freeing resources, and the main thread and worker thread freed them at the same time without synchronization, so it sometimes worked and sometimes crashed. Adding the simplest synchronization mechanism solved the problem.</p>7:["$","$L15",null,{"postData":{"id":"linuxcoredumptofindbug","locale":"en","contentHtml":"$16","title":"Using Linux Core Dumps to Quickly Locate Program Bugs","date":"$D2019-11-12T09:12:29.000Z","updated":"$D2019-11-12T09:12:29.000Z","categories":["Essays"],"tags":["linux","debug","coredump","gdb","objdump"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Using Linux Core Dumps to Quickly Locate Program Bugs | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"What Is a Core Dump? A core dump is a mechanism inherited from UNIX. When a program crashes due to an error, it saves a snapshot of the stack, memo..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/linuxcoredumptofindbug/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/linuxcoredumptofindbug/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/linuxcoredumptofindbug/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Using Linux Core Dumps to Quickly Locate Program Bugs"}],["$","meta","7",{"property":"og:description","content":"What Is a Core Dump? A core dump is a mechanism inherited from UNIX. When a program crashes due to an error, it saves a snapshot of the stack, memo..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/linuxcoredumptofindbug/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"linux"}],["$","meta","13",{"property":"article:tag","content":"debug"}],["$","meta","14",{"property":"article:tag","content":"coredump"}],["$","meta","15",{"property":"article:tag","content":"gdb"}],["$","meta","16",{"property":"article:tag","content":"objdump"}],["$","meta","17",{"name":"twitter:card","content":"summary"}],["$","meta","18",{"name":"twitter:title","content":"Using Linux Core Dumps to Quickly Locate Program Bugs"}],["$","meta","19",{"name":"twitter:description","content":"What Is a Core Dump? A core dump is a mechanism inherited from UNIX. When a program crashes due to an error, it saves a snapshot of the stack, memo..."}],["$","link","20",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

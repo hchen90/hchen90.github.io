@@ -1,0 +1,450 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","softwaredesignpattern3",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","softwaredesignpattern3","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","softwaredesignpattern3","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","fs8bEMyRiPh_hhwGKPlv0",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T83e8,<p>Structural patterns describe how classes and objects are assembled into larger structures while keeping those structures flexible and efficient.</p>
+<p>The structural patterns covered here are: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, and Proxy.</p>
+<h2 id="adapter">Adapter<a aria-hidden="true" tabindex="-1" href="#adapter"><span class="anchor-link"> #</span></a></h2>
+<p>The Adapter pattern solves the problem of making incompatible interfaces work together.</p>
+<p>Adapters usually come in two flavors: object adapters and class adapters.</p>
+<h3 id="object-adapter">Object Adapter<a aria-hidden="true" tabindex="-1" href="#object-adapter"><span class="anchor-link"> #</span></a></h3>
+<p>An object adapter achieves adaptation by implementing the target interface, as shown below:</p>
+<p><img src="/post/softwaredesignpattern3/5f2239c668b3.png" alt="Object Adapter"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawService</span> {
+    <span class="hljs-comment">// Drawing service</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// Draw using Graphics</span>
+    }
+    <span class="hljs-function">Graphics&#x26; <span class="hljs-title">getCanvasGraphics</span><span class="hljs-params">(canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// Convert graphics canvas</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawInterface</span> {
+    <span class="hljs-comment">// Drawing adapter interface</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawAdapter</span> : <span class="hljs-keyword">public</span> DrawInterface {
+    <span class="hljs-comment">// Drawing adapter</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26; c)</span> </span>{ <span class="hljs-comment">// Adapt the interface</span>
+        <span class="hljs-keyword">auto</span> g = service.<span class="hljs-built_in">getCanvasGraphics</span>(c);
+        service.<span class="hljs-built_in">paint</span>(g);
+    }
+<span class="hljs-keyword">private</span>:
+    DrawService service;
+};
+</code></pre></div>
+<h3 id="class-adapter">Class Adapter<a aria-hidden="true" tabindex="-1" href="#class-adapter"><span class="anchor-link"> #</span></a></h3>
+<p>A class adapter relies on inheritance in object-oriented programming and is implemented through multiple inheritance.</p>
+<p>As shown in the diagram:</p>
+<p><img src="/post/softwaredesignpattern3/7b312890a4c8.png" alt="Class Adapter"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawGraphics</span> {
+    <span class="hljs-comment">// Pattern drawing</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// Draw function</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawService</span> {
+    <span class="hljs-comment">// Drawing service</span>
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">paint</span><span class="hljs-params">(Graphics&#x26;)</span> </span>{
+        <span class="hljs-comment">// Draw</span>
+    }
+    <span class="hljs-function">Graphics&#x26; <span class="hljs-title">getCanvasGraphics</span><span class="hljs-params">(canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// Convert canvas</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawAdapter</span> : <span class="hljs-keyword">public</span> DrawGraphics, <span class="hljs-keyword">public</span> DrawService {
+    <span class="hljs-comment">// Drawing adapter</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(canvas&#x26; c)</span> </span>{
+        <span class="hljs-keyword">auto</span> g = <span class="hljs-built_in">getCanvasGraphics</span>(c);
+        <span class="hljs-built_in">paint</span>(g);
+    }
+};
+</code></pre></div>
+<h2 id="bridge">Bridge<a aria-hidden="true" tabindex="-1" href="#bridge"><span class="anchor-link"> #</span></a></h2>
+<p>The Bridge pattern splits abstraction and implementation into two independent hierarchies, replacing inheritance across different dimensions with composition.</p>
+<p>As shown below:</p>
+<p><img src="/post/softwaredesignpattern3/d48eba393b9c.png" alt="Bridge"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// Pen style</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Style</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Pencil</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> pencil drawing implementation</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Brush</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> brush drawing implementation</span>
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Pastel</span> : <span class="hljs-keyword">public</span> Style {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> pastel drawing implementation</span>
+    }
+};
+
+<span class="hljs-comment">// Shape</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawWithPen</span><span class="hljs-params">(Style&#x26; pen)</span> </span>{
+        pen.<span class="hljs-built_in">draw</span>(<span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>());
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawWithPen</span><span class="hljs-params">(Style&#x26; pen)</span> </span>{
+        pen.<span class="hljs-built_in">draw</span>(<span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>());
+    }
+};
+</code></pre></div>
+<p>The shape classes are only the abstract drawing layer. They can draw figures in different styles, but the concrete drawing is actually carried out by pens of different styles.</p>
+<h2 id="composite">Composite<a aria-hidden="true" tabindex="-1" href="#composite"><span class="anchor-link"> #</span></a></h2>
+<p>The Composite pattern composes objects into tree structures. It is most often implemented as an interaction between a "Box" and an "Item": a box is itself an item, and a box can hold items, which produces a recursively nested structure.</p>
+<p>The structure looks like this:</p>
+<p><img src="/post/softwaredesignpattern3/4c391f951bae.png" alt="Composite"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+<span class="hljs-keyword">protected</span>:
+    <span class="hljs-type">float</span> x, y;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Draw a circle</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> radius;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Draw a square</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> width, height;
+};
+
+<span class="hljs-comment">// Composite shape</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CompoundShape</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Iterate and draw all child shapes</span>
+    }
+<span class="hljs-keyword">private</span>:
+    std::vector&#x3C;Shape> childs;
+};
+</code></pre></div>
+<h2 id="decorator">Decorator<a aria-hidden="true" tabindex="-1" href="#decorator"><span class="anchor-link"> #</span></a></h2>
+<p>The Decorator pattern lets you place an object inside a special wrapper object that carries some behavior, thereby attaching the wrapper's new behavior to the original object.</p>
+<p>The structure looks like this:</p>
+<p><img src="/post/softwaredesignpattern3/c0920326f4f1.png" alt="Decorator"></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> : <span class="hljs-keyword">public</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw</span>
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-type">float</span> radius;
+};
+
+<span class="hljs-comment">// Decorator</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BrushDecorator</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">BrushDecorator</span>(Shape&#x26; s) {
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> set brush style</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Draw</span>
+        Shape::<span class="hljs-built_in">draw</span>();
+    }
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PastelDecorator</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">PastelDecorator</span>(Shape&#x26; s) {
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> set pastel style</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Draw</span>
+        Shape::<span class="hljs-built_in">draw</span>();
+    }
+};
+</code></pre></div>
+<p>Using the decorators looks like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">Circle circle;
+
+<span class="hljs-keyword">auto</span> circleWithBrush = <span class="hljs-keyword">new</span> <span class="hljs-built_in">BrushDecorator</span>(circle);
+<span class="hljs-keyword">auto</span> circleWithPastel = <span class="hljs-keyword">new</span> <span class="hljs-built_in">PastelDecorator</span>(circle);
+<span class="hljs-keyword">auto</span> circleWithBrushPastel = <span class="hljs-keyword">new</span> <span class="hljs-built_in">PastelDecorator</span>(circleWithBrush); <span class="hljs-comment">// Nested decoration</span>
+
+circleWithBrush.<span class="hljs-built_in">draw</span>();
+circleWithPastel.<span class="hljs-built_in">draw</span>();
+circleWithBrushPastel.<span class="hljs-built_in">draw</span>();
+</code></pre></div>
+<h2 id="facade">Facade<a aria-hidden="true" tabindex="-1" href="#facade"><span class="anchor-link"> #</span></a></h2>
+<p>The Facade pattern provides a simple interface to a library or framework. Exposing fewer details to the outside world reduces coupling across the system.</p>
+<p>The following example designs a uniform style for drawing badges:</p>
+<p><img src="/post/softwaredesignpattern3/eb503e9c579c.png" alt="Facade"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CompoundShape</span> : <span class="hljs-keyword">public</span> Shape {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addChild</span><span class="hljs-params">(Shape&#x26; c)</span> </span>{
+        <span class="hljs-comment">// Add shapes</span>
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">(Canvas&#x26;)</span> </span>{
+        <span class="hljs-comment">// Draw shapes</span>
+    }
+<span class="hljs-keyword">private</span>:
+    std::vector&#x3C;Shape> childs;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Brush</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setPen</span><span class="hljs-params">(Canvas&#x26;)</span></span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Background</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fill</span><span class="hljs-params">(Canvas&#x26;)</span></span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Badget</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">drawBadget</span><span class="hljs-params">(Shape&#x26; s)</span> </span>{
+        <span class="hljs-comment">// Draw badge</span>
+        <span class="hljs-keyword">auto</span> canvas = <span class="hljs-keyword">this</span>-><span class="hljs-built_in">getCanvas</span>();
+        <span class="hljs-built_in">assert</span>(canvas != <span class="hljs-literal">nullptr</span>);
+        br.<span class="hljs-built_in">setPen</span>(*canvas);
+        bg.<span class="hljs-built_in">fill</span>(*canvas);
+        s.<span class="hljs-built_in">draw</span>(*canvas);
+    }
+<span class="hljs-keyword">private</span>:
+    Brush br;
+    Background bg;
+    CompundShape cshape;
+};
+</code></pre></div>
+<p>An external caller only needs to call <code>drawBadget()</code> and pass the badge's complex shape as an argument to draw any kind of badge.</p>
+<h2 id="flyweight">Flyweight<a aria-hidden="true" tabindex="-1" href="#flyweight"><span class="anchor-link"> #</span></a></h2>
+<p>The Flyweight pattern shares object state so that each object does not have to hold all of its state, which lets you fit many more objects into memory.</p>
+<p>A typical use case is game development. One of the most common elements in a game is the particle system, where each particle has its own coordinates, color, state, and so on. If every particle object stored all of that information, a real game scene would demand an enormous amount of memory: a few hundred thousand particles could exhaust system memory and trigger an OOM. To solve this, analyze the particle class, separate its constant parts from its variable parts, and store the constant parts in shared objects.</p>
+<p>As shown below:</p>
+<p><img src="/post/softwaredesignpattern3/977e46e42cd8.png" alt="Flyweight"></p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Background</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Color</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Flyweight</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// Draw particles</span>
+    }
+<span class="hljs-keyword">private</span>:
+    Background bg;
+    Color cr;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FlyweightFactory</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Flyweight* <span class="hljs-title">getFlyweight</span><span class="hljs-params">(state s)</span> </span>{
+        <span class="hljs-keyword">auto</span> f = cache.<span class="hljs-built_in">find</span>(s);
+        <span class="hljs-keyword">if</span> (f != <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> f;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>();
+    }
+<span class="hljs-keyword">private</span>:
+    Cache cache;
+};
+</code></pre></div>
+<p>Before using the Flyweight pattern you also need an initialization step that stores the constant objects in the flyweight factory's cache.</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-comment">// Initialize the flyweight factory</span>
+<span class="hljs-keyword">auto</span> particle1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// Static particle 1</span>
+<span class="hljs-keyword">auto</span> particle2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Flyweight</span>(<span class="hljs-number">2</span>); <span class="hljs-comment">// Static particle 2</span>
+<span class="hljs-comment">// ...</span>
+
+FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">addFlyweight</span>(particle1);
+FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">addFlyweight</span>(particle2);
+
+<span class="hljs-keyword">auto</span> particle = FlyweightFactory::<span class="hljs-built_in">getInstance</span>().<span class="hljs-built_in">getFlyweight</span>(<span class="hljs-number">-1</span>); <span class="hljs-comment">// Regular dynamic particle</span>
+</code></pre></div>
+<h2 id="proxy">Proxy<a aria-hidden="true" tabindex="-1" href="#proxy"><span class="anchor-link"> #</span></a></h2>
+<p>The Proxy pattern provides a placeholder for an object and controls access to the original object, so extra processing can be added before and after external requests reach it.</p>
+<p>Sticking with the drawing example: this time we draw images, which are stored in a database with a tag as each image's unique name. Every draw has to fetch the corresponding images from the database before drawing them. When a figure is complex and contains many images, drawing becomes slow and the UI visibly lags. The root cause is the accumulated time spent fetching images from the database. The Proxy pattern addresses this, as shown below:</p>
+<p><img src="/post/softwaredesignpattern3/68bf559f3059.png" alt="Proxy"></p>
+<p>When the proxy fetches an image, it caches it. The next time the same image is requested, the proxy returns it immediately, which greatly cuts drawing time and makes drawing more efficient.</p>
+<p>Sample code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Image</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26;)</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">DBImage</span> : <span class="hljs-keyword">public</span> Image {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">auto</span> result = db.<span class="hljs-built_in">findAll</span>();
+        <span class="hljs-comment">// Query the database and return the tag list of all images</span>
+    };
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26;)</span> </span>{
+        <span class="hljs-comment">// Return the image data for the given tag</span>
+    };
+<span class="hljs-keyword">private</span>:
+    DB db;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CachedImage</span> : <span class="hljs-keyword">public</span> Image {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">CachedImage</span>(DBImage&#x26; dbi) {}
+    <span class="hljs-function">std::vector&#x3C;std::string> <span class="hljs-title">listImages</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">auto</span> result = cache.<span class="hljs-built_in">findAll</span>(); <span class="hljs-comment">// Cache lookup</span>
+        <span class="hljs-keyword">if</span> (!result.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">return</span> result;
+        }
+        result = service.<span class="hljs-built_in">findAll</span>(); <span class="hljs-comment">// Lookup via the original service</span>
+        cache.<span class="hljs-built_in">store</span>(result);
+        <span class="hljs-keyword">return</span> result;
+    };
+    <span class="hljs-function">std::vector&#x3C;<span class="hljs-type">uint8_t</span>> <span class="hljs-title">getImage</span><span class="hljs-params">(std::string&#x26; tag)</span> </span>{
+        <span class="hljs-keyword">auto</span> img = cache.<span class="hljs-built_in">find</span>(tag); <span class="hljs-comment">// Look up image in cache</span>
+        <span class="hljs-keyword">if</span> (!img.<span class="hljs-built_in">empty</span>()) {
+            <span class="hljs-keyword">return</span> img;
+        }
+        img = service.<span class="hljs-built_in">find</span>(tag); <span class="hljs-comment">// Fetch image from the original service</span>
+        cache.<span class="hljs-built_in">store</span>(tag, img);
+        <span class="hljs-keyword">return</span> img;
+    };
+<span class="hljs-keyword">private</span>:
+    DBImage service;
+    Cache cache;
+};
+</code></pre></div>
+<p>In practice, callers simply use the proxy directly:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-function">DBImage <span class="hljs-title">dbi</span><span class="hljs-params">(<span class="hljs-string">"mongo://xxxx"</span>)</span></span>;
+<span class="hljs-function">CachedImage <span class="hljs-title">ci</span><span class="hljs-params">(dbi)</span></span>;
+
+<span class="hljs-keyword">auto</span> result = ci.<span class="hljs-built_in">listImages</span>();
+<span class="hljs-keyword">auto</span> image = ci.<span class="hljs-built_in">getImage</span>(result[<span class="hljs-number">0</span>]); <span class="hljs-comment">// Image for the first tag</span>
+</code></pre></div>
+<blockquote>
+<p>CacheImage</p>
+<blockquote>
+<p>Depending on the actual scenario, the Cache used in CacheImage can be middleware storage such as Memcached or Redis.</p>
+</blockquote>
+</blockquote>
+<h2 id="mvc">MVC<a aria-hidden="true" tabindex="-1" href="#mvc"><span class="anchor-link"> #</span></a></h2>
+<p>MVC stands for Model-View-Controller. It is used for layered application development: it reduces coupling between data, the view (UI), and control logic, making development and maintenance clearer.</p>
+<p>This pattern was widely used in the traditional MFC development framework. Below is an MVC design for a rich text editor.</p>
+<p><img src="/post/softwaredesignpattern3/816f2afd2731.png" alt="MVC"></p>
+<p>The code:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Model</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">View</span> {};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Controller</span> {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setView</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setModel</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Document</span> : <span class="hljs-keyword">public</span> Model {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">Document</span>(Controller* ctrl) {
+        <span class="hljs-keyword">this</span>->ctrl = ctrl;
+    }
+<span class="hljs-keyword">private</span>:
+    Controller* ctrl;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RichEditCtrl</span> : <span class="hljs-keyword">public</span> Controller {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setView</span><span class="hljs-params">(View* v)</span> </span>{
+        <span class="hljs-keyword">this</span>->view = v;
+    }
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setModel</span><span class="hljs-params">(Model* m)</span> </span>{
+        <span class="hljs-keyword">this</span>->model = m;
+    }
+<span class="hljs-keyword">private</span>:
+    View* view;
+    Model* model;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RichEditView</span> : <span class="hljs-keyword">public</span> View {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">View</span>(Controller* ctrl) {
+        <span class="hljs-keyword">this</span>->ctrl = ctrl;
+    }
+<span class="hljs-keyword">private</span>:
+    Controller* ctrl;
+};
+</code></pre></div>
+<p>Constructing the MVC looks like this:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">cpp</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-cpp">RichEditCtrl ctrl;
+<span class="hljs-function">RichEditView <span class="hljs-title">view</span><span class="hljs-params">(&#x26;ctrl)</span></span>;
+<span class="hljs-function">Document <span class="hljs-title">doc</span><span class="hljs-params">(&#x26;ctrl)</span></span>;
+ctrl.<span class="hljs-built_in">setView</span>(&#x26;view);
+ctrl.<span class="hljs-built_in">setModel</span>(&#x26;doc);
+
+<span class="hljs-comment">// The view notifies the controller of updates</span>
+ctrl.<span class="hljs-built_in">notify</span>();
+<span class="hljs-comment">// The controller updates the data model</span>
+doc.<span class="hljs-built_in">update</span>();
+<span class="hljs-comment">// The model refreshes the view after updating</span>
+view.<span class="hljs-built_in">refresh</span>();
+</code></pre></div>7:["$","$L15",null,{"postData":{"id":"softwaredesignpattern3","locale":"en","contentHtml":"$16","title":"Software Design Patterns - Structural Patterns","date":"$D2017-06-05T21:11:12.000Z","updated":"$D2017-06-05T21:11:12.000Z","categories":["Notes"],"tags":["Design Patterns"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Software Design Patterns - Structural Patterns | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Structural patterns describe how classes and objects are assembled into larger structures while keep..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/softwaredesignpattern3/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/softwaredesignpattern3/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/softwaredesignpattern3/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Software Design Patterns - Structural Patterns"}],["$","meta","7",{"property":"og:description","content":"Structural patterns describe how classes and objects are assembled into larger structures while keep..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/softwaredesignpattern3/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"Design Patterns"}],["$","meta","13",{"name":"twitter:card","content":"summary"}],["$","meta","14",{"name":"twitter:title","content":"Software Design Patterns - Structural Patterns"}],["$","meta","15",{"name":"twitter:description","content":"Structural patterns describe how classes and objects are assembled into larger structures while keep..."}],["$","link","16",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

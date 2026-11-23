@@ -1,0 +1,278 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","redistributedservicesystem",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","redistributedservicesystem","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","redistributedservicesystem","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","HwgvR8NqDMoNENsE1WV_q",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T4737,<h1 id="overview-and-definition">Overview and definition<a aria-hidden="true" tabindex="-1" href="#overview-and-definition"><span class="anchor-link"> #</span></a></h1>
+<p>A distributed system is a system made up of a group of independent computers (nodes) working together over a network. Together they accomplish a business goal and present themselves to users as a "single system". From the user's point of view, a distributed system should be as transparent as possible: users shouldn't need to know which machine handled a request or where the data lives, and they shouldn't notice nodes being added, removed, or migrated.</p>
+<p>In one sentence:</p>
+<blockquote>
+<p><strong>Distributed system = multiple independent computers, cooperating over a network, that look like one system from the outside</strong></p>
+</blockquote>
+<p>Two points to remember:</p>
+<ul>
+<li>Multiple nodes cooperate to achieve the same business goal.</li>
+<li>From the outside, it behaves as much like a single whole as possible (transparency).</li>
+</ul>
+<blockquote>
+<p>Note: distributed system design often requires trade-offs among consistency, availability, and partition tolerance (CAP). In practice, "eventual consistency" is widely adopted in exchange for high availability and scalability.</p>
+</blockquote>
+<h2 id="compared-with-a-centralized-cs-architecture">Compared with a centralized C/S architecture<a aria-hidden="true" tabindex="-1" href="#compared-with-a-centralized-cs-architecture"><span class="anchor-link"> #</span></a></h2>
+<p>A centralized (monolithic) C/S architecture:</p>
+<p><img src="/post/redistributedservicesystem/a98ad925f117.png" alt="Traditional C/S system"></p>
+<p>A typical distributed system:</p>
+<p><img src="/post/redistributedservicesystem/29d8d45dfd6d.png" alt="Distributed system"></p>
+<h2 id="why-distributed-systems-are-hard">Why distributed systems are "hard"<a aria-hidden="true" tabindex="-1" href="#why-distributed-systems-are-hard"><span class="anchor-link"> #</span></a></h2>
+<p>Every assumption from single-machine systems breaks down in a distributed setting 👇</p>
+<h3 id="on-a-single-machine-you-assume">On a single machine you assume:<a aria-hidden="true" tabindex="-1" href="#on-a-single-machine-you-assume"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>Memory is reliable</li>
+<li>Clocks are consistent</li>
+<li>Calls always succeed</li>
+</ul>
+<h3 id="in-a-distributed-system-reality-is">In a distributed system, reality is:<a aria-hidden="true" tabindex="-1" href="#in-a-distributed-system-reality-is"><span class="anchor-link"> #</span></a></h3>
+<ul>
+<li>The network can fail</li>
+<li>Nodes can crash</li>
+<li>Clocks are out of sync</li>
+<li>Messages can be lost / duplicated / delayed</li>
+</ul>
+<p>👉 <strong>Distributed system = building a reliable system in an "untrustworthy environment"</strong></p>
+<h2 id="the-core-problems-a-distributed-system-must-solve">The core problems a distributed system must solve<a aria-hidden="true" tabindex="-1" href="#the-core-problems-a-distributed-system-must-solve"><span class="anchor-link"> #</span></a></h2>
+<h3 id="1️⃣-communication">1️⃣ Communication<a aria-hidden="true" tabindex="-1" href="#1️⃣-communication"><span class="anchor-link"> #</span></a></h3>
+<p>How do nodes talk to each other?</p>
+<ul>
+<li>HTTP / RPC / gRPC</li>
+<li>Message queues (Kafka / RocketMQ / RabbitMQ)</li>
+</ul>
+<hr>
+<h3 id="2️⃣-state-consistency-the-most-central">2️⃣ State consistency (the most central)<a aria-hidden="true" tabindex="-1" href="#2️⃣-state-consistency-the-most-central"><span class="anchor-link"> #</span></a></h3>
+<p>How do you keep data consistent across multiple machines?</p>
+<ul>
+<li>Strong consistency (bank transfers)</li>
+<li>Eventual consistency (likes, recommendations)</li>
+</ul>
+<p>👉 This leads directly to the <strong>CAP theorem</strong></p>
+<hr>
+<h3 id="3️⃣-fault-tolerance">3️⃣ Fault tolerance<a aria-hidden="true" tabindex="-1" href="#3️⃣-fault-tolerance"><span class="anchor-link"> #</span></a></h3>
+<p>What happens when a machine goes down?</p>
+<ul>
+<li>Replicas</li>
+<li>Automatic failover</li>
+<li>Retries / timeouts</li>
+</ul>
+<hr>
+<h3 id="4️⃣-scalability">4️⃣ Scalability<a aria-hidden="true" tabindex="-1" href="#4️⃣-scalability"><span class="anchor-link"> #</span></a></h3>
+<p>What if traffic grows 10×?</p>
+<ul>
+<li>Add machines (horizontal scaling)</li>
+<li>Load balancing (load balancer)</li>
+</ul>
+<blockquote>
+<h2 id="the-cap-theorem-the-law-of-physics-of-distributed-systems">The CAP theorem (the "law of physics" of distributed systems)<a aria-hidden="true" tabindex="-1" href="#the-cap-theorem-the-law-of-physics-of-distributed-systems"><span class="anchor-link"> #</span></a></h2>
+<p>When a network partition (P) occurs, <strong>you can only choose one of C and A</strong></p>
+<ul>
+<li><strong>C (Consistency)</strong></li>
+<li><strong>A (Availability)</strong></li>
+<li><strong>P (Partition tolerance)</strong>: mandatory</li>
+</ul>
+<p>Real-world systems:</p>
+<ul>
+<li><strong>Financial systems</strong> → CP</li>
+<li><strong>Social / recommendation</strong> → AP</li>
+</ul>
+</blockquote>
+<h1 id="design-overview">Design overview<a aria-hidden="true" tabindex="-1" href="#design-overview"><span class="anchor-link"> #</span></a></h1>
+<ul>
+<li>Message-driven: treat messages as the "first-class citizen" of inter-service collaboration; naturally decoupled and easy to scale.</li>
+<li>Actor model: model service instances as Actors that process messages and maintain their own state, isolating concurrency.</li>
+<li>MongoDB/Postgres: models that fit business objects, with support for sharding and partitioning, which helps scalability and high availability.</li>
+<li>Redis: a high-speed cache for read/write hotspots; can also handle rate limiting, short-lived queues, and similar roles.</li>
+<li>Kafka/RocketMQ: message channels between producers and consumers.</li>
+<li>Engineering principles: clear boundaries, single responsibility, idempotency and retries, and statelessness wherever possible (especially at the gateway layer).</li>
+</ul>
+<hr>
+<h2 id="the-actor-model">The Actor model<a aria-hidden="true" tabindex="-1" href="#the-actor-model"><span class="anchor-link"> #</span></a></h2>
+<p>In practical engineering terms, the theoretical Actor corresponds to a microservice submodule with its own state.</p>
+<blockquote>
+<p>See Wikipedia: <a href="https://en.wikipedia.org/wiki/Actor_model">Actor Model</a></p>
+</blockquote>
+<p>An Actor is a basic unit of computation:</p>
+<ul>
+<li>It receives messages (Mailbox).</li>
+<li>It processes messages based on its current state and behavior (Behavior + State).</li>
+<li>It produces a new state and, optionally, response messages.</li>
+</ul>
+<p>Actors are isolated from each other, share no memory, and cooperate purely through messages. This model is especially well suited to highly concurrent, strongly isolated distributed scenarios.</p>
+<p><img src="/post/redistributedservicesystem/1104498e5f0a.png" alt="Actor Model"></p>
+<p>In the system's layering, "Service N" can be modeled as a group of Actors: each service is split into several single-responsibility Actors handling sub-domain logic such as sessions, orders, inventory, and settlement. This reduces coupling and makes scaling easier.</p>
+<h3 id="state-machines-fsm-and-actors">State machines (FSM) and Actors<a aria-hidden="true" tabindex="-1" href="#state-machines-fsm-and-actors"><span class="anchor-link"> #</span></a></h3>
+<p>Logic inside many Actors can be organized as a finite state machine (FSM). The four elements of an FSM:</p>
+<ul>
+<li>State</li>
+<li>Event</li>
+<li>Action</li>
+<li>Transition</li>
+</ul>
+<p>A state machine starts from the "initial state", moves to the next state when an event fires and performs the corresponding action, and eventually reaches the "final state". Treating the state machine as a "black box" that exposes only events and results achieves good isolation of internal information and state safety.</p>
+<hr>
+<h2 id="data-layer-mongodbpostgres">Data layer: MongoDB/Postgres<a aria-hidden="true" tabindex="-1" href="#data-layer-mongodbpostgres"><span class="anchor-link"> #</span></a></h2>
+<p>MongoDB is a very good fit for distributed systems:</p>
+<ul>
+<li>Its data model (Document/Collection/Table) is close to the <strong>object structure</strong> of the business, making reads and writes natural.</li>
+<li>Sharding is built for horizontal scaling, distributing data evenly across nodes by key.</li>
+<li>Replica sets provide high availability and read/write splitting strategies.</li>
+<li>Consistency and transactions: multi-document transactions are supported, but in practice "eventual consistency + idempotent compensation" is often used to reduce coupling and overhead.</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/7ea8177a86d6.png" alt="MongoDB CLI"></p>
+<p>Practical recommendations:</p>
+<ul>
+<li>Design the shard key carefully (high cardinality, even writes, high query hit rate).</li>
+<li>Base read/write strategy on replica set roles (write to primary, read from secondaries).</li>
+<li>Use sensible indexes and TTL indexes to manage hot and historical data.</li>
+</ul>
+<blockquote>
+<p>Use an ORM well; in Go, gorm is very popular.</p>
+</blockquote>
+<h2 id="cache-layer-redis">Cache layer: Redis<a aria-hidden="true" tabindex="-1" href="#cache-layer-redis"><span class="anchor-link"> #</span></a></h2>
+<p>Redis's role in this architecture:</p>
+<ul>
+<li>Hot data cache: reduces database load and improves read performance (using strategies such as Cache-Aside / Read-Through / Write-Through).</li>
+<li>Short-lived queues and rate limiting: simple queues and rate limiting based on List / Stream / token bucket.</li>
+<li>Sessions and transient state: store short-lived sessions, idempotency tokens, distributed locks, etc.</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/b23b8e305828.png" alt="Redis CLI"></p>
+<p>Typical risks and countermeasures:</p>
+<ul>
+<li>Cache penetration: cache null values for non-existent keys + a Bloom filter.</li>
+<li>Cache breakdown (hot-key expiry): use mutex-guarded refresh for hot keys, or logical expiry + background refresh.</li>
+<li>Cache avalanche: randomize expiration times, and set up multi-level rate limiting and degradation strategies.</li>
+</ul>
+<hr>
+<h2 id="service-discovery-and-configuration-etcd">Service discovery and configuration: etcd<a aria-hidden="true" tabindex="-1" href="#service-discovery-and-configuration-etcd"><span class="anchor-link"> #</span></a></h2>
+<p>etcd is a distributed key-value store based on the Raft consensus algorithm, commonly used for service registration and discovery, dynamic configuration, and distributed coordination:</p>
+<ul>
+<li>Service registration and discovery:
+<ul>
+<li>Registration: instances write their address and metadata under <code>/services/{name}/{instanceId}</code> with a lease (Lease + TTL) and send periodic KeepAlives.</li>
+<li>Discovery: the gateway or callers Watch the corresponding prefix to detect instances coming online or going offline, and update local routing.</li>
+<li>Robustness: keys are deleted automatically when the lease expires, avoiding "zombie instances"; clients should reconnect with exponential backoff and jitter.</li>
+</ul>
+</li>
+<li>Dynamic configuration:
+<ul>
+<li>Organize configuration under the <code>/config/{app}/{env}/</code> prefix; publishers write, clients Watch and hot-reload.</li>
+<li>Split large configurations into modules / load them in segments; sensitive configuration needs encryption or a dedicated configuration center.</li>
+</ul>
+</li>
+<li>Coordination:
+<ul>
+<li>Distributed locks / leader election: use the etcd concurrency API (session-based Mutex/Campaign).</li>
+<li>Typical uses: sharded task scheduling, single-leader writes, centralized arbitration of rate-limit quotas.</li>
+</ul>
+</li>
+<li>Operations:
+<ul>
+<li>A cluster of 3 or 5 nodes is ideal (odd numbers for voting; too many nodes actually reduces write performance).</li>
+<li>Configure snapshots and compaction properly to avoid an oversized Watch backlog; set timeouts and heartbeat thresholds for high-latency links.</li>
+</ul>
+</li>
+</ul>
+<p>In this architecture, etcd plays the infrastructure role of "service registration and discovery + dynamic configuration + coordination primitives", supporting gateway routing and internal service addressing.</p>
+<hr>
+<h2 id="communication-and-consistency-strategy">Communication and consistency strategy<a aria-hidden="true" tabindex="-1" href="#communication-and-consistency-strategy"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>Communication:
+- Synchronous RPC (HTTP/gRPC) for small closed loops that need strong real-time behavior and strong consistency.
+- An asynchronous message bus for decoupling and smoothing traffic peaks (RocketMQ/Kafka/RabbitMQ/Redis Stream, etc.).</li>
+<li>Retries and idempotency:
+<ul>
+<li>Retry when a downstream is briefly unavailable; every retryable write must be idempotent (dedup keys, idempotency tokens).</li>
+</ul>
+</li>
+<li>Eventual consistency:
+<ul>
+<li>Saga / Outbox pattern: use a local transaction + outbound events to guarantee changes are delivered, and orchestrate compensation on failure.</li>
+</ul>
+</li>
+<li>Global identifiers:
+<ul>
+<li>Snowflake / segment-cached ID generation produces sortable distributed IDs, useful for routing and auditing.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="message-middleware-rocketmqkafka">Message middleware: RocketMQ/Kafka<a aria-hidden="true" tabindex="-1" href="#message-middleware-rocketmqkafka"><span class="anchor-link"> #</span></a></h2>
+<p>RocketMQ/Kafka are high-performance, low-latency distributed message middleware with complete messaging semantics and enterprise features:</p>
+<ul>
+<li>Core concepts: Topic, Tag, Message Key, Producer Group, Consumer Group.</li>
+<li>Delivery semantics: at-least-once by default; exactly-once has to be implemented at the business layer with idempotency keys / dedup tables.</li>
+<li>Ordered messages: local ordering within a queue based on a sharding key, suitable for order state flows, fund ledgers, etc.</li>
+<li>Transactional messages:
+<ul>
+<li>Flow: send a half message (Prepare) → execute the local transaction → Commit/Rollback;</li>
+<li>The broker can check back on the transaction status (Transaction Check) to avoid dangling transactions; the producer must implement the check-back interface;</li>
+<li>Commonly used for reliable event publishing in Saga/Outbox.</li>
+</ul>
+</li>
+<li>Delayed / scheduled messages: built-in multi-level delays; combined with retry policies to implement flexible transactions and peak shaving.</li>
+<li>Retries and dead letters:
+<ul>
+<li>Failed consumption is redelivered per the retry policy; beyond the threshold, messages go to the DLQ (dead-letter queue) for troubleshooting and manual compensation.</li>
+</ul>
+</li>
+<li>Consumption modes: clustering (load-balanced) and broadcasting (every consumer receives all); business consumers usually use clustering mode.</li>
+<li>Design recommendations:
+<ul>
+<li>Idempotent messages: deduplicate with a business-unique key (such as an order number); consumers "check for duplicates first, then execute".</li>
+<li>Load and scaling: plan the number of queues based on throughput and ordering needs; avoid overly large messages (&#x3C; 1MB recommended); put large objects in storage and only references in messages.</li>
+<li>Observability: enable message tracing and metrics reporting; watch backlog, latency, and check-back ratio.</li>
+</ul>
+</li>
+</ul>
+<p>In this architecture, RocketMQ/Kafka serves as the "event bus", supporting cross-service decoupling, peak shaving, and eventual consistency:</p>
+<ul>
+<li>Outbox: business table + outbox table committed in one local transaction, published to RocketMQ in the background, and stored idempotently on the consumer side.</li>
+<li>Saga: an orchestrator advances/rolls back steps based on events, with compensation messages on failure.</li>
+</ul>
+<hr>
+<h2 id="topology-and-deployment">Topology and deployment<a aria-hidden="true" tabindex="-1" href="#topology-and-deployment"><span class="anchor-link"> #</span></a></h2>
+<p>Typical topology:</p>
+<ul>
+<li>Gateway: the single external entry point, handling authentication, routing, rate limiting, and aggregation.</li>
+<li>Service registration and discovery: an etcd-based registry with Watch, providing dynamic addressing and health checks (optionally with sidecars).</li>
+<li>Internal services: domain-partitioned microservices / Actor groups that interact via RPC/messages.</li>
+<li>Data and cache layer: a MongoDB cluster + Redis cluster, designed with replica sets, Sentinel, and sharding.</li>
+<li>Messaging layer: a RocketMQ broker cluster + NameServer, scaling throughput by Topic/queue.</li>
+</ul>
+<p><img src="/post/redistributedservicesystem/a5b1f3959027.png" alt="Architecture diagram"></p>
+<hr>
+<h2 id="when-it-fits">When it fits<a aria-hidden="true" tabindex="-1" href="#when-it-fits"><span class="anchor-link"> #</span></a></h2>
+<ul>
+<li>Large numbers of concurrent connections (massive user bases, IoT devices, game gateways, etc.).</li>
+<li>Large data volumes requiring horizontal scaling and elasticity (logging / order / content platforms, etc.).</li>
+<li>Hard high-availability requirements (parts of financial payments, read paths of core transactions, etc.).</li>
+</ul>
+<hr>
+<h2 id="summary">Summary<a aria-hidden="true" tabindex="-1" href="#summary"><span class="anchor-link"> #</span></a></h2>
+<p>This "message-driven + Actor + MongoDB/Redis" combination has a clear engineering path and a mature ecosystem: when performance falls short, scale out by adding nodes; when data grows, scale with MongoDB sharding; when read/write load is uneven, use Redis caching and rate limiting to shave peaks. The real difficulty is not "whether it works", but "whether it can be scaled and operated gracefully".</p>
+<p>Next, in a follow-up post, I'll combine concrete design tools and code to build an end-to-end example of a "micro distributed service system", covering the minimal loop of service decomposition, communication, caching, consistency, and observability.</p>7:["$","$L15",null,{"postData":{"id":"redistributedservicesystem","locale":"en","contentHtml":"$16","title":"An Overview of Distributed Service System Design","date":"$D2020-12-20T10:05:12.000Z","updated":"$D2025-08-10T19:10:00.000Z","categories":["Essays"],"tags":["SQL","Actor","MongoDB","Redis","etcd","RocketMQ"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"An Overview of Distributed Service System Design | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"Overview and definition A distributed system is a system made up of a group of independent computers (nodes) working together over a network. Toget..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/redistributedservicesystem/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/redistributedservicesystem/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/redistributedservicesystem/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"An Overview of Distributed Service System Design"}],["$","meta","7",{"property":"og:description","content":"Overview and definition A distributed system is a system made up of a group of independent computers (nodes) working together over a network. Toget..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/redistributedservicesystem/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"SQL"}],["$","meta","13",{"property":"article:tag","content":"Actor"}],["$","meta","14",{"property":"article:tag","content":"MongoDB"}],["$","meta","15",{"property":"article:tag","content":"Redis"}],["$","meta","16",{"property":"article:tag","content":"etcd"}],["$","meta","17",{"property":"article:tag","content":"RocketMQ"}],["$","meta","18",{"name":"twitter:card","content":"summary"}],["$","meta","19",{"name":"twitter:title","content":"An Overview of Distributed Service System Design"}],["$","meta","20",{"name":"twitter:description","content":"Overview and definition A distributed system is a system made up of a group of independent computers (nodes) working together over a network. Toget..."}],["$","link","21",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}

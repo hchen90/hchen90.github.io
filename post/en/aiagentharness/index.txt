@@ -1,0 +1,191 @@
+1:"$Sreact.fragment"
+2:I[46731,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+3:I[87555,[],""]
+4:I[31295,[],""]
+5:I[4336,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],"default"]
+6:I[69243,["6874","static/chunks/6874-a930f608622f31bb.js","7177","static/chunks/app/layout-2722a589cd4d3a51.js"],""]
+8:I[59665,[],"MetadataBoundary"]
+a:I[59665,[],"OutletBoundary"]
+d:I[74911,[],"AsyncMetadataOutlet"]
+f:I[59665,[],"ViewportBoundary"]
+11:I[26614,[],""]
+:HL["/_next/static/css/348216834fe130c0.css","style"]
+:HL["/_next/static/css/2f46e0db0d4a3aed.css","style"]
+:HL["/_next/static/css/e6f18eb9cf95a5e4.css","style"]
+0:{"P":null,"b":"S-L6zE-qKr8IxvlDs6kGg","p":"","c":["","post","en","aiagentharness",""],"i":false,"f":[[["",{"children":["post",{"children":[["locale","en","d"],{"children":[["slug","aiagentharness","d"],{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/348216834fe130c0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/2f46e0db0d4a3aed.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"antialiased relative","children":[["$","$L2",null,{"fixed":true}],["$","div",null,{"className":"site-github-link fixed top-4 right-4 z-50 transition-all duration-300 ease-in-out","children":["$","a",null,{"href":"https://github.com/hchen90","target":"_blank","rel":"noopener noreferrer","className":"flex items-center justify-center p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-300","title":"Visit my GitHub profile","children":["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":"24","height":"24","viewBox":"0 0 24 24","fill":"currentColor","children":["$","path",null,{"d":"M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"}]}]}]}],["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}],["$","$L6",null,{"src":"/copy-code.js","strategy":"afterInteractive"}]]}]}]]}],{"children":["post",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["locale","en","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","aiagentharness","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L7",["$","$L8",null,{"children":"$L9"}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/e6f18eb9cf95a5e4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$La",null,{"children":["$Lb","$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","yO0PEc0fvkeo4NpZfRTcI",{"children":[["$","$Lf",null,{"children":"$L10"}],null]}],null]}],false]],"m":"$undefined","G":["$11","$undefined"],"s":false,"S":true}
+12:"$Sreact.suspense"
+13:I[74911,[],"AsyncMetadata"]
+9:["$","$12",null,{"fallback":null,"children":["$","$L13",null,{"promise":"$@14"}]}]
+c:null
+15:I[38046,["6874","static/chunks/6874-a930f608622f31bb.js","7353","static/chunks/7353-37e5304c906c35f0.js","460","static/chunks/app/post/%5Blocale%5D/%5Bslug%5D/page-668fdf337c1b1be7.js"],"default"]
+16:T4eb5,<p>When ChatGPT first took off, my workflow was: open a browser, paste a code snippet, wait for suggestions, then copy them back into the IDE by hand. That pattern is “chat-style assistance” — the AI talks, it does not act. What actually bends the productivity curve is the Agent: it does not just answer; it reads files, runs commands, edits code, and opens PRs. The catch is that dropping a large language model into an environment that can touch the filesystem is like handing a screwdriver to a child with no body awareness. It can fix things — or punch a hole through the motherboard.</p>
+<p>The harness is the screwdriver’s “safety grip.” It is not the agent itself, but the middle layer between the agent and a real engineering environment: which tools the agent may call, what context it can see, how results are fed back, and how failures are contained. This post is about designing a dependable harness so agents join day-to-day development instead of becoming something you have to babysit.</p>
+<h2 id="the-core-problem-agents-are-capable--how-do-you-let-them-touch-code-safely">The core problem: agents are capable — how do you let them touch code safely?<a aria-hidden="true" tabindex="-1" href="#the-core-problem-agents-are-capable--how-do-you-let-them-touch-code-safely"><span class="anchor-link"> #</span></a></h2>
+<p>Agent capability boundaries are expanding fast. From early text completion, to GitHub Copilot’s inline suggestions, to systems like Cursor Composer and Pi Coding Agent that can edit across files, AI is shifting from “copilot” to “shift engineer.” Greater power means more concrete risk:</p>
+<ul>
+<li><strong>Hallucination-driven damage:</strong> an LLM may confidently delete code that looks “unused,” when it is actually a fallback for older versions.</li>
+<li><strong>Excessive privileges:</strong> if the agent has shell and git access, one bad judgment can <code>git push --force</code> to main.</li>
+<li><strong>Mismatched context:</strong> the agent never sees the CI failure logs, yet proposes fixes from stale local state.</li>
+<li><strong>No audit trail:</strong> humans at least remember what they changed; an agent that ran twenty steps overnight leaves nobody sure what happened.</li>
+</ul>
+<p>In short: <strong>agents need engineering capabilities, but the engineering environment must not trust agents unconditionally.</strong> The harness is the protocol layer for that trust exchange.</p>
+<h2 id="what-a-harness-is-more-than-tool-calling">What a harness is: more than “tool calling”<a aria-hidden="true" tabindex="-1" href="#what-a-harness-is-more-than-tool-calling"><span class="anchor-link"> #</span></a></h2>
+<p>First, what a harness is <em>not</em>. OpenAI Function Calling, Anthropic Tool Use, and community MCP (Model Context Protocol) all essentially <strong>define a schema so the model learns when to call external functions</strong>. They answer “how does the model request tools?”</p>
+<p>A harness answers <strong>who executes, how the environment is prepared, how safety is enforced, and how results are fed back</strong>. An analogy:</p>
+<ul>
+<li>Function Calling is the “restaurant menu” — it tells the model what it can order.</li>
+<li>The harness is “kitchen + waiter + POS” — take the order, prep, cook, serve, handle returns.</li>
+</ul>
+<p>In systems like Pi Coding Agent, the harness usually shows up as a local daemon (or a process embedded in an IDE plugin). It exposes a set of <strong>capability declarations</strong> to the agent; the agent chooses what to call for the current task. When a request arrives, the harness does four things:</p>
+<ol>
+<li><strong>Discovery:</strong> tell the agent which tools exist in this environment. On a machine without Docker, do not expose <code>docker_build</code>.</li>
+<li><strong>Context injection:</strong> pack the background the agent needs into the request. Do not dump the whole project tree; read relevant files, recent edits, and test-failure summaries on demand.</li>
+<li><strong>Sandboxed execution:</strong> run commands or write files in a controlled environment — chroot, containers, or at least a whitelist check.</li>
+<li><strong>Result feedback:</strong> return stdout, stderr, file diffs, and HTTP responses in a structured form, usually with metadata (exit code, duration, affected files).</li>
+</ol>
+<p>Function Calling and MCP are <strong>protocols</strong>; the harness is a <strong>runtime</strong>. They work together: the agent expresses intent via the protocol; the harness makes it real at runtime.</p>
+<p><img src="/post/aiagentharness/1e4c509b3953.svg" alt="Harness architecture: the agent interacts with the engineering environment through the harness"></p>
+<p><em>Figure: the harness sits in the middle — capabilities upward, controlled access to the filesystem, shell, and network downward.</em></p>
+<h2 id="a-minimal-harness-from-file-io-to-command-execution">A minimal harness: from file I/O to command execution<a aria-hidden="true" tabindex="-1" href="#a-minimal-harness-from-file-io-to-command-execution"><span class="anchor-link"> #</span></a></h2>
+<p>To make the idea concrete, imagine a minimal harness with only two tools: <code>read_file</code> and <code>exec_command</code>. The agent wants to change <code>src/config.ts</code>:</p>
+<p><img src="/post/aiagentharness/8bed9f47a6ee.svg" alt="A typical tool-call flow"></p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">vbnet</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-vbnet"><span class="hljs-symbol">Agent:</span> read_file(<span class="hljs-string">"src/config.ts"</span>)
+<span class="hljs-symbol">Harness:</span> validate path <span class="hljs-built_in">is</span> under project root → read → <span class="hljs-keyword">return</span>
+
+<span class="hljs-symbol">Agent:</span> exec_command(<span class="hljs-string">"git diff"</span>)
+<span class="hljs-symbol">Harness:</span> validate command <span class="hljs-built_in">is</span> <span class="hljs-keyword">on</span> the whitelist → run at repo root → capture stdout/stderr → <span class="hljs-keyword">return</span>
+</code></pre></div>
+<p>A rough but usable harness skeleton (TypeScript pseudocode):</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">typescript</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">ToolRequest</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'read_file'</span> | <span class="hljs-string">'exec_command'</span>;
+  <span class="hljs-attr">args</span>: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MiniHarness</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">rootDir</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">private</span> allowedCommands = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([<span class="hljs-string">'git'</span>, <span class="hljs-string">'npm'</span>, <span class="hljs-string">'node'</span>, <span class="hljs-string">'cat'</span>]);
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">dispatch</span>(<span class="hljs-params"><span class="hljs-attr">req</span>: <span class="hljs-title class_">ToolRequest</span></span>) {
+    <span class="hljs-keyword">switch</span> (req.<span class="hljs-property">name</span>) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'read_file'</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">safeRead</span>(req.<span class="hljs-property">args</span>.<span class="hljs-property">path</span>);
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'exec_command'</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">safeExec</span>(req.<span class="hljs-property">args</span>.<span class="hljs-property">cmd</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">safeRead</span>(<span class="hljs-params"><span class="hljs-attr">rawPath</span>: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">const</span> resolved = path.<span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>, rawPath);
+    <span class="hljs-comment">// Path escape check</span>
+    <span class="hljs-keyword">if</span> (!resolved.<span class="hljs-title function_">startsWith</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Path escape detected'</span>);
+    }
+    <span class="hljs-keyword">return</span> fs.<span class="hljs-title function_">readFileSync</span>(resolved, <span class="hljs-string">'utf-8'</span>);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">safeExec</span>(<span class="hljs-params"><span class="hljs-attr">rawCmd</span>: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-keyword">const</span> [bin, ...args] = rawCmd.<span class="hljs-title function_">split</span>(<span class="hljs-string">' '</span>);
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedCommands</span>.<span class="hljs-title function_">has</span>(bin)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Command not allowed'</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">execFileSync</span>(bin, args, { <span class="hljs-attr">cwd</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">rootDir</span>, <span class="hljs-attr">encoding</span>: <span class="hljs-string">'utf-8'</span> });
+  }
+}
+</code></pre></div>
+<p>This skeleton runs, but production will hit pitfalls immediately:</p>
+<ul>
+<li><strong>Path escape:</strong> <code>../etc/passwd</code> is blocked by <code>startsWith</code>, but symlinks can bypass it. Safer: <code>realpath</code> first, then compare.</li>
+<li><strong>Command injection:</strong> splitting on spaces is wrong. Spaces in <code>git log --format="%H %s"</code> shatter arguments. Pass argv as an array (<code>execFile</code>, not <code>exec</code>).</li>
+<li><strong>Concurrent write races:</strong> two agent threads editing the same file — last write wins. Lock files or serialize writes.</li>
+<li><strong>Uncontrolled side effects:</strong> <code>npm install</code> mutates <code>node_modules</code>; without snapshots, rollback is a heavy <code>git checkout .</code>.</li>
+</ul>
+<h2 id="context-windows-and-designing-the-tool-protocol">Context windows and designing the “tool protocol”<a aria-hidden="true" tabindex="-1" href="#context-windows-and-designing-the-tool-protocol"><span class="anchor-link"> #</span></a></h2>
+<p>Every agent decision depends on the context the harness feeds it. Too much wastes tokens; too little and the agent guesses. One harness job is to be an <strong>information curator</strong>.</p>
+<p>For fixing a bug, an ideal information flow looks like:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Context the harness provides</th>
+<th>Why not everything</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Locate</td>
+<td>Error stack + related paths</td>
+<td>Not the whole-repo AST</td>
+</tr>
+<tr>
+<td>Understand</td>
+<td>Source of the failing function and its call chain</td>
+<td>Not <code>node_modules</code></td>
+</tr>
+<tr>
+<td>Fix</td>
+<td>Full target file + dependent interface signatures</td>
+<td>Not every test file</td>
+</tr>
+<tr>
+<td>Verify</td>
+<td>Test command output (failed-case summary)</td>
+<td>Not the full CI log</td>
+</tr>
+</tbody>
+</table>
+<p>Harnesses usually implement this layering with a few mechanisms:</p>
+<p><strong>1. Symbol index</strong>
+Prebuild file → symbol → reference indexes (Tree-sitter or LSP). When the agent mentions <code>UserService.authenticate</code>, the harness finds definitions and call sites quickly instead of grepping the whole repo.</p>
+<p><strong>2. Prefer recent changes</strong>
+Files the agent just edited, open editor tabs, and recent git diffs are “hot” — inject them first.</p>
+<p><strong>3. Structured summaries</strong>
+Do not shove a 10 MB log at the agent. Preprocess: extract error lines, dedupe stacks, count failures, then emit a short structured summary:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"test_suite"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"auth.spec.ts"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"failed_count"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"first_failure"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"UserService.authenticate throws TypeError"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"stack_top"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"src/services/user.ts:42"</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p><strong>4. Dynamic context protocol</strong>
+Agree on pull-on-demand: the agent gets a skeleton, notices a missing interface, then explicitly requests <code>read_symbol("PaymentGateway.charge")</code>. More controllable than dumping everything once.</p>
+<p>The point: <strong>the harness understands the engineering structure better than the agent, so the harness should decide what is worth seeing</strong> — not let the agent rummage the repo.</p>
+<h2 id="safety-boundaries-least-privilege-and-auditability">Safety boundaries: least privilege and auditability<a aria-hidden="true" tabindex="-1" href="#safety-boundaries-least-privilege-and-auditability"><span class="anchor-link"> #</span></a></h2>
+<p>Path escape and command injection are only the start. Harness security is defense in depth:</p>
+<p><strong>1. Filesystem sandbox</strong>
+Lightweight: <code>chroot</code> or bind-mount the agent into the project directory. More modern: run the harness in a container (e.g. Docker rootless) with read-only mounts. Default <strong>deny</strong>: writing a file requires a whitelist pass.</p>
+<p><strong>2. Command whitelist and argument checks</strong>
+Validate more than the binary name — validate argument patterns. Allow <code>git diff</code>, not <code>git push</code>; allow <code>npm test</code>, not <code>npm publish</code>. Regex or templates work:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">typescript</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> rules = [
+  { <span class="hljs-attr">cmd</span>: <span class="hljs-string">'git'</span>, <span class="hljs-attr">args</span>: <span class="hljs-regexp">/^diff\s/</span> },
+  { <span class="hljs-attr">cmd</span>: <span class="hljs-string">'npm'</span>, <span class="hljs-attr">args</span>: <span class="hljs-regexp">/^run\s(test|lint|build)$/</span> },
+];
+</code></pre></div>
+<p><strong>3. Network isolation</strong>
+Agents should not freely hit the public internet. Some tasks need it (npm package versions). Maintain an allowlist (registry.npmjs.org, pypi.org); block the rest by default. If search is needed, the harness proxies and returns redacted results.</p>
+<p><strong>4. Operation audit</strong>
+Every tool call should leave structured logs, at least:</p>
+<div class="code-block-wrapper"><div class="code-block-header"><span class="code-block-lang">json</span><button class="copy-button" data-copy-state="copy" aria-label="Copy code to clipboard" type="button" onclick="copyCode(this)"><span class="copy-button-text">Copy</span></button></div><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2025-07-15T09:23:17Z"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"agent_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"pi-session-42"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"tool"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"write_file"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"args"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"path"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"src/config.ts"</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"diff_hash"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"sha256:a1b2c3..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"exit_code"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>
+<span class="hljs-punctuation">}</span>
+</code></pre></div>
+<p>With an audit log you can answer “what did the agent change?” Further: require human confirmation before sensitive ops (<code>git push</code>, <code>rm -rf</code>), keeping autonomy at the “suggest” layer rather than “execute.”</p>
+<p><strong>5. Rollback</strong>
+If the agent breaks the tree, stash or branch before each write. After a multi-step failure, roll back to the start in one shot instead of manually checking out twenty files.</p>
+<h2 id="wrap-up">Wrap-up<a aria-hidden="true" tabindex="-1" href="#wrap-up"><span class="anchor-link"> #</span></a></h2>
+<p>Wiring AI agents into engineering workflows is not only about better models — you need a reliable harness as the safety grip. Core points:</p>
+<ol>
+<li><strong>The harness is a runtime, not a protocol.</strong> Function Calling / MCP define how agents express intent; the harness executes safely in the real environment and feeds results back.</li>
+<li><strong>Context should be curated by the harness.</strong> Agents should not rummage the repo; the harness injects symbols, summaries, and dynamic data by stage, balancing token cost and precision.</li>
+<li><strong>Safety is default-deny plus auditability.</strong> Sandboxes, allowlists, and network isolation are baseline; operation logs and rollback are what make people willing to put agents near CI.</li>
+</ol>
+<p>If you are building an IDE plugin, a CI agent, or an internal DevOps bot, harness design quality decides whether you can cross the gap from “AI assistance” to “AI automation.”</p>7:["$","$L15",null,{"postData":{"id":"aiagentharness","locale":"en","contentHtml":"$16","title":"Agent Harness: Wiring AI Agents into Engineering Workflows","date":"$D2026-09-26T13:40:00.000Z","updated":"$D2026-09-26T14:30:00.000Z","categories":["Notes"],"tags":["AI","Agent","Engineering Productivity","Pi"]}}]
+10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+b:null
+14:{"metadata":[["$","title","0",{"children":"Agent Harness: Wiring AI Agents into Engineering Workflows | HCHEN90 博客"}],["$","meta","1",{"name":"description","content":"When ChatGPT first took off, my workflow was: open a browser, paste a code snippet, wait..."}],["$","link","2",{"rel":"canonical","href":"https://hchen90.net/post/en/aiagentharness/"}],["$","link","3",{"rel":"alternate","hrefLang":"zh-CN","href":"https://hchen90.net/post/zh/aiagentharness/"}],["$","link","4",{"rel":"alternate","hrefLang":"en","href":"https://hchen90.net/post/en/aiagentharness/"}],["$","link","5",{"rel":"alternate","type":"application/atom+xml","href":"https://hchen90.net/atom-en.xml"}],["$","meta","6",{"property":"og:title","content":"Agent Harness: Wiring AI Agents into Engineering Workflows"}],["$","meta","7",{"property":"og:description","content":"When ChatGPT first took off, my workflow was: open a browser, paste a code snippet, wait..."}],["$","meta","8",{"property":"og:url","content":"https://hchen90.net/post/en/aiagentharness/"}],["$","meta","9",{"property":"og:site_name","content":"HCHEN90 博客"}],["$","meta","10",{"property":"og:locale","content":"en_US"}],["$","meta","11",{"property":"og:type","content":"article"}],["$","meta","12",{"property":"article:tag","content":"AI"}],["$","meta","13",{"property":"article:tag","content":"Agent"}],["$","meta","14",{"property":"article:tag","content":"Engineering Productivity"}],["$","meta","15",{"property":"article:tag","content":"Pi"}],["$","meta","16",{"name":"twitter:card","content":"summary"}],["$","meta","17",{"name":"twitter:title","content":"Agent Harness: Wiring AI Agents into Engineering Workflows"}],["$","meta","18",{"name":"twitter:description","content":"When ChatGPT first took off, my workflow was: open a browser, paste a code snippet, wait..."}],["$","link","19",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+e:{"metadata":"$14:metadata","error":null,"digest":"$undefined"}
